@@ -2,7 +2,7 @@ import {StyleSheet, Text, View, Image} from 'react-native'
 
 const Details = () => {
     return (
-        <View>
+        <View style={styles.container}>
             <Image source={require('../src/containers/login/logo.jpg')} style={styles.logo}/>
             <Text style={styles.name}>عکاسخونه</Text>
         </View>
