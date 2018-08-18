@@ -7,8 +7,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "16.4.1",
-    "react-native": "0.55.0"
+    "react-native": "0.55.0",
+    "react-native-material-kit": "^0.5.1",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
   },
   "devDependencies": {
     "babel-jest": "23.4.2",
