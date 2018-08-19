@@ -18,8 +18,8 @@ export default class Login extends Component
     }
     componentDidMount(){
         Animated.loop( Animated.timing(this.animatedValue, {
-            toValue:1,
-            duration:20000
+            toValue:1.2,
+            duration:22000
         })).start();
        
         
@@ -27,15 +27,15 @@ export default class Login extends Component
     render()
     {
         var color = this.animatedValue.interpolate({
-            inputRange: [ 0, 0.2, 0.4, 0.6, 0.8, 1 ],
-            outputRange: [ colors.primaryColor, "#618e8a", "#935f51", "#64618e", "#618e8a",colors.primaryColor  ]
+            inputRange: [ 0, 0.1, 0.4, 0.6, 0.8, 1 , 1.2],
+            outputRange: [ colors.primaryColor, "#618e8a", "#4d2968", "#3c358c","#39787a", "#618e8a",colors.primaryColor  ]
         });
         
           
         // console.warn(theme);    
         return(
                 <View style={{flex:1}}>
-                <Animated.View style={{flex:1, backgroundColor:color, justifyContent: 'center', }}>
+                <Animated.View style={{flex:1, backgroundColor:color, justifyContent: 'center' }}>
                 {/* <KeyboardAvoidingView  sytle={{flex:1}} contentContainerStyle={{flex:1}} behavior="height" enabled> */}
                     <View style={{position:'absolute', top:83, alignSelf:"center"}}>
                         <Details/>
