@@ -9,9 +9,9 @@ import {loginGoogle, signup} from '../../actions/login/loginAction'
 const LoginFooter = (props) =>  (
         <View style={styles.container}>
             
-            <View style={{position: "absolute", bottom:0}}>
+            <View style={{flex:1}}>
                     <FHButton title = 'ورود با حساب گوگل' onPress = {() => console.warn("log in with google")}/>
-                    <Text style = {{alignSelf: 'center', margin:10}} onPress = {() => console.warn("sign up")}>ثبت نام</Text>
+                    <Text style = {{color:'white',alignSelf: 'center', margin:10}} onPress = {() => console.warn("sign up")}>ثبت نام</Text>
             </View>
         </View>
     )

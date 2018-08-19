@@ -5,8 +5,8 @@ import {Button, Text } from 'native-base';
 
 const FHButton = (props) => {
     return (<Button block primary onPress={props.onPress} 
-        style={{ margin : 5,
-            height : 48,
+        style={{ margin : 7,
+            height : 55,
             borderRadius: 10,
             width : 345,
             alignSelf: 'center'}}>

@@ -11,6 +11,9 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import Login from './src/containers/login/Login';
 import colors from './src/config/colors';
 import {setTheme} from 'react-native-material-kit';
+import { Container, Content, StyleProvider } from 'native-base';
+import getTheme from './native-base-theme/components';
+import material from './native-base-theme/variables/material';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -32,6 +35,7 @@ type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
+      <StyleProvider  style={getTheme(material)}>
       <View style={{flex:1}}>
         <Login/>
         {/* <LoginInputs/> */}
@@ -39,6 +43,7 @@ export default class App extends Component<Props> {
         <Text style={styles.instructions}>To get started, edit App.js</Text>
         <Text style={styles.instructions}>{instructions}</Text> */}
       </View>
+      </StyleProvider>
     );
   }
 }

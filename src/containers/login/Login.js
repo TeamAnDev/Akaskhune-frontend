@@ -4,7 +4,6 @@ import {View, KeyboardAvoidingView, Animated, SafeAreaView} from 'react-native';
 import LoginInputs from './LoginInputs';
 import Details from './Details';
 import LoginFooter from './LoginFooter';
-import {getTheme} from 'react-native-material-kit';
 import colors from '../../config/colors';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import {Container, Content, Footer} from 'native-base';
@@ -29,30 +28,28 @@ export default class Login extends Component
     {
         var color = this.animatedValue.interpolate({
             inputRange: [ 0, 0.2, 0.4, 0.6, 0.8, 1 ],
-            outputRange: [ '#ffeaea', '#eaf3ff', '#ecffea', '#faeaff', '#eafff3', '#ffeaea'  ]
+            outputRange: [ colors.primaryColor, "#618e8a", "#935f51", "#64618e", "#618e8a",colors.primaryColor  ]
         });
         
-        const theme = getTheme();    
+          
         // console.warn(theme);    
         return(
-            
-            <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
-                <Animated.View style={{flex:1,backgroundColor:color }}>
-                    <View style={{flex:3}}>
+                <View style={{flex:1}}>
+                <Animated.View style={{flex:1, backgroundColor:color, justifyContent: 'center', }}>
+                {/* <KeyboardAvoidingView  sytle={{flex:1}} contentContainerStyle={{flex:1}} behavior="height" enabled> */}
+                    <View style={{position:'absolute', top:83, alignSelf:"center"}}>
                         <Details/>
                     </View>
-                    <View style={{alignSelf: "center"}}>
+                    <View style={{position:'absolute', top:206, alignSelf:"center"}}>
                         <LoginInputs/>
                     </View>
-                    
-                    <View style={{flex:2}}>
+                    <View style={{position:'absolute', top:530, alignSelf:"center"}}>
                         <LoginFooter/>
                     </View>
-                  
-                    
+                {/* </KeyboardAvoidingView> */}
                 </Animated.View>
-           </KeyboardAwareScrollView>
-            
+                </View>
+       
         )
     }
 }

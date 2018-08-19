@@ -7,9 +7,8 @@ const styles = StyleSheet.create({
         borderRadius : 50
     },
     text : {
-       
-        bottom:0,
-        paddingBottom: 0,
+       paddingTop: 17,
+       color:'white'
     },
     container : {
         flex : 1,
