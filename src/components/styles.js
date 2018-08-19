@@ -20,8 +20,11 @@ const styles = {
         fontStyle: 'italic',
         fontWeight: '200'
       },
-    loginButton : {
-       marginTop : 10
+    LoginButton : {
+       marginTop : 10,
+       height : 40,
+       borderRadius: 10,
+
     },
 
   };

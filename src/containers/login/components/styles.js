@@ -14,6 +14,9 @@ const styles = {
     textfieldWithFloatingLabel: {
       height: 48,  // have to do it on iOS
       marginTop: 10,
+      textAlign: 'right',
+      color : 'rgb(57,57,57)'
+
     },
     inputFontStyle : {
         fontSize: 14,

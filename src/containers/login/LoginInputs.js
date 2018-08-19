@@ -41,16 +41,27 @@ class LoginInputs extends Component
                     <View style={{flex:1}} >
                     </View>
                 </View>
-               <View style={{flexDirection:"row", flex:1}} >
+                <View style={{flex:2}}>
+                    <View style={{flexDirection:"row", flex:1}} >
+                        <View style={{flex:1}} >
+                        </View>
+                        <View style={{flex:10}} >
+                        <FHButton title="ورود" onPress={this.props.login}/>
+                        </View>
+                        <View style={{flex:1}} >
+                        </View>
+                    </View>
+                    <View style={{flexDirection:"row", flex:1}} >
                     <View style={{flex:1}} >
                     </View>
                     <View style={{flex:10}} >
-                       <FHButton title="ورود" onPress={this.props.login}/>
                        <Text style = {{alignSelf: 'center', marginTop:10}} onPress = {() => console.warn("")}>رمز عبور خود را فراموش کرده‌اید؟</Text>
                     </View>
                     <View style={{flex:1}} >
                     </View>
                 </View>
+                </View>
+               
                 <View style={{flexDirection:"row", flex:1}} >
                     <View style={{flex:1}} >
                     </View>

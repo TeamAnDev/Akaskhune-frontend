@@ -23,7 +23,9 @@ const customTheme = {
   accentColor : colors.accentColor,
   accentColorRGB : colors.accentColorRGB,
   primaryColor : colors.primaryColor,
-  primaryColorRGB : colors.primaryColorRGB
+  primaryColorRGB : colors.primaryColorRGB,
+  fontColor : colors.fontColor,
+ 
 }
 setTheme(customTheme);
 type Props = {};

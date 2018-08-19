@@ -5,6 +5,8 @@ const colors = {
     accentColor : "#D55E6C",
     accentColorRGB: "213,94,108",
     grey: "#EFEFEF",
+    fontColor : "rgb(57,57,57)",
+
 
 
 
