@@ -21,9 +21,11 @@ const styles = {
         fontWeight: '200'
       },
     LoginButton : {
-       marginTop : 10,
+       marginTop : 15,
        height : 40,
        borderRadius: 10,
+       width : 345,
+       alignSelf: 'center',
 
     },
 

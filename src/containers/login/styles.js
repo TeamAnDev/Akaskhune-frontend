@@ -7,12 +7,14 @@ const styles = StyleSheet.create({
         borderRadius : 50
     },
     text : {
-        marginTop : 10
+       
+        bottom:0,
+        paddingBottom: 0,
     },
     container : {
         flex : 1,
-        justifyContent : 'center',
-        alignItems: 'center'
+        // justifyContent : 'center',
+        alignItems: 'center', 
     }
 })
 

@@ -7,7 +7,7 @@ import LoginFooter from './LoginFooter';
 import {getTheme} from 'react-native-material-kit';
 import colors from '../../config/colors';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
+import {Container, Content, Footer} from 'native-base';
 export default class Login extends Component
 {
     constructor(props){
@@ -36,43 +36,23 @@ export default class Login extends Component
         // console.warn(theme);    
         return(
             
-            // <KeyboardAwareScrollView >
-            
+            <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
                 <Animated.View style={{flex:1,backgroundColor:color }}>
                     <View style={{flex:3}}>
-                        <View style={{flex:1}}>
-                        </View>
-                        <View style={{flex:2}}>
-                            <Details/>
-                        </View>
-                    
+                        <Details/>
                     </View>
                     <View style={{flex:4}}>
                         <LoginInputs/>
                     </View>
-<<<<<<< HEAD
                     
                     <View style={{flex:2}}>
-                        <View style={{flex:1}}></View>
-                        <View style={{flex:2}}><LoginFooter/></View>
-                        
+                        <LoginFooter/>
                     </View>
+                  
+                    
                 </Animated.View>
-           
+           </KeyboardAwareScrollView>
             
-=======
-                   
-                </View>
-                <View style={{flex:4}}>
-                    <LoginInputs/>
-                </View>
-                
-                <View style={{flex:2}}>
-                    <View style={{flex:1}}></View>
-                    <View style={{flex:2}}><LoginFooter/></View>
-                </View>
-            </View>
->>>>>>> 91eeeffc2f1dee006d0d4b0d93e2f5b492e85577
         )
     }
 }
