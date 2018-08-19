@@ -5,7 +5,7 @@ import {MKTextField} from 'react-native-material-kit';
 import {connect} from 'react-redux';
 import EmailInput from './components/EmailInput';
 import PasswordInput from './components/PasswordInput';
-import LoginButton from './components/LoginButton';
+import FHButton from '../../components/FHButton';
 import {login, changePassword, changeEmail} from '../../actions/login/loginAction';
 
 class LoginInputs extends Component
@@ -44,7 +44,7 @@ class LoginInputs extends Component
                     <View style={{flex:1}} >
                     </View>
                     <View style={{flex:10}} >
-                       <LoginButton onPress={this.props.login}/>
+                       <FHButton title="ورود" onPress={this.props.login}/>
                     </View>
                     <View style={{flex:1}} >
                     </View>
