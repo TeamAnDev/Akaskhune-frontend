@@ -41,7 +41,7 @@ export default class Login extends Component
                     <View style={{flex:3}}>
                         <Details/>
                     </View>
-                    <View style={{flex:4}}>
+                    <View style={{alignSelf: "center"}}>
                         <LoginInputs/>
                     </View>
                     
