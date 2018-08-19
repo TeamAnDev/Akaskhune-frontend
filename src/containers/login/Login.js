@@ -34,12 +34,6 @@ export default class Login extends Component
                 <View style={{flex:2}}>
                     <View style={{flex:1}}></View>
                     <View style={{flex:2}}><LoginFooter/></View>
-                    
-                    <View style={{flex:2}}>
-                        <View style={{flex:1}}></View>
-                        <View style={{flex:2}}><LoginFooter/></View>
-                        
-                    </View>
                 </View>
             </View>
         )
