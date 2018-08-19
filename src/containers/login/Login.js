@@ -50,6 +50,7 @@ export default class Login extends Component
                     <View style={{flex:4}}>
                         <LoginInputs/>
                     </View>
+<<<<<<< HEAD
                     
                     <View style={{flex:2}}>
                         <View style={{flex:1}}></View>
@@ -59,6 +60,19 @@ export default class Login extends Component
                 </Animated.View>
            
             
+=======
+                   
+                </View>
+                <View style={{flex:4}}>
+                    <LoginInputs/>
+                </View>
+                
+                <View style={{flex:2}}>
+                    <View style={{flex:1}}></View>
+                    <View style={{flex:2}}><LoginFooter/></View>
+                </View>
+            </View>
+>>>>>>> 91eeeffc2f1dee006d0d4b0d93e2f5b492e85577
         )
     }
 }

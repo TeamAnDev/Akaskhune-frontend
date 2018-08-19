@@ -11,7 +11,10 @@
     "react": "16.4.1",
     "react-native": "0.55.0",
     "react-native-keyboard-aware-scroll-view": "^0.7.0",
+<<<<<<< HEAD
     "react-native-keyboard-spacer": "^0.4.1",
+=======
+>>>>>>> 91eeeffc2f1dee006d0d4b0d93e2f5b492e85577
     "react-native-material-kit": "^0.5.1",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0"
