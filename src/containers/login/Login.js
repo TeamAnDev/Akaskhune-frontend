@@ -4,6 +4,8 @@ import {View} from 'react-native';
 import LoginInputs from './LoginInputs';
 import Details from './Details';
 import LoginFooter from './LoginFooter';
+import {getTheme} from 'react-native-material-kit';
+import colors from '../../config/colors';
 
 export default class Login extends Component
 {
@@ -12,14 +14,26 @@ export default class Login extends Component
     }
     render()
     {
+        const theme = getTheme();
+        console.warn(theme);
+        
         return(
-                <View style={{flex:1}}>
-                    <View style={{flex:3}}>
+            <View style={{flex:1 , backgroundColor:colors.grey}}>
+                <View style={{flex:3}}>
+                    <View style={{flex:1}}>
+                    </View>
+                    <View style={{flex:2}}>
                         <Details/>
                     </View>
-                    <View style={{flex:4}}>
-                        <LoginInputs/>
-                    </View>
+                   
+                </View>
+                <View style={{flex:4}}>
+                    <LoginInputs/>
+                </View>
+                
+                <View style={{flex:2}}>
+                    <View style={{flex:1}}></View>
+                    <View style={{flex:2}}><LoginFooter/></View>
                     
                     <View style={{flex:2}}>
                         <View style={{flex:1}}></View>
@@ -27,6 +41,7 @@ export default class Login extends Component
                         
                     </View>
                 </View>
+            </View>
         )
     }
 }

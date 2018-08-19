@@ -16,7 +16,7 @@ const styles = {
       marginTop: 10,
     },
     inputFontStyle : {
-        fontSize: 10,
+        fontSize: 14,
         fontStyle: 'italic',
         fontWeight: '200'
       },

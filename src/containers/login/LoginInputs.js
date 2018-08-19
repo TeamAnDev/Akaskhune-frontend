@@ -46,6 +46,7 @@ class LoginInputs extends Component
                     </View>
                     <View style={{flex:10}} >
                        <FHButton title="ورود" onPress={this.props.login}/>
+                       <Text style = {{alignSelf: 'center', marginTop:10}} onPress = {() => console.warn("")}>رمز عبور خود را فراموش کرده‌اید؟</Text>
                     </View>
                     <View style={{flex:1}} >
                     </View>

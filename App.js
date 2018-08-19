@@ -9,6 +9,8 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import Login from './src/containers/login/Login';
+import colors from './src/config/colors';
+import {setTheme} from 'react-native-material-kit';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -17,6 +19,13 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+const customTheme = {
+  accentColor : colors.accentColor,
+  accentColorRGB : colors.accentColorRGB,
+  primaryColor : colors.primaryColor,
+  primaryColorRGB : colors.primaryColorRGB
+}
+setTheme(customTheme);
 type Props = {};
 export default class App extends Component<Props> {
   render() {
