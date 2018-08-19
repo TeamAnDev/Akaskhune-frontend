@@ -3,6 +3,7 @@ import {Component} from 'react';
 import {MKTextField} from 'react-native-material-kit';
 import styles from './styles'
 import colors from '../../../config/colors'
+import {Input, Form , Item, Label, Icon} from 'native-base';
 
 const EmailInput = (props) => {
   const MailInput = MKTextField.textfieldWithFloatingLabel()
@@ -12,7 +13,15 @@ const EmailInput = (props) => {
   .withFloatingLabelFont(styles.inputFontStyle)
   .withOnChangeText(props.onTextChange)
   .build();
-  return(<MailInput/>)
+
+  // return(<MailInput/>)
+  return (<Form>
+        <Item floatingLabel style={styles.inputItemStyle}>
+       
+        <Label>آدرس ایمیل</Label>
+        <Input onChangeText={props.onTextChange}  />
+      </Item>
+      </Form>)
 }
 
 export default EmailInput;

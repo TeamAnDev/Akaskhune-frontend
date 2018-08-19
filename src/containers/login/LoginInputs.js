@@ -22,55 +22,27 @@ class LoginInputs extends Component
     render()
     { 
         return(
-            <View style={{flex:1}}>
-                <View style={{flexDirection:"row", flex:1}} >
-                    <View style={{flex:1}} >
-                    </View>
-                    <View style={{flex:10}} >
+            <View style={{position:"absolute", bottom:0, alignSelf:"center"}}>
+                <EmailInput onTextChange = {this.props.changeEmail}/>
+                <PasswordInput onTextChange = {this.props.changePassword}/> 
+                <FHButton title="ورود" onPress={this.props.login}/>
+                <Text style = {{alignSelf: 'center', marginTop:10}} onPress = {() => console.warn("")}>رمز عبور خود را فراموش کرده‌اید؟</Text>
+                <FHError errorText={this.props.error}/>
+                {/* <View style={{flex:1}} >        
                         <EmailInput onTextChange = {this.props.changeEmail}/>
-                    </View>
-                    <View style={{flex:1}} >
-                    </View>
                 </View>
-                <View style={{flexDirection:"row",  flex:1}} >
-                    <View style={{flex:1}} >
-                    </View>
-                    <View style={{flex:10}} >
-                        <PasswordInput onTextChange = {this.props.changePassword}/>
-                    </View>
-                    <View style={{flex:1}} >
-                    </View>
+                <View style={{flex:1}} >
+                        <PasswordInput onTextChange = {this.props.changePassword}/> 
                 </View>
-                <View style={{flex:2}}>
-                    <View style={{flexDirection:"row", flex:1}} >
-                        <View style={{flex:1}} >
-                        </View>
-                        <View style={{flex:10}} >
+                <View style={{flex:1}}>
                         <FHButton title="ورود" onPress={this.props.login}/>
-                        </View>
-                        <View style={{flex:1}} >
-                        </View>
-                    </View>
-                    <View style={{flexDirection:"row", flex:1}} >
-                    <View style={{flex:1}} >
-                    </View>
-                    <View style={{flex:10}} >
+                </View>
+                <View style={{flex:1}}>
                        <Text style = {{alignSelf: 'center', marginTop:10}} onPress = {() => console.warn("")}>رمز عبور خود را فراموش کرده‌اید؟</Text>
-                    </View>
-                    <View style={{flex:1}} >
-                    </View>
-                </View>
-                </View>
-               
-                <View style={{flexDirection:"row", flex:1}} >
-                    <View style={{flex:1}} >
-                    </View>
-                    <View style={{flex:10}} >
+                </View>                   
+                <View style={{ flex:1}} >
                        <FHError errorText={this.props.error}/>
-                    </View>
-                    <View style={{flex:1}} >
-                    </View>
-                </View>
+                </View> */}
             </View>
         );
     }

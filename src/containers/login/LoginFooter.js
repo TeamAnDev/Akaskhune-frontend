@@ -8,15 +8,10 @@ import {loginGoogle, signup} from '../../actions/login/loginAction'
 
 const LoginFooter = (props) =>  (
         <View style={styles.container}>
-            <View style={{flexDirection:"row", flex:1}}>
-                <View style={{flex:1}} >
-                </View>
-                <View style={{flex:10}} >
+            
+            <View style={{position: "absolute", bottom:0}}>
                     <FHButton title = 'ورود با حساب گوگل' onPress = {() => console.warn("log in with google")}/>
-                    <Text style = {{alignSelf: 'center', marginTop:10}} onPress = {() => console.warn("sign up")}>ثبت نام</Text>
-                </View>
-                <View style={{flex:1}} >
-                </View>
+                    <Text style = {{alignSelf: 'center', margin:10}} onPress = {() => console.warn("sign up")}>ثبت نام</Text>
             </View>
         </View>
     )

@@ -7,7 +7,7 @@ import LoginFooter from './LoginFooter';
 import {getTheme} from 'react-native-material-kit';
 import colors from '../../config/colors';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
+import {Container, Content, Footer} from 'native-base';
 export default class Login extends Component
 {
     constructor(props){
@@ -36,26 +36,22 @@ export default class Login extends Component
         // console.warn(theme);    
         return(
             
+            <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
                 <Animated.View style={{flex:1,backgroundColor:color }}>
                     <View style={{flex:3}}>
-                        <View style={{flex:1}}>
-                        </View>
-                        <View style={{flex:2}}>
-                            <Details/>
-                        </View>
-                    
+                        <Details/>
                     </View>
                     <View style={{alignSelf: "center"}}>
                         <LoginInputs/>
                     </View>
                     
-                    <View style={{position: 'absolute', bottom: 0}}>
-                        <View style={{flex:1}}></View>
-                        <View style={{flex:2}}><LoginFooter/></View>
-                        
+                    <View style={{flex:2}}>
+                        <LoginFooter/>
                     </View>
+                  
+                    
                 </Animated.View>
-           
+           </KeyboardAwareScrollView>
             
         )
     }

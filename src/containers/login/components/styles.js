@@ -26,6 +26,10 @@ const styles = {
     loginButton : {
        marginTop : 10
     },
+    inputItemStyle : {
+      width:345,
+      alignSelf: 'center',
+    }
 
   };
   export default styles;
