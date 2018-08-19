@@ -1,5 +1,7 @@
 import {FHButton} from '../src/components'
-import {View, StyleSheet} from 'react-native'
+import {View} from 'react-native'
+import {styles} from './styles'
+
 const Footer = () => {
     return (
         <View style={styles.container}>
@@ -8,14 +10,5 @@ const Footer = () => {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container : {
-        flex : 1
-    },
-    text : {
-        marginTop : 10
-    }
-})
 
 export default Footer;
