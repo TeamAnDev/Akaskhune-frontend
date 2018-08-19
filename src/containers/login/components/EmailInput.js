@@ -6,6 +6,7 @@ import styles from './styles'
 const EmailInput = (props) => {
   const MailInput = MKTextField.textfieldWithFloatingLabel()
   .withPlaceholder('آدرس ایمیل')
+  .withStyle({borderRadius : 50})
   .withTextInputStyle(styles.textfieldWithFloatingLabel)
   .withFloatingLabelFont(styles.inputFontStyle)
   .withOnChangeText(props.onTextChange)
