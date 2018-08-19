@@ -20,7 +20,9 @@ function loginReducer(state={email:"", password:"", login:false, token:"", err:"
             else
                 return Object.assign({}, state, {err:errors.fillInputsLogin});
         case(LOGIN_GOOGLE) :
-        case(SIGNUP) :        
+            return state;
+        case(SIGNUP) :  
+            return state;
         default:
             return state;
     }
