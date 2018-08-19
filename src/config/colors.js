@@ -6,6 +6,7 @@ const colors = {
     accentColorRGB: "213,94,108",
     grey: "#EFEFEF",
     fontColor : "rgb(57,57,57)",
+    blackGrey : "rgb(130,130,130)"
 
 
 

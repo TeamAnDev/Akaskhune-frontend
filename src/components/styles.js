@@ -1,5 +1,5 @@
-
-const styles = {
+import {StyleSheet} from 'react-native';
+const styles = StyleSheet.create({
     col: {
       flex: 1,
       flexDirection: 'column',
@@ -20,14 +20,13 @@ const styles = {
         fontStyle: 'italic',
         fontWeight: '200'
       },
-    LoginButton : {
-       marginTop : 15,
-       height : 40,
-       borderRadius: 10,
-       width : 345,
-       alignSelf: 'center',
+    FHButton : {
+      
 
     },
+    inputItem:{
+      backgroundColor:'white', borderRadius:7, margin:5
+    }
 
-  };
+  });
   export default styles;

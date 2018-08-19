@@ -1,19 +1,17 @@
 import React from 'react';
 import {Component} from 'react';
-// import {MKButton} from 'react-native-material-kit';
 import styles from "./styles";
 import {Button, Text } from 'native-base';
 
 const FHButton = (props) => {
-    // const ColoredRaisedButton = MKButton.coloredButton()
-    // .withText(props.title)
-    // .withStyle(styles.LoginButton)
-    // .withOnPress(() => {
-    //     props.onPress();
-    // })
-    // .build();
-    // return (<ColoredRaisedButton/>);
-    return (<Button block primary onPress={props.onPress} style={styles.LoginButton}><Text>{props.title}</Text></Button>)
+    return (<Button block primary onPress={props.onPress} 
+        style={{ margin : 5,
+            height : 48,
+            borderRadius: 10,
+            width : 345,
+            alignSelf: 'center'}}>
+        <Text>{props.title}</Text>
+        </Button>)
 }
 
 export default FHButton;

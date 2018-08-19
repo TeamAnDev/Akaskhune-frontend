@@ -3,11 +3,11 @@ import {Component} from 'react';
 import {View, Text, Button} from 'react-native';
 import {MKTextField} from 'react-native-material-kit';
 import {connect} from 'react-redux';
-import EmailInput from './components/EmailInput';
-import PasswordInput from './components/PasswordInput';
 import FHButton from '../../components/FHButton';
 import {login, changePassword, changeEmail} from '../../actions/login/loginAction';
 import FHError from '../../components/FHError';
+import FHInput from '../../components/FHInput';
+import FHPasswordInput from '../../components/FHPasswordInput';
 
 class LoginInputs extends Component
 {
@@ -23,8 +23,8 @@ class LoginInputs extends Component
     { 
         return(
             <View style={{position:"absolute", bottom:0, alignSelf:"center"}}>
-                <EmailInput onTextChange = {this.props.changeEmail}/>
-                <PasswordInput onTextChange = {this.props.changePassword}/> 
+                <FHInput text="ایمیل" onTextChange = {this.props.changeEmail}/>
+                <FHPasswordInput text="رمزعبور" onTextChange = {this.props.changePassword}/> 
                 <FHButton title="ورود" onPress={this.props.login}/>
                 <Text style = {{alignSelf: 'center', marginTop:10}} onPress = {() => console.warn("")}>رمز عبور خود را فراموش کرده‌اید؟</Text>
                 <FHError errorText={this.props.error}/>
