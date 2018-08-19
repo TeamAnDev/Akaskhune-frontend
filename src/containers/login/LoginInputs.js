@@ -7,6 +7,7 @@ import EmailInput from './components/EmailInput';
 import PasswordInput from './components/PasswordInput';
 import FHButton from '../../components/FHButton';
 import {login, changePassword, changeEmail} from '../../actions/login/loginAction';
+import FHError from '../../components/FHError';
 
 class LoginInputs extends Component
 {
@@ -49,18 +50,30 @@ class LoginInputs extends Component
                     <View style={{flex:1}} >
                     </View>
                 </View>
+                <View style={{flexDirection:"row", flex:1}} >
+                    <View style={{flex:1}} >
+                    </View>
+                    <View style={{flex:10}} >
+                       <FHError errorText={this.props.error}/>
+                    </View>
+                    <View style={{flex:1}} >
+                    </View>
+                </View>
             </View>
         );
     }
 }
 
 
+const mapStateToProps = state => ({
+    error : state.loginApp.loginReducer.err,
+});
 const mapDispatchToProps = dispatch => ({
     changeEmail: email => dispatch(changeEmail(email)),
     changePassword : password => dispatch(changePassword(password)),
     login : () => dispatch(login())
 
-})
+});
 
-export default connect(null, 
+export default connect(mapStateToProps, 
                         mapDispatchToProps)(LoginInputs)

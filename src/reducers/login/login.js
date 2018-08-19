@@ -1,6 +1,6 @@
 import {EMAIL_CHANGED , PASSWORD_CHANGED, LOGIN} from '../../actions/login/loginAction';
 import {combineReducers} from 'redux';
-
+import errors from "../../config/errors";
 function loginReducer(state={email:"", password:"", login:false, token:"", err:""}, action)
 {
     switch(action.type){
@@ -18,7 +18,7 @@ function loginReducer(state={email:"", password:"", login:false, token:"", err:"
                     return Object.assign({}, state, {err:response.err});
             }
             else
-                return state;
+                return Object.assign({}, state, {err:errors.fillInputsLogin});
         default:
             return state;
     }
