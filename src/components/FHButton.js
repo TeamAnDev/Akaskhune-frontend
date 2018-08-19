@@ -1,7 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
 import {MKButton} from 'react-native-material-kit';
-import styles from './styles';
+import styles from "./styles";
 
 const FHButton = (props) => {
     const ColoredRaisedButton = MKButton.coloredButton()
