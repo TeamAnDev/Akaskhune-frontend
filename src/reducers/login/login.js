@@ -14,9 +14,6 @@ function loginReducer(state={email:"", password:"", login:false, token:"", err:"
             if(state.email!=="" && state.password!=="")
             {
                 let response = {};
-                axios.get('http://localhost:3000/login')
-                    .then(response => console.warn(response))
-                    .catch(err => console.warn(err));
                 if(response.token)
                     return Object.assign({}, state, {login:true, token:token});
                 else if(response.err)
