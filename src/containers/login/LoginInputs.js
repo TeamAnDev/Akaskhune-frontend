@@ -22,8 +22,8 @@ class LoginInputs extends Component
     { 
         return(
             <View style={{flex:1, width:"100%", marginTop:22}}>
-                <FHInput text="ایمیل" onTextChange = {this.props.changeEmail}/>
-                <FHPasswordInput text="رمزعبور" onTextChange = {this.props.changePassword}/> 
+                <FHInput text="ایمیل" onTextChange = {this.props.changeEmail} error = {!this.props.emailValidation}/>
+                <FHPasswordInput text="رمزعبور" onTextChange = {this.props.changePassword} error ={!this.props.passwordValidation}/> 
                 <FHButton title="ورود" onPress={this.props.login}
                         disabled={(this.props.emailValidation && this.props.passwordValidation) ? false : true}
                 />
