@@ -11,8 +11,8 @@ const LoginFooter = (props) =>  (
         <View style={styles.container}>
             
             <View style={{flex:1, width:"100%"}}>
-                    <FHButton title = 'ورود با حساب گوگل' onPress = {() => console.warn("log in with google")}/>
-                    <FHTextCenter text="ثبت‌ نام" onPress={props.signup} />
+                <FHButton title = 'ورود با حساب گوگل' onPress={props.loginGoogle}/>
+                <FHTextCenter text="ثبت‌ نام" onPress={props.signup} />
             </View>
         </View>
     )
