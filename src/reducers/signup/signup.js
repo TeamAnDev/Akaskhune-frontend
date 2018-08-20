@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux';
+import signupRequestReducer from './request'; 
 import errors from "../../config/errors";
 import { SIGNUP_EMAIL_CHANGED, SIGNUP_PASSWORD_CHANGED, SIGNUP_PASSWORD_CONFIRM_CHANGED, SIGNUP_SINGNUP_BUTTON_PRESSED } from '../../actions/signup/signupActions';
 const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -54,5 +55,6 @@ const signupApp =  combineReducers({
     signupReducer,
     emailCheckReducer,
     passwordCheckReducer,
+    signupRequestReducer
 });
 export default signupApp;
