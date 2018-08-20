@@ -11,31 +11,14 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import Login from './src/containers/login/Login';
 import colors from './src/config/colors';
 import {setTheme} from 'react-native-material-kit';
-import { Container, Content, StyleProvider } from 'native-base';
+import { StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
-import material from './native-base-theme/variables/material';
+import akaskhune from './native-base-theme/variables/akaskhune';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-const customTheme = {
-  accentColor : colors.accentColor,
-  accentColorRGB : colors.accentColorRGB,
-  primaryColor : colors.primaryColor,
-  primaryColorRGB : colors.primaryColorRGB,
-  fontColor : colors.fontColor,
- 
-}
-setTheme(customTheme);
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
   render() {
     return (
-      <StyleProvider  style={getTheme(material)}>
+      <StyleProvider  style={getTheme(akaskhune)}>
       <View style={{flex:1}}>
         <Login/>
         {/* <LoginInputs/> */}
