@@ -1,9 +1,11 @@
-import React, { PureComponent } from 'react'
-import Icon from 'react-native-vector-icons/Feather';
+import React, { PureComponent } from 'react';
+import {Icon, Button} from 'native-base';
+
 
 
 const FHBackIcon = (props) => (
-    <Icon.Button name="arrow-left" onPress={props.onPress} >
-    </Icon.Button>
+    <Button  transparent rounded primary style={{borderRadius:50}}>
+        <Icon name='arrow-forward' style={{color:'white'}}/>
+    </Button>
 )
 export default FHBackIcon;

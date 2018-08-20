@@ -11,7 +11,6 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import Login from './src/containers/login/Login';
 import Signup from './src/containers/signup/Signup';
 import colors from './src/config/colors';
-import {setTheme} from 'react-native-material-kit';
 import { StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import akaskhune from './native-base-theme/variables/akaskhune';

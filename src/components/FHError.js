@@ -1,4 +1,4 @@
-import {MKColor} from 'react-native-material-kit';
+
 import React from 'react';
 import {View, Text} from 'react-native';
 import colors from '../config/colors';

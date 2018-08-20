@@ -44,6 +44,9 @@ export default class Signup extends Component
                     <View style={{flex:2, width:"100%"}}>
                         <SignupFooter/>
                     </View>
+                    <View style={{position:"absolute", top:20, right:20}}>
+                        <FHBackIcon/>
+                    </View>
                 </Animated.View>
                 </KeyboardAwareScrollView>
        
