@@ -11,7 +11,7 @@ const FHPasswordInput = (props) => {
     //     },
     //    });
     
-  return (<Item regular style={styles.inputItem}>
+  return (<Item error={(props.error || false)} success={!props.error && true} regular style={styles.inputItem}>
             <Input placeholderTextColor={colors.blackGrey} 
             
             placeholder={props.text} onChangeText={props.onTextChange}

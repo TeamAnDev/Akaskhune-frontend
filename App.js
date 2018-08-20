@@ -20,7 +20,7 @@ export default class App extends Component {
     return (
       <StyleProvider  style={getTheme(akaskhune)}>
       <View style={{flex:1}}>
-        <Login/>
+        <Signup/>
         {/* <LoginInputs/> */}
         {/* <Text style={styles.welcome}>Welcome to React Native!</Text>
         <Text style={styles.instructions}>To get started, edit App.js</Text>

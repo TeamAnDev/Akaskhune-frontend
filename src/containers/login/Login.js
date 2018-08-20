@@ -35,7 +35,6 @@ export default class Login extends Component
         // console.warn(theme);    
         return(
             
-                // <View style={{flex:1}}>
                 <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
                 <Animated.View style={{flex:1, backgroundColor:color, justifyContent: 'center' }}>
                
@@ -48,15 +47,6 @@ export default class Login extends Component
                     <View style={{flex:2, width:"100%"}}>
                         <LoginFooter/>
                     </View>
-                    {/* <View style={{position:'absolute', top:83, alignSelf:"center", width:"100%"}}>
-                        
-                    </View>
-                    <View style={{position:'absolute', top:206, alignSelf:"center", width:"100%"}}>
-                        
-                    </View>
-                    <View style={{position:'absolute', top:530, alignSelf:"center", width:"100%"}}>
-                        
-                    </View> */}
                 </Animated.View>
                 </KeyboardAwareScrollView>
        
