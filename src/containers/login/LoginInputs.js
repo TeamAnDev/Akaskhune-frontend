@@ -24,7 +24,9 @@ class LoginInputs extends Component
             <View style={{flex:1, width:"100%", marginTop:22}}>
                 <FHInput text="ایمیل" onTextChange = {this.props.changeEmail}/>
                 <FHPasswordInput text="رمزعبور" onTextChange = {this.props.changePassword}/> 
-                <FHButton title="ورود" onPress={this.props.login}/>
+                <FHButton title="ورود" onPress={this.props.login}
+                        disabled={(this.props.emailValidation && this.props.passwordValidation) ? false : true}
+                />
                 <Text style = {{color:'white',alignSelf: 'center', marginTop:10}} onPress = {() => console.warn("")}>رمز عبور خود را فراموش کرده‌اید؟</Text>
                 <FHError errorText={this.props.error}/>
             </View>
@@ -35,6 +37,8 @@ class LoginInputs extends Component
 
 const mapStateToProps = state => ({
     error : state.loginApp.loginReducer.err,
+    emailValidation : state.loginApp.emailCheckReducer,
+    passwordValidation : state.loginApp.passwordCheckReducer
 });
 const mapDispatchToProps = dispatch => ({
     changeEmail: email => dispatch(changeEmail(email)),

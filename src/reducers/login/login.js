@@ -2,6 +2,32 @@ import {LOGIN_EMAIL_CHANGED , LOGIN_PASSWORD_CHANGED, LOGIN, LOGIN_GOOGLE, SIGNU
 import {combineReducers} from 'redux';
 import errors from "../../config/errors";
 import axios from 'axios';
+
+const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+function emailCheckReducer(state=false, action) {
+    switch(action.type) {
+        case LOGIN_EMAIL_CHANGED :
+            if(EMAIL_REGEX.test(action.email)) 
+                return true;
+            else
+                return false;
+        default :
+            return state;            
+    }
+} 
+
+function passwordCheckReducer(state=false , action) {
+    switch(action.type) {
+        case LOGIN_PASSWORD_CHANGED :
+            if(action.password !== "") 
+                return true;
+            else
+                return false;
+        default :
+            return state;            
+    }
+}
+
 function loginReducer(state={email:"", password:"", login:false, token:"", err:""}, action)
 {
     switch(action.type){
@@ -35,6 +61,6 @@ function loginReducer(state={email:"", password:"", login:false, token:"", err:"
 }
 
 const loginApp = combineReducers({
-    loginReducer
+    loginReducer, emailCheckReducer, passwordCheckReducer
 });
 export default loginApp;
