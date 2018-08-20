@@ -32,24 +32,20 @@ export default class Signup extends Component
             outputRange: [ colors.primaryColor, "#618e8a", "#4d2968", "#3c358c","#39787a", "#618e8a",colors.primaryColor  ]
         });  
         return(
-                <View style={{flex:1}}>
+            <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
                 <Animated.View style={{flex:1, backgroundColor:color, justifyContent: 'center' }}>
-                {/* <KeyboardAvoidingView  sytle={{flex:1}} contentContainerStyle={{flex:1}} behavior="height" enabled> */}
-                    <View style={{position:'absolute', top:83, alignSelf:"center", width:"100%"}}>
+               
+                    <View style={{flex:3, width:"100%"}}>
                         <Details/>
                     </View>
-                    <View style={{position:'absolute', top:206, alignSelf:"center", width:"100%"}}>
+                    <View style={{flex:6, width:"100%"}}>
                         <SignupInputs/>
                     </View>
-                    <View style={{position:'absolute', top:530, alignSelf:"center", width:"100%"}}>
-                       <SignupFooter/>
+                    <View style={{flex:2, width:"100%"}}>
+                        <SignupFooter/>
                     </View>
-                    <View style={{position:'absolute', top:480, alignSelf:"center", width:"100%"}}>
-                        {/* <FHBackIcon/> */}
-                    </View>
-                {/* </KeyboardAvoidingView> */}
                 </Animated.View>
-                </View>
+                </KeyboardAwareScrollView>
        
         )
     }

@@ -21,7 +21,7 @@ export default class SignupInputs extends Component
     render()
     { 
         return(
-            <View style={{flex:1, width:"100%"}}>
+            <View style={{flex:1, width:"100%", marginTop:22}}>
                 <FHInput text="آدرس ایمیل" onTextChange = {()=>{}}/>
                 <FHPasswordInput text="رمزعبور" onTextChange = {()=>{}}/> 
                 <FHPasswordInput text="تکرار رمزعبور" onTextChange = {()=>{}}/> 
