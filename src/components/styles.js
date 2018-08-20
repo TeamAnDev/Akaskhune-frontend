@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 
     },
     inputItem:{
-      backgroundColor:'white', borderRadius:6, margin:7, height:55
+      backgroundColor:'white', borderRadius:6, margin:7, height:55, width:"88%", alignSelf:"center"
     }
 
   });

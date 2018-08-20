@@ -1,4 +1,4 @@
-import {EMAIL_CHANGED , PASSWORD_CHANGED, LOGIN, LOGIN_GOOGLE, SIGNUP} from '../../actions/login/loginAction';
+import {EMAIL_CHANGED , PASSWORD_CHANGED, LOGIN, LOGIN_GOOGLE, SIGNUP, SIGNUP_PAGE} from '../../actions/login/loginAction';
 import {combineReducers} from 'redux';
 import errors from "../../config/errors";
 function loginReducer(state={email:"", password:"", login:false, token:"", err:""}, action)
@@ -22,7 +22,7 @@ function loginReducer(state={email:"", password:"", login:false, token:"", err:"
         case(LOGIN_GOOGLE) :
             console.warn("reducer -> loginGoogle")
             return state;
-        case(SIGNUP) : 
+        case(SIGNUP_PAGE) : 
             console.warn("reducer -> signup")
             return state;
         default:

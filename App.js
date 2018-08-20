@@ -9,6 +9,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import Login from './src/containers/login/Login';
+import Signup from './src/containers/signup/Signup';
 import colors from './src/config/colors';
 import {setTheme} from 'react-native-material-kit';
 import { StyleProvider } from 'native-base';

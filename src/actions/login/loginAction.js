@@ -2,7 +2,7 @@ export const EMAIL_CHANGED = 'EMAIL_CHANGED';
 export const PASSWORD_CHANGED = 'PASSWORD_CHANGED';
 export const LOGIN = 'LOGIN';
 export const LOGIN_GOOGLE = 'LOGIN_GOOGLE'
-export const SIGNUP = 'SIGNUP'
+export const SIGNUP_PAGE = 'SIGNUP_PAGE'
 export function changeEmail(email){
     return {
         type : EMAIL_CHANGED,
@@ -27,8 +27,8 @@ export function loginGoogle() {
     }
 }
 
-export function signup() {
+export function signupPage() {
     return {
-        type : SIGNUP
+        type : SIGNUP_PAGE
     }
 }

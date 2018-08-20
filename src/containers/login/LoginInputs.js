@@ -21,7 +21,7 @@ class LoginInputs extends Component
     render()
     { 
         return(
-            <View style={{flex:1}}>
+            <View style={{flex:1, width:"100%", marginTop:22}}>
                 <FHInput text="ایمیل" onTextChange = {this.props.changeEmail}/>
                 <FHPasswordInput text="رمزعبور" onTextChange = {this.props.changePassword}/> 
                 <FHButton title="ورود" onPress={this.props.login}/>

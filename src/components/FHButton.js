@@ -8,7 +8,8 @@ const FHButton = (props) => {
         style={{ margin : 7,
             height : 55,
             borderRadius: 10,
-            width : 345,
+            width : "88%",
+            alignContent:"center",
             alignSelf: 'center'}}>
         <Text>{props.title}</Text>
         </Button>)
