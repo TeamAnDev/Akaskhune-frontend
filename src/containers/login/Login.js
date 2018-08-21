@@ -7,36 +7,24 @@ import LoginFooter from './LoginFooter';
 import colors from '../../config/colors';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import {Container, Content, Footer} from 'native-base';
+import AnimatedLinearGradiant from 'react-native-animated-linear-gradient';
 export default class Login extends Component
 {
     constructor(props){
         super(props);
 
     }
-    componentWillMount(){
-        this.animatedValue = new Animated.Value(0)
-    }
-    componentDidMount(){
-        Animated.loop( Animated.timing(this.animatedValue, {
-            toValue:1.2,
-            duration:22000
-        })).start();
-       
-        
-    }
     render()
-    {
-        var color = this.animatedValue.interpolate({
-            inputRange: [ 0, 0.1, 0.4, 0.6, 0.8, 1 , 1.2],
-            outputRange: [ colors.primaryColor, "#618e8a", "#4d2968", "#3c358c","#39787a", "#618e8a",colors.primaryColor  ]
-        });
-        
-          
-        // console.warn(theme);    
+    {  
         return(
             
                 <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
-                <Animated.View style={{flex:1, backgroundColor:color, justifyContent: 'center' }}>
+                <AnimatedLinearGradiant customColors={[ colors.primaryColor, "#618e8a", "#4d2968", "#3c358c","#39787a", "#618e8a"]} style={{
+                            flex: 1,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            
+                        }} speed={3000}>
                
                     <View style={{flex:3, width:"100%"}}>
                         <Details/>
@@ -47,7 +35,8 @@ export default class Login extends Component
                     <View style={{flex:2, width:"100%"}}>
                         <LoginFooter/>
                     </View>
-                </Animated.View>
+                    
+                </AnimatedLinearGradiant>
                 </KeyboardAwareScrollView>
        
         )
