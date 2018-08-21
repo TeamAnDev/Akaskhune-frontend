@@ -19,12 +19,12 @@ export default class Signup extends Component
     {
         return(
             <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
+            <View style={{flex:1}}>
                     <AnimatedLinearGradiant customColors={colors.animatedBackgroundColor} style={{
-                            flex: 1,
                             justifyContent: 'center',
                             alignItems: 'center',
                             
-                        }} speed={3000}>
+                        }} speed={3000}/>
                         <View style={{flex:3, width:"100%"}}>
                         <Details/>
                         </View>
@@ -37,7 +37,7 @@ export default class Signup extends Component
                         <View style={{position:"absolute", top:20, right:20}}>
                             <FHBackIcon/>
                         </View>
-                    </AnimatedLinearGradiant>
+                    </View>
                 </KeyboardAwareScrollView>
        
         )

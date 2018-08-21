@@ -18,13 +18,13 @@ export default class Login extends Component
     {  
         return(
             
-                <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
+            <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
+            <View style={{flex:1}}>
                 <AnimatedLinearGradiant customColors={colors.animatedBackgroundColor} style={{
-                            flex: 1,
                             justifyContent: 'center',
                             alignItems: 'center',
                             
-                        }} speed={3000}>
+                        }} speed={3000}/>
                
                     <View style={{flex:3, width:"100%"}}>
                         <Details/>
@@ -35,8 +35,8 @@ export default class Login extends Component
                     <View style={{flex:2, width:"100%"}}>
                         <LoginFooter/>
                     </View>
-                    
-                </AnimatedLinearGradiant>
+                
+                </View>
                 </KeyboardAwareScrollView>
        
         )
