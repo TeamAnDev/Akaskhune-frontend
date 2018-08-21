@@ -1,5 +1,9 @@
-import * as signupReq from '../../axiosRequests/signup/signup';
+import signupAxiosRequest from '../../axiosRequests/signup/signup';
+import axios from 'axios';
+import {axiosInstance} from '../../config/urls';
+import {rest} from '../../config/urls';
 export const SIGNUP_REQUEST = "SIGNUP_REQUEST";
+
 function signupRequestSent ()
 {
     return {
@@ -26,20 +30,12 @@ function signupError (error)
 }
 export function signup(email, password){
     return async (dispatch) => {
-        try{
-            dispatch(signupRequestSent());
-            let token = "";
-            await signupReq(email, password).then(function(response) {
-                token = response.data.token;
-            })
+        dispatch(signupRequestSent());
+        await signupAxiosRequest(email, password).then(function(response) {
+            let token = response.data.token;
             dispatch(signupSucces(token));
-        }
-        catch(error)
-        {  
-            let err = "error!"
-            console.warn(error);
-            dispatch(signupError(err));
-    
-        }
+        }).catch(function(error){
+            dispatch(signupError(error.response.data.message));
+        })
     }    
 }

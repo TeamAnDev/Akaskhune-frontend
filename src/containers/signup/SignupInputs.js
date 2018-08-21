@@ -29,7 +29,7 @@ class SignupInputs extends Component
                 <FHButton title="ثبت نام" onPress={() => this.props.signup(this.props.email, this.props.password)} 
                         disabled={(this.props.emailValidation && this.props.passwordValidation) ? false : true}
                         loading={this.props.loading}/>
-                <FHError errorText=""/>
+                <FHError errorText={this.props.error}/>
             </View>
         );
     }
@@ -37,7 +37,7 @@ class SignupInputs extends Component
 
 const mapStateToProps = state => {
     return ({
-    error : state.signupApp.signupReducer.err,
+    // error : state.signupApp.signupRequestReducer.err,
     passwordValidation : state.signupApp.passwordCheckReducer.valid,
     emailValidation : state.signupApp.emailCheckReducer,
     email : state.signupApp.signupReducer.email,

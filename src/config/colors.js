@@ -7,7 +7,7 @@ const colors = {
     grey: "#EFEFEF",
     fontColor : "rgb(57,57,57)",
     blackGrey : "rgb(130,130,130)",
-    animatedBackgroundColor : ["#6B946C", "#618e8a", "#4d2968","#6B946C","#2F592F", "#3c358c","#39787a","#91B191", "#618e8a","#6B946C" ]
+    animatedBackgroundColor : ["#6B946C", "#618e8a","#4D7B4D", "#4d2968","#6B946C","#2F592F" ,"#3c358c","#39787a","#91B191", "#618e8a","#6B946C" ]
     
 
 }
