@@ -24,7 +24,7 @@ export default class Signup extends Component
                             justifyContent: 'center',
                             alignItems: 'center',
                             
-                        }} speed={3000}/>
+                        }} speed={3000} />
                         <View style={{flex:3, width:"100%"}}>
                         <Details/>
                         </View>
