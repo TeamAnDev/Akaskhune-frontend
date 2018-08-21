@@ -34,7 +34,7 @@ export function login(email, password) {
             .then (function(response){
                 token = response.data.token;
             })
-            dispatch(loginSuccess());
+            dispatch(loginSuccess(token));
         }
         catch (error) {
             let errorMesage = "login error!";
