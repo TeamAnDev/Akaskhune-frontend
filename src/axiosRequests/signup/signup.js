@@ -10,6 +10,6 @@ export default function signupAxiosRequest(email, password)
         email,
         password
     }
-    return axiosInstance.post(rest.login, data);
+    return axiosInstance.post(rest.signup, data);
 }
     

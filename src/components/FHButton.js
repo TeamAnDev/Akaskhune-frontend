@@ -4,7 +4,7 @@ import styles from "./styles";
 import {Button, Text , Spinner} from 'native-base';
 
 const FHButton = (props) => {
-    const Loading = props.loading ? <Spinner animating={props.loading}/> : null;
+    const Loading = props.loading ? <Spinner  animating={props.loading}/> : null;
     return (<Button block rounded primary onPress={props.onPress} disabled={props.disabled || false}
         style={{ margin : 7,
             height : 55,

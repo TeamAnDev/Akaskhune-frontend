@@ -1,7 +1,7 @@
 import {AsyncStorage} from 'react-native';
 export const storeToken = async (token) => {
     try {
-      await AsyncStorage.setItem('token', 'token');
+      await AsyncStorage.setItem('token', token)
     } catch (error) {
       console.warn(error);
     }
