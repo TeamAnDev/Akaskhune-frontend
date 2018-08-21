@@ -29,13 +29,13 @@ export default class Signup extends Component
                         <Details/>
                         </View>
                         <View style={{flex:6, width:"100%"}}>
-                            <SignupInputs/>
+                            <SignupInputs navigation={this.props.navigation}/>
                         </View>
                         <View style={{flex:2, width:"100%"}}>
-                            <SignupFooter/>
+                            <SignupFooter navigation={this.props.navigation}/>
                         </View>
                         <View style={{position:"absolute", top:20, right:20}}>
-                            <FHBackIcon/>
+                            <FHBackIcon navigation={this.props.navigation}/>
                         </View>
                     </View>
                 </KeyboardAwareScrollView>
