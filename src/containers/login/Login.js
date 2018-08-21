@@ -19,7 +19,7 @@ export default class Login extends Component
         return(
             
                 <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
-                <AnimatedLinearGradiant customColors={[ colors.primaryColor, "#618e8a", "#4d2968", "#3c358c","#39787a", "#618e8a"]} style={{
+                <AnimatedLinearGradiant customColors={colors.animatedBackgroundColor} style={{
                             flex: 1,
                             justifyContent: 'center',
                             alignItems: 'center',

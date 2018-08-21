@@ -6,10 +6,9 @@ const colors = {
     accentColorRGB: "213,94,108",
     grey: "#EFEFEF",
     fontColor : "rgb(57,57,57)",
-    blackGrey : "rgb(130,130,130)"
-
-
-
+    blackGrey : "rgb(130,130,130)",
+    animatedBackgroundColor : ["#6B946C", "#618e8a", "#4d2968", "#3c358c","#39787a", "#618e8a","#6B946C" ]
+    
 
 }
 export  default colors;
