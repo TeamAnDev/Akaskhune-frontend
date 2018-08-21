@@ -2,6 +2,7 @@ import {LOGIN_EMAIL_CHANGED , LOGIN_PASSWORD_CHANGED, LOGIN, LOGIN_GOOGLE, SIGNU
 import {combineReducers} from 'redux';
 import errors from "../../config/errors";
 import axios from 'axios';
+import requestLogin from '../../axiosRequests/login/login'
 
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 function emailCheckReducer(state=false, action) {

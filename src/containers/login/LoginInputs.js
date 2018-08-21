@@ -38,13 +38,15 @@ class LoginInputs extends Component
 const mapStateToProps = state => ({
     error : state.loginApp.loginReducer.err,
     emailValidation : state.loginApp.emailCheckReducer,
-    passwordValidation : state.loginApp.passwordCheckReducer
+    passwordValidation : state.loginApp.passwordCheckReducer,
+    email : state.loginApp.loginReducer.email,
+    password : state.loginApp.loginReducer.password,
+    loading : state.loginApp.loginRequestReducer
 });
 const mapDispatchToProps = dispatch => ({
     changeEmail: email => dispatch(changeEmail(email)),
     changePassword : password => dispatch(changePassword(password)),
-    login : () => dispatch(login())
-
+    login : (email, password) => dispatch(login(email, password))
 });
 
 export default connect(mapStateToProps, 
