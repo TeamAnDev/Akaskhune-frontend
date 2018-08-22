@@ -8,6 +8,7 @@ import {login} from '../../actions/login/loginRequest'
 import FHError from '../../components/FHError';
 import FHInput from '../../components/FHInput';
 import FHPasswordInput from '../../components/FHPasswordInput';
+import {Form} from 'native-base';
 
 class LoginInputs extends Component
 {
@@ -23,6 +24,7 @@ class LoginInputs extends Component
     { 
         return(
             <View style={{flex:1, width:"100%", marginTop:22}}>
+                <Form>
                 <FHInput text="ایمیل" onTextChange = {this.props.changeEmail} error = {!this.props.emailValidation}/>
                 <FHPasswordInput text="رمزعبور" onTextChange = {this.props.changePassword} error ={!this.props.passwordValidation}/> 
                 <FHButton title="ورود" onPress={() => this.props.login(this.props.email, this.props.password)}
@@ -31,6 +33,7 @@ class LoginInputs extends Component
                 />
                 <Text style = {{color:'white',alignSelf: 'center', marginTop:10}} onPress = {() => console.warn("")}>رمز عبور خود را فراموش کرده‌اید؟</Text>
                 <FHError errorText={this.props.error}/>
+                </Form>
             </View>
         );
     }

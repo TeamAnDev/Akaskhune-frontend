@@ -6,7 +6,10 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import FHBackIcon from '../../components/FHBackIcon';
 import AnimatedLinearGradiant from 'react-native-animated-linear-gradient';
 import {NavigationActions} from 'react-navigation';
-export default class SignupCompleteProfile extends Component
+import CameraOrPictureSelect from './CameraOrPictureSelect';
+import {connect} from 'react-redux';
+import FHError from '../../components/FHError';
+class SignupCompleteProfile extends Component
 {
     constructor(props){
         super(props);
@@ -15,6 +18,7 @@ export default class SignupCompleteProfile extends Component
     }
     render()
     {
+        
         return(
             <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
             <View style={{flex:1}}>
@@ -23,13 +27,14 @@ export default class SignupCompleteProfile extends Component
                             alignItems: 'center',
                             
                         }} speed={3000} />
-                        <View style={{flex:3, width:"100%"}}>
-                            {/* <Details/> */}
+                        <View style={{flex:220, width:"100%"}}>
+                            <CameraOrPictureSelect/>
                         </View>
-                        <View style={{flex:8, width:"100%"}}>
+                        <View style={{flex:420, width:"100%"}}>
                             {/* <SignupInputs/> */}
+                            <FHError errorText = {this.props.error}/>
                         </View>
-                        <View style={{position:"absolute", top:20, right:20}}>
+                        <View style={{position:"absolute", top:25, right:25}}>
                             <FHBackIcon navigation={this.props.navigation}/>
                         </View>
                     </View>
@@ -38,3 +43,11 @@ export default class SignupCompleteProfile extends Component
         )
     }
 }
+const mapStateToProps = state => {
+    return ({
+    error : state.completeProfileApp.completeProfileReducer.err,
+    
+})};
+
+export default connect(mapStateToProps, 
+    null)(SignupCompleteProfile)
