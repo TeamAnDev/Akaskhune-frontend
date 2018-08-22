@@ -16,6 +16,7 @@ export default class Login extends Component
     }
     render()
     {  
+       
         return(
             
             <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
@@ -33,7 +34,7 @@ export default class Login extends Component
                         <LoginInputs/>
                     </View>
                     <View style={{flex:2, width:"100%"}}>
-                        <LoginFooter/>
+                        <LoginFooter navigation={this.props.navigation}/>
                     </View>
                 
                 </View>

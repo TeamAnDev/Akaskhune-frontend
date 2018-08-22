@@ -9,7 +9,7 @@ import FHTextCenter from '../../components/FHTextCenter';
 const LoginFooter = (props) =>  (
         <View style={{flex : 1, alignItems: 'center'}}>
                 <FHButton title = 'ورود با حساب گوگل' onPress = {props.loginGoogle}/>
-                <FHTextCenter text="ورود به برنامه" onPress = {() => console.warn("login")}/>
+                <FHTextCenter text="ورود به برنامه" onPress = {() => props.navigation.goBack()}/>
         </View>
     )
 

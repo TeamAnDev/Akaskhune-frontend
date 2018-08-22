@@ -14,11 +14,18 @@ class SignupInputs extends Component
     constructor(props)
     {
         super(props);
-        this.state = {
-            email : "",
-            password :""
+        if(this.props.signupSucces == true){
+            this.props.navigation.navigate('SignupCompleteProfile')
         }
     }
+    componentDidUpdate()
+    {
+        if(this.props.signupSucces == true){
+            this.props.navigation.navigate('SignupCompleteProfile')
+        }
+    }
+    
+    
     render()
     { 
         return(
@@ -37,12 +44,14 @@ class SignupInputs extends Component
 
 const mapStateToProps = state => {
     return ({
-    // error : state.signupApp.signupRequestReducer.err,
+    error : state.signupApp.signupRequestReducer.err,
     passwordValidation : state.signupApp.passwordCheckReducer.valid,
     emailValidation : state.signupApp.emailCheckReducer,
     email : state.signupApp.signupReducer.email,
     password : state.signupApp.signupReducer.password,
-    loading : state.signupApp.signupRequestReducer.loading
+    loading : state.signupApp.signupRequestReducer.loading,
+    signupSucces : state.signupApp.signupRequestReducer.signupSucces
+    
 })};
 const mapDispatchToProps = dispatch => ({
     changeEmail: email => dispatch(changeEmail(email)),
