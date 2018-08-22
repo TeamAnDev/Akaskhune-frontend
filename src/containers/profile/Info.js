@@ -12,7 +12,7 @@ class ProfileInfo extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://192.168.1.6:8080/users/1')
+        axios.get('http://192.168.43.116:8080/users/1')
         .then(response => {
             this.setState({name : response.data.name,
                  followers : response.data.followers,
@@ -25,14 +25,14 @@ class ProfileInfo extends Component {
 
     render() {
         return (
-            <View style={{flex : 1, flexDirection: 'row-reverse'}}>
+            <View style={{flex : 1, flexDirection: 'row-reverse', justifyContent:'space-between'}}>
                 <View style={{flex:1}}>
                     <Image source={require('../../../pic.jpg')} style={{width:100, height:100, borderRadius:50}}/>
                 </View>
-                <View style={{flex:3, flexDirection:'column'}}>
-                    <Text>{this.state.name}</Text>
-                    <Text>{"دنبال کننده"} {this.state.followers}</Text>
-                    <Text>{this.state.bio}</Text>
+                <View style={{flex:2, flexDirection:'column', marginRight:20}}>
+                    <Text style={{fontWeight:'bold', fontSize:20}}>{this.state.name}</Text>
+                    <Text>{this.state.followers}{" دنبال کننده"}{"     "}{this.state.following}{"دنبال شونده"}</Text>
+                    <Text style={{fontWeight:'bold'}}>{this.state.bio}</Text>
                 </View>
             </View>
         )
