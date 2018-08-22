@@ -1,4 +1,4 @@
-var ImagePicker = require('react-native-image-picker');
+import ImagePicker from 'react-native-image-crop-picker';
 
 export const CP_PHOTO_PICKER_SELECTED = "CP_PHOTO_PICKER_SELECTED";
 let options = {
@@ -10,19 +10,34 @@ let options = {
   };
 export function pickPhoto(){
     return (dispatch) => {
-        ImagePicker.showImagePicker(options, (response) => {
-            console.warn('Response = ', response);
-            if (response.error !== "") {
-              dispatch(setError(response.error));
-            }
-            else {
-              let source = { uri: response.uri };
-              dispatch(setAvatar(source));
-            }
+        ImagePicker.openPicker({
+            width: 300,
+            height: 300,
+            cropping: true
+          }).then(image => {
+            // console.warn(image);
+            dispatch(setAvatar(image.path));
+          }).catch(err => {
+            console.warn(err);
+            dispatch(setError(err.error));
           });
     }
 }
-
+export function takePhoto(){
+    return (dispatch) => {
+        ImagePicker.openCamera({
+            width: 300,
+            height: 300,
+            cropping: true
+          }).then(image => {
+            // console.warn(image);
+            dispatch(setAvatar(image.path));
+          }).catch(err => {
+            console.warn(err);
+            dispatch(setError(err.error));
+          });
+     }
+}
 export const CP_ERROR = 'CP_ERROR';
 export const CP_AVATAR_SOURCE_SELECTED = "CP_AVATAR_SOURCE_SELECTED";
 export function setError(error)
