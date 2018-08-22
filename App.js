@@ -25,11 +25,7 @@ export default class App extends Component {
       <StyleProvider  style={getTheme(akaskhune)}>
       <View style={{flex:1}}>
         {/* <Router/> */}
-<<<<<<< HEAD
         <ProfileInfo/>
-=======
-        <SignupCompleteProfile/>
->>>>>>> 09e93f17898500cbec84ef3bd2f9cabebfced965
       </View>
       </StyleProvider>
     );
