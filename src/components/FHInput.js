@@ -12,8 +12,7 @@ const FHInput = (props) => {
     //    });
     
   return (<Item error={(props.error || false)} success={!props.error && true}  regular style={styles.inputItem}>
-            <Input placeholderTextColor={colors.blackGrey}  style={{}}
-            placeholder={props.text} onChangeText={props.onTextChange} />
+            <Input placeholderTextColor={colors.blackGrey}  style={{textAlign:"right"}} placeholder={props.text} onChangeText={props.onTextChange} />
          </Item>);
 }
 

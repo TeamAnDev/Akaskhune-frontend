@@ -1,4 +1,7 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
+
+const heightOfInputAndButton = Dimensions.get("window").height * 8/ 100 > 55 ? 55 :Dimensions.get("window").height * 8/ 100;
+const widthOfInputAndButton = "85%";
 const styles = StyleSheet.create({
     col: {
       flex: 1,
@@ -7,25 +10,18 @@ const styles = StyleSheet.create({
       marginLeft: 7, marginRight: 7,
       // backgroundColor: MKColor.Lime,
     },
-    textfield: {
-      height: 28,  // have to do it on iOS
-      marginTop: 32,
-    },
-    textfieldWithFloatingLabel: {
-      height: 48,  // have to do it on iOS
-      marginTop: 10,
-    },
-    inputFontStyle : {
-        fontSize: 10,
-        fontStyle: 'italic',
-        fontWeight: '200'
-      },
     FHButton : {
-      
-
+       margin : 7,
+      height : heightOfInputAndButton,
+      borderRadius: 10,
+      width : widthOfInputAndButton,
+      alignContent:"center",
+      alignSelf: 'center',
+      justifyContent:"center"
     },
     inputItem:{
-      backgroundColor:'white', borderRadius:6, margin:7, height:55, width:"88%", alignSelf:"center"
+      backgroundColor:'white', borderRadius:6, margin:7, height:heightOfInputAndButton
+      , width:widthOfInputAndButton, alignSelf:"center",
     }
 
   });
