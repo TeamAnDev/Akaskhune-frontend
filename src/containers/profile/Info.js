@@ -12,7 +12,7 @@ class ProfileInfo extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://192.168.43.116:8080/users/1')
+        axios.get('http://192.168.1.6g:8080/users/1')
         .then(response => {
             this.setState({name : response.data.name,
                  followers : response.data.followers,

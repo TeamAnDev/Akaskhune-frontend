@@ -17,7 +17,7 @@ import { StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import akaskhune from './native-base-theme/variables/akaskhune';
 import Router from './Router';
-import ProfileInfo from './src/containers/profile/Info'
+import Profile from './src/containers/profile/Profile';
 
 export default class App extends Component {
   render() {
@@ -25,7 +25,7 @@ export default class App extends Component {
       <StyleProvider  style={getTheme(akaskhune)}>
       <View style={{flex:1}}>
         {/* <Router/> */}
-        <ProfileInfo/>
+        <Profile />
       </View>
       </StyleProvider>
     );
