@@ -1,9 +1,13 @@
-import {LOGIN_REQUEST_SENT} from '../../actions/login/loginRequest';
+import {LOGIN_REQUEST_SENT, LOGIN_SUCCESS, LOGIN_REQ_ERR} from '../../actions/login/loginRequest';
 
-function loginRequestReducer(state={loading:false}, action) {
+function loginRequestReducer(state={loading:false, loginSucess:false, err:""}, action) {
     switch(action.type) {
         case LOGIN_REQUEST_SENT :
             return Object.assign({}, state, {loading:true});
+        case LOGIN_SUCCESS:
+            return Object.assign({}, state, {loading:false, loginSucess:true});
+        case LOGIN_REQ_ERR:
+            return Object.assign({}, state, {err:action.error, loading:false});    
         default :
             return state;    
     }
