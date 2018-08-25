@@ -32,7 +32,7 @@ export function signup(email, password){
     return async (dispatch) => {
         dispatch(signupRequestSent());
         await signupAxiosRequest(email, password).then(function(response) {
-            storeToken(response.data.acces);
+            storeToken(response.data.access);
             storeRefresh(response.data.refresh);
             dispatch(signupSucces());
         }).catch(function(error){
