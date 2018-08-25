@@ -31,7 +31,7 @@ export default class Login extends Component
                         <Details/>
                     </View>
                     <View style={{flex:6, width:"100%"}}>
-                        <LoginInputs/>
+                        <LoginInputs navigation={this.props.navigation}/>
                     </View>
                     <View style={{flex:2, width:"100%"}}>
                         <LoginFooter navigation={this.props.navigation}/>
