@@ -9,16 +9,16 @@ class Images extends Component {
         return (
             <ScrollView>
                 <View style={styles.imageRow}>
-                    <Image style={styles.image} source={require('C:/Akaskhune-frontend/images/apple.jpg')}/>
-                    <Image style={styles.image} source={require('C:/Akaskhune-frontend/images/photo1.jpg')}/>
+                    <Image style={styles.image} source={require('../../../images/apple.jpg')}/>
+                    <Image style={styles.image} source={require('../../../images/photo1.jpg')}/>
                 </View>
                 <View style={styles.imageRow}>
-                    <Image style={styles.image} source={require('C:/Akaskhune-frontend/images/balloons.jpg')}/>
-                    <Image style={styles.image} source={require('C:/Akaskhune-frontend/images/photo2.jpg')}/>
+                    <Image style={styles.image} source={require('../../../images/balloons.jpg')}/>
+                    <Image style={styles.image} source={require('../../../images/photo2.jpg')}/>
                 </View>
                 <View style={styles.imageRow}>
-                    <Image style={styles.image} source={require('C:/Akaskhune-frontend/images/buffon.jpg')}/>
-                    <Image style={styles.image} source={require('C:/Akaskhune-frontend/images/photo3.jpg')}/>
+                    <Image style={styles.image} source={require('../../../images/buffon.jpg')}/>
+                    <Image style={styles.image} source={require('../../../images/photo3.jpg')}/>
                 </View>
             </ScrollView>
         );
