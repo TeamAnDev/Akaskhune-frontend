@@ -26,15 +26,14 @@ function loginError(error) {
 
 export function login(email, password) {
     return async (dispatch) => {
-            dispatch(loginReqSent());
-            await requestLogin(email, password)
-            .then (function(response){
-                storeToken(response.data.access);
-                storeRefresh(response.data.refresh);
-                dispatch(loginSuccess());
-            }).catch (function(error) {
-                dispatch(signupError(error.response.data.message));
-            })
-        }
+        dispatch(loginReqSent());
+        await requestLogin(email, password)
+        .then (function(response){
+            storeToken(response.data.access);
+            storeRefresh(response.data.refresh);
+            dispatch(loginSuccess());
+        }).catch (function(error) {
+            dispatch(signupError(error.response.data.message));
+        })
     }
 }
