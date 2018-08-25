@@ -7,8 +7,20 @@ const colors = {
     grey: "#EFEFEF",
     fontColor : "rgb(57,57,57)",
     blackGrey : "rgb(130,130,130)",
-    animatedBackgroundColor : ["#6B946C", "#618e8a","#4D7B4D", "#4d2968","#6B946C","#2F592F" ,"#3c358c","#39787a","#91B191", "#618e8a","#6B946C" ]
-    
+    // animatedBackgroundColor : ["#6B946C", "#618e8a","#4D7B4D", "#4d2968","#6B946C","#2F592F" ,"#3c358c","#39787a","#91B191", "#618e8a","#6B946C" ]
+    animatedBackgroundColor : [ "#4D7B4D",
+    "rgb(107,148,108)",
+    'rgb(142, 191, 186)',
+    'rgb(172, 211, 186)',
+    "#12328a",
+    'rgb(100, 50, 100)',
+    'rgb(187, 216, 200)',
+    'rgb(224, 142, 65)',
+    'rgb(152, 197, 190)',
+    'rgb(100, 173, 186)',],
+
+
+   
 
 }
 export  default colors;

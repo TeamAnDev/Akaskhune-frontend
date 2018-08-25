@@ -5,7 +5,7 @@ import styles from './styles';
 import {View, Image, ImageBackground} from 'react-native';
 import {Icon, ActionSheet, Container, Root} from 'native-base';
 import {connect} from 'react-redux';
-import {pickPhoto, takePhoto} from '../../actions/completeProfile/CompleteProfileActions';
+import {pickPhoto, takePhoto} from '../../actions/completeProfile/CameraAvatarSelectActions';
 const BUTTONS = [
     { text: "Choose from gallery", icon: "image", iconColor: colors.blackGrey },
     { text: "Take a photo", icon: "camera", iconColor: colors.blackGrey},
