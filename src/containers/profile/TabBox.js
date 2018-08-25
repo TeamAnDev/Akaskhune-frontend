@@ -1,8 +1,9 @@
 import React from 'react';
 import {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, Image} from 'react-native';
 import { Container, Header, Content, Tab, Tabs} from 'native-base';
 import styles from './styles';
+import Images from './Images';
 
 class TabBox extends Component {
 
@@ -14,11 +15,11 @@ class TabBox extends Component {
                     tabBarUnderlineStyle={{
                     backgroundColor: '#393939',
                     height: 1}}>
-                    <Tab heading="علاقه مندیها" tabStyle={styles.tab} textStyle={{color:'#393939'}} activeTabStyle={styles.tab} activeTextStyle={{color:'#393939'}}>
-
+                    <Tab heading="علاقمندیها" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
                     </Tab>
-                    <Tab heading="عکسها" tabStyle={styles.tab} textStyle={{color:'#393939'}} activeTabStyle={styles.tab} activeTextStyle={{color:'#393939'}}>
-
+                    <Tab heading="عکسها" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
+                        <Images/>
+                        {/* <Image source={{uri:'../../../images/apple.jpg'}} style={styles.image}/> */}
                     </Tab>
                 </Tabs>
             </Container>

@@ -29,10 +29,10 @@ class ProfileInfo extends Component {
                 <View style={{flex:1}}>
                     <Image source={require('../../../pic.jpg')} style={{width:100, height:100, borderRadius:50}}/>
                 </View>
-                <View style={{flex:2, flexDirection:'column', marginRight:20}}>
+                <View style={{flex:2, flexDirection:'column', marginRight:20, marginTop:5}}>
                     <Text style={{fontWeight:'bold', fontSize:20}}>{this.state.name}</Text>
-                    <Text>{this.state.followers}{" دنبال کننده"}{"     "}{this.state.following}{"  دنبال شونده"}</Text>
-                    <Text style={{fontWeight:'bold'}}>{this.state.bio}</Text>
+                    <Text style={{marginTop:5}}>{this.state.followers}{" دنبال کننده"}{"     "}{this.state.following}{" دنبال شونده"}</Text>
+                    <Text style={{fontSize:12 ,fontWeight:'bold', marginTop:5}}>{this.state.bio}</Text>
                 </View>
             </View>
         )
