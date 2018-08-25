@@ -7,7 +7,7 @@ function completeProfileRequestReducer(state={loading:false, err:"", completePro
         case(CP_REQ_ERROR):
             return  Object.assign({}, state, {err:action.error, loading : false});
         case(CP_SUCCES):
-            return Object.assign({}, state, {loading : false, err:"succes", completeProfileSucces:true});
+            return Object.assign({}, state, {loading : false, completeProfileSucces:true});
         default :
             return state;
     }

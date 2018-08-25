@@ -33,7 +33,7 @@ export function login(email, password) {
             storeRefresh(response.data.refresh);
             dispatch(loginSuccess());
         }).catch (function(error) {
-            dispatch(signupError(error.response.data.message));
+            dispatch(loginError(error.response.data.message[0]));
         })
     }
 }
