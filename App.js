@@ -25,10 +25,9 @@ export default class App extends Component {
     return (
       <StyleProvider  style={getTheme(akaskhune)}>
       <View style={{flex:1}}>
-        <Login/>
-        {/* <Profile/> */}
-        {/* <SignupCompleteProfile/> */}
-        {/* <TabBox/> */}
+
+        <Router/>
+
       </View>
       </StyleProvider>
     );

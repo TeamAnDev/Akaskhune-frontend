@@ -18,27 +18,11 @@ import { Container , Root, Toast} from 'native-base';
        
        
     }
-    componentDidUpdate()
+    
+    
+    componentDidUpdate = () => 
     {
-        if(this.props.error !== undefined && this.props.error !== "")
-        {
-            Toast.show({
-                text: this.props.error,
-                buttonText: "Ok",
-                type:"danger",
-                buttonTextStyle: { color: "#008000" },
-                buttonStyle: { backgroundColor: "#5cb85c" },
-              });
-        } else if(this.props.camError !== undefined && this.props.camError !== "")
-        {
-            Toast.show({
-                text: this.props.error,
-                buttonText: "Ok",
-                type:"danger",
-                buttonTextStyle: { color: "#008000" },
-                buttonStyle: { backgroundColor: "#5cb85c" }
-              });
-        } 
+        console.warn(this.props.succes)
         if(this.props.succes){
             this.props.navigation.navigate('Profile');
         }
@@ -77,8 +61,8 @@ import { Container , Root, Toast} from 'native-base';
 
 const mapStateToProps = state => {
     return ({
-        error : state.completeProfileApp.completeProfileRequestReducer.err,
-        camError : state.completeProfileApp.completeProfileReducer.err,
+        succes : state.completeProfileApp.completeProfileRequestReducer.completeProfileSucces,
+        
 
 
 })};
