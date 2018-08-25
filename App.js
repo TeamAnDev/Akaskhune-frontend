@@ -18,14 +18,16 @@ import getTheme from './native-base-theme/components';
 import akaskhune from './native-base-theme/variables/akaskhune';
 import Router from './Router';
 import Profile from './src/containers/profile/Profile';
+import TabBox from './src/containers/profile/TabBox';
 
 export default class App extends Component {
   render() {
     return (
       <StyleProvider  style={getTheme(akaskhune)}>
       <View style={{flex:1}}>
-        <Router/>
+        <Profile/>
         {/* <SignupCompleteProfile/> */}
+        {/* <TabBox/> */}
       </View>
       </StyleProvider>
     );

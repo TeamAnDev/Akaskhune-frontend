@@ -12,7 +12,7 @@ class ProfileInfo extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://192.168.1.6:8080/users/1')
+        axios.get('http://192.168.11.199:8085/users/1')
         .then(response => {
             this.setState({name : response.data.name,
                  followers : response.data.followers,
@@ -31,7 +31,7 @@ class ProfileInfo extends Component {
                 </View>
                 <View style={{flex:2, flexDirection:'column', marginRight:20}}>
                     <Text style={{fontWeight:'bold', fontSize:20}}>{this.state.name}</Text>
-                    <Text>{this.state.followers}{" دنبال کننده"}{"     "}{this.state.following}{"دنبال شونده"}</Text>
+                    <Text>{this.state.followers}{" دنبال کننده"}{"     "}{this.state.following}{"  دنبال شونده"}</Text>
                     <Text style={{fontWeight:'bold'}}>{this.state.bio}</Text>
                 </View>
             </View>
