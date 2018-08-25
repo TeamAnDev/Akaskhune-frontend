@@ -1,5 +1,5 @@
 import requestLogin from '../../axiosRequests/login/login'
-
+import {storeToken, storeRefresh} from '../../config/token';
 
 export const LOGIN_REQUEST_SENT = 'LOGIN_REQUEST_SENT';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -11,10 +11,9 @@ function loginReqSent() {
     }
 }
 
-function loginSuccess(token) {
+function loginSuccess() {
     return {
         type : LOGIN_SUCCESS,
-        token
     }
 }
 
@@ -27,19 +26,15 @@ function loginError(error) {
 
 export function login(email, password) {
     return async (dispatch) => {
-        try {
             dispatch(loginReqSent());
-            let token = "";
             await requestLogin(email, password)
             .then (function(response){
-                token = response.data.token;
+                storeToken(response.data.access);
+                storeRefresh(response.data.refresh);
+                dispatch(loginSuccess());
+            }).catch (function(error) {
+                dispatch(signupError(error.response.data.message));
             })
-            dispatch(loginSuccess(token));
-        }
-        catch (error) {
-            let errorMesage = "login error!";
-            console.warn(error);
-            dispatch(loginError(errorMesage))
         }
     }
 }
