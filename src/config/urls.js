@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const rest = {
-    login : '/login',
+    login : '/auth/login',
     signup : '/signup',
     completeProfile : '/completeProfile',
 }
@@ -11,7 +11,7 @@ export const rest = {
 // axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const axiosInstance = axios.create({
-    baseURL: 'http://192.168.11.214:80',
+    baseURL: 'http://192.168.11.213/api/v1',
     timeout:10000,
     headers:{
         'Content-Type': 'application/json',

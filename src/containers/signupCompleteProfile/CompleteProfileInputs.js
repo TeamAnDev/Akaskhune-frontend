@@ -16,24 +16,26 @@ class CompleteProfileInputs extends Component
     constructor(props)
     {
         super(props);
+        
     }
-    componentDidUpdate()
-    {
+    componentDidUpdate() {
         if(this.props.error !== undefined && this.props.error !== "")
         {
             Toast.show({
                 text: this.props.error,
                 buttonText: "Ok",
-                type:"warning",
+                duration:300000,
+                type:"danger",
                 buttonTextStyle: { color: "#008000" },
-                buttonStyle: { backgroundColor: "#5cb85c" }
+                buttonStyle: { backgroundColor: "#5cb85c" },
               });
         } else if(this.props.camError !== undefined && this.props.camError !== "")
         {
             Toast.show({
                 text: this.props.error,
                 buttonText: "Ok",
-                type:"warning",
+                type:"danger",
+                duration:300000,
                 buttonTextStyle: { color: "#008000" },
                 buttonStyle: { backgroundColor: "#5cb85c" }
               });

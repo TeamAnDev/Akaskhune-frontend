@@ -6,5 +6,5 @@ export default function requestLogin(email, password) {
         email,
         password
     }
-    return axiosInstance.get(rest.login, data);
+    return axiosInstance.post(rest.login, data);
 }

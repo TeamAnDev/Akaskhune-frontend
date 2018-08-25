@@ -2,10 +2,12 @@ import Login from './src/containers/login/Login';
 import Signup from './src/containers/signup/Signup';
 import SignupCompleteProfile from './src/containers/signupCompleteProfile/SignupCompleteProfile';
 import {createStackNavigator} from 'react-navigation';
+import Profile from './src/containers/profile/Profile';
 const Router = createStackNavigator({
     Signup,
     Login,
     SignupCompleteProfile,
+    Profile
   }, {
     initialRouteName: "Login",
     headerMode: "none"
