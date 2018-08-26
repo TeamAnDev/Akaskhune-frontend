@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import {Button, Icon} from 'native-base';
 import styles from './styles'
 
-const Details = (props) => {
+const ProfileHeader = (props) => {
     return (
         <View style={{flex:1, flexDirection:'row', justifyContent:'space-between', backgroundColor:'#393939'}}>
             <Text style={styles.editButton}>ویرایش</Text>
@@ -15,4 +15,4 @@ const Details = (props) => {
     )
 } 
 
-export default Details;
+export default ProfileHeader;

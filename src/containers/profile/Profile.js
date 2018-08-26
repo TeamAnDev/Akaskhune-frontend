@@ -1,7 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
 import Info from './Info';
-import Details from './Details';
+import ProfileHeader from './Header';
 import {View} from 'react-native';
 import TabBox from './TabBox';
 

@@ -19,6 +19,7 @@ import akaskhune from './native-base-theme/variables/akaskhune';
 import Router from './Router';
 import Profile from './src/containers/profile/Profile';
 import TabBox from './src/containers/profile/TabBox';
+import Setting from './src/containers/setting/Setting'
 
 export default class App extends Component {
   render() {
@@ -26,7 +27,8 @@ export default class App extends Component {
       <StyleProvider  style={getTheme(akaskhune)}>
       <View style={{flex:1}}>
 
-        <Router/>
+        {/* <Router/> */}
+        <Setting/>
 
       </View>
       </StyleProvider>
