@@ -16,6 +16,7 @@
     "react-native-image-picker": "^0.26.10",
     "react-native-keyboard-aware-scroll-view": "^0.7.0",
     "react-native-linear-gradient": "^2.4.0",
+    "react-native-material-bottom-navigation": "^1.0.0",
     "react-navigation": "^2.11.2",
     "react-navigation-fluid-transitions": "^0.2.3",
     "react-redux": "^5.0.7",

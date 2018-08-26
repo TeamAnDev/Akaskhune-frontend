@@ -19,14 +19,15 @@ import akaskhune from './native-base-theme/variables/akaskhune';
 import Router from './Router';
 import Profile from './src/containers/profile/Profile';
 import TabBox from './src/containers/profile/TabBox';
-
+import BottomTabRouter from './src/containers/baseContainer/BottomTabRouter';
 export default class App extends Component {
   render() {
     return (
       <StyleProvider  style={getTheme(akaskhune)}>
       <View style={{flex:1}}>
 
-        <Router/>
+        {/* <Router/> */}
+        <BottomTabRouter/>
 
       </View>
       </StyleProvider>
