@@ -19,7 +19,17 @@ class LoginInputs extends Component
             email : "",
             password :""
         }
+        if(this.props.loginSuccess == true) {
+            this.props.navigation.navigate('Profile')
+        }
     }
+
+    componentDidUpdate() {
+        if(this.props.loginSuccess == true) {
+            this.props.navigation.navigate('Profile')
+        }
+    }
+
     render()
     { 
         return(
@@ -41,12 +51,14 @@ class LoginInputs extends Component
 
 
 const mapStateToProps = state => ({
-    error : state.loginApp.loginReducer.err,
+    error : state.loginApp.loginRequestReducer.err,
     emailValidation : state.loginApp.emailCheckReducer,
     passwordValidation : state.loginApp.passwordCheckReducer,
     email : state.loginApp.loginReducer.email,
     password : state.loginApp.loginReducer.password,
-    loading : state.loginApp.loginRequestReducer.loading
+    loading : state.loginApp.loginRequestReducer.loading,
+    loginSuccess : state.loginApp.loginRequestReducer.loginSuccess
+
 });
 const mapDispatchToProps = dispatch => ({
     changeEmail: email => dispatch(changeEmail(email)),

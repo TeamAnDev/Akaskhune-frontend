@@ -36,7 +36,6 @@ function loginReducer(state={email:"", password:"", login:false, token:"", err:"
         case(LOGIN_PASSWORD_CHANGED):
             return Object.assign({}, state, {password : action.password});
         case(LOGIN):
-            console.warn("reducer -> login")
             if(state.email!=="" && state.password!=="")
             {
                 let response = {};
@@ -50,10 +49,8 @@ function loginReducer(state={email:"", password:"", login:false, token:"", err:"
             else
                 return Object.assign({}, state, {err:errors.fillInputsLogin});
         case(LOGIN_GOOGLE) :
-            console.warn("reducer -> loginGoogle")
             return state;
         case(SIGNUP_PAGE) : 
-            console.warn("reducer -> signup")
             return state;
         default:
             return state;

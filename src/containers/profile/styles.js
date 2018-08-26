@@ -1,6 +1,6 @@
 import {StyleSheet, Dimensions} from 'react-native';
-const imageHeight = Dimensions.get("window").height * 114 / 450;
 const imageWidth = Dimensions.get("window").width * 117 / 260;
+const imageHeight = imageWidth;
 const styles = StyleSheet.create({
     tab : {
         backgroundColor:'white',

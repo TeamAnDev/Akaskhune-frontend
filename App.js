@@ -19,7 +19,12 @@ import akaskhune from './native-base-theme/variables/akaskhune';
 import Router from './Router';
 import Profile from './src/containers/profile/Profile';
 import TabBox from './src/containers/profile/TabBox';
+<<<<<<< HEAD
 import BottomTabRouter from './src/containers/baseContainer/BottomTabRouter';
+=======
+import Setting from './src/containers/setting/Setting'
+
+>>>>>>> b3cc97e41837be9d823a2165f8482b15c30099f4
 export default class App extends Component {
   render() {
     return (
