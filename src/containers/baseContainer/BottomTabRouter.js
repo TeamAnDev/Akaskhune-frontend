@@ -7,11 +7,14 @@ import React from 'react';
 import colors from '../../config/colors';
 import {HomeIcon, ProfileIcon, NotifiactionIcon, SearchIcon} from './Icons';
 import { Dimensions, View, SafeAreaView} from 'react-native';
+import {ifIphoneX, getStatusBarHeight, isIphoneX} from 'react-native-iphone-x-helper';
 import PlusButton from './PlusButton';
-
-
-const heightOfTabBar = Dimensions.get("window").height * 9/ 100;
-
+let heightOfTabBar = Dimensions.get("window").height * 9/ 100;
+if(isIphoneX())
+{
+    heightOfTabBar = Dimensions.get("window").height * 9/ 100 - getStatusBarHeight();
+           
+}
 const BottomRoute =  createBottomTabNavigator({
    Profile:{
        screen : Profile,
@@ -53,8 +56,22 @@ const BottomRoute =  createBottomTabNavigator({
         inactiveTintColor: colors.bottomTabBarInActive,
         style: { backgroundColor: colors.bottomTabBar, height: heightOfTabBar , zIndex:50},
         showLabel : false,
-
+        
     },
+    navigationOptions: () => ({
+        tabBarOnPress: ({navigation, defaultHandler}) => {
+            if(navigation.state.routeName !== "AddPost")
+            {
+                defaultHandler();
+            }
+            else{
+                () => {}
+            }
+        },
+            
+        
+    }),
+
     
     
     
@@ -62,10 +79,10 @@ const BottomRoute =  createBottomTabNavigator({
 
 export default (props) => (
    
-       <SafeAreaView style={{flex:1}}>
+       <View style={{flex:1}}>
             <BottomRoute/>
             <PlusButton heightOfTabBar = {heightOfTabBar}/>
-        </SafeAreaView>
+        </View>
    );
 
 // export default BottomRoute;

@@ -4,8 +4,9 @@ import  {Icon, Root} from 'native-base';
 import colors from '../../config/colors';
 import {TouchableHighlight, View} from 'react-native';
 import { Dimensions, Platform} from 'react-native';
+import {ifIphoneX, getStatusBarHeight, isIphoneX} from 'react-native-iphone-x-helper';
 const SIZE = Dimensions.get("window").height * 87/ 1000;
-const BOTTOM = Dimensions.get("screen").height * 60/ 1000;
+
 
 export default class PlusButton extends Component{
     constructor(props){
@@ -13,7 +14,12 @@ export default class PlusButton extends Component{
     }
     render()
     {
-        console.warn(SIZE);
+        let  BOTTOM = this.props.heightOfTabBar - SIZE/2
+       if(isIphoneX())
+       {
+           BOTTOM = BOTTOM + getStatusBarHeight();
+           
+       }
         return(
            
         <TouchableHighlight
@@ -27,7 +33,7 @@ export default class PlusButton extends Component{
                 borderRadius: SIZE / 2,
                 backgroundColor: colors.accentColor,
                 position : "absolute",
-                bottom:this.props.heightOfTabBar-SIZE/2 ,
+                bottom:BOTTOM,
                 alignSelf:"center"
                 
 

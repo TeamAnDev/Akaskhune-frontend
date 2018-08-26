@@ -3,15 +3,16 @@ import Signup from './src/containers/signup/Signup';
 import SignupCompleteProfile from './src/containers/signupCompleteProfile/SignupCompleteProfile';
 import {createStackNavigator, crea} from 'react-navigation';
 import Profile from './src/containers/profile/Profile';
-import BaseWithBottomContainer from './src/containers/baseContainer/BaseWithBottomContainer';
+import BottomTabRouter from './src/containers/baseContainer/BottomTabRouter';
+
 const Router = createStackNavigator({
     Signup,
     Login,
     SignupCompleteProfile,
     Profile,
-    BaseWithBottomContainer
+    BottomTabRouter
   }, {
-    initialRouteName: "BaseWithBottomContainer",
+    initialRouteName: "BottomTabRouter",
     headerMode: "none"
   })
   const prevGetStateForAction = Router.router.getStateForAction;
