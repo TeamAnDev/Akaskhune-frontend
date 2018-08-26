@@ -27,8 +27,10 @@ export default class App extends Component {
       <StyleProvider  style={getTheme(akaskhune)}>
       <View style={{flex:1}}>
 
-        {/* <Router/> */}
-        <Setting/>
+
+        <Profile/>
+        {/* <Router/>
+        <Setting/> */}
 
       </View>
       </StyleProvider>
