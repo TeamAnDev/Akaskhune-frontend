@@ -5,7 +5,6 @@ import styles from './styles'
 
 const ProfileHeader = (props) => {
     return (
-        // <View style={{flex:1, flexDirection:'row', justifyContent:'space-between', backgroundColor:'#393939'}}>
         <Header>
             <Left style={{flex:1}}>
                 <Text style={styles.editButton}>ویرایش</Text>
@@ -15,11 +14,10 @@ const ProfileHeader = (props) => {
             </Body>
             <Right style={{flex:1}}>
                 <Button transparent>
-                    <Icon style={{color:'white'}} name='cog'/>
+                    <Icon style={{color:'white'}} name='cog' onPress={() => props.navigation.navigate('Setting')}/>
                 </Button>
             </Right>
         </Header>    
-        // </View>
     )
 } 
 

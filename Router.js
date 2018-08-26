@@ -3,13 +3,19 @@ import Signup from './src/containers/signup/Signup';
 import SignupCompleteProfile from './src/containers/signupCompleteProfile/SignupCompleteProfile';
 import {createStackNavigator, crea} from 'react-navigation';
 import Profile from './src/containers/profile/Profile';
+
 import BottomTabRouter from './src/containers/baseContainer/BottomTabRouter';
+
+import Setting from './src/containers/setting/Setting';
+import ChangePassword from './src/containers/changePassword/ChangePassword';
 
 const Router = createStackNavigator({
     Signup,
     Login,
     SignupCompleteProfile,
     Profile,
+    Setting,
+    ChangePassword,
     BottomTabRouter
   }, {
     initialRouteName: "BottomTabRouter",

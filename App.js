@@ -19,15 +19,21 @@ import akaskhune from './native-base-theme/variables/akaskhune';
 import Router from './Router';
 import Profile from './src/containers/profile/Profile';
 import TabBox from './src/containers/profile/TabBox';
+<<<<<<< HEAD
 import BottomTabRouter from './src/containers/baseContainer/BottomTabRouter';
+=======
+import Setting from './src/containers/setting/Setting'
+import ChangePassword from './src/containers/changePassword/ChangePassword';
+
+>>>>>>> 01c28a8955e6288b256d374d4422ca9102755343
 export default class App extends Component {
   render() {
     return (
       <StyleProvider  style={getTheme(akaskhune)}>
       <View style={{flex:1}}>
 
-        {/* <Router/> */}
-        <BottomTabRouter/>
+        {/* <ChangePassword/>  */}
+        <Router/>
 
       </View>
       </StyleProvider>
