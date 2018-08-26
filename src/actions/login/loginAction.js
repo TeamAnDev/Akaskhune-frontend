@@ -1,7 +1,7 @@
 export const LOGIN_EMAIL_CHANGED = 'EMAIL_CHANGED';
 export const LOGIN_PASSWORD_CHANGED = 'PASSWORD_CHANGED';
-export const LOGIN_GOOGLE = 'LOGIN_GOOGLE'
-export const SIGNUP_PAGE = 'SIGNUP_PAGE'
+export const LOGIN_GOOGLE = 'LOGIN_GOOGLE';
+export const SIGNUP_PAGE = 'SIGNUP_PAGE';
 export function changeEmail(email){
     return {
         type : LOGIN_EMAIL_CHANGED,

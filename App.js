@@ -30,8 +30,10 @@ export default class App extends Component {
       <View style={{flex:1}}>
 
         {/* <ChangePassword/>  */}
-        <Router/>
+        {/* <Router/> */}
         {/* <BottomTabRouter/> */}
+        <ChangePassword/>
+
       </View>
       </StyleProvider>
     );
