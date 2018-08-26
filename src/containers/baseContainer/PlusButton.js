@@ -34,10 +34,8 @@ export default class PlusButton extends Component{
                 backgroundColor: colors.accentColor,
                 position : "absolute",
                 bottom:BOTTOM,
-                alignSelf:"center"
-                
-
-                
+                alignSelf:"center" ,
+                zIndex : 100
             }}>
             
                 <Icon type="Feather" name="plus"  style={{color:"#F8F8F8", fontSize: 35,zIndex:80}}/>

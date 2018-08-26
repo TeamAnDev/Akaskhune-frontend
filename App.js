@@ -22,8 +22,7 @@ import TabBox from './src/containers/profile/TabBox';
 import BottomTabRouter from './src/containers/baseContainer/BottomTabRouter';
 import Setting from './src/containers/setting/Setting'
 import ChangePassword from './src/containers/changePassword/ChangePassword';
-
-
+// import BottomTabRouter from './src/containers/baseContainer/BottomTabRouter';
 export default class App extends Component {
   render() {
     return (
@@ -32,7 +31,7 @@ export default class App extends Component {
 
         {/* <ChangePassword/>  */}
         <Router/>
-
+        {/* <BottomTabRouter/> */}
       </View>
       </StyleProvider>
     );

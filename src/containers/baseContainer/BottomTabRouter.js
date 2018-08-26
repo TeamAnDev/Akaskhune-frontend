@@ -15,7 +15,7 @@ if(isIphoneX())
     heightOfTabBar = Dimensions.get("window").height * 9/ 100 - getStatusBarHeight();
            
 }
-const BottomRoute =  createBottomTabNavigator({
+const BottomRouter =  createBottomTabNavigator({
    Profile:{
        screen : Profile,
        navigationOptions: () => ({
@@ -80,7 +80,7 @@ const BottomRoute =  createBottomTabNavigator({
 export default (props) => (
    
        <View style={{flex:1}}>
-            <BottomRoute/>
+            <BottomRouter/>
             <PlusButton heightOfTabBar = {heightOfTabBar}/>
         </View>
    );
