@@ -20,6 +20,7 @@ import Router from './Router';
 import Profile from './src/containers/profile/Profile';
 import TabBox from './src/containers/profile/TabBox';
 import Setting from './src/containers/setting/Setting'
+import ChangePassword from './src/containers/changePassword/ChangePassword';
 
 export default class App extends Component {
   render() {
@@ -27,10 +28,8 @@ export default class App extends Component {
       <StyleProvider  style={getTheme(akaskhune)}>
       <View style={{flex:1}}>
 
-
-        <Profile/>
-        {/* <Router/>
-        <Setting/> */}
+        {/* <ChangePassword/>  */}
+        <Router/>
 
       </View>
       </StyleProvider>

@@ -10,7 +10,7 @@ class Profile extends Component {
     render() {
         return (
         <View style={{flex:1}}>
-                <ProfileHeader username='Hamed_Kh'/>
+                <ProfileHeader navigation={this.props.navigation} username='Hamed_Kh'/>
             <View style={{flex:105, marginTop:10}}>
                 <Info/>
             </View>

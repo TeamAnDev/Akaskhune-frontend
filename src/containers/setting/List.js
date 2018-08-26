@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native'
+import {Text, View, TouchableOpacity} from 'react-native'
 import { Icon } from 'native-base';
 import styles from './styles'
 
-const SettingList = () => {
+const SettingList = (props) => {
        return (
-            <View style={styles.listItem}>
+            <TouchableOpacity style={styles.listItem} onPress={() => props.navigation.navigate('ChangePassword')}>
                 <Text>تغییر رمز عبور</Text>
                 <Icon name="arrow-back"/>
-            </View>
+            </TouchableOpacity>
         )
     }        
 

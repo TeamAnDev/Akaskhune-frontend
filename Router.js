@@ -3,13 +3,18 @@ import Signup from './src/containers/signup/Signup';
 import SignupCompleteProfile from './src/containers/signupCompleteProfile/SignupCompleteProfile';
 import {createStackNavigator} from 'react-navigation';
 import Profile from './src/containers/profile/Profile';
+import Setting from './src/containers/setting/Setting';
+import ChangePassword from './src/containers/changePassword/ChangePassword';
+
 const Router = createStackNavigator({
     Signup,
     Login,
     SignupCompleteProfile,
-    Profile
+    Profile,
+    Setting,
+    ChangePassword
   }, {
-    initialRouteName: "Login",
+    initialRouteName: "Profile",
     headerMode: "none"
   })
   const prevGetStateForAction = Router.router.getStateForAction;
