@@ -80,7 +80,7 @@ const BottomRouter =  createBottomTabNavigator({
 export default (props) => (
    
        <View style={{flex:1}}>
-            <BottomRouter/>
+            <BottomRouter />
             <PlusButton heightOfTabBar = {heightOfTabBar}/>
         </View>
    );

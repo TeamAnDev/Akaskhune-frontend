@@ -15,15 +15,13 @@ class ChangePassword extends Component {
     render() {
         return (
             <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
-                <View style={{flex:1}}>
-                    <FHHeader navigation={this.props.navigation} title="تغییر رمز عبور"/>
-                    <View style={{flex:1, flexDirection:'column', alignItems:'center'}}>
+                <FHHeader navigation={this.props.navigation} title="تغییر رمز عبور"/>
+                <View style={{flex:1, flexDirection:'column', alignItems:'center'}}>
                         <View style={{flex:2}}>
-                            <View style={{paddingTop:Dimensions.get("window").height * 70 / 570}}>
-                            <Icon type='MaterialIcons' name="check-box"/>
+                            <View style={{alignItems:'center', paddingTop:Dimensions.get("window").height * 60 / 570}}>
+                                <Icon type='MaterialIcons' name="check-circle"/>
                             </View>
-                        </View>
-                        <View style={{flex:5}}>
+                        <View style={{flex:5, width:'100%'}}>
                             <FHPasswordInput onTextChange = {this.props.changeOldPassword}
                             text="رمز عبور قدیمی"
                             error = {!this.props.oldPasswordValidation}/>
@@ -33,16 +31,15 @@ class ChangePassword extends Component {
                             <FHPasswordInput onTextChange = {this.props.changeConfirmPassword}
                             text="تکرار رمز عبور جدید"
                             error ={!this.props.confirmPasswordValidation}/>
-
                         </View>
-                        <View style={{flex:1}}>
+                        <View style={{flex:1, width:'100%'}}>
                             <FHButton title="ثبت رمز عبور جدید"
                             disabled ={(this.props.oldPasswordValidation && this.props.newPasswordValidation && this.props.confirmPasswordValidation) ? false : true}/>
                             <FHError errorText={this.props.error}/>
                         </View>
                     </View>
                 </View>
-            </KeyboardAwareScrollView>
+            </KeyboardAwareScrollView>   
         )
     }
 

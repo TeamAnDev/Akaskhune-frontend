@@ -7,34 +7,23 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import Login from './src/containers/login/Login';
-import Signup from './src/containers/signup/Signup';
-import SignupCompleteProfile from './src/containers/signupCompleteProfile/SignupCompleteProfile';
-import colors from './src/config/colors';
-import {createStackNavigator} from 'react-navigation';
+import {View} from 'react-native';
 import { StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import akaskhune from './native-base-theme/variables/akaskhune';
 import Router from './Router';
-import Profile from './src/containers/profile/Profile';
-import TabBox from './src/containers/profile/TabBox';
-import BottomTabRouter from './src/containers/baseContainer/BottomTabRouter';
-import Setting from './src/containers/setting/Setting'
+import {navigate, setTopLevelNavigator} from './NavigationService';
 import ChangePassword from './src/containers/changePassword/ChangePassword';
-// import BottomTabRouter from './src/containers/baseContainer/BottomTabRouter';
 export default class App extends Component {
   render() {
     return (
       <StyleProvider  style={getTheme(akaskhune)}>
-      <View style={{flex:1}}>
-
-        {/* <Router/> */}
-        {/* <BottomTabRouter/> */}
-        <ChangePassword/>
-        {/* <Signup/> */}
-
-      </View>
+      {/* <View style={{flex:1}}>
+        <Router  ref={navigatorRef => {
+          setTopLevelNavigator(navigatorRef);
+        }}/>
+      </View> */}
+      <ChangePassword/>
       </StyleProvider>
     );
   }

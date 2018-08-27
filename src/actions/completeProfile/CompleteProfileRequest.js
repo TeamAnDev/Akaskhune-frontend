@@ -35,7 +35,7 @@ export function completeProfile(username, fullname, bio, avatar){
             dispatch(completeProfileSucces());
         }).catch(function(error){
             
-            dispatch(completeProfileError(error.response.data.message));
+            dispatch(completeProfileError(error.response.data.error));
         })
     }    
 }

@@ -12,4 +12,3 @@ export const SearchIcon = ({tintColor}) => (
 export const NotifiactionIcon = ({tintColor}) => ( 
     <Icon type="Feather" name="bell" size={25} style={{color:tintColor}} />
 );
-    
