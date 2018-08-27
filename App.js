@@ -15,6 +15,9 @@ import Router from './Router';
 import {navigate, setTopLevelNavigator} from './NavigationService';
 import ChangePassword from './src/containers/changePassword/ChangePassword';
 import Login from './src/containers/login/Login';
+import Profile from './src/containers/profile/Profile';
+import Sample from './sample';
+
 export default class App extends Component {
   render() {
     return (
@@ -24,7 +27,7 @@ export default class App extends Component {
           setTopLevelNavigator(navigatorRef);
         }}/>
       </View> */}
-      <ChangePassword/>
+      <Profile/>
       </StyleProvider>
     );
   }
