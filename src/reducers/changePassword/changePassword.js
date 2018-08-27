@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import {NEW_PASSWORD_CHANGED, OLD_PASSWORD_CHANGED, CONFIRM_PASSWORD_CHANGED} from '../../actions/changePassword/changePasswordAction'
 
-function passwordCheckReducer(state={newPassword="" ,oldPassword="", oldValid=false, newValid=false, confirmValid=false}, action) {
+function passwordCheckReducer(state={newPassword:"" ,oldPassword:"", confirmPassword:"", oldValid:false, newValid:false, confirmValid:false}, action) {
     switch(action.type) {
         case NEW_PASSWORD_CHANGED :
             if(action.newPassword !== state.oldPassword && state.oldPassword !== "")
@@ -20,7 +20,7 @@ function passwordCheckReducer(state={newPassword="" ,oldPassword="", oldValid=fa
     }
 }
 
-function changePasswordReducer(state={oldPassword = "", newPassword = "", confirmPassword=""}, action) {
+function changePasswordReducer(state={oldPassword:"", newPassword:"", confirmPassword:""}, action) {
     switch(action.type) {
         case NEW_PASSWORD_CHANGED :
             return Object.assign({}, state, {newPassword: action.newPassword});
