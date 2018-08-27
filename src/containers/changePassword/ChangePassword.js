@@ -15,7 +15,7 @@ class ChangePassword extends Component {
                 <View style={{flex:1, flexDirection:'column', alignItems:'center'}}>
                     <View style={{flex:2}}>
                         <View style={{paddingTop:Dimensions.get("window").height * 70 / 570}}>
-                        <Icon type='MaterialIcons' name="check-box"/>
+                        <Icon type='Feather' name="sheild"/>
                         </View>
                     </View>
                     <View style={{flex:5}}>

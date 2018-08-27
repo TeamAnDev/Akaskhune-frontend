@@ -4,16 +4,34 @@ import {Text, View, Image} from 'react-native';
 import { Container, Header, Content, Tab, Tabs} from 'native-base';
 import styles from './styles';
 import Images from './Images';
+import colors from '../../config/colors';
 
 class TabBox extends Component {
-
+    constructor(props)
+    {
+        super(props);
+        this.state = {
+            activeTab : 0
+        }
+    }
+    componentDidMount()
+    {
+        //Added for android bug
+        setTimeout(()=>{
+            // console.warn("here");
+            this.setState({activeTab:1})
+        
+        },1000)
+    }
     render() {
+        // console.warn(this.state.activeTab)
         return (
             <Container>
                 {/* <Header style={{backgroundColor:'red', }} hasTabs/> */}
-                <Tabs tabContainerStyle={{height:50}}
+                <Tabs  page={1} tabContainerStyle={{height:50} } 
+                //  refs={component => this._tabs = component}
                     tabBarUnderlineStyle={{
-                    backgroundColor: '#393939',
+                    backgroundColor: colors.primaryColor,
                     height: 1}}>
                     <Tab heading="علاقمندیها" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
                     </Tab>

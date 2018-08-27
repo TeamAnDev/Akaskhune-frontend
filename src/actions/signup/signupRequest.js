@@ -36,7 +36,7 @@ export function signup(email, password){
             storeRefresh(response.data.refresh);
             dispatch(signupSucces());
         }).catch(function(error){
-            dispatch(signupError(error.response.data.message));
+            dispatch(signupError(error.response.data.error));
         })
     }    
 }

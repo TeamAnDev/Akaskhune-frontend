@@ -20,13 +20,13 @@ class LoginInputs extends Component
             password :""
         }
         if(this.props.loginSuccess == true) {
-            this.props.navigation.navigate('Profile')
+            this.props.navigation.navigate('BottomTabRouter')
         }
     }
 
     componentDidUpdate() {
         if(this.props.loginSuccess == true) {
-            this.props.navigation.navigate('Profile')
+            this.props.navigation.navigate('BottomTabRouter')
         }
     }
 
