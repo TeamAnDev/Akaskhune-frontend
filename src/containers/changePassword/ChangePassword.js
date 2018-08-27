@@ -4,13 +4,24 @@ import {View, Dimensions} from 'react-native';
 import FHHeader from '../../components/FHHeader';
 import FHButton from '../../components/FHButton';
 import FHPasswordInput from '../../components/FHPasswordInput';
-import { Icon } from 'native-base';
+import { Icon, Toast } from 'native-base';
 import FHError from '../../components/FHError';
 import {connect} from 'react-redux';
 import {changeOldPassword, changeNewPassword, changeConfirmPassword} from '../../actions/changePassword/changePasswordAction';
+import {changePassword} from '../../actions/changePassword/changePasswordRequest'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 class ChangePassword extends Component {
+
+    componentDidUpdate() {
+        if(this.props.success == true) {
+            Toast.show({
+                text : this.props.toastMessage,
+                buttonText : 'Okay',
+                duration : 2000
+            });
+        }
+    }
 
     render() {
         return (
@@ -35,7 +46,9 @@ class ChangePassword extends Component {
                         </View>
                         <View style={{flex:1, width:'100%', marginTop:Dimensions.get("window").height / 5}}>
                             <FHButton title="ثبت رمز عبور جدید"
-                            disabled ={(this.props.oldPasswordValidation && this.props.newPasswordValidation && this.props.confirmPasswordValidation) ? false : true}/>
+                            disabled ={(this.props.oldPasswordValidation && this.props.newPasswordValidation && this.props.confirmPasswordValidation) ? false : true}
+                            onPress={() => this.props.changePassword(this.props.oldPassword, this.props.newPassword)}
+                            loading={this.props.loading}/>
                         </View>
                     </View>
                 </View>
@@ -52,7 +65,11 @@ const mapStateToProps = state => {
         confirmPassword : state.changePasswordApp.changePasswordReducer.confirmPassword,
         newPasswordValidation : state.changePasswordApp.passwordCheckReducer.newValid,
         oldPasswordValidation : state.changePasswordApp.passwordCheckReducer.oldValid,
-        confirmPasswordValidation : state.changePasswordApp.passwordCheckReducer.confirmValid
+        confirmPasswordValidation : state.changePasswordApp.passwordCheckReducer.confirmValid,
+        error : state.changePasswordApp.changePasswordRequestReducer.err,
+        loading : state.changePasswordApp.changePasswordRequestReducer.loading,
+        success : state.changePasswordApp.changePasswordRequestReducer.success,
+        toastMessage : state.changePasswordApp.changePasswordRequestReducer.toastMessage
     });
 }
 
@@ -60,7 +77,8 @@ const mapDispatchToProps = dispatch => {
     return({
         changeOldPassword : oldPassword => dispatch(changeOldPassword(oldPassword)),
         changeNewPassword : newPassword => dispatch(changeNewPassword(newPassword)),
-        changeConfirmPassword : confirmPassword => dispatch(changeConfirmPassword(confirmPassword))
+        changeConfirmPassword : confirmPassword => dispatch(changeConfirmPassword(confirmPassword)),
+        changePassword : (oldPassword, newPassword) => dispatch(changePassword(oldPassword, newPassword))
     });
 }
 

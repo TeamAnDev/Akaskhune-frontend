@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux';
 import {NEW_PASSWORD_CHANGED, OLD_PASSWORD_CHANGED, CONFIRM_PASSWORD_CHANGED} from '../../actions/changePassword/changePasswordAction'
+import changePasswordRequestReducer from './request';
 
 function passwordCheckReducer(state={newPassword:"" ,oldPassword:"", confirmPassword:"", oldValid:false, newValid:false, confirmValid:false}, action) {
     switch(action.type) {
@@ -35,7 +36,8 @@ function changePasswordReducer(state={oldPassword:"", newPassword:"", confirmPas
 
 const changePasswordApp = combineReducers({
     changePasswordReducer,
-    passwordCheckReducer
+    passwordCheckReducer,
+    changePasswordRequestReducer
 });
 
 export default changePasswordApp;

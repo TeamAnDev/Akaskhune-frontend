@@ -1,6 +1,5 @@
 
 import {axiosInstance} from '../../config/urls';
-import {axios} from 'axios';
 import {rest} from '../../config/urls';
 
 

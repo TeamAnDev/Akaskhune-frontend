@@ -2,8 +2,9 @@ import axios from 'axios'
 
 export const rest = {
     login : '/auth/login/',
-    signup : '/signup',
-    completeProfile : '/completeProfile',
+    signup : '/signup/',
+    completeProfile : '/completeProfile/',
+    changePassword : '/changePassword/'
 }
 
 // axios.defaults.baseURL = 'http://192.168.11.214:8080';

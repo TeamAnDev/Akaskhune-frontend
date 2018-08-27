@@ -1,7 +1,4 @@
 import signupAxiosRequest from '../../axiosRequests/signup/signup';
-import axios from 'axios';
-import {axiosInstance} from '../../config/urls';
-import {rest} from '../../config/urls';
 import { storeToken , retrieveToken, storeRefresh} from '../../config/token';
 export const SIGNUP_REQUEST = "SIGNUP_REQUEST";
 
