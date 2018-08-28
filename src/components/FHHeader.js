@@ -1,10 +1,12 @@
 import React from 'react';
 import FHBackIcon from './FHBackIcon';
 import {Header, Right, Body, Left, Title} from 'native-base';
+import colors from '../config/colors';
 
 const FHHeader = (props) => {
     return (
-        <Header style={{backgroundColor:'#5C5C5C'}}>
+        <Header style={{ backgroundColor: colors.primaryColor}}
+        androidStatusBarColor={colors.primaryColor}>
             <Left style={{flex:1}}>
 
             </Left>
@@ -12,7 +14,7 @@ const FHHeader = (props) => {
                 <Title>{props.title}</Title>
             </Body>
             <Right style={{flex:1}}>
-                <FHBackIcon navigation={props.navigation}/>
+                <FHBackIcon/>
             </Right>
         </Header>
     );

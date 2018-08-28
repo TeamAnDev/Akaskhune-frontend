@@ -12,7 +12,8 @@ import { StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import akaskhune from './native-base-theme/variables/akaskhune';
 import Router from './Router';
-import {navigate, setTopLevelNavigator} from './NavigationService';
+import { setTopLevelNavigator} from './NavigationService';
+import EditProfile from './src/containers/setting/editProfile/EditProfile';
 export default class App extends Component {
   render() {
     return (
@@ -21,6 +22,7 @@ export default class App extends Component {
         <Router  ref={navigatorRef => {
           setTopLevelNavigator(navigatorRef);
         }}/>
+        {/* <EditProfile/> */}
       </View>
       </StyleProvider>
     );

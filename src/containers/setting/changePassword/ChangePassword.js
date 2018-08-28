@@ -1,17 +1,17 @@
 import React from 'react';
 import {Component} from 'react';
 import {View, Dimensions} from 'react-native';
-import FHHeader from '../../components/FHHeader';
-import FHButton from '../../components/FHButton';
-import FHPasswordInput from '../../components/FHPasswordInput';
+import FHHeader from '../../../components/FHHeader';
+import FHButton from '../../../components/FHButton';
+import FHPasswordInput from '../../../components/FHPasswordInput';
 import { Icon } from 'native-base';
-import FHError from '../../components/FHError';
+import FHError from '../../../components/FHError';
 
 class ChangePassword extends Component {
 
     render() {
         return (
-            <View style={{flex:1}}>
+            <View style={{flex:1, backgroundColor:'white'}}>
                 <FHHeader navigation={this.props.navigation} title="تغییر رمز عبور"/>
                 <View style={{flex:1, flexDirection:'column', alignItems:'center'}}>
                     <View style={{flex:2}}>

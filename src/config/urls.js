@@ -4,6 +4,8 @@ export const rest = {
     login : '/auth/login/',
     signup : '/signup',
     completeProfile : '/completeProfile',
+    userInfo : 'userInfo/',
+    userEdit : 'user/'
 }
 
 // axios.defaults.baseURL = 'http://192.168.11.214:8080';
@@ -11,7 +13,7 @@ export const rest = {
 // axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const axiosInstance = axios.create({
-    baseURL: 'http://192.168.11.213/api/v1',
+    baseURL: 'http://192.168.11.214:80/',
     timeout:10000,
     headers:{
         'Content-Type': 'application/json',

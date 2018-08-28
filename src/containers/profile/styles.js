@@ -21,8 +21,6 @@ const styles = StyleSheet.create({
         margin : 10
     } ,
     editButton : {
-        marginTop : 15,
-        marginLeft : 10,
         fontWeight:'bold',
         color: 'white'
     },

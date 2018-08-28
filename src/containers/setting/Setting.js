@@ -6,7 +6,7 @@ import FHHeader from '../../components/FHHeader'
 
 const Setting = (props) => {
     return (
-        <View style={{flex:1}}>
+        <View style={{flex:1, backgroundColor:'white'}}>
             <FHHeader navigation={props.navigation} title="تنظیمات"/>
             <View style={{flex:2}}>
 

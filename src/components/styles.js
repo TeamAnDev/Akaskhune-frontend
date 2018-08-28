@@ -1,8 +1,11 @@
 import {StyleSheet, Dimensions} from 'react-native';
-
+import colors from  '../config/colors';
 const heightOfInputAndButton = Dimensions.get("window").height * 8/ 100 > 55 ? 55 :Dimensions.get("window").height * 8/ 100;
 const widthOfInputAndButton = "85%";
 const heightOfTextArea = Dimensions.get("window").height * 30/ 100 > 105 ? 105 :Dimensions.get("window").height * 8/ 100;
+const cameraViewWidthAndHeight = Dimensions.get("window").width * 28 / 100 ;
+const marginTopOfCameraSelect = Dimensions.get("window").height * 13 / 100 ;
+const marginBottomOfCameraSelect = Dimensions.get("window").height * 3 / 100 ;
 const styles = StyleSheet.create({
     col: {
       flex: 1,
@@ -27,7 +30,24 @@ const styles = StyleSheet.create({
     textAreaItem:{
       backgroundColor:'white', borderRadius:6, margin:7, height:heightOfTextArea
       , width:widthOfInputAndButton, alignSelf:"center",
-    }
+      borderColor: colors.grey, borderWidth: 2,
+    },
+    cameraView : {
+      backgroundColor : colors.grey,
+      width : cameraViewWidthAndHeight,
+      height : cameraViewWidthAndHeight,
+      borderRadius: cameraViewWidthAndHeight/2,
+      // marginTop : marginTopOfCameraSelect,
+      // marginBottom : marginBottomOfCameraSelect,
+      alignItems: 'center',
+      justifyContent : 'center',
+  },
+  imageView : {
+      width : cameraViewWidthAndHeight,
+      height : cameraViewWidthAndHeight,
+      borderRadius: cameraViewWidthAndHeight/2,
+     
+  }
 
   });
   export default styles;
