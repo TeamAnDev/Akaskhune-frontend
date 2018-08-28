@@ -26,7 +26,7 @@ class ChangePassword extends Component {
     render() {
         return (
 
-            <KeyboardAwareScrollView style={{flexGrow:1}}>
+            <KeyboardAwareScrollView keyboardShouldPersistTaps="always" style={{flexGrow:1}}>
                 <View style={{flex:1, backgroundColor:'white'}}>
                     <FHHeader navigation={this.props.navigation} title="تغییر رمز عبور"/>
                     <View style={{flex:2, width:'100%'}}>

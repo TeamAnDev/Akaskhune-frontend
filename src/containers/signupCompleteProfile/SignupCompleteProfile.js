@@ -32,7 +32,7 @@ import { Container , Root, Toast} from 'native-base';
         
         return(
             
-            <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
+            <KeyboardAwareScrollView keyboardShouldPersistTaps="always" contentContainerStyle={{flexGrow:1}}>
             <View style={{flex:1}}>
             <Container>
                 

@@ -19,7 +19,7 @@ const Router = createStackNavigator({
     BottomTabRouter,
     EditProfile
   }, {
-    initialRouteName: "BottomTabRouter",
+    initialRouteName: "Signup",
     headerMode: "none"
   })
   const prevGetStateForAction = Router.router.getStateForAction;

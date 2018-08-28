@@ -1,14 +1,14 @@
 {
-  "users" : [
+  "users": [
     {
-      "id" : 1,
-      "username" : "Hamed_Kh",
-      "fullname" : "حامد خانکی",
-      "follower_count" : 10,
-      "following_count" : 10,
-      "bio" : "مهندسی کامپیوتر دانشگاه شریف",
-      "avatar" : "https://cdn.pbrd.co/images/HBfEb6G.jpg",
-      "images" : [
+      "id": 1,
+      "username": "Hamed_Kh",
+      "fullname": "حامد خانکی",
+      "follower_count": 10,
+      "following_count": 10,
+      "bio": "مهندسی کامپیوتر دانشگاه شریف",
+      "avatar": "https://cdn.pbrd.co/images/HBfEb6G.jpg",
+      "images": [
         "https://cdn.pbrd.co/images/HB6nBtS.jpg",
         "https://cdn.pbrd.co/images/HB6nPJy.jpg",
         "https://cdn.pbrd.co/images/HB6o0g2.jpg",
@@ -51,5 +51,23 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "signup": {
+    "email": "a@a.aaa",
+    "password": "a"
+  },
+  "completeProfile": {
+    "username": "a",
+    "fullname": "",
+    "bio": "",
+    "avatar": "this.props.avatar"
+  },
+  "userInfo": {
+    "avatar": "http://ainenews.ir/images/news/3791/thumbs/3791.jpg",
+    "fullname": "فرزاد حبیبی",
+    "email": "farzadhabibii98@gmail.com",
+    "username": "gsoosk",
+    "bio": "blah blah blah blah"
+  },
+  "user": {}
 }

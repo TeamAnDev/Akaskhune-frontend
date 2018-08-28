@@ -41,7 +41,7 @@ class EditProfile extends Component
         <Text>در حال بارگزاری اطلاعات</Text>
         </View>) ;
         return(
-            <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
+            <KeyboardAwareScrollView keyboardShouldPersistTaps="always" contentContainerStyle={{flexGrow:1}}>
             <View style={{flex:1, backgroundColor:"white"}}>
                 <FHHeader navigation={null} title="ویرایش پروفایل"/>
                 <View style={{flex:1}}>

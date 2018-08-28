@@ -1,9 +1,10 @@
 import React from 'react';
 import {Component} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, ImageBackground} from 'react-native';
 import axios from 'axios';
 import {requestInfo} from '../../actions/profile/profileRequest';
 import {connect} from 'react-redux';
+import colors from '../../config/colors';
 
 class ProfileInfo extends Component {
 
@@ -28,12 +29,12 @@ class ProfileInfo extends Component {
         return (
             <View style={{flex : 1, flexDirection: 'row-reverse', justifyContent:'space-between'}}>
                 <View style={{flex:1}}>
-                    <Image source={{uri:this.props.avatar}} style={{width:100, height:100, borderRadius:50}}/>
+                    <ImageBackground imageStyle={{width:100, height:100, borderRadius:50}} source={{uri:this.props.avatar}} style={{backgroundColor:'white',width:100, height:100, borderRadius:50}}/>
                 </View>
                 <View style={{flex:2, flexDirection:'column', marginRight:20, marginTop:5}}>
-                    <Text style={{fontWeight:'bold', fontSize:20}}>{this.props.fullname}</Text>
-                    <Text style={{marginTop:5}}>{this.props.follower_count}{" دنبال کننده"}{"     "}{this.props.following_count}{" دنبال شونده"}</Text>
-                    <Text style={{fontSize:12 ,fontWeight:'bold', marginTop:5}}>{this.props.bio}</Text>
+                    <Text style={{fontWeight:'bold', fontSize:20,textAlign:'right'}}>{this.props.fullname}</Text>
+                    <Text style={{marginTop:5,textAlign:'right'}}>{this.props.follower_count}{" دنبال کننده"}{"     "}{this.props.following_count}{" دنبال شونده"}</Text>
+                    <Text style={{fontSize:12 ,fontWeight:'bold', textAlign:'right', marginTop:5}}>{this.props.bio}</Text>
                 </View>
             </View>
         )
