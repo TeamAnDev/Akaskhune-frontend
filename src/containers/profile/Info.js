@@ -2,41 +2,58 @@ import React from 'react';
 import {Component} from 'react';
 import {View, Text, Image} from 'react-native';
 import axios from 'axios';
-
+import {requestInfo} from '../../actions/profile/profileRequest';
+import {connect} from 'react-redux';
 
 class ProfileInfo extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {name:"", followers:0, following:0, bio:"", img:""};
+        this.props.requestInfo();
     }
 
     componentDidMount() {
-        axios.get('http://192.168.11.199:8085/users/1')
-        .then(response => {
-            this.setState({name : response.data.name,
-                 followers : response.data.followers,
-                 following : response.data.following,
-                 bio : response.data.bio,
-                 img : response.data.img});
-        })
-        .catch(err => console.warn(err));
+        // axios.get('http://192.168.11.199:8085/users/1')
+        // .then(response => {
+        //     this.setState({name : response.data.name,
+        //          followers : response.data.followers,
+        //          following : response.data.following,
+        //          bio : response.data.bio,
+        //          img : response.data.img});
+        // })
+        // .catch(err => console.warn(err));
     }
 
     render() {
         return (
             <View style={{flex : 1, flexDirection: 'row-reverse', justifyContent:'space-between'}}>
                 <View style={{flex:1}}>
-                    <Image source={require('../../../pic.jpg')} style={{width:100, height:100, borderRadius:50}}/>
+                    <Image source={{uri:this.props.avatar}} style={{width:100, height:100, borderRadius:50}}/>
                 </View>
                 <View style={{flex:2, flexDirection:'column', marginRight:20, marginTop:5}}>
-                    <Text style={{fontWeight:'bold', fontSize:20}}>{this.state.name}</Text>
-                    <Text style={{marginTop:5}}>{this.state.followers}{" دنبال کننده"}{"     "}{this.state.following}{" دنبال شونده"}</Text>
-                    <Text style={{fontSize:12 ,fontWeight:'bold', marginTop:5}}>{this.state.bio}</Text>
+                    <Text style={{fontWeight:'bold', fontSize:20}}>{this.props.fullname}</Text>
+                    <Text style={{marginTop:5}}>{this.props.follower_count}{" دنبال کننده"}{"     "}{this.props.following_count}{" دنبال شونده"}</Text>
+                    <Text style={{fontSize:12 ,fontWeight:'bold', marginTop:5}}>{this.props.bio}</Text>
                 </View>
             </View>
         )
     }
 }
 
-export default ProfileInfo;
+const mapStateToProps = state => {
+    return({
+        fullname : state.profileApp.infoRequestReducer.fullname,
+        bio : state.profileApp.infoRequestReducer.bio,
+        follower_count : state.profileApp.infoRequestReducer.follower_count,
+        following_count : state.profileApp.infoRequestReducer.following_count,
+        avatar : state.profileApp.infoRequestReducer.avatar
+    });
+}
+
+const mapDispatchToProps = dispatch => {
+    return({
+        requestInfo : () => dispatch(requestInfo())
+    });
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileInfo);
