@@ -3,11 +3,13 @@ import loginApp from './login/login'
 import signupApp from './signup/signup'
 import completeProfileApp from './completeProfile/completeProfile';
 import changePasswordApp from './changePassword/changePassword';
+import profileApp from './profile/profile';
 const AkaskhuneApp = combineReducers({
     loginApp,
     signupApp,
     completeProfileApp,
-    changePasswordApp
+    changePasswordApp,
+    profileApp
 });
 
 export default AkaskhuneApp;

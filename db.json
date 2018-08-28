@@ -7,7 +7,15 @@
       "followers" : 10,
       "following" : 10,
       "bio" : "مهندسی کامپیوتر دانشگاه شریف",
-      "img" : "pic.jpg"
+      "img" : "pic.jpg",
+      "images" : [
+        "https://cdn.pbrd.co/images/HB6nBtS.jpg",
+        "https://cdn.pbrd.co/images/HB6nPJy.jpg",
+        "https://cdn.pbrd.co/images/HB6o0g2.jpg",
+        "https://cdn.pbrd.co/images/HB6o7oF.jpg",
+        "https://cdn.pbrd.co/images/HB6of7L.jpg",
+        "https://cdn.pbrd.co/images/HB6osO8.jpg"
+      ]
     }
   ],
   "login": [
