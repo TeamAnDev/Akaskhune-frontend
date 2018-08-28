@@ -5,6 +5,7 @@ import colors from '../../config/colors';
 import {TouchableHighlight, View} from 'react-native';
 import { Dimensions, Platform} from 'react-native';
 import {ifIphoneX, getStatusBarHeight, isIphoneX} from 'react-native-iphone-x-helper';
+import {navigate} from '../../../NavigationService';
 const SIZE = Dimensions.get("window").height * 87/ 1000;
 
 
@@ -23,7 +24,7 @@ export default class PlusButton extends Component{
         return(
            
         <TouchableHighlight
-            onPress={()=>{}}
+            onPress={()=>navigate('NewPost')}
             underlayColor = {colors.accentColorOver}
             style={{
                 alignItems: 'center',

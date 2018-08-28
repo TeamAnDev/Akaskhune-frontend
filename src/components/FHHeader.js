@@ -14,7 +14,7 @@ const FHHeader = (props) => {
                 <Title>{props.title}</Title>
             </Body>
             <Right style={{flex:1}}>
-                <FHBackIcon/>
+                <FHBackIcon customIcon={props.customIcon} customIconType={props.customIconType}/>
             </Right>
         </Header>
     );

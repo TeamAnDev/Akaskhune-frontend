@@ -5,7 +5,7 @@ import {goBack} from '../../NavigationService';
 
 const FHBackIcon = (props) => (
     <Button  transparent rounded primary style={{borderRadius:50}} onPress={() => goBack()}>
-        <Icon name='arrow-forward' style={{color:'white'}} />
+        <Icon name={props.customIcon || 'arrow-forward'} type={props.customIconType} style={{color:'white'}} />
     </Button>
 )
 export default FHBackIcon;
