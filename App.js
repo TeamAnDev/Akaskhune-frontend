@@ -22,7 +22,6 @@ export default class App extends Component {
         <Router  ref={navigatorRef => {
           setTopLevelNavigator(navigatorRef);
         }}/>
-        {/* <EditProfile/> */}
       </View>
       </StyleProvider>
     );

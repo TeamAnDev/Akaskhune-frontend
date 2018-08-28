@@ -5,7 +5,9 @@ export const rest = {
     signup : '/signup',
     completeProfile : '/completeProfile',
     userInfo : 'userInfo/',
-    userEdit : 'user/'
+    userEdit : 'user/',
+    completeProfile : '/completeProfile/',
+    changePassword : '/changePassword/'
 }
 
 // axios.defaults.baseURL = 'http://192.168.11.214:8080';
