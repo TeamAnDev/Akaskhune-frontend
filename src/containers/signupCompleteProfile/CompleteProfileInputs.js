@@ -32,7 +32,7 @@ class CompleteProfileInputs extends Component
         } else if(this.props.camError !== undefined && this.props.camError !== "")
         {
             Toast.show({
-                text: this.props.error,
+                text: this.props.camError,
                 buttonText: "Ok",
                 type:"danger",
                 duration:300000,

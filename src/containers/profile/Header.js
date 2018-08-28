@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text , TouchableHighlight} from 'react-native';
 import {Button, Icon, Header, Body, Right, Left} from 'native-base';
 import colors from '../../config/colors'
 import styles from './styles'
@@ -10,7 +10,9 @@ const ProfileHeader = (props) => {
         <Header   style={{ backgroundColor: colors.primaryColor}}
         androidStatusBarColor={colors.primaryColor}>
             <Left style={{flex:1}}>
-                <Text style={styles.editButton}>ویرایش</Text>
+                <Button transparent rounded primary onPress={()=>navigate('EditProfile')}>
+                    <Text style={styles.editButton}>ویرایش</Text>
+                </Button>
             </Left>
             <Body style={{flex:1, alignItems:'center'}}>
                 <Text style={styles.username}>{props.username}</Text>

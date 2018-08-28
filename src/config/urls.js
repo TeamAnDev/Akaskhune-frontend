@@ -2,7 +2,10 @@ import axios from 'axios'
 
 export const rest = {
     login : '/auth/login/',
-    signup : '/signup/',
+    signup : '/signup',
+    completeProfile : '/completeProfile',
+    userInfo : 'userInfo/',
+    userEdit : 'user/',
     completeProfile : '/completeProfile/',
     changePassword : '/changePassword/'
 }

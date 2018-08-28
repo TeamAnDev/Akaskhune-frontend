@@ -1,14 +1,14 @@
 import React from 'react';
 import {Component} from 'react';
 import {View, Dimensions} from 'react-native';
-import FHHeader from '../../components/FHHeader';
-import FHButton from '../../components/FHButton';
-import FHPasswordInput from '../../components/FHPasswordInput';
-import { Icon, Toast } from 'native-base';
-import FHError from '../../components/FHError';
+import FHHeader from '../../../components/FHHeader';
+import FHButton from '../../../components/FHButton';
+import FHPasswordInput from '../../../components/FHPasswordInput';
+import { Icon , Toast} from 'native-base';
+import FHError from '../../../components/FHError';
 import {connect} from 'react-redux';
-import {changeOldPassword, changeNewPassword, changeConfirmPassword} from '../../actions/changePassword/changePasswordAction';
-import {changePassword} from '../../actions/changePassword/changePasswordRequest'
+import {changeOldPassword, changeNewPassword, changeConfirmPassword} from '../../../actions/changePassword/changePasswordAction';
+import {changePassword} from '../../../actions/changePassword/changePasswordRequest'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 class ChangePassword extends Component {
@@ -25,8 +25,9 @@ class ChangePassword extends Component {
 
     render() {
         return (
+
             <KeyboardAwareScrollView style={{flexGrow:1}}>
-                <View style={{flex:1}}>
+                <View style={{flex:1, backgroundColor:'white'}}>
                     <FHHeader navigation={this.props.navigation} title="تغییر رمز عبور"/>
                     <View style={{flex:2, width:'100%'}}>
                         <View style={{alignItems:'center', paddingTop:Dimensions.get("window").height * 60 / 570, marginBottom: Dimensions.get("window").height * 20 / 570}}>

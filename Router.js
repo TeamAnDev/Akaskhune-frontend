@@ -5,9 +5,9 @@ import {createStackNavigator, crea} from 'react-navigation';
 import Profile from './src/containers/profile/Profile';
 
 import BottomTabRouter from './src/containers/baseContainer/BottomTabRouter';
-
+import EditProfile from './src/containers/setting/editProfile/EditProfile';
 import Setting from './src/containers/setting/Setting';
-import ChangePassword from './src/containers/changePassword/ChangePassword';
+import ChangePassword from './src/containers/setting/changePassword/ChangePassword';
 
 const Router = createStackNavigator({
     Signup,
@@ -16,7 +16,8 @@ const Router = createStackNavigator({
     Profile,
     Setting,
     ChangePassword,
-    BottomTabRouter
+    BottomTabRouter,
+    EditProfile
   }, {
     initialRouteName: "BottomTabRouter",
     headerMode: "none"

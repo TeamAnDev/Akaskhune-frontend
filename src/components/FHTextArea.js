@@ -4,7 +4,8 @@ import colors from '../config/colors';
 import styles from './styles';
 const FHTextarea = (props) => {
   return (<Textarea style={[styles.textAreaItem, {textAlign:"right"}]} placeholder={props.text}
-          placeholderTextColor={colors.blackGrey} onChangeText={props.onTextChange} ></Textarea>);
+          placeholderTextColor={colors.blackGrey} onChangeText={props.onTextChange} 
+          value={props.value ? props.value : null}></Textarea>);
 }
 
 export default FHTextarea;

@@ -1,5 +1,6 @@
-import {StyleSheet} from 'react-native';
-
+import {StyleSheet, Dimensions} from 'react-native';
+const marginTopOfCameraSelect = Dimensions.get("window").height * 3 / 100 ;
+const marginBottomOfCameraSelect = Dimensions.get("window").height * 3 / 100 ;
 const styles = StyleSheet.create({
     listItem : {
         flex:1,
@@ -9,6 +10,10 @@ const styles = StyleSheet.create({
         borderWidth:1,
         borderColor:'#EFEFEF',
         alignItems:'center'
+    },
+    cameraView : {
+        marginTop : marginTopOfCameraSelect,
+        marginBottom : marginBottomOfCameraSelect,
     }
 });
 
