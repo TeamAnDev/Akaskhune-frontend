@@ -4,11 +4,13 @@ import {Button, Icon, Header, Body, Right, Left} from 'native-base';
 import colors from '../../config/colors'
 import styles from './styles'
 import {navigate} from '../../../NavigationService';
+import {connect} from 'react-redux';
+
 const ProfileHeader = (props) => {
     
     return (
-        <Header   style={{ backgroundColor: colors.primaryColor}}
-        androidStatusBarColor={colors.primaryColor}>
+        <Header style={{ backgroundColor: colors.primaryColor}}
+            androidStatusBarColor={colors.primaryColor}>
             <Left style={{flex:1}}>
                 <Button transparent rounded primary onPress={()=>navigate('EditProfile')}>
                     <Text style={styles.editButton}>ویرایش</Text>
@@ -27,4 +29,10 @@ const ProfileHeader = (props) => {
     )
 } 
 
-export default ProfileHeader;
+const mapStateToProps = state => {
+    return({
+        username : state.profileApp.infoRequestReducer.username
+    })
+}
+
+export default connect(mapStateToProps, null)(ProfileHeader);

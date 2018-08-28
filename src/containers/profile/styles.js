@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
         color: 'white'
     },
     username : {
-        marginTop : 15,
         color: 'white'
     }
 })

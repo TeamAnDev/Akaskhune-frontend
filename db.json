@@ -3,11 +3,11 @@
     {
       "id" : 1,
       "username" : "Hamed_Kh",
-      "name" : "حامد خانکی",
-      "followers" : 10,
-      "following" : 10,
+      "fullname" : "حامد خانکی",
+      "follower_count" : 10,
+      "following_count" : 10,
       "bio" : "مهندسی کامپیوتر دانشگاه شریف",
-      "img" : "pic.jpg",
+      "avatar" : "https://cdn.pbrd.co/images/HBfEb6G.jpg",
       "images" : [
         "https://cdn.pbrd.co/images/HB6nBtS.jpg",
         "https://cdn.pbrd.co/images/HB6nPJy.jpg",

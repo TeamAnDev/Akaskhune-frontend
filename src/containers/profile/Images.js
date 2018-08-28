@@ -5,6 +5,9 @@ import styles from './styles';
 import FHRow from '../../components/FHRow';
 import {requestImages} from '../../actions/profile/profileRequest'
 import {connect} from 'react-redux';
+import {Spinner} from 'native-base';
+import colors from '../../config/colors';
+
 
 class Images extends Component {
 
@@ -29,9 +32,17 @@ class Images extends Component {
                 />
             );
         }
+        else if(this.props.loading){
+            return (
+                <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+                    <Spinner style={{alignSelf:'center'}} color={colors.accentColor}/>
+                    <Text>در حال بارگزاری اطلاعات</Text>
+                </View>
+            )
+        }
         else {
             return (
-                <View><Text>Hello</Text></View>
+                <View><Text>error</Text></View>
             )
         }
     }
@@ -40,7 +51,8 @@ class Images extends Component {
 const mapStateToProps = state => {
     return ({
         images : state.profileApp.imagesRequestReducer.images,
-        success : state.profileApp.imagesRequestReducer.success
+        success : state.profileApp.imagesRequestReducer.success,
+        loading : state.profileApp.imagesRequestReducer.loading
     });
 }
 
