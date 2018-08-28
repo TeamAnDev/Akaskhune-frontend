@@ -26,7 +26,7 @@ class  FHPhotoPicker extends Component{
     componentDidUpdate(){
         if(this.props.errbool)
         {
-            showError(this.props.error, "باشه");
+            showError(this.props.error, "باشه" );
         }
         else if(this.props.success)
         {
@@ -60,7 +60,7 @@ class  FHPhotoPicker extends Component{
         }
         return (<View style={{flex:1, alignItems: 'center'}}>
    
-        <ImageBackground style={styles.cameraView} source={{uri : this.props.avatarSource}}  imageStyle={styles.imageView} >
+        <ImageBackground style={styles.cameraView} source={{uri : (this.props.success ?  this.props.avatarSource : "")}}  imageStyle={styles.imageView} >
           {ELEMENT}
         </ImageBackground>
         

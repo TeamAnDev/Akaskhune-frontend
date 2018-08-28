@@ -1,5 +1,5 @@
 import {Toast} from 'native-base'
-function showSuccess(message, buttonMessage, dur,onCloseFunc)
+function showSuccess(message, buttonMessage, dur = 3000,onCloseFunc)
 {
     Toast.show({
         text: message,

@@ -1,5 +1,5 @@
 import {Toast} from 'native-base'
-function showError(message, buttonMessage, dur=3000,onCloseFunc)
+function showError(message, buttonMessage, dur=30000,onCloseFunc)
 {
     Toast.show({
         text: message,

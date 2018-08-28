@@ -21,21 +21,21 @@ const Router = createStackNavigator({
   }, {
     initialRouteName: "Signup",
     headerMode: "none"
-  })
-  const prevGetStateForAction = Router.router.getStateForAction;
+  });
+  // const prevGetStateForAction = Router.router.getStateForAction;
       
-  Router.router.getStateForAction = (action, state) => {
-  // Do not allow to go back to Signup
-  if (action.type === "Navigation/BACK" && state) {
-      const newRoutes = state.routes.filter(r => r.routeName !== "Signup");
-      const newIndex = newRoutes.length - 1;
-      return prevGetStateForAction(action, { index: newIndex, routes: newRoutes });
-  } else if(action.type === "Navigation/BACK" && state) {
-    const newRoutes = state.routes.filter(r => r.routeName !== "Signup");
-    const newIndex = newRoutes.length - 1;
-    return prevGetStateForAction(action, { index: newIndex, routes: newRoutes });
-} 
-  return prevGetStateForAction(action, state);
-  };
+  // Router.router.getStateForAction = (action, state) => {
+  // // Do not allow to go back to Signup
+  // if (action.type === "Navigation/BACK" && state) {
+  //     const newRoutes = state.routes.filter(r => r.routeName !== "Signup");
+  //     const newIndex = newRoutes.length - 1;
+  //     return prevGetStateForAction(action, { index: newIndex, routes: newRoutes });
+  // } else if(action.type === "Navigation/BACK" && state) {
+  //   const newRoutes = state.routes.filter(r => r.routeName !== "Signup");
+  //   const newIndex = newRoutes.length - 1;
+  //   return prevGetStateForAction(action, { index: newIndex, routes: newRoutes });
+  // } 
+  // return prevGetStateForAction(action, state);
+  // };
 
   export default Router;
