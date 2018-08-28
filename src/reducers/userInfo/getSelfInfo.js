@@ -6,7 +6,7 @@ function getSelfInfoReducer(state={loading:false, data:{}, error:"", succes:fals
         case(GETTING_SELF_INFO_STARTED):
             return Object.assign({}, state, {loading:true});
         case(GETTING_SELF_INFO_ERR):
-            return Object.assign({}, state, {error:action.error});
+            return Object.assign({}, state, {error:action.error, loading:false});
         case(GETTING_SELF_INFO_SUCCES):
             return Object.assign({}, state, {data:action.data, succes:true, loading:false});
         default :

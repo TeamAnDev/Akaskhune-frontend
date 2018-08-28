@@ -24,7 +24,7 @@ function setInfoSucces(){
 export function editUserInfo(fullname, bio){
     return async (dispatch) => {
         dispatch(setInfoStarted());
-        await getSelfInfoAxiosRequest(fullname, bio).then(function(response) {
+        await editUserInfoAxiosRequest(fullname, bio).then(function(response) {
             dispatch(setInfoSucces());
         }).catch(function(error){
             dispatch(setInfoError(error.response.data.error));

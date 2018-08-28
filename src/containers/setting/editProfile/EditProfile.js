@@ -10,34 +10,19 @@ import Footer from './Footer';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {getSelfInfo} from '../../../actions/userInfo/userInfoRequest';
 import colors from '../../../config/colors';
+import FHError from '../../../components/FHError';
 
 class EditProfile extends Component 
 {
     constructor(props) {
         super(props);
-        this.state = {
-            loading:false,
-            error : false,
-        }
     }
     componentDidMount()
     {
         this.props.getSelfInfo();
     }
-    
-    componentDidUpdate()
-    {
-        if(this.props.loadingGettingSelf && !this.state.loading)
-        {
-           this.setState({loading:true});
-        }
-        if(!this.props.loadingGettingSelf && this.state.loading)
-        {
-           this.setState({loading:false, error:false});
-        }
-    }
     render(){
-        const CONTENT = !this.state.loading ? 
+        const CONTENT = !this.props.loadingGettingSelf ? 
         (<View style={{flex:1}}>
             <View style={{flex:150, width:"100%"}}> 
                 <CameraOrPictureSelect/>     
@@ -48,6 +33,9 @@ class EditProfile extends Component
             <View style={{flex:65, width:"100%"}}>      
                 <Footer/>
             </View>
+        </View>) : this.props.errorGettingSelf!=="" && this.props.errorGettingSelf!==undefined ?(
+        <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+        <FHError errorText={this.props.errorGettingSelf}/>
         </View>) : (<View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
         <Spinner style={{alignSelf:'center'}} color={colors.accentColor}/>
         <Text>در حال بارگزاری اطلاعات</Text>

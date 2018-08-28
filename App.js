@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import { StyleProvider } from 'native-base';
+import { StyleProvider, Root } from 'native-base';
 import getTheme from './native-base-theme/components';
 import akaskhune from './native-base-theme/variables/akaskhune';
 import Router from './Router';
@@ -18,11 +18,13 @@ export default class App extends Component {
   render() {
     return (
       <StyleProvider  style={getTheme(akaskhune)}>
+      <Root>
       <View style={{flex:1}}>
         <Router  ref={navigatorRef => {
           setTopLevelNavigator(navigatorRef);
         }}/>
       </View>
+      </Root>
       </StyleProvider>
     );
   }

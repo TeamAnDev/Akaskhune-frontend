@@ -31,7 +31,7 @@ import { Container , Root, Toast} from 'native-base';
     {
         
         return(
-            <Root>
+            
             <KeyboardAwareScrollView contentContainerStyle={{flexGrow:1}}>
             <View style={{flex:1}}>
             <Container>
@@ -53,7 +53,7 @@ import { Container , Root, Toast} from 'native-base';
             </Container>
             </View>
             </KeyboardAwareScrollView>
-            </Root>
+         
        
         )
     }

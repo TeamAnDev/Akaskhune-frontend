@@ -11,7 +11,7 @@ const BUTTONS = [
 var CANCEL_INDEX = 2;
 const FHPhotoPicker = (props) => {
     return (<View style={{flex:1, alignItems: 'center'}}>
-    <Root>
+   
     <ImageBackground style={styles.cameraView} source={{uri : props.avatarSource}}  imageStyle={styles.imageView} >
         <Icon name="camera" type="SimpleLineIcons"  style={{color : colors.blackGrey, fontSize:40}} 
         onPress={() =>
@@ -32,7 +32,7 @@ const FHPhotoPicker = (props) => {
         />
         
     </ImageBackground>
-    </Root>
+    
 </View>);
 }
 
