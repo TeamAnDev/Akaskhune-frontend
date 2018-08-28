@@ -60,7 +60,7 @@ class  FHPhotoPicker extends Component{
         }
         return (<View style={{flex:1, alignItems: 'center'}}>
    
-        <ImageBackground style={styles.cameraView} source={{uri : (this.props.success ?  this.props.avatarSource : "")}}  imageStyle={styles.imageView} >
+        <ImageBackground style={styles.cameraView} source={{uri : (this.props.success ?  this.props.avatarSource : this.props.initialAvatar)}}  imageStyle={styles.imageView} >
           {ELEMENT}
         </ImageBackground>
         

@@ -16,7 +16,7 @@ export default class CameraOrPictureSelect extends Component{
 
         <View style={{flex:1, alignItems: 'center'}}>
         <View style={styles.cameraView}>
-            <FHPhotoPicker/>
+            <FHPhotoPicker initialAvatar = ""/>
         </View>
         </View>)
     }
