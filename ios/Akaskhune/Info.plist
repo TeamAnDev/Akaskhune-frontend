@@ -57,6 +57,8 @@
 	<string>camera</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>video</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>add photo</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>
