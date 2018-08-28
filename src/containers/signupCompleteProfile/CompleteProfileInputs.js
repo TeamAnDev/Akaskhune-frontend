@@ -9,7 +9,8 @@ import FHPasswordInput from '../../components/FHPasswordInput';
 import FHTextarea from '../../components/FHTextArea';
 import {changeBio, changeUsername, chnageNameAndFamily} from '../../actions/completeProfile/CompleteProfileFormActions';
 import {completeProfile} from '../../actions/completeProfile/CompleteProfileRequest';
-import {Toast} from 'native-base';
+import showError from '../../components/Toasts/showError';
+
 
 class CompleteProfileInputs extends Component
 {
@@ -21,24 +22,7 @@ class CompleteProfileInputs extends Component
     componentDidUpdate() {
         if(this.props.error !== undefined && this.props.error !== "")
         {
-            Toast.show({
-                text: this.props.error,
-                buttonText: "Ok",
-                duration:300000,
-                type:"danger",
-                buttonTextStyle: { color: "#008000" },
-                buttonStyle: { backgroundColor: "#5cb85c" },
-              });
-        } else if(this.props.camError !== undefined && this.props.camError !== "")
-        {
-            Toast.show({
-                text: this.props.camError,
-                buttonText: "Ok",
-                type:"danger",
-                duration:300000,
-                buttonTextStyle: { color: "#008000" },
-                buttonStyle: { backgroundColor: "#5cb85c" }
-              });
+           showError(this.props.error, "باشه");
         } 
     }
     render()
@@ -51,7 +35,7 @@ class CompleteProfileInputs extends Component
                 <FHInput text="ایمیل" value={this.props.email} disabled={true}/>
                 <FHTextarea text="درباره خودتون بگید" onTextChange = {this.props.changeBio}/>
                 <FHButton title="تکمیل اطلاعات" 
-                onPress={ () => this.props.completeProfile(this.props.username, this.props.nameAndFamily , this.props.bio, "this.props.avatar")} 
+                onPress={ () => this.props.completeProfile(this.props.username, this.props.nameAndFamily , this.props.bio, this.props.avatar)} 
                         disabled={!this.props.usernameValidation}
                         loading={this.props.loading}/>
             </View>
@@ -69,7 +53,7 @@ const mapStateToProps = state => {
         loading : state.completeProfileApp.completeProfileRequestReducer.loading,
         completeProfileSucces : state.completeProfileApp.completeProfileRequestReducer.completeProfileSucces,
         error : state.completeProfileApp.completeProfileRequestReducer.err,
-        camError : state.completeProfileApp.completeProfileReducer.err,
+        avatar : state.fileApp.fileReducer.url
 
 
 })};

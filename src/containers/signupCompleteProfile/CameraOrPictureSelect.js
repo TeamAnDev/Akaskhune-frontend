@@ -17,10 +17,7 @@ class CameraOrPictureSelect extends Component{
 
         <View style={{flex:1, alignItems: 'center'}}>
         <View style={styles.cameraView}>
-            <FHPhotoPicker
-            pickPhoto={this.props.pickPhoto}
-            takePhoto={this.props.takePhoto} 
-            avatarSource={this.props.avatarSource}/>
+            <FHPhotoPicker/>
         </View>
         </View>)
     }

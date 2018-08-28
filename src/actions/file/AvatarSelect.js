@@ -1,6 +1,11 @@
 import ImagePicker from 'react-native-image-crop-picker';
-import {uploadFile} from '../../actions/file/fileUploadReq';
-export const CP_PHOTO_PICKER_SELECTED = "CP_PHOTO_PICKER_SELECTED";
+import {uploadFile} from './fileUploadReq';
+export const PHOTO_PICKER_PEPARE = "PHOTO_PICKER_PREPARE";
+export function pickerPrepare(){
+    return {
+        type : PHOTO_PICKER_PEPARE,
+    }
+}
 let options = {
     title: 'عکس پروفایل را انتخاب کنید',
     storageOptions: {
@@ -13,11 +18,10 @@ export function pickPhoto(){
         ImagePicker.openPicker({
             width: 300,
             height: 300,
-            cropping: true
+            cropping: true,
           }).then(image => {
-            // console.warn(image);
-            let url = dispatch(uploadFile(image.path));
-            dispatch(setAvatar(url, path));
+            dispatch(uploadFile(image.path));
+            dispatch(setAvatar(image.path));
           }).catch(err => {
             console.warn(err);
             dispatch(setError(err.error));
@@ -31,28 +35,26 @@ export function takePhoto(){
             height: 300,
             cropping: true
           }).then(image => {
-            // console.warn(image);
-            let url = dispatch(uploadFile(image.path));
-            dispatch(setAvatar(url, path));
+            dispatch(uploadFile(image.path));
+            dispatch(setAvatar(image.path));
           }).catch(err => {
             console.warn(err);
             dispatch(setError(err.error));
           });
      }
 }
-export const CP_ERROR = 'CP_ERROR';
-export const CP_AVATAR_SOURCE_SELECTED = "CP_AVATAR_SOURCE_SELECTED";
+export const PP_ERROR = 'PP_ERROR';
+export const PP_AVATAR_SOURCE_SELECTED = "PP_AVATAR_SOURCE_SELECTED";
 export function setError(error)
 {
     return {
-        type : CP_ERROR,
+        type : PP_ERROR,
         error
     }
 }
-export function setAvatar(url, avatarSource){
+export function setAvatar(avatarSource){
     return {
-        type : CP_AVATAR_SOURCE_SELECTED,
-        url,
+        type : PP_AVATAR_SOURCE_SELECTED,
         avatarSource
     }
 }
