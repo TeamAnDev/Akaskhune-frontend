@@ -21,10 +21,12 @@ function setInfoSucces(){
     })
 }
 
-export function editUserInfo(fullname, bio){
+export function editUserInfo(fullname, bio, avatar){
     return async (dispatch) => {
         dispatch(setInfoStarted());
-        await editUserInfoAxiosRequest(fullname, bio).then(function(response) {
+        await editUserInfoAxiosRequest(fullname, bio, avatar).then(function(response) {
+            
+            console.warn(response)
             dispatch(setInfoSucces());
         }).catch(function(error){
             dispatch(setInfoError(error.response.data.error));

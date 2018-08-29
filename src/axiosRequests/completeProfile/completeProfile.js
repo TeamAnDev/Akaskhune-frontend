@@ -4,14 +4,16 @@ import {axios} from 'axios';
 import {rest} from '../../config/urls';
 
 
-export default function completeProfileAxiosRequest(username, fullname, bio, avatar)
+export default function completeProfileAxiosRequest(username, fullname, bio, avatar, password, email)
 {
     let data = {
         username,
         fullname, 
         bio, 
-        avatar
+        avatar,
+        password,
+        email
     }
-    return axiosInstance.put(rest.completeProfile, data);
+    return axiosInstance.post(rest.completeProfile, data);
 }
     

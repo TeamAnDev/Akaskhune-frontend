@@ -4,6 +4,7 @@ import {View, Dimensions} from 'react-native';
 import FHHeader from '../../../components/FHHeader';
 import FHButton from '../../../components/FHButton';
 import FHPasswordInput from '../../../components/FHPasswordInput';
+import showSuccess from '../../../components/Toasts/showSucces';
 import { Icon , Toast} from 'native-base';
 import FHError from '../../../components/FHError';
 import {connect} from 'react-redux';
@@ -15,23 +16,20 @@ class ChangePassword extends Component {
 
     componentDidUpdate() {
         if(this.props.success == true) {
-            Toast.show({
-                text : this.props.toastMessage,
-                buttonText : 'Okay',
-                duration : 2000
-            });
+           showSuccess("رمز با موفقیت تغییر کرد", "باشه" , 4000);
+
         }
     }
 
     render() {
         return (
 
-            <KeyboardAwareScrollView keyboardShouldPersistTaps="always" style={{flexGrow:1}}>
+            <KeyboardAwareScrollView keyboardShouldPersistTaps="always" style={{flexGrow:1, backgroundColor:'white'}}>
                 <View style={{flex:1, backgroundColor:'white'}}>
                     <FHHeader navigation={this.props.navigation} title="تغییر رمز عبور"/>
                     <View style={{flex:2, width:'100%'}}>
                         <View style={{alignItems:'center', paddingTop:Dimensions.get("window").height * 60 / 570, marginBottom: Dimensions.get("window").height * 20 / 570}}>
-                            <Icon type='MaterialIcons' name="check-circle"/>
+                            <Icon type='Feather' name="shield"/>
                         </View>
                         <View style={{flex:5, width:'100%'}}>
                             <FHPasswordInput onTextChange = {this.props.changeOldPassword}

@@ -28,9 +28,9 @@ export function login(email, password) {
     return async (dispatch) => {
         dispatch(loginReqSent());
         await requestLogin(email, password)
-        .then (function(response){
-            storeToken(response.data.access);
-            storeRefresh(response.data.refresh);
+        .then (async function(response){
+            await storeToken(response.data.token.access);
+            await storeRefresh(response.data.token.refresh);
             dispatch(loginSuccess());
         }).catch (function(error) {
             console.warn(error.response.data.error);

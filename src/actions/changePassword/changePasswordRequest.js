@@ -30,7 +30,8 @@ export function changePassword(oldPassword, newPassword) {
         await changePasswordAxiosReq(oldPassword, newPassword).then(function(response){
             dispatch(changePasswordSuccess(response.data.message));
         }).catch(function(error) {
-            dispatch(changePasswordError(error.response.data.message));
+            console.warn(error);
+            dispatch(changePasswordError(error.response.data.error));
         })
     }
 }

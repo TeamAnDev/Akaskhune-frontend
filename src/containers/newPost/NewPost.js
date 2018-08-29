@@ -1,9 +1,12 @@
 import React from 'react';
 import {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Dimensions ,Text} from 'react-native';
 import FHHeader from '../../components/FHHeader'
+import FHButton from '../../components/FHButton'
 import CameraPriview from './CameraPreview';
+import GalleryPreview from './GalleryPreview';
 import colors from '../../config/colors';
+const bottomOfButton = Dimensions.get("window").height * 3 / 100;
 export default class NewPost extends Component{
     constructor(props){
         super(props);
@@ -18,6 +21,10 @@ export default class NewPost extends Component{
                         <CameraPriview/>
                     </View>
                     <View style={{flex:310}} >
+                        <GalleryPreview/>
+                    </View>
+                    <View style={{width:"100%", position:"absolute", bottom:bottomOfButton}}>
+                        <FHButton title="مرحله بعدی" onPress={()=>{}} disabled = {true}/>
                     </View>
                 </View>
             </View>

@@ -2,7 +2,7 @@ import completeProfileAxiosRequest from '../../axiosRequests/completeProfile/com
 import axios from 'axios';
 import {axiosInstance} from '../../config/urls';
 import {rest} from '../../config/urls';
-import { storeToken , retrieveToken} from '../../config/token';
+import { storeToken , storeRefresh } from '../../config/token';
 export const CP_REQUEST = "CP_REQUEST";
 
 function completeProfileRequestSent ()
@@ -28,10 +28,12 @@ function completeProfileError (error)
         error
     }
 }
-export function completeProfile(username, fullname, bio, avatar){
+export function completeProfile(username, fullname, bio, avatar, password, email){
     return async (dispatch) => {
         dispatch(completeProfileRequestSent());
-        await completeProfileAxiosRequest(username, fullname, bio, avatar).then(function(response) {
+        await completeProfileAxiosRequest(username, fullname, bio, avatar, password, email).then(function(response) {
+            storeToken(response.data.token.access);
+            storeRefresh(response.data.token.refresh);
             dispatch(completeProfileSucces());
         }).catch(function(error){
             

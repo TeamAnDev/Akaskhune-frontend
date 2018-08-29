@@ -5,7 +5,7 @@ import styles from './styles';
 import FHRow from '../../components/FHRow';
 import {requestImages} from '../../actions/profile/profileRequest'
 import {connect} from 'react-redux';
-import {Spinner} from 'native-base';
+import {Spinner, Icon} from 'native-base';
 import colors from '../../config/colors';
 
 
@@ -21,16 +21,36 @@ class Images extends Component {
         if(this.props.success) {
             const ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2});
             let data = [];
-            for (let i = 0; i < this.props.images.length; i+=2) {
-                data[i/2] = [{uri:this.props.images[i]}, {uri:this.props.images[i+1]}];
+            if(this.props.images.length === 0)
+            {
+                return (
+                    <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+                        <Icon type="Feather" name="close"/>
+                         <Text>هیچ پستی وجود ندارد</Text>
+                    </View>
+                )
             }
-            this.dataSource = ds.cloneWithRows(data);
-            return (
-                <ListView 
-                    dataSource={this.dataSource}
-                    renderRow={(rowData) => <FHRow leftImage={rowData[0]} rightImage={rowData[1]}/>}
-                />
-            );
+            else 
+            {
+                
+                for (let i = 0; i < this.props.images.length; i+=2) {
+                    let x = "" ;
+                    if(this.props.images[i+1] !== undefined) {
+                        x =  this.props.images[i+1].photo_url
+                    } ;
+                    
+                    data[i/2] = [{uri:this.props.images[i].photo_url}, {uri: x}];
+                }
+                this.dataSource = ds.cloneWithRows(data);
+                return ( 
+                    <ListView 
+                        dataSource={this.dataSource}
+                        renderRow={(rowData) => <FHRow leftImage={rowData[0]} rightImage={rowData[1]}/>}
+                    />
+                );
+            }
+            
+            
         }
         else if(this.props.loading){
             return (

@@ -25,12 +25,10 @@ function signupError (error)
         error
     }
 }
-export function signup(email, password){
+export function signup(email){
     return async (dispatch) => {
         dispatch(signupRequestSent());
-        await signupAxiosRequest(email, password).then(function(response) {
-            storeToken(response.data.access);
-            storeRefresh(response.data.refresh);
+        await signupAxiosRequest(email).then(function(response) {
             dispatch(signupSucces());
         }).catch(function(error){
             dispatch(signupError(error.response.data.error));

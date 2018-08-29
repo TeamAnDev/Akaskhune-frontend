@@ -2,9 +2,10 @@ import {axiosInstance, rest} from '../../config/urls';
 
 export default function changePasswordAxiosReq(oldPassword, newPassword) {
     let data = {
-        oldPassword,
-        newPassword
+        pass_old : oldPassword,
+        password : newPassword
+        
     }
 
-    return axiosInstance.post(rest.changePassword, data);
+    return axiosInstance.put(rest.changePassword, data);
 }

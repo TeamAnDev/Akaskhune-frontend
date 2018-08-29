@@ -2,9 +2,32 @@ import React from 'react';
 import {Component} from 'react';
 import {View} from 'react-native';
 import {CameraKitCamera} from 'react-native-camera-kit';
+import { PermissionsAndroid } from 'react-native';
+
+async function requestCameraPermission() {
+  try {
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.CAMERA,
+      {
+        'title': 'دسترسی به دوربین',
+        'message': 'برنامه‌ی عکاسخانه برای استفاده از دوربین به دسترسی دوربین نیاز دارد. ' +
+                   'لطفا اجازه‌ی استفاده از دوربین را بدهید.'
+      }
+    )
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      console.warn("You can use the camera")
+    } else {
+      console.warn("Camera permission denied")
+    }
+  } catch (err) {
+    console.warn(err)
+  }
+}
+
 export default class CameraPreview extends Component{
     constructor(props){
         super(props);
+        requestCameraPermission();
     }
     render()
     {
@@ -13,16 +36,12 @@ export default class CameraPreview extends Component{
                 <CameraKitCamera
                 ref={cam => this.camera = cam}
                 style={{
-                    width:"100%",
-                    height:"100%",
+                    flex:1,
                     backgroundColor: 'red'
                 }}
                 cameraOptions={{
-                    flashMode: 'auto',             // on/off/auto(default)
-                    focusMode: 'on',               // off/on(default)
-                    zoomMode: 'on',                // off/on(default)
-                    ratioOverlay:'3:4',            // optional, ratio overlay on the camera and crop the image seamlessly
-                    ratioOverlayColor: '#00000077' // optional
+                            // off/on(default)
+                     
                 }}
                 />
             </View>
