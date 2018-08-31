@@ -47,6 +47,15 @@ const styles = StyleSheet.create({
       height : cameraViewWidthAndHeight,
       borderRadius: cameraViewWidthAndHeight/2,
      
+  },
+  contactItem : {
+    flex:1,
+    padding:20,
+    alignItems:'center',
+    justifyContent:'space-between',
+    flexDirection:'row',
+    borderBottomWidth:1,
+    borderBottomColor:'black'
   }
 
   });

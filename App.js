@@ -14,18 +14,23 @@ import akaskhune from './native-base-theme/variables/akaskhune';
 import Router from './Router';
 import { setTopLevelNavigator} from './NavigationService';
 import EditProfile from './src/containers/setting/editProfile/EditProfile';
+import Sample from './sample';
+import InviteFriends from './src/containers/inviteFriends/inviteFriends';
+import Setting from './src/containers/setting/Setting';
+
 export default class App extends Component {
   render() {
     return (
-      <StyleProvider  style={getTheme(akaskhune)}>
-      <Root>
-      <View style={{flex:1}}>
-        <Router  ref={navigatorRef => {
-          setTopLevelNavigator(navigatorRef);
-        }}/>
-      </View>
-      </Root>
-      </StyleProvider>
+      // <StyleProvider  style={getTheme(akaskhune)}>
+      // <Root>
+      // <View style={{flex:1}}>
+      //   <Router  ref={navigatorRef => {
+      //     setTopLevelNavigator(navigatorRef);
+      //   }}/>
+      // </View>
+      // </Root>
+      // </StyleProvider>
+      <View style={{flex:1}}><InviteFriends/></View>
     );
   }
 }

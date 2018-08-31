@@ -15,6 +15,7 @@ const FHInput = (props) => {
             style={[styles.inputItem, {backgroundColor: props.disabled ? colors.grey : 'white'}]}>
             <Input placeholderTextColor={colors.blackGrey}  style={{textAlign:'right'}} placeholder={props.text} onChangeText={props.onTextChange} 
               value={props.value ? props.value : null} disabled={props.disabled ? props.disabled : null}/>
+            {props.icon}
          </Item>);
 }
 
