@@ -7,7 +7,7 @@ function fileReducer(state = {loading:false, success:false, errbool : false, err
         case(FILE_UPLOAD_PREPARE):
             return ({loading:false, success:false, errbool : false, error:"", url:""});
         case(FILE_UPLOADING):
-            return Object.assign({}, state, {loading:true});
+            return Object.assign({}, state, {loading:true, errbool:false, success:false});
         case(FILE_UPLOAD_ERR):
             return Object.assign({}, state, {loading:false, errbool:true, error:action.error});
         case(FILE_UPLOAD_SUCCES):

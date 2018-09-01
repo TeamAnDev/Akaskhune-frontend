@@ -7,6 +7,7 @@ import FHInput from '../../../components/FHInput';
 import FHTextarea from '../../../components/FHTextArea';
 import {Toast} from 'native-base';
 import {setPrevDetails, changeBio, changeFullname} from '../../../actions/userInfo/editUserInfoRequest';
+import showError from '../../../components/Toasts/showError';
 
 class EditProfileInputs extends Component
 {
@@ -14,29 +15,6 @@ class EditProfileInputs extends Component
     {
         super(props);
         this.props.setPrevDetails(this.props.prevFullname, this.props.prevBio);
-    }
-    componentDidUpdate() {
-        if(this.props.error !== undefined && this.props.error !== "")
-        {
-            Toast.show({
-                text: this.props.error,
-                buttonText: "Ok",
-                duration:300000,
-                type:"danger",
-                buttonTextStyle: { color: "#008000" },
-                buttonStyle: { backgroundColor: "#5cb85c" },
-              });
-        } else if(this.props.camError !== undefined && this.props.camError !== "")
-        {
-            Toast.show({
-                text: this.props.error,
-                buttonText: "Ok",
-                type:"danger",
-                duration:300000,
-                buttonTextStyle: { color: "#008000" },
-                buttonStyle: { backgroundColor: "#5cb85c" }
-              });
-        } 
     }
     render()
     { 

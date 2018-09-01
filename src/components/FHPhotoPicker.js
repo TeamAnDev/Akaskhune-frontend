@@ -23,12 +23,13 @@ class  FHPhotoPicker extends Component{
         this.props.preparePicker();
         this.props.prepareUpload();
     }
-    componentDidUpdate(){
-        if(this.props.errbool)
+    componentWillReceiveProps(nextProps)
+    {
+        if(this.props.errbool !== nextProps.errbool && nextProps.errbool)
         {
             showError(this.props.error, "باشه" );
         }
-        else if(this.props.success)
+        else if(this.props.success !== nextProps.success && nextProps.success)
         {
             showSuccess("تصویر با موفقیت آپلود شد.", "باشه");
         }

@@ -15,15 +15,17 @@ class Footer extends Component
     {
         super(props)
     }
-    componentDidUpdate() {
-        if(this.props.errbool)
+    componentWillReceiveProps(nextProps)
+    {
+        if(this.props.errbool !== nextProps.errbool && nextProps.errbool)
         {
-           showError(this.props.error, "باشه", 30000)
-        } else if(this.props.succes)
-        {
-           showSuccess("تغییرات با موفقیت صورت گرفت", "بازگشت", 15000, goBack);  
+            showError(this.props.error, "باشه", 30000)
         }
-      }
+        if(this.props.succes !== nextProps.succes && nextProps.succes)
+        {
+            showSuccess("تغییرات با موفقیت صورت گرفت", "بازگشت", 15000, goBack);  
+        }
+    }
     render()
     {
         console.warn(this.props.avatar);

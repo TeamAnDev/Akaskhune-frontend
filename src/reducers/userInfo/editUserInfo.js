@@ -12,7 +12,7 @@ function editUserInfoReducer(
         case(FULLNAME_CHANGED):
             return Object.assign({}, state, {fullname : action.fullname});
         case(SETTING_SELF_INFO_STARTED):
-            return Object.assign({}, state, {loading:true, errbool:false});
+            return Object.assign({}, state, {loading:true, errbool:false, succes:false});
         case(SETTING_SELF_INFO_ERR):
             return Object.assign({}, state, {error:action.error, errbool:true, loading:false});
         case(SETTING_SELF_INFO_SUCCES):

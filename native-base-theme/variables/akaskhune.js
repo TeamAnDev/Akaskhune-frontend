@@ -247,7 +247,7 @@ export default {
 
   // Title
   titleFontfamily: "IranianSans",
-  titleFontSize: 17,
+  titleFontSize: 16,
   subTitleFontSize: 13,
   subtitleColor: "#FFF",
   titleFontColor: "#FFF",

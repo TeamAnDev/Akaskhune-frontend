@@ -19,12 +19,10 @@ import { Container , Root, Toast} from 'native-base';
        
     }
     
-    
-    componentDidUpdate = () => 
+    componentWillReceiveProps(nextProps)
     {
-        console.warn(this.props.succes)
-        if(this.props.succes){
-            this.props.navigation.navigate('Profile');
+        if(this.props.succes !== nextProps.succes && nextProps.succes){
+            this.props.navigation.navigate('BaseBottomRouter');
         }
     }
     render()
