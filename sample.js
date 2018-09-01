@@ -1,24 +1,45 @@
 import React, {Component} from 'react';
-import {ListView, Text} from 'react-native';
-import FHRow from './src/components/FHRow';
+import {SectionList, Text, PermissionsAndroid, View} from 'react-native';
+import Contacts from 'react-native-contacts';
 
 
 export default class Sample extends Component {
 
     constructor(props) {
         super(props);
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        this.state = {
-          dataSource: ds.cloneWithRows([["item1", "item2"],["item3", "item4"],["item5", "item6"]])  
-        };
+        this.emails = [];
     }
 
     render() {
+        // PermissionsAndroid.request(
+        //     PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
+        //         'title': 'shit',
+        //         'message': 'shit'
+        //     }
+        // ).then(() => {
+        //     Contacts.getAll((err, contacts) => {
+        //         if(err === 'denied'){
+        //             console.warn(err);
+        //         } else {
+        //             console.warn(contacts[0]);
+        //         }
+        //     })
+        // })
         return (
-            <ListView
-                dataSource={this.state.dataSource}
-                renderRow={(rowData) => <FHRow leftText={rowData[0]} rightText={rowData[1]}/>}
-            />    
+            <View style={{flex:1}}>
+                <SectionList
+                renderItem={({item, index, section}) => <Text key={index}>{item}</Text>}
+                renderSectionHeader={({section: {title}}) => (
+                <Text style={{fontWeight: 'bold'}}>{title}</Text>
+                )}
+                sections={[
+                {title: 'Title1', data: ['item1', 'item2']},
+                {title: 'Title2', data: ['item3', 'item4']},
+                {title: 'Title3', data: ['item5', 'item6']},
+                ]}
+                keyExtractor={(item, index) => item + index}
+            />
+          </View>
         );
     }
 }

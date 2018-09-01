@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -62,6 +61,7 @@
 		EC9A3C2014F34E0AAE0524C9 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F46914A2110A46B085E2C871 /* Ionicons.ttf */; };
 		F8060B3B3C48485B9006A163 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D67CE86FF4C84138AD239A74 /* EvilIcons.ttf */; };
 		FDBDBE129D8C4D76844CF9F9 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43BF777C41E64E3585F715E3 /* libRNImagePicker.a */; };
+		0FD6529C67A1456EA66D7D6D /* libRCTContacts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFC447E73FD47F28A38A51C /* libRCTContacts.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -453,6 +453,8 @@
 		D67CE86FF4C84138AD239A74 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		F46914A2110A46B085E2C871 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		F64CEA24DF3846F58D7C77BC /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		D6404DD545614DBCB67136B4 /* RCTContacts.xcodeproj */ = {isa = PBXFileReference; name = "RCTContacts.xcodeproj"; path = "../node_modules/react-native-contacts/ios/RCTContacts.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		ADFC447E73FD47F28A38A51C /* libRCTContacts.a */ = {isa = PBXFileReference; name = "libRCTContacts.a"; path = "libRCTContacts.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -489,6 +491,7 @@
 				CBC3639E212E06EA00168864 /* QBImagePicker.framework in Frameworks */,
 				C02B17871A0A467EB8E31B63 /* libRNViewOverflow.a in Frameworks */,
 				3CE9B5A275294DD480465228 /* libRNCamera.a in Frameworks */,
+				0FD6529C67A1456EA66D7D6D /* libRCTContacts.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,6 +686,7 @@
 				B494AE3F1648495086ACD811 /* BVLinearGradient.xcodeproj */,
 				88E59DB0AD464C5BBC38F0EC /* RNViewOverflow.xcodeproj */,
 				34956D76DADF4F32AF2310F4 /* RNCamera.xcodeproj */,
+				D6404DD545614DBCB67136B4 /* RCTContacts.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1469,12 +1473,14 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-view-overflow/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-contacts\ios\RCTContacts",
 				);
 				INFOPLIST_FILE = AkaskhuneTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1502,12 +1508,14 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-view-overflow/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-contacts\ios\RCTContacts",
 				);
 				INFOPLIST_FILE = AkaskhuneTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1536,6 +1544,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-view-overflow/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-contacts\ios\RCTContacts",
 				);
 				INFOPLIST_FILE = Akaskhune/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1562,6 +1571,7 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-view-overflow/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-contacts\ios\RCTContacts",
 				);
 				INFOPLIST_FILE = Akaskhune/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1595,11 +1605,13 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-view-overflow/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-contacts\ios\RCTContacts",
 				);
 				INFOPLIST_FILE = "Akaskhune-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1637,11 +1649,13 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-view-overflow/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-contacts\ios\RCTContacts",
 				);
 				INFOPLIST_FILE = "Akaskhune-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1678,11 +1692,13 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-view-overflow/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-contacts\ios\RCTContacts",
 				);
 				INFOPLIST_FILE = "Akaskhune-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1719,11 +1735,13 @@
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 					"$(SRCROOT)/../node_modules/react-native-view-overflow/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-contacts\ios\RCTContacts",
 				);
 				INFOPLIST_FILE = "Akaskhune-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
