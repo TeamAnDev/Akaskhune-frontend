@@ -21,16 +21,16 @@ import Setting from './src/containers/setting/Setting';
 export default class App extends Component {
   render() {
     return (
-      // <StyleProvider  style={getTheme(akaskhune)}>
-      // <Root>
-      // <View style={{flex:1}}>
-      //   <Router  ref={navigatorRef => {
-      //     setTopLevelNavigator(navigatorRef);
-      //   }}/>
-      // </View>
-      // </Root>
-      // </StyleProvider>
-      <View style={{flex:1}}><InviteFriends/></View>
+      <StyleProvider  style={getTheme(akaskhune)}>
+      <Root>
+      <View style={{flex:1}}>
+        <Router  ref={navigatorRef => {
+          setTopLevelNavigator(navigatorRef);
+        }}/>
+      </View>
+      </Root>
+      </StyleProvider>
+      
     );
   }
 }

@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -63,6 +62,7 @@
 		EC9A3C2014F34E0AAE0524C9 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F46914A2110A46B085E2C871 /* Ionicons.ttf */; };
 		F8060B3B3C48485B9006A163 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D67CE86FF4C84138AD239A74 /* EvilIcons.ttf */; };
 		FDBDBE129D8C4D76844CF9F9 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43BF777C41E64E3585F715E3 /* libRNImagePicker.a */; };
+		2E1972E222B44DA38CC3DC4D /* IranSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B1EC433F7D7141CCAB8D325A /* IranSans.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -470,6 +470,7 @@
 		D67CE86FF4C84138AD239A74 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		F46914A2110A46B085E2C871 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		F64CEA24DF3846F58D7C77BC /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		B1EC433F7D7141CCAB8D325A /* IranSans.ttf */ = {isa = PBXFileReference; name = "IranSans.ttf"; path = "../assets/fonts/IranSans.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -845,6 +846,7 @@
 				D3779EAEA80248DB9924D191 /* rubicon-icon-font.ttf */,
 				0ACD849548CE48C4866CE5E3 /* SimpleLineIcons.ttf */,
 				8A1061758F1D42F9A6B155FE /* Zocial.ttf */,
+				B1EC433F7D7141CCAB8D325A /* IranSans.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1398,6 +1400,7 @@
 				6C65DC6CA8A04547B886061A /* rubicon-icon-font.ttf in Resources */,
 				17BF70840F574344ACAD6710 /* SimpleLineIcons.ttf in Resources */,
 				D232C2CD257A4DDE9D37A9DF /* Zocial.ttf in Resources */,
+				2E1972E222B44DA38CC3DC4D /* IranSans.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
