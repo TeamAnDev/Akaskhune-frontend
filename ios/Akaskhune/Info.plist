@@ -39,7 +39,7 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -59,6 +59,8 @@
 	<string>video</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>add photo</string>
+	<key>NSContactsUsageDescription</key>
+	<string>adding friends from contacts</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>
