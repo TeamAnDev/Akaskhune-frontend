@@ -36,6 +36,7 @@ public class MainApplication extends Application implements ReactApplication {
             new PickerPackage(),
             new ImagePickerPackage(),
             new LinearGradientPackage()
+            // new RNCameraKitPackage()
       );
     }
 
