@@ -18,6 +18,7 @@ class Images extends Component {
     }
 
     render() {
+        
         if(this.props.success) {
             const ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2});
             let data = [];
@@ -26,33 +27,30 @@ class Images extends Component {
                 return (
                     <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
                         <Icon type="Feather" name="close"/>
-                         <Text>هیچ پستی وجود ندارد</Text>
+                        <Text>هیچ پستی وجود ندارد</Text>
                     </View>
                 )
             }
-            else 
-            {
-                
+            else {
                 for (let i = 0; i < this.props.images.length; i+=2) {
-                    let x = "" ;
+                    let rightImage = "" ;
                     if(this.props.images[i+1] !== undefined) {
-                        x =  this.props.images[i+1].photo_url
+                        rightImage =  this.props.images[i+1]
                     } ;
-                    
-                    data[i/2] = [{uri:this.props.images[i].photo_url}, {uri: x}];
+                    data[i/2] = [{uri:this.props.images[i]}, {uri: rightImage}];
                 }
                 this.dataSource = ds.cloneWithRows(data);
                 return ( 
                     <ListView 
                         dataSource={this.dataSource}
                         renderRow={(rowData) => <FHRow leftImage={rowData[0]} rightImage={rowData[1]}/>}
+                        onEndReachedThreshold={10}
+                        onEndReached={() => console.warn("end")}
                     />
                 );
             }
-            
-            
-        }
-        else if(this.props.loading){
+        } 
+        else if(this.props.loading) {
             return (
                 <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
                     <Spinner style={{alignSelf:'center'}} color={colors.accentColor}/>

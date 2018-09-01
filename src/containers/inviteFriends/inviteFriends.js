@@ -25,7 +25,7 @@ class InviteFriends extends Component {
             } else {
                 for (let i = 0; i < contacts.length; i++) {
                     if(contacts[i].emailAddresses.length !== 0) {
-                        data.push({name: contacts[i].givenName + " " + contacts[i].familyName, phoneNumber:contacts[i].phoneNumbers[0].number});
+                        data.push({name: contacts[i].givenName + " " + contacts[i].familyName, email:contacts[i].emailAddresses[0].email});
                     }        
                 }
             }
@@ -40,12 +40,12 @@ class InviteFriends extends Component {
         return (
             <View style={{flex:1}}>
                 <FHHeader navigation={this.props.navigation} title="دعوت از دوستان"/> 
-                <View style={{flex:1}}>
-                    <FHInput icon={<Icon type="Feather" name="search"/>} text="جستجوی مخاطب"/>
+                <View style={{flex:1, justifyContent:'center'}}>
+                    <FHInput width={'95%'} icon={<Icon type="Feather" name="search"/>} text="جستجوی مخاطب"/>
                     <ListView 
                         dataSource = {this.dataSource}
                         renderHeader = {() => <FHContactsHeader/>}
-                        renderRow = {(rowData) => <FHContactItem name={rowData.name} phoneNumber={rowData.phoneNumber}/>}
+                        renderRow = {(rowData) => <FHContactItem name={rowData.name} email={rowData.email}/>}
                     />
                 </View>
             </View>
