@@ -32,7 +32,7 @@ export function uploadFile(filePath){
     return async (dispatch) => {
         dispatch(filUploading());
         await uploadFileAxios(filePath).then(function(response) {
-            dispatch(fileUploadSuccess("response.data.url"));
+            dispatch(fileUploadSuccess(response.data.url));
         }).catch(function(error){
             dispatch(fileUploadErr());
         })

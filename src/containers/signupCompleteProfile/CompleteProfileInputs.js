@@ -35,7 +35,7 @@ class CompleteProfileInputs extends Component
                 <FHInput text="ایمیل" value={this.props.email} disabled={true}/>
                 <FHTextarea text="درباره خودتون بگید" onTextChange = {this.props.changeBio}/>
                 <FHButton title="تکمیل اطلاعات" 
-                onPress={ () => this.props.completeProfile(this.props.username, this.props.nameAndFamily , this.props.bio, this.props.avatar)} 
+                onPress={ () => this.props.completeProfile(this.props.username, this.props.nameAndFamily , this.props.bio, this.props.avatar, this.props.password, this.props.email)} 
                         disabled={!this.props.usernameValidation}
                         loading={this.props.loading}/>
             </View>
@@ -53,7 +53,8 @@ const mapStateToProps = state => {
         loading : state.completeProfileApp.completeProfileRequestReducer.loading,
         completeProfileSucces : state.completeProfileApp.completeProfileRequestReducer.completeProfileSucces,
         error : state.completeProfileApp.completeProfileRequestReducer.err,
-        avatar : state.fileApp.fileReducer.url
+        avatar : state.fileApp.fileReducer.url,
+        password : state.signupApp.signupReducer.password
 
 
 })};
@@ -61,7 +62,7 @@ const mapDispatchToProps = dispatch => ({
     changeUsername : username => dispatch(changeUsername(username)),
     changeBio : bio => dispatch(changeBio(bio)),
     chnageNameAndFamily : nameAndFamily => dispatch(chnageNameAndFamily(nameAndFamily)),
-    completeProfile : (username, fullname, bio, avatar) => dispatch(completeProfile(username, fullname, bio, avatar)),
+    completeProfile : (username, fullname, bio, avatar, password, email) => dispatch(completeProfile(username, fullname, bio, avatar, password, email)),
 });
 
 export default connect(mapStateToProps, 

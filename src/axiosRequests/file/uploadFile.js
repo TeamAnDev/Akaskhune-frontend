@@ -1,7 +1,7 @@
 import {rest, axiosInstance} from '../../config/urls'
 function uploadFileAxios(filePath){
     let formData = new FormData();
-    formData.append('picture', {
+    formData.append('file', {
         uri: filePath,
         name: filePath,
         type: 'image/jpg'

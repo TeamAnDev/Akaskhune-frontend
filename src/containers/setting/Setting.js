@@ -3,7 +3,13 @@ import {Component} from 'react';
 import {View, Text} from 'react-native';
 import SettingList from './List';
 import FHHeader from '../../components/FHHeader'
-
+import {storeToken} from '../../config/token';
+import {navigate} from '../../../NavigationService';
+async function logout()
+{
+    await storeToken("");
+    navigate('Login');
+}
 const Setting = (props) => {
     return (
         <View style={{flex:1, backgroundColor:'white'}}>
@@ -15,7 +21,7 @@ const Setting = (props) => {
                 <SettingList navigation={props.navigation}/>
             </View>
             <View style={{flex:15, alignItems:'center', flexDirection:'column-reverse'}}>
-                <Text style={{margin:30}}>خروج از حساب</Text>
+                <Text onPress={logout} style={{margin:30}}>خروج از حساب</Text>
             </View>
         </View>
     )

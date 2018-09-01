@@ -26,10 +26,11 @@ class Footer extends Component
       }
     render()
     {
+        console.warn(this.props.avatar);
         return (
             <View style={{flex:1}}>
                 <FHButton title="دخیره‌ تغییرات" 
-                onPress={() => this.props.editUserInfo(this.props.fullname, this.props.bio)} 
+                onPress={() => this.props.editUserInfo(this.props.fullname, this.props.bio, this.props.avatar)} 
                         loading={this.props.loading}/>
             </View>
         );
@@ -42,9 +43,10 @@ const mapStateToProps = state => ({
     error : state.userInfoApp.editUserInfoReducer.error,
     loading : state.userInfoApp.editUserInfoReducer.loading,
     errbool : state.userInfoApp.editUserInfoReducer.errbool,
+    avatar : state.fileApp.fileReducer.url
  });
  const mapDispatchToProps = dispatch => ({
-     editUserInfo : (fullname, bio) => dispatch(editUserInfo(fullname, bio)),
+     editUserInfo : (fullname, bio, avatar) => dispatch(editUserInfo(fullname, bio, avatar)),
  });
  
  export default connect(mapStateToProps, 

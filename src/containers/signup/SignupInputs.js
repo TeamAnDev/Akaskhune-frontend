@@ -57,7 +57,7 @@ const mapDispatchToProps = dispatch => ({
     changeEmail: email => dispatch(changeEmail(email)),
     changePassword : password => dispatch(changePassword(password)),
     changeConfirmPassword : confirmPassword => dispatch(changePasswordConfirm(confirmPassword)),
-    signup : (email, password) => dispatch(signup(email, password)),
+    signup : (email) => dispatch(signup(email)),
 
 
 });

@@ -3,12 +3,11 @@ import {axiosInstance} from '../../config/urls';
 import {rest} from '../../config/urls';
 
 
-export default function signupAxiosRequest(email, password)
+export default function signupAxiosRequest(email)
 {
     let data = {
         email,
-        password
     }
-    return axiosInstance.post(rest.signup, data);
+    return axiosInstance.post(rest.signupValidation, data);
 }
     
