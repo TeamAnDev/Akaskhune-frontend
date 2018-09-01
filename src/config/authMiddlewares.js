@@ -2,16 +2,25 @@ import {axiosInstance, rest} from './urls';
 import {storeToken, retrieveToken} from '../config/token';
 let isRefreshing = false;
 let isGettingToken = false;
+//TokenSending
+axiosInstance.interceptors.request.use(async function (config) {
+  let token = await retrieveToken()
+  config.headers['Authorization'] = 'Bearer ' + token;
+  return config;
+}, function (error) {
+  // Do something with request error
+  return Promise.reject(error);
+});
+
+//Refreshing 
 async function refreshAccessToken() {
   const value = await AsyncStorage.getItem('refresh');
   if(value !== null)
   {
-    axiosInstance.post(rest.refresh, {refresh:value}).then(function(response){
-      // axiosInstance.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.token;
-      
+    axiosInstance.post(rest.refresh, {refresh:value}).then(async function(response){
+      await storeToken(response.data.token);
       return response.data.token;
-    }).catch(function(err){
-      
+    }).catch(function(err){   
     })
   }
 }
@@ -19,11 +28,11 @@ async function refreshAccessToken() {
 // axiosInstance.interceptors.response.use(response => {
 
 //   return response;
-// }, error => {
-//   console.warn('getting token');
+// },async function (error){
 //   const { config, response: { status } } = error;
 //   const originalRequest = config;
 //   if (status === 401) {
+//     await refreshAccessToken()
 //     if (!isRefreshing) {
 //       isRefreshing = true;
 //       refreshAccessToken()
@@ -33,16 +42,6 @@ async function refreshAccessToken() {
 //           storeToken(newToken);
 //         });
 //     }
-//   else if(status === 404){
-//     if(!isGettingToken) {
-     
-//       isGettingToken =  true;
-//       retrieveToken().then((token) => {
-//         originalRequest.headers['Authorization'] = 'Bearer ' + token;
-//         isGettingToken = false;} )
-//       .catch();
-//     }
-//   }
 //   return axiosInstance(originalRequest);
 //   } else {
 //     return Promise.reject(error);

@@ -32,7 +32,7 @@ export default {
   badgePadding: 0,
 
   // Button
-  btnFontFamily: "Roboto",
+  btnFontFamily: "IranianSans",
   btnDisabledBg: "#b5b5b5",
   buttonPadding: 6,
   get btnPrimaryBg() {
@@ -120,7 +120,7 @@ export default {
 
   // Font
   DefaultFontSize: 16,
-  fontFamily: "Roboto",
+  fontFamily: "IranianSans",
   fontSizeBase: 15,
   get fontSizeH1() {
     return this.fontSizeBase * 1.8;
@@ -246,9 +246,9 @@ export default {
   },
 
   // Title
-  titleFontfamily: "Roboto",
-  titleFontSize: 19,
-  subTitleFontSize: 14,
+  titleFontfamily: "IranianSans",
+  titleFontSize: 16,
+  subTitleFontSize: 13,
   subtitleColor: "#FFF",
   titleFontColor: "#FFF",
 

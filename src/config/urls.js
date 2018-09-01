@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {AsyncStorage} from 'react-native';
-import {retrieveToken} from '../config/token';
+import {retrieveToken, retrieveRefresh} from '../config/token';
 export const rest = {
     login : '/auth/login/',
     signupValidation : '/auth/signup/validation/',
@@ -15,10 +15,6 @@ export const rest = {
     
 }
 
-// axios.defaults.baseURL = 'http://192.168.11.214:8080';
-// // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-// axios.defaults.headers.post['Content-Type'] = 'application/json';
-
 export let axiosInstance = axios.create({
     baseURL: 'http://192.168.11.199:8085/',
     timeout:10000,
@@ -26,17 +22,36 @@ export let axiosInstance = axios.create({
         'Content-Type': 'application/json',
     }
 })
+
+//TokenSending
 axiosInstance.interceptors.request.use(async function (config) {
-    // Do something before request is sent
     let token = await retrieveToken()
     config.headers['Authorization'] = 'Bearer ' + token;
-    // .catch(function(error) {
-    //     console.warn("my error is");
-    //     console.warn(error);
-    // });
     return config;
   }, function (error) {
     // Do something with request error
     return Promise.reject(error);
   });
-// AsyncStorage.getItem('access').then((vlaue) => axiosInstance.defaults.headers.common['Authorization'] = 'Bearer ' +  vlaue)
+
+//Refreshing 
+async function refreshAccessToken() {
+    const value = await retrieveRefresh();
+    axiosInstance.post(rest.refresh, {refresh:value}).then(async function(response){
+        await storeToken(response.data.token);
+        return response.data.token;
+    }).catch(function(err){   
+    })
+}
+axiosInstance.interceptors.response.use(response => {
+  return response;
+},async function (error){
+  const { config, response: { status } } = error;
+  const originalRequest = config;
+  if (status === 401 ) {
+    let newToken = await refreshAccessToken();
+    originalRequest.headers['Authorization'] = 'Bearer ' + newToken;
+  return axiosInstance(originalRequest);
+  } else {
+    return Promise.reject(error);
+  }
+});

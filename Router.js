@@ -9,7 +9,6 @@ import Setting from './src/containers/setting/Setting';
 import ChangePassword from './src/containers/setting/changePassword/ChangePassword';
 import NewPost from './src/containers/newPost/NewPost';
 import InviteFriends from './src/containers/inviteFriends/inviteFriends';
-
 const Router = createStackNavigator({
     Signup,
     Login,

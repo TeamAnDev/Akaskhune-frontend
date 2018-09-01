@@ -14,10 +14,9 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 class ChangePassword extends Component {
 
-    componentDidUpdate() {
-        if(this.props.success == true) {
-           showSuccess("رمز با موفقیت تغییر کرد", "باشه" , 4000);
-
+    componentWillReceiveProps(nextProps){
+        if(this.props.success !== nextProps.success && nextProps.success) {
+            showSuccess("رمز با موفقیت تغییر کرد", "باشه" , 4000);
         }
     }
 

@@ -19,8 +19,9 @@ class CompleteProfileInputs extends Component
         super(props);
         
     }
-    componentDidUpdate() {
-        if(this.props.error !== undefined && this.props.error !== "")
+    componentWillReceiveProps(nextProps) 
+    {
+        if(this.props.error !== undefined && this.props.error !== "" && this.props.error !== nextProps.error)
         {
            showError(this.props.error, "باشه");
         } 

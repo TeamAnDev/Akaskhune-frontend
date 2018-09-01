@@ -59,6 +59,8 @@
 	<string>video</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>add photo</string>
+	<key>NSContactsUsageDescription</key>
+	<string>adding friends from contacts</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>
@@ -75,6 +77,7 @@
 		<string>rubicon-icon-font.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>IranSans.ttf</string>
 	</array>
 </dict>
 </plist>
