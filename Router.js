@@ -26,10 +26,10 @@ const App = createStackNavigator({
     ChangePassword,
     BottomTabRouter,
     EditProfile,
-    NewPost,
-    InviteFriends
+    InviteFriends,
+    NewPost
   }, {
-    initialRouteName: "BottomTabRouter",
+    initialRouteName: "InviteFriends",
     headerMode: "none"
   });
 

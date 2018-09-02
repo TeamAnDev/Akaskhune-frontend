@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     justifyContent:'space-between',
     flexDirection:'row',
     borderBottomWidth:1,
-    borderBottomColor:'black'
+    borderBottomColor:'#EFEFEF'
   }
 
   });

@@ -30,7 +30,6 @@ export default class App extends Component {
       </View>
       </Root>
       </StyleProvider>
-      
     );
   }
 }

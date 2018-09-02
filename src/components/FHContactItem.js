@@ -5,10 +5,10 @@ import styles from './styles';
 const FHContactItem = (props) => {
     return (
         <View style={styles.contactItem}>
-            <Text>دعوت</Text>
-            <View style={{flexDirection:'column'}}>
-                <Text>{props.name}</Text>
-                <Text>{props.phoneNumber}</Text>
+            <Text style={{fontWeight: 'bold'}}>دعوت</Text>
+            <View style={{flexDirection:'column', alignItems:'flex-end'}}>
+                <Text style={{fontWeight:'bold'}}>{props.name}</Text>
+                <Text>{props.email}</Text>
             </View>
         </View>
     )
