@@ -24,7 +24,13 @@ class InviteFriends extends Component {
         } else {
             for (let i = 0; i < contacts.length; i++) {
                 if(contacts[i].emailAddresses.length !== 0) {
-                    data.push({name: contacts[i].givenName + " " + contacts[i].familyName, email:contacts[i].emailAddresses[0].email});
+                    let contactItem = {name : "", email: contacts[i].emailAddresses[0].email}
+                    if(contacts[i].familyName !== null) {
+                        contactItem.name = contacts[i].givenName + " " + contacts[i].familyName;
+                    } else {
+                        contactItem.name = contacts[i].givenName; 
+                    }
+                    data.push(contactItem);
                 }        
             }
         }

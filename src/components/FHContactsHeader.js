@@ -5,7 +5,7 @@ import styles from './styles';
 const FHContactsHeader = (props) => {
     return (
         <View style={styles.contactItem}>
-            <Text>دعوت از همه</Text>
+            <Text style={{fontWeight:'bold'}}>دعوت از همه</Text>
             <Text>لیست مخاطبان</Text>
         </View>
     )
