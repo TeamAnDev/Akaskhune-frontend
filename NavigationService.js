@@ -1,13 +1,12 @@
 // NavigationService.js
 
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions ,StackActions } from 'react-navigation';
 import { retrieveToken } from './src/config/token';
 
 let _navigator;
 
 export function setTopLevelNavigator(navigatorRef) {
   _navigator = navigatorRef;
-  // console.warn(navigatorRef);
   navigateToBaseIfLogined();
 }
 async function navigateToBaseIfLogined()
@@ -19,12 +18,14 @@ async function navigateToBaseIfLogined()
   }
 }
 
+
 export function navigate(routeName, params) {
   _navigator.dispatch(
     NavigationActions.navigate({
       routeName,
       params,
     })
+    
   );
 
 }

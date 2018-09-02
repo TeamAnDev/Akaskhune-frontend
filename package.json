@@ -25,7 +25,8 @@
     "react-navigation-fluid-transitions": "^0.2.3",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "rn-sliding-up-panel": "^1.2.1"
   },
   "devDependencies": {
     "babel-jest": "23.4.2",
@@ -38,7 +39,7 @@
   },
   "rnpm": {
     "assets": [
-	"./assets/fonts/"
+      "./assets/fonts/"
     ]
   }
 }

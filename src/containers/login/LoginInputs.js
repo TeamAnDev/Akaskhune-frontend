@@ -15,21 +15,14 @@ class LoginInputs extends Component
     constructor(props)
     {
         super(props);
-        this.state = {
-            email : "",
-            password :""
-        }
-        if(this.props.loginSuccess == true) {
-            this.props.navigation.navigate('BottomTabRouter')
+    }
+    componentWillReceiveProps(nextProps)
+    {
+        if(nextProps.loginSuccess !== this.props.loginSuccess && nextProps.loginSuccess === true)
+        {
+            this.props.navigation.navigate('App')
         }
     }
-
-    componentDidUpdate() {
-        if(this.props.loginSuccess == true) {
-            this.props.navigation.navigate('BottomTabRouter')
-        }
-    }
-
     render()
     { 
         return(
