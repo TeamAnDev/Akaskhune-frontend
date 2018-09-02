@@ -6,6 +6,8 @@ import userInfoApp from './userInfo/userInfo';
 import changePasswordApp from './changePassword/changePassword';
 import profileApp from './profile/profile';
 import fileApp from './file/file';
+import inviteFriendsApp from './inviteFriends/inviteFriends';
+
 const AkaskhuneApp = combineReducers({
     loginApp,
     signupApp,
@@ -14,6 +16,7 @@ const AkaskhuneApp = combineReducers({
     changePasswordApp,
     profileApp,
     fileApp,
+    inviteFriendsApp,
 });
 
 export default AkaskhuneApp;
