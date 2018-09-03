@@ -8,84 +8,115 @@ import {Icon} from 'native-base';
 import FHContactsHeader from '../../components/FHContactsHeader';
 import {changeFilter} from '../../actions/inviteFriends/inviteFriendsAction';
 import {connect} from 'react-redux';
+import {contactsRequest} from '../../actions/inviteFriends/inviteFriendsRequest'
 
 class InviteFriends extends Component {
 
     constructor(props) {
         super(props);
         this.dataSource = undefined;
-        this.state = {data:[]};
+        this.state = {data:[], allContacts: []};
     }
 
-    getContacts(err, contacts) {
-        let data = [];
+    getAllContactsWithStatus(err, contacts) {
+        let allContacts = [];
         if(err === 'denied'){
             console.warn(err);
         } else {
             for (let i = 0; i < contacts.length; i++) {
                 if(contacts[i].emailAddresses.length !== 0) {
-                    let contactItem = {name : "", email: contacts[i].emailAddresses[0].email}
+                    let contact = {name:"", email:contacts[i].emailAddresses[0].email};
                     if(contacts[i].familyName !== null) {
-                        contactItem.name = contacts[i].givenName + " " + contacts[i].familyName;
+                        contact.name = contacts[i].givenName + " " + contacts[i].familyName;
                     } else {
-                        contactItem.name = contacts[i].givenName; 
+                        contact.name = contacts[i].givenName; 
                     }
-                    data.push(contactItem);
+                    allContacts.push(contact);
                 }        
             }
         }
-        this.setState({data})
+        this.setState({allContacts});
+    }
+
+    filterContacts(err, contacts) {
+        let data = [];
+        if(err === 'denied'){
+            console.warn(err);
+        } else {
+            for (let i = 0; i < this.props.contacts; i++) {
+                let flag = false;
+                for (let j = 0; j < contacts.length; j++) {
+                    if(contacts[j].emailAddresses.length !== 0 &&
+                        this.props.contacts[i].email === contacts[j].emailAddresses[0].email) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if(flag) {
+                    data.push(this.props.contacts[i]);
+                }
+            }
+        }
+        this.setState({data});
     }
 
     componentDidMount() {
         Contacts.getAll((err, contacts) => {
-            this.getContacts(err, contacts)
+            this.getAllContactsWithStatus(err, contacts);
+            this.props.contactsRequest({contacts : this.state.allContacts});
         })
     }
 
     componentWillReceiveProps(nextProps) {
         if(this.props.filter !== nextProps.filter) {
-            if(this.props.filter !== "") {
+            if(nextProps.filter !== "") {
                 Contacts.getContactsMatchingString(nextProps.filter,(err, contacts) => {
-                    this.getContacts(err, contacts);
+                    this.filterContacts(err, contacts);
                 })
             } else {
-                Contacts.getAll((err, contacts) => {
-                    this.getContacts(err, contacts);
-                })
+                this.setState({date : this.props.contacts});
             }
         }
     }
 
     render() {
-        const ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2});
-        this.dataSource = ds.cloneWithRows(this.state.data);
-        console.warn(this.props.filter);
-        console.warn(this.state.data);
-        return (
-            <View style={{flex:1, backgroundColor:'white'}}>
-                <FHHeader navigation={this.props.navigation} title="دعوت از دوستان"/> 
-                <View style={{flex:1, justifyContent:'center'}}>
-                    <FHInput width={'95%'} icon={<Icon type="Feather" name="search"/>} text="جستجوی مخاطب"
-                    onTextChange={this.props.changeFilter}/>
-                    <ListView 
-                        dataSource = {this.dataSource}
-                        renderHeader = {() => <FHContactsHeader/>}
-                        renderRow = {(rowData) => <FHContactItem name={rowData.name} email={rowData.email}/>}
-                    />
-                </View>
-            </View>
-        )
+        let toReturn;
+        if(this.props.loading) {
+            toReturn = <Spinner style={{alignSelf:'center'}} color={colors.accentColor}/>
+        } else if(this.props.success) {
+            const ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2});
+            this.dataSource = ds.cloneWithRows(this.state.data);
+            toReturn = <View style={{flex:1, backgroundColor:'white'}}>
+                        <FHHeader navigation={this.props.navigation} title="دعوت از دوستان"/> 
+                        <View style={{flex:1, justifyContent:'center'}}>
+                            <FHInput width={'95%'} icon={<Icon type="Feather" name="search"/>} text="جستجوی مخاطب"
+                            onTextChange={this.props.changeFilter}/>
+                            <ListView 
+                                dataSource = {this.dataSource}
+                                renderHeader = {() => <FHContactsHeader/>}
+                                renderRow = {(rowData) => <FHContactItem name={rowData.name} email={rowData.email}/>}
+                            />
+                        </View>
+                    </View>
+        } else {
+            toReturn = <Text>this.props.error</Text>
+        }
+        return toReturn;
     }
 
 }
 
 const mapStateToProps = state => ({
-    filter : state.inviteFriendsApp.changeFilterReducer.filter
+    filter : state.inviteFriendsApp.changeFilterReducer.filter,
+    contacts : state.inviteFriendsApp.contactsRequestReuducer.contacts,
+    loading : state.inviteFriendsApp.contactsRequestReuducer.loading,
+    error : state.inviteFriendsApp.contactsRequestReuducer.err,
+    success
 })
 
 const mapDispatchToProps = dispatch => ({
-    changeFilter : filter => dispatch(changeFilter(filter))
+    changeFilter : filter => dispatch(changeFilter(filter)),
+    contactsRequest : contacts => dispatch(contactsRequest(contacts))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(InviteFriends);

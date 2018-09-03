@@ -11,7 +11,8 @@ export const rest = {
     file : '/file/avatar/',
     refresh : '/refresh',
     userSelf : '/user/',
-    imagesSelf : '/user/post/recent/'
+    imagesSelf : '/user/post/recent/',
+    contacts : '/friends/contacts/'
     
 }
 
