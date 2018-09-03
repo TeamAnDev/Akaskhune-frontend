@@ -35,9 +35,9 @@ class Images extends Component {
                 for (let i = 0; i < this.props.images.length; i+=2) {
                     let rightImage = "" ;
                     if(this.props.images[i+1] !== undefined) {
-                        rightImage =  this.props.images[i+1]
+                        rightImage =  this.props.images[i+1].photo_url
                     } ;
-                    data[i/2] = [{uri:this.props.images[i]}, {uri: rightImage}];
+                    data[i/2] = [{uri:this.props.images[i].photo_url}, {uri: rightImage}];
                 }
                 this.dataSource = ds.cloneWithRows(data);
                 return ( 

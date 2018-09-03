@@ -3,7 +3,7 @@ import {Component} from 'react';
 import {View, Dimensions} from 'react-native';
 import CameraRollPicker from './cameraRollPicker/index';
 import {connect} from 'react-redux';
-import {setPost} from '../../actions/newPost/postActions';
+import {imageSelect, imageUnselect} from '../../actions/newPost/gallerySelectActions';
 class GalleryPreview extends Component{
     constructor(props){
         super(props);
@@ -15,15 +15,18 @@ class GalleryPreview extends Component{
             <View style = {{flex:1}}>
                 <CameraRollPicker
                     callback={(images, current)=>{
+                    
                         if(images.length !== 0)
                         {
-                            this.props.setPost(images[0].uri);
+                            this.props.setImage(images[0].uri);
                         }
                         else if(images.length === 0)
                         {
-                            this.props.setPost("");
+                            
+                            this.props.unsetImage()
                         }
                 }} 
+                
                     imageMargin={Dimensions.get("window").width * 13 / 360}
                     maximum={1}/>
                 
@@ -40,7 +43,8 @@ const mapStateToProps = state => {
   
   const mapDispatchToProps = dispatch => {
     return({
-        setPost : () => dispatch(setPost())
+        setImage : (imageSource) => dispatch(imageSelect(imageSource)),
+        unsetImage : () => dispatch(imageUnselect()),
     });
   }
   

@@ -9,27 +9,34 @@ import colors from '../../config/colors';
 import SlidingUpPanel from 'rn-sliding-up-panel';
 import BottomSheet from './BottomSheet';
 import {connect} from 'react-redux';
+import {resetSelectingPost} from '../../actions/newPost/postActions';
+import {cropPhoto} from '../../actions/newPost/gallerySelectActions';
+import {navigate} from '../../../NavigationService'
 const bottomOfButton = Dimensions.get("window").height * 3 / 100;
 class NewPost extends Component{
 
       constructor(props) {
         super(props)
         this.state = {
-          buttonDis: false,
+          buttonDis: true,
         }
-    
+        this.props.reset();
         
       }
     componentWillReceiveProps(nextProps)
     {
-      console.warn(nextProps.postImageSource);
-      if(nextProps.postImageSource !== "" && this.props.postImageSource !== nextProps.postImageSource)
+      console.warn(nextProps.postImageSelected);
+      if(nextProps.postImageSelected === true && this.props.postImageSelected !== nextProps.postImageSelected)
+      {
+        this.setState({buttonDis:false})
+      }
+      if(nextProps.postImageSelected === false && this.props.postImageSelected !== nextProps.postImageSelected)
       {
         this.setState({buttonDis:true})
       }
-      if(nextProps.postImageSource === "" && this.props.postImageSource !== nextProps.postImageSource)
+      if(nextProps.postCropped !== this.props.postCropped && this.postCropped === true)
       {
-        this.setState({buttonDis:false})
+        navigate("NewPostComplete");
       }
     }
     render()
@@ -45,7 +52,7 @@ class NewPost extends Component{
                         <BottomSheet/>
                     </View>
                     <View style={{width:"100%", position:"absolute", bottom:bottomOfButton}}>
-                        <FHButton title="مرحله بعدی" onPress={()=>{}} disabled = {this.state.buttonDis}/>
+                        <FHButton title="مرحله بعدی" onPress={() => this.props.cropPhoto(this.props.postImageSource)} disabled = {this.state.buttonDis}/>
                     </View>
                 </View>
                 
@@ -57,14 +64,17 @@ class NewPost extends Component{
 
 const mapStateToProps = state => {
   return({
-    postImageSource : state.newPostApp.newPostReducer.postImageSource,
+    postImageSelected : state.newPostApp.galleryReducer.gallerySelected,
+    postImageSource : state.newPostApp.galleryReducer.imageSource,
+    postCropped : state.newPostApp.newPostReducer.postSelected,
 
   });
 }
 
 const mapDispatchToProps = dispatch => {
   return({
-      
+      cropPhoto : (path) => dispatch(cropPhoto(path)),
+      reset : () => dispatch(resetSelectingPost())
   });
 }
 

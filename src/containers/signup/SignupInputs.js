@@ -14,18 +14,15 @@ class SignupInputs extends Component
     constructor(props)
     {
         super(props);
-        if(this.props.signupSucces == true){
-            this.props.navigation.navigate('SignupCompleteProfile')
-        }
     }
-    componentDidUpdate()
+    componentWillReceiveProps(nextProps)
     {
-        if(this.props.signupSucces == true){
+        if(this.props.signupSucces !== nextProps.signupSucces && nextProps.signupSucces === true)
+        {
             this.props.navigation.navigate('SignupCompleteProfile')
         }
     }
-    
-    
+
     render()
     { 
         return(

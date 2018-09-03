@@ -19,11 +19,12 @@ function passwordCheckReducer(state={password:"", passwordConfirm:"", valid:fals
 {
     switch(action.type){
         case(SIGNUP_PASSWORD_CHANGED):
-            if(state.passwordConfirm   === action.password && state.passwordConfirm !== "")
+        console.warn(state.password.length);
+            if(state.passwordConfirm   === action.password && state.passwordConfirm !== "" && action.password.length >= 8)
                 return Object.assign({}, state, {password:action.password, valid:true});
             return Object.assign({}, state, {password:action.password, valid:false});
         case(SIGNUP_PASSWORD_CONFIRM_CHANGED):
-            if(state.password   === action.passwordConfirm && state.password !== "")
+            if(state.password   === action.passwordConfirm && state.password !== "" && action.passwordConfirm.length >= 8)
                     return Object.assign({}, state,  {passwordConfirm:action.passwordConfirm, valid:true});
             return Object.assign({}, state, {passwordConfirm:action.passwordConfirm, valid:false});
         default:

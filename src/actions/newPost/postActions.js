@@ -6,3 +6,11 @@ export function setPost(postImageSource)
         postImageSource
     }
 }
+
+export const RESET_POST_SELECTING = "RESET_POST_SELECTING";
+export function resetSelectingPost()
+{
+    return {
+        type : RESET_POST_SELECTING
+    }
+}
