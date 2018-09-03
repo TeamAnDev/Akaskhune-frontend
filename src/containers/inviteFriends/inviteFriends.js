@@ -64,6 +64,7 @@ class InviteFriends extends Component {
         Contacts.getAll((err, contacts) => {
             this.getAllContactsWithStatus(err, contacts);
             this.props.contactsRequest({contacts : this.state.allContacts});
+            this.setState({data: this.props.contacts});
         })
     }
 
@@ -94,7 +95,7 @@ class InviteFriends extends Component {
                             <ListView 
                                 dataSource = {this.dataSource}
                                 renderHeader = {() => <FHContactsHeader/>}
-                                renderRow = {(rowData) => <FHContactItem name={rowData.name} email={rowData.email}/>}
+                                renderRow = {(rowData) => <FHContactItem name={rowData.name} email={rowData.email} status={rowData.status}/>}
                             />
                         </View>
                     </View>
