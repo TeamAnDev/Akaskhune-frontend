@@ -7,7 +7,7 @@ function contactsRequestReducer(state={contacts:[], loading:false, err:"", succe
         case CONTACTS_REQ_SUCCESS:
             return Object.assign({}, state, {success:true ,contacts:action.contacts, loading:false});
         case CONTACTS_REQ_ERR:
-            return Object.assign({}, state, {err:action.error});
+            return Object.assign({}, state, {success:false ,err:action.error});
         default:
             return state;
     }
