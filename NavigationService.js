@@ -18,6 +18,23 @@ async function navigateToBaseIfLogined()
   }
 }
 
+export function replace(routeName)
+{
+  _navigator.dispatch(
+    StackActions.replace({
+      routeName,
+    })
+    
+  );
+}
+
+export function popToTop()
+{
+  _navigator.dispatch(
+    StackActions.popToTop()
+    
+  );
+}
 
 export function navigate(routeName, params) {
   _navigator.dispatch(

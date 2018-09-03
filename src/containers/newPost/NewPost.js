@@ -11,21 +11,23 @@ import BottomSheet from './BottomSheet';
 import {connect} from 'react-redux';
 import {resetSelectingPost} from '../../actions/newPost/postActions';
 import {cropPhoto} from '../../actions/newPost/gallerySelectActions';
-import {navigate} from '../../../NavigationService'
+import {navigate, replace} from '../../../NavigationService'
 const bottomOfButton = Dimensions.get("window").height * 3 / 100;
 class NewPost extends Component{
 
       constructor(props) {
         super(props)
         this.state = {
+          
           buttonDis: true,
         }
-        this.props.reset();
+      
         
       }
+    
     componentWillReceiveProps(nextProps)
     {
-      console.warn(nextProps.postImageSelected);
+      console.warn("crop" + nextProps.postCropped);
       if(nextProps.postImageSelected === true && this.props.postImageSelected !== nextProps.postImageSelected)
       {
         this.setState({buttonDis:false})
@@ -34,7 +36,7 @@ class NewPost extends Component{
       {
         this.setState({buttonDis:true})
       }
-      if(nextProps.postCropped !== this.props.postCropped && this.postCropped === true)
+      if(nextProps.postCropped !== this.props.postCropped && nextProps.postCropped === true)
       {
         navigate("NewPostComplete");
       }
@@ -52,7 +54,7 @@ class NewPost extends Component{
                         <BottomSheet/>
                     </View>
                     <View style={{width:"100%", position:"absolute", bottom:bottomOfButton}}>
-                        <FHButton title="مرحله بعدی" onPress={() => this.props.cropPhoto(this.props.postImageSource)} disabled = {this.state.buttonDis}/>
+                        <FHButton title="مرحله بعد" onPress={() => this.props.cropPhoto(this.props.postImageSource)} disabled = {this.state.buttonDis}/>
                     </View>
                 </View>
                 
@@ -67,6 +69,7 @@ const mapStateToProps = state => {
     postImageSelected : state.newPostApp.galleryReducer.gallerySelected,
     postImageSource : state.newPostApp.galleryReducer.imageSource,
     postCropped : state.newPostApp.newPostReducer.postSelected,
+    
 
   });
 }

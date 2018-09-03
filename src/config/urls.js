@@ -11,12 +11,13 @@ export const rest = {
     file : '/file/avatar/',
     refresh : '/refresh',
     userSelf : '/user/',
-    imagesSelf : '/user/post/recent/'
+    imagesSelf : '/user/post/recent/',
+    newPost : '/post/'
     
 }
 
 export let axiosInstance = axios.create({
-    baseURL: 'http://192.168.11.213/api/v1',
+    baseURL: 'http://192.168.11.138/api/v1',
     timeout:10000,
     headers:{
         'Content-Type': 'application/json',

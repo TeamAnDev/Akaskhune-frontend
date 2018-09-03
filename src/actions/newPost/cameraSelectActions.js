@@ -1,4 +1,4 @@
-import {setPost} from './postActions';
+import {setPost,  resetSelectingPost} from './postActions';
 import ImagePicker from 'react-native-image-crop-picker';
 import showSucces from '../../components/Toasts/showSucces';
 
@@ -21,13 +21,13 @@ export function setCameraOpend()
 
 export function takePhoto(){
     return (dispatch) => {
+        dispatch(resetSelectingPost());
         ImagePicker.openCamera({
             width: 800,
             height: 450,
             cropping: true
           }).then(image => {
             dispatch(setPost(image.path));
-            showSucces("تصویر با موفقیت گرفته شد. برای ادامه دکمه‌ی مرحله‌ی بعدی را انتخاب کنید.",undefined, 7000)
           }).catch(err => {
             dispatch(setError(err.error));
           });

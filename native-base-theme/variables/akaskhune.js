@@ -173,7 +173,7 @@ export default {
   iconHeaderSize: 24,
 
   // InputGroup
-  inputFontSize: 17,
+  inputFontSize: 13,
   inputBorderColor: "#D9D5DC",
   inputSuccessBorderColor: "#2b8339",
   inputErrorBorderColor: "#ed2f2f",

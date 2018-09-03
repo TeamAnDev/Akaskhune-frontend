@@ -31,34 +31,34 @@ class ImageItem extends Component {
     var { item, selected, selectedMarker, imageMargin } = this.props;
 
     var marker = selectedMarker ? selectedMarker :
-      <ImageBackground 
+      <View 
       style={{backgroundColor:"rgba(255,255,255,0.7)", height: this._imageSize, width: this._imageSize,justifyContent:"center", borderRadius:this._imageSize/10
               , opacity:12}} 
-      imageStyle={{borderRadius:this._imageSize/10}}>
+      // imageStyle={{borderRadius:this._imageSize/10}}
+      >
       <Icon name="check" type="Feather"
       style={{alignSelf: 'center',fontSize: 49}}
       />
-      </ImageBackground>;
+      </View>;
     var image = item.node.image;
 
     return (
-      <View style={{justifyContent:"center", alignItems:"center"}}>
-      <TouchableOpacity
+      <TouchableOpacity 
         style={{ marginBottom: imageMargin, marginRight: imageMargin }}
-        onPress={() => this._handleClick(image)}>
+        onPressIn={() => this._handleClick(image)}>
         <ImageBackground
           source={{ uri: image.uri }}
           style={{ height: this._imageSize, width: this._imageSize , justifyContent:"center", alignItems:"center"}}
           imageStyle={{borderRadius:this._imageSize/10}} >
           {(selected) ? marker : null}
         </ImageBackground>
-        
       </TouchableOpacity>
-      </View>
+      
     );
   }
 
   _handleClick(item) {
+    console.warn("clicked");
     this.props.onClick(item);
   }
 }

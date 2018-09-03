@@ -26,9 +26,9 @@ class GalleryPreview extends Component{
                             this.props.unsetImage()
                         }
                 }} 
-                
+                selectSingleItem = {true}
                     imageMargin={Dimensions.get("window").width * 13 / 360}
-                    maximum={1}/>
+                    />
                 
             </View>
         )

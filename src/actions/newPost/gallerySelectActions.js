@@ -1,6 +1,6 @@
 import {navigate} from '../../../NavigationService';
 import ImagePicker from 'react-native-image-crop-picker';
-import {setPost} from './postActions';
+import {setPost, resetSelectingPost} from './postActions';
 export const NEW_POST_IMAGE_SELECTED = "NEW_POST_IMAGE_SELECTED";
 export function imageSelect(imageSource)
 {
@@ -21,6 +21,7 @@ export function imageUnselect()
 
 export function cropPhoto(imagePath){
     return (dispatch) => {
+        dispatch(resetSelectingPost());
         ImagePicker.openCropper({
             path: imagePath,
             width: 800,
@@ -28,8 +29,6 @@ export function cropPhoto(imagePath){
             cropping: true
           }).then(image => {
             dispatch(setPost(image.path));
-            
-            navigate('NewPostComplete');
           }).catch(err => {
             dispatch(setError(err.error));
           });
