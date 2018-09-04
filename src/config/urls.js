@@ -12,8 +12,8 @@ export const rest = {
     refresh : '/refresh',
     userSelf : '/user/',
     imagesSelf : '/user/post/recent/',
-    contacts : '/friends/contacts/'
-    
+    contacts : '/friends/contacts/',
+    follow : '/friends/follow/'
 }
 
 export let axiosInstance = axios.create({

@@ -21,7 +21,7 @@ const Router = createStackNavigator({
     InviteFriends,
     NewPost
   }, {
-    initialRouteName: "InviteFriends",
+    initialRouteName: "Login",
     headerMode: "none"
   });
   // const prevGetStateForAction = Router.router.getStateForAction;

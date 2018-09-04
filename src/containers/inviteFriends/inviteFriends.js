@@ -105,7 +105,7 @@ class InviteFriends extends Component {
                             <ListView 
                                 dataSource = {this.dataSource}
                                 renderHeader = {() => <FHContactsHeader/>}
-                                renderRow = {(rowData) => <FHContactItem name={rowData.name} email={rowData.email} status={rowData.status}/>}
+                                renderRow = {(rowData) => <FHContactItem name={rowData.name} email={rowData.email} status={rowData.status} username={rowData.username}/>}
                             />
                         </View>
                     </View>
