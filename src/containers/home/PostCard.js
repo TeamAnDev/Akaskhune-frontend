@@ -15,23 +15,23 @@ export default class PostCard extends Component
     render()
     {
         return(
-        <View style={{margin: marginOfCard}}>
+        <View style={{margin: marginOfCard, marginBottom:0}}>
             <Card  style={{ borderRadius: 8 }}>
                 <CardHeader
-                 location="ماسال" 
-                 name="رحمان پورسرخ" 
-                 time="۳ ساعت پیش" 
+                 location={this.props.location}
+                 name={this.props.fullName}
+                 time={this.props.time} 
                  moreCallback={()=>{}}/>
 
                 <CardBody
-                caption="عکاسی طبیعت در شمال"
-                sourceImage=""/>
+                caption={this.props.caption}
+                sourceImage={this.props.postUrl}/>
 
                 <CardFooter
                 likeCallback={()=>{}}
-                numberOfLikes="۲۰۰"
+                numberOfLikes={this.props.likesCount}
                 commentCallback={()=>{}}
-                numberOfComments="۵"
+                numberOfComments={this.props.commentsCount}
                 shareCallback={()=>{}}
                 bookmarkCallback={()=>{}}
                  />
