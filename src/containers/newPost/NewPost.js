@@ -21,6 +21,7 @@ class NewPost extends Component{
           
           buttonDis: true,
         }
+        this.props.reset();
       
         
       }

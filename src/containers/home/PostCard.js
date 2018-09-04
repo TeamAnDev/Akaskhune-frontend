@@ -15,14 +15,14 @@ export default class PostCard extends Component
     render()
     {
         return(
-        <View style={{margin: marginOfCard, marginBottom:0}}>
+        <View style={{margin: marginOfCard, marginTop:marginOfCard/2, marginBottom:marginOfCard/2}}>
             <Card  style={{ borderRadius: 8 }}>
                 <CardHeader
                  location={this.props.location}
                  name={this.props.fullName}
                  time={this.props.time} 
                  moreCallback={()=>{}}/>
-
+                
                 <CardBody
                 caption={this.props.caption}
                 sourceImage={this.props.photoUrl}/>
