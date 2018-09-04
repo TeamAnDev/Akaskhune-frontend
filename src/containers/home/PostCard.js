@@ -25,7 +25,7 @@ export default class PostCard extends Component
 
                 <CardBody
                 caption={this.props.caption}
-                sourceImage={this.props.postUrl}/>
+                sourceImage={this.props.photoUrl}/>
 
                 <CardFooter
                 likeCallback={()=>{}}
