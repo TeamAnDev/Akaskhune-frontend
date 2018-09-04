@@ -12,19 +12,6 @@ class ProfileInfo extends Component {
         super(props);
         this.props.requestInfo();
     }
-
-    componentDidMount() {
-        // axios.get('http://192.168.11.199:8085/users/1')
-        // .then(response => {
-        //     this.setState({name : response.data.name,
-        //          followers : response.data.followers,
-        //          following : response.data.following,
-        //          bio : response.data.bio,
-        //          img : response.data.img});
-        // })
-        // .catch(err => console.warn(err));
-    }
-
     render() {
         return (
             <View style={{flex : 1, flexDirection: 'row-reverse', justifyContent:'space-between'}}>

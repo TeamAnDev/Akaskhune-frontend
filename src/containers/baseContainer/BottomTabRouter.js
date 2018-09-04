@@ -1,6 +1,6 @@
 import {createBottomTabNavigator} from 'react-navigation';
 import Profile from '../profile/Profile';
-import {Test as Home} from './TestComp';
+import Home from '../../containers/home/Home';
 import {Test as Search} from './TestComp';
 import {Test as Notifications} from './TestComp';
 import React from 'react';
@@ -49,7 +49,7 @@ const BottomRouter =  createBottomTabNavigator({
        screen : () => null
    }
 },{
-    initialRouteName: 'Profile',
+    initialRouteName: 'Home',
     order : ['Profile', 'Notifications', 'AddPost', 'Search', 'Home'],
     tabBarOptions:{
         activeTintColor: colors.bottomTabBarActive,

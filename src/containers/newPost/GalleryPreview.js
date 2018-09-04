@@ -1,28 +1,51 @@
 import React from 'react';
 import {Component} from 'react';
-import {View} from 'react-native';
-import {CameraKitGalleryView} from 'react-native-camera-kit';
-export default class CameraPreview extends Component{
+import {View, Dimensions} from 'react-native';
+import CameraRollPicker from './cameraRollPicker/index';
+import {connect} from 'react-redux';
+import {imageSelect, imageUnselect} from '../../actions/newPost/gallerySelectActions';
+class GalleryPreview extends Component{
     constructor(props){
         super(props);
     }
+
     render()
     {
         return(
             <View style = {{flex:1}}>
-                {/* <CameraKitGalleryView
-                    ref={gallery => this.gallery = gallery}
-                    style={{flex: 1, marginTop: 20}}
-                    minimumInteritemSpacing={10}
-                    minimumLineSpacing={10}
+                <CameraRollPicker
+                    callback={(images, current)=>{
                     
-                    columnCount={3}
-                    onTapImage={event => {
-                        // event.nativeEvent.selected - ALL selected images ids
-                    }}
-                  
-                /> */}
+                        if(images.length !== 0)
+                        {
+                            this.props.setImage(images[0].uri);
+                        }
+                        else if(images.length === 0)
+                        {
+                            
+                            this.props.unsetImage()
+                        }
+                }} 
+                selectSingleItem = {true}
+                    imageMargin={Dimensions.get("window").width * 13 / 360}
+                    />
+                
             </View>
         )
     }
 }
+
+
+const mapStateToProps = state => {
+    return({
+    });
+  }
+  
+  const mapDispatchToProps = dispatch => {
+    return({
+        setImage : (imageSource) => dispatch(imageSelect(imageSource)),
+        unsetImage : () => dispatch(imageUnselect()),
+    });
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(GalleryPreview);

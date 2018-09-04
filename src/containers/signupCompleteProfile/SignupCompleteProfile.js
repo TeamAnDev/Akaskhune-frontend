@@ -22,7 +22,7 @@ import { Container , Root, Toast} from 'native-base';
     componentWillReceiveProps(nextProps)
     {
         if(this.props.succes !== nextProps.succes && nextProps.succes){
-            this.props.navigation.navigate('BaseBottomRouter');
+            this.props.navigation.navigate('BottomTabRouter');
         }
     }
     render()

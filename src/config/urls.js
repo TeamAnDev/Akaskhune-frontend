@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {AsyncStorage} from 'react-native';
-import {retrieveToken, retrieveRefresh} from '../config/token';
+import {retrieveToken, retrieveRefresh, storeToken} from '../config/token';
 export const rest = {
     login : '/auth/login/',
     signupValidation : '/auth/signup/validation/',
@@ -9,11 +9,13 @@ export const rest = {
     userEdit : '/user/',
     changePassword : '/user/password/',
     file : '/file/avatar/',
-    refresh : '/refresh',
+    refresh : '/auth/refresh/',
     userSelf : '/user/',
     imagesSelf : '/user/post/recent/',
     contacts : '/friends/contacts/',
-    follow : '/friends/follow/'
+    follow : '/friends/follow/',
+    newPost : '/post/'
+    
 }
 
 export let axiosInstance = axios.create({
@@ -35,23 +37,33 @@ axiosInstance.interceptors.request.use(async function (config) {
   });
 
 //Refreshing 
-async function refreshAccessToken() {
-    const value = await retrieveRefresh();
-    axiosInstance.post(rest.refresh, {refresh:value}).then(async function(response){
-        await storeToken(response.data.token);
-        return response.data.token;
-    }).catch(function(err){   
-    })
+async function refreshAccessToken(value) {  
+    try
+    {
+      let response = await axiosInstance.post(rest.refresh, {refresh:value});
+      await storeToken(response.data.access);
+      return response.data.access;
+    }
+    catch (error)
+    {
+      return Promise.reject(err);
+    }
 }
 axiosInstance.interceptors.response.use(response => {
   return response;
 },async function (error){
   const { config, response: { status } } = error;
   const originalRequest = config;
-  if (status === 401 ) {
-    let newToken = await refreshAccessToken();
-    originalRequest.headers['Authorization'] = 'Bearer ' + newToken;
-  return axiosInstance(originalRequest);
+  let refreshToken = await retrieveRefresh();
+  if (status === 401 && refreshToken !== "") {
+    try{
+      let newToken = await refreshAccessToken(refreshToken);
+      originalRequest.headers['Authorization'] = 'Bearer ' + newToken;
+      return axiosInstance(originalRequest);
+    }
+    catch (err){
+      return Promise.reject(err);
+    }
   } else {
     return Promise.reject(error);
   }

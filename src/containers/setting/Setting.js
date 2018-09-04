@@ -3,11 +3,12 @@ import {Component} from 'react';
 import {View, Text} from 'react-native';
 import SettingList from './List';
 import FHHeader from '../../components/FHHeader'
-import {storeToken} from '../../config/token';
+import {storeToken, storeRefresh} from '../../config/token';
 import {navigate} from '../../../NavigationService';
 async function logout()
 {
     await storeToken("");
+    await storeRefresh("");
     navigate('Login');
 }
 const Setting = (props) => {

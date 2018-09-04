@@ -1,29 +1,48 @@
 import Login from './src/containers/login/Login';
 import Signup from './src/containers/signup/Signup';
 import SignupCompleteProfile from './src/containers/signupCompleteProfile/SignupCompleteProfile';
-import {createStackNavigator, crea} from 'react-navigation';
+import {createStackNavigator, createSwitchNavigator} from 'react-navigation';
 import Profile from './src/containers/profile/Profile';
 import BottomTabRouter from './src/containers/baseContainer/BottomTabRouter';
 import EditProfile from './src/containers/setting/editProfile/EditProfile';
 import Setting from './src/containers/setting/Setting';
 import ChangePassword from './src/containers/setting/changePassword/ChangePassword';
 import NewPost from './src/containers/newPost/NewPost';
+import NewPostComplete from './src/containers/newPost/NewPostComplete';
 import InviteFriends from './src/containers/inviteFriends/inviteFriends';
-const Router = createStackNavigator({
+
+
+
+const Auth = createStackNavigator({
     Signup,
     Login,
     SignupCompleteProfile,
+}, {
+  initialRouteName : "Login",
+  headerMode: "none"
+});
+const App = createStackNavigator({
+    
     Profile,
     Setting,
     ChangePassword,
     BottomTabRouter,
     EditProfile,
     InviteFriends,
-    NewPost
+    NewPost,
+    NewPostComplete
   }, {
     initialRouteName: "Login",
     headerMode: "none"
   });
+
+const Router = createSwitchNavigator({
+  Auth,
+  App
+},
+{
+  initialRouteName : "App"
+})
   // const prevGetStateForAction = Router.router.getStateForAction;
       
   // Router.router.getStateForAction = (action, state) => {

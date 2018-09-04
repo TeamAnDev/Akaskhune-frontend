@@ -8,6 +8,7 @@ const colors = {
     grey: "#EFEFEF",
     fontColor : "rgb(57,57,57)",
     blackGrey : "rgb(130,130,130)",
+    black: 'black',
     bottomTabBarActive : "#6B946C",
     bottomTabBarInActive: "rgb(152,152,152)"  ,
     bottomTabBar : "rgb(239,239,239)",
