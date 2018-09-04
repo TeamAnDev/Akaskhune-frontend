@@ -5,7 +5,7 @@ import android.app.Application;
 import com.facebook.react.ReactApplication;
 import com.wix.RNCameraKit.RNCameraKitPackage;
 import com.rt2zz.reactnativecontacts.ReactNativeContacts;
-import org.reactnative.camera.RNCameraPackage;
+// import org.reactnative.camera.RNCameraPackage;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -32,7 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new RNCameraKitPackage(),
             new ReactNativeContacts(),
-            new RNCameraPackage(),
+            // new RNCameraPackage(),
             new PickerPackage(),
             new ImagePickerPackage(),
             new LinearGradientPackage()
