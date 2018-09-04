@@ -17,7 +17,7 @@ export const rest = {
 }
 
 export let axiosInstance = axios.create({
-    baseURL: 'http://192.168.11.199:8085/',
+    baseURL: 'http://192.168.11.138/api/v1',
     timeout:10000,
     headers:{
         'Content-Type': 'application/json',

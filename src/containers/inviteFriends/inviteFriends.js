@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Spinner} from 'native-base';
 import {Text, View, ListView, PermissionsAndroid} from 'react-native';
 import Contacts from 'react-native-contacts';
 import FHHeader from '../../components/FHHeader';
@@ -9,7 +10,7 @@ import FHContactsHeader from '../../components/FHContactsHeader';
 import {changeFilter} from '../../actions/inviteFriends/inviteFriendsAction';
 import {connect} from 'react-redux';
 import {contactsRequest} from '../../actions/inviteFriends/inviteFriendsRequest'
-
+import colors from '../../config/colors';
 class InviteFriends extends Component {
 
     constructor(props) {
@@ -39,17 +40,20 @@ class InviteFriends extends Component {
     }
 
     filterContacts(err, contacts) {
+        console.warn(contacts);
         let data = [];
         if(err === 'denied'){
             console.warn(err);
         } else {
-            for (let i = 0; i < this.props.contacts; i++) {
+            for (let i = 0; i < this.props.contacts.length; i++) {
+                console.warn("Hey");
                 let flag = false;
                 for (let j = 0; j < contacts.length; j++) {
-                    if(contacts[j].emailAddresses.length !== 0 &&
-                        this.props.contacts[i].email === contacts[j].emailAddresses[0].email) {
-                        flag = true;
-                        break;
+                    if(contacts[j].emailAddresses.length !== 0) {
+                        if(this.props.contacts[i].email === contacts[j].emailAddresses[0].email) {
+                            flag = true;
+                            break;
+                        }
                     }
                 }
                 if(flag) {
@@ -63,27 +67,33 @@ class InviteFriends extends Component {
     componentDidMount() {
         Contacts.getAll((err, contacts) => {
             this.getAllContactsWithStatus(err, contacts);
-            this.props.contactsRequest({contacts : this.state.allContacts});
-            this.setState({data: this.props.contacts});
+            this.props.contactsRequest(this.state.allContacts)
         })
     }
 
     componentWillReceiveProps(nextProps) {
+        if(this.props.success !== nextProps.success && this.props.success === false) {
+            this.setState({data: nextProps.contacts})
+        }
         if(this.props.filter !== nextProps.filter) {
             if(nextProps.filter !== "") {
                 Contacts.getContactsMatchingString(nextProps.filter,(err, contacts) => {
                     this.filterContacts(err, contacts);
                 })
             } else {
-                this.setState({date : this.props.contacts});
+                this.setState({data : this.props.contacts});
             }
         }
     }
 
     render() {
+        console.warn(this.props.contacts);
         let toReturn;
         if(this.props.loading) {
-            toReturn = <Spinner style={{alignSelf:'center'}} color={colors.accentColor}/>
+            toReturn = <View style={{flex:1, backgroundColor:'white'}}>
+                            <FHHeader navigation={this.props.navigation} title="دعوت از دوستان"/> 
+                            <Spinner style={{alignSelf:'center'}} color={colors.accentColor}/>
+                        </View> 
         } else if(this.props.success) {
             const ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2});
             this.dataSource = ds.cloneWithRows(this.state.data);
@@ -100,7 +110,7 @@ class InviteFriends extends Component {
                         </View>
                     </View>
         } else {
-            toReturn = <Text>this.props.error</Text>
+            toReturn = <Text>{this.props.error}</Text>
         }
         return toReturn;
     }
@@ -109,10 +119,10 @@ class InviteFriends extends Component {
 
 const mapStateToProps = state => ({
     filter : state.inviteFriendsApp.changeFilterReducer.filter,
-    contacts : state.inviteFriendsApp.contactsRequestReuducer.contacts,
-    loading : state.inviteFriendsApp.contactsRequestReuducer.loading,
-    error : state.inviteFriendsApp.contactsRequestReuducer.err,
-    success
+    contacts : state.inviteFriendsApp.contactsRequestReducer.contacts,
+    loading : state.inviteFriendsApp.contactsRequestReducer.loading,
+    error : state.inviteFriendsApp.contactsRequestReducer.err,
+    success : state.inviteFriendsApp.contactsRequestReducer.success
 })
 
 const mapDispatchToProps = dispatch => ({

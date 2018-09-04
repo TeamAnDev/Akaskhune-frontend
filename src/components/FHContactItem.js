@@ -5,27 +5,30 @@ import { Button } from 'native-base';
 
 function getButtonText(status) {
     switch(status) {
-        case "NOT_INVITED" :
+        case "not_invited" :
             return "دعوت";
-        case "INVITED" :
+        case "invited" :
             return "دعوت شده";    
-        case "NOT_FOLLOWED" :
+        case "not_followed" :
             return "دنبال کن";
-        case "FOLLOWED" :
+        case "followed" :
             return "دنبال شده";
     }
 }
 
 const ActionButton = (props) => {
     switch(props.status) {
-        case "NOT_INVITED" :
+        case "not_invited" :
+            return <Button style={styles.contactButton} transparent dark><Text style={{fontWeight:'bold'}}>{getButtonText(props.status)}</Text></Button>;
+        case "invited" :
+            return <Button style={styles.contactButton} transparent light><Text style={{fontWeight:'bold'}}>{getButtonText(props.status)}</Text></Button>;    
+        case "not_followed" :
+            return <Button style={styles.contactButton} bordered dark><Text style={{fontWeight:'bold'}}>{getButtonText(props.status)}</Text></Button>;
+        case "followed" :
+            return <Button style={styles.contactButton} dark><Text style={{fontWeight:'bold'}}>{getButtonText(props.status)}</Text></Button>;
+        default :
             return <Button transparent dark><Text>{getButtonText(props.status)}</Text></Button>;
-        case "INVITED" :
-            return <Button transparent light><Text>{getButtonText(props.status)}</Text></Button>;    
-        case "NOT_FOLLOWED" :
-            return <Button bordered dark><Text>{getButtonText(props.status)}</Text></Button>;
-        case "FOLLOWED" :
-            return <Button dark><Text>{getButtonText(props.status)}</Text></Button>;
+
     }
 }
 

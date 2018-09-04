@@ -3,7 +3,7 @@ import {axiosInstance, rest} from '../../config/urls';
 function requestContacts(contacts) {
     let data = {contacts};
 
-    axiosInstance.post(rest.contacts);
+    return axiosInstance.post(rest.contacts, data);
 }
 
 export default requestContacts;

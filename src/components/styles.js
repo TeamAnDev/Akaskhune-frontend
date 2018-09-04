@@ -56,6 +56,13 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     borderBottomWidth:1,
     borderBottomColor:'#EFEFEF'
+  },
+  contactButton : {
+    width:100,
+    height:30,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent : 'center'
   }
 
   });

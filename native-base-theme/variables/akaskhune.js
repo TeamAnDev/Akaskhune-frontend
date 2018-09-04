@@ -240,7 +240,6 @@ export default {
   // Text
   textColor: "#000",
   inverseTextColor: "#fff",
-  fontFamily : "IranianSans",
   noteFontSize: 14,
   get defaultTextColor() {
     return this.textColor;
