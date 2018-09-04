@@ -21,6 +21,7 @@ export default class PostCard extends Component
                  location={this.props.location}
                  name={this.props.fullName}
                  time={this.props.time} 
+                 profilePhotoUrl={this.props.profilePhotoUrl}
                  moreCallback={()=>{}}/>
                 
                 <CardBody

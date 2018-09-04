@@ -18,7 +18,7 @@ const CardBody = (props) => {
     </CardItem>
     {props.caption === "" ? null : 
     <CardItem cardBody style={{height:heightOfBody}} bordered>
-    <View style={{textAlign:'right', direction:"rtl", flex:1, margin: 8 }}>
+    <View style={{textAlign:'right', direction:"rtl", flex:1, margin: 8}}>
         <Text style={{fontSize : 12, color:colors.fontColor, textAlign:'right', direction:'rtl'}}>
             {props.caption}
         </Text>

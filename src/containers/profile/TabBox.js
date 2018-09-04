@@ -32,7 +32,7 @@ class TabBox extends Component {
                 //  refs={component => this._tabs = component}
                     tabBarUnderlineStyle={{
                     backgroundColor: colors.primaryColor,
-                    height: 1}}>
+                    height: 2}}>
                     <Tab heading="علاقمندیها" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
                     </Tab>
                     <Tab heading="عکسها" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
