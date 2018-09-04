@@ -12,6 +12,8 @@ export const rest = {
     refresh : '/auth/refresh/',
     userSelf : '/user/',
     imagesSelf : '/user/post/recent/',
+    contacts : '/friends/contacts/',
+    follow : '/friends/follow/',
     newPost : '/post/'
     
 }

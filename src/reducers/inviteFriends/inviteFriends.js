@@ -1,4 +1,5 @@
 import {CHANGE_FILTER_CONTACTS} from '../../actions/inviteFriends/inviteFriendsAction';
+import contactsRequestReducer from './request'
 import {combineReducers} from 'redux';
 
 function changeFilterReducer(state={filter:""}, action) {
@@ -11,7 +12,7 @@ function changeFilterReducer(state={filter:""}, action) {
 }
 
 const inviteFriendsApp = combineReducers({
-    changeFilterReducer
+    changeFilterReducer, contactsRequestReducer
 });
 
 export default inviteFriendsApp;

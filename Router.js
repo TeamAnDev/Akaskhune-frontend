@@ -32,7 +32,7 @@ const App = createStackNavigator({
     NewPost,
     NewPostComplete
   }, {
-    initialRouteName: "BottomTabRouter",
+    initialRouteName: "Login",
     headerMode: "none"
   });
 
