@@ -1,5 +1,5 @@
 import {rest, axiosInstance} from '../../config/urls'
-function feedsListAxios(){
-    return axiosInstance.get(rest.feeds);
+function feedsListAxios(restFeeds){
+    return axiosInstance.get(restFeeds);
 }
 export default feedsListAxios;

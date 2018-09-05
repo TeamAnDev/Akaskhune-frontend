@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, ImageBackground, Image, Dimensions} from 'react-native';
+import {View, Text, ImageBackground, Image, Dimensions, TouchableOpacity} from 'react-native';
 import {Card, CardItem, Left, Body, Right, Button, Icon} from 'native-base';
 import colors from '../../config/colors';
 const widthOfCardImage = Dimensions.get('window').width * 320/360;
@@ -8,7 +8,7 @@ const heightOfBody = Dimensions.get('window').height * 60/640;
 const CardBody = (props) => {
     return (
     <View>
-    <CardItem style={{backgroundColor:'red'}} cardBody>
+    <CardItem button style={{backgroundColor:'red'}} cardBody onPress={()=>{}}>
         <ImageBackground source={{uri : props.sourceImage}}
                     style={{backgroundColor:colors.grey, width:"100%"
                         // width:widthOfCardImage

@@ -10,6 +10,7 @@ import ChangePassword from './src/containers/setting/changePassword/ChangePasswo
 import NewPost from './src/containers/newPost/NewPost';
 import NewPostComplete from './src/containers/newPost/NewPostComplete';
 import InviteFriends from './src/containers/inviteFriends/inviteFriends';
+import SinglePost from './src/containers/home/SinglePost/SinglePost';
 
 
 
@@ -30,7 +31,8 @@ const App = createStackNavigator({
     EditProfile,
     InviteFriends,
     NewPost,
-    NewPostComplete
+    NewPostComplete,
+    SinglePost
   }, {
     initialRouteName: "BottomTabRouter",
     headerMode: "none"

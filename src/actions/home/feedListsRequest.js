@@ -1,8 +1,17 @@
 import feedsListAxios from "../../axiosRequests/home/feedsListReqeust";
 
+export const FEED_LISTS_INITIAL = "FEED_LISTS_INITIAL"
+export function feedsListInitial()
+{
+    return({
+        type : FEED_LISTS_INITIAL,
+    })
+}
+
 export const FEED_LISTS_REQ_SENT = "FEED_LISTS_REQ_SENT";
 export const FEED_LISTS_REQ_SUCCESS = "FEED_LISTS_REQ_SUCCESS";
 export const FEED_LISTS_REQ_ERR = "FEED_LISTS_REQ_ERR";
+
 
 function feedsListReqSent() {
     return({
@@ -10,10 +19,11 @@ function feedsListReqSent() {
     });
 }
 
-function feedsListReqSuccess(feeds) {
+function feedsListReqSuccess(feeds, nextUrl) {
     return({
         type: FEED_LISTS_REQ_SUCCESS,
-        feeds
+        feeds,
+        nextUrl
     })
 }
 
@@ -24,15 +34,18 @@ function feedsListReqErr(error) {
     })
 }
 
-export function feedsListRequest() {
+export function feedsListRequest(feedsUrl) {
     return async (dispatch) => {
-        dispatch(feedsListReqSent());
-        await feedsListAxios()
-        .then(function(response){
-            dispatch(feedsListReqSuccess(response.data));
-        }).catch(function(error){
-            dispatch(feedsListReqErr(error.response.data.error));
-        })
+        if(feedsUrl !== null)
+        {
+            dispatch(feedsListReqSent());
+            await feedsListAxios(feedsUrl)
+            .then(function(response){
+                dispatch(feedsListReqSuccess(response.data.results, response.data.next));
+            }).catch(function(error){
+                dispatch(feedsListReqErr(error.response.data.error));
+            })
+        }
     }
 }
 

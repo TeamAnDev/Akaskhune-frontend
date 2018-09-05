@@ -22,11 +22,13 @@ export default class PostCard extends Component
                  name={this.props.fullName}
                  time={this.props.time} 
                  profilePhotoUrl={this.props.profilePhotoUrl}
-                 moreCallback={()=>{}}/>
+                 moreCallback={()=>{}}
+                 id={this.props.id}/>
                 
                 <CardBody
                 caption={this.props.caption}
-                sourceImage={this.props.photoUrl}/>
+                sourceImage={this.props.photoUrl}
+                id={this.props.id}/>
 
                 <CardFooter
                 likeCallback={()=>{}}
@@ -35,7 +37,7 @@ export default class PostCard extends Component
                 numberOfComments={this.props.commentsCount}
                 shareCallback={()=>{}}
                 bookmarkCallback={()=>{}}
-                 />
+                id={this.props.id} />
             </Card>
         </View>);
     }

@@ -6,7 +6,8 @@ import HomeHeader from './Header';
 import PostCard from './PostCard';
 import {connect} from 'react-redux';
 import colors from '../../config/colors';
-import {feedsListRequest} from '../../actions/home/feedListsRequest';
+import {feedsListRequest, feedsListInitial} from '../../actions/home/feedListsRequest';
+import {rest} from '../../config/urls';
 const feeds = [{
     id : 1,
     user : "فرزاد حبیبی",
@@ -45,10 +46,22 @@ class Home extends Component{
     constructor(props)
     {
         super(props);
-        this.props.feedsListRequest();
+       
         this.state={
             refresh : false,
+            feeds : []
         }
+        this.refreshFeeds = this.refreshFeeds.bind(this);
+    }
+    refreshFeeds()
+    {
+        this.props.feedsListInitial();
+        this.props.feedsListRequest(rest.feeds);
+    }
+    componentWillMount()
+    {
+        this.props.feedsListInitial();
+        this.props.feedsListRequest(rest.feeds);
     }
     render()
     {
@@ -58,22 +71,25 @@ class Home extends Component{
                 <FlatList
                     ListEmptyComponent = {emptyPost}
                     refreshing = {this.props.loading}
-                    onRefresh = {() => this.props.feedsListRequest()}
+                    onRefresh = {this.refreshFeeds}
+                    onEndReached = {() => {this.props.feedsListRequest(this.props.url); console.warn("end man")}}
                     style = {{backgroundColor: 'white',}}
                     data = {this.props.feeds}
+                    ListFooterComponent = {this.props.endLoading ? <View style={{backgroundColor:'white'}}><Spinner/></View> : null}   
                     renderItem = {({item}) =>
                     { let feed = item;
                     return <PostCard
                         id = {feed.id}
                         fullName = {feed.user}
-                        profilePhotoUrl = {feed.profilePhotoUrl}
+                        profilePhotoUrl = {feed.avatar_url}
                         time = {feed.created_at}
                         location = {feed.location}
                         caption = {feed.caption}
                         photoUrl = {feed.photo_url}
                         likesCount = {feed.likes_count}
                         commentsCount = {feed.comments_count}/>}
-                     }/>   
+                     }/>
+        
             </View>
         )
     }
@@ -83,13 +99,16 @@ class Home extends Component{
 const mapStateToProps = state => {
     return({
         feeds : state.homeApp.feedsListReducer.feeds,
-        loading : state.homeApp.feedsListReducer.loading
+        loading : state.homeApp.feedsListReducer.loading,
+        url : state.homeApp.feedsListReducer.url,
+        endLoading : state.homeApp.feedsListReducer.endLoading,
     });
 }
 
 const mapDispatchToProps = dispatch => {
     return({
-        feedsListRequest : () => dispatch(feedsListRequest())
+        feedsListRequest : (url) => dispatch(feedsListRequest(url)),
+        feedsListInitial : () => dispatch(feedsListInitial()),
     });
 }
 
