@@ -18,7 +18,7 @@ class CameraRollPicker extends Component {
 
     this.state = {
       images: [],
-      selected: this.props.selected,
+      selected: [],
       lastCursor: null,
       initialLoading: true,
       loadingMore: false,

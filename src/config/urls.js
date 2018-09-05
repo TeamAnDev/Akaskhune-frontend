@@ -15,7 +15,8 @@ export const rest = {
     contacts : '/friends/contacts/',
     follow : '/friends/follow/',
     newPost : '/post/',
-    unfollow : '/friends/unfollow/'
+    unfollow : '/friends/unfollow/',
+    feeds : '/user/feed/',
     
 }
 
