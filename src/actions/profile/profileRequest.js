@@ -12,10 +12,11 @@ export function imagesRequestSent() {
     })
 }
 
-export function imagesRequestSuccess(images) {
+export function imagesRequestSuccess(images, next) {
     return ({
         type: IMAGES_REQ_SUCCESS,
-        images
+        images,
+        next
     })
 }
 
@@ -33,16 +34,19 @@ export function infoRequestSuccess(data) {
     })
 }
 
-export function requestImages() {
+export function requestImages(imagesUrl) {
     return async (dispatch) => {
-        dispatch(imagesRequestSent());
-        await imagesRequest()
-        .then(function(response){
-            console.warn(response)
-            dispatch(imagesRequestSuccess(response.data.results));
-        }).catch(function(error) {
-            dispatch(imagesRequestError(error));
-        });
+        
+        if(imagesUrl !== null && imagesUrl !== undefined) {
+            dispatch(imagesRequestSent());
+            await imagesRequest(imagesUrl)
+            .then(function(response){
+                console.warn(response.data);
+                dispatch(imagesRequestSuccess(response.data.results, response.data.next));
+            }).catch(function(error) {
+                dispatch(imagesRequestError(error));
+            });
+        }   
     }
 }
 

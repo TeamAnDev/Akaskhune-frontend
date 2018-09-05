@@ -5,6 +5,7 @@ import { Container, Header, Content, Tab, Tabs} from 'native-base';
 import styles from './styles';
 import Images from './Images';
 import colors from '../../config/colors';
+import {connect} from 'react-redux';
 
 class TabBox extends Component {
     constructor(props)
@@ -16,28 +17,22 @@ class TabBox extends Component {
     }
     componentDidMount()
     {
-        //Added for android bug
-        setTimeout(()=>{
-            // console.warn("here");
+            setTimeout(()=>{
             this.setState({activeTab:1})
         
         },1000)
     }
     render() {
-        // console.warn(this.state.activeTab)
         return (
             <Container>
-                {/* <Header style={{backgroundColor:'red', }} hasTabs/> */}
                 <Tabs  page={1} tabContainerStyle={{height:50} } 
-                //  refs={component => this._tabs = component}
                     tabBarUnderlineStyle={{
                     backgroundColor: colors.primaryColor,
                     height: 2}}>
-                    <Tab heading="علاقمندیها" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
+                    <Tab heading={"علاقمندیها" + this.props.board_count} tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
                     </Tab>
-                    <Tab heading="عکسها" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
+                    <Tab heading={"عکسها" + this.props.posts_count} tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
                         <Images/>
-                        {/* <Image source={{uri:'../../../images/apple.jpg'}} style={styles.image}/> */}
                     </Tab>
                 </Tabs>
             </Container>
@@ -45,4 +40,11 @@ class TabBox extends Component {
     }
 }
 
-export default TabBox;
+const mapStateToProps = state => {
+    return({
+        posts_count : state.profileApp.infoRequestReducer.posts_count,
+        board_count : state.profileApp.infoRequestReducer.board_count
+    })
+}
+
+export default connect(mapStateToProps, null)(TabBox);

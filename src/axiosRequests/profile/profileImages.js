@@ -1,8 +1,9 @@
 
 import {axiosInstance, rest} from '../../config/urls';
 
-function imagesRequest() {
-    return axiosInstance.get(rest.imagesSelf);
+function imagesRequest(imagesUrl) {
+    console.warn(imagesUrl);
+    return axiosInstance.get(imagesUrl);
 }
 
 export default imagesRequest;
