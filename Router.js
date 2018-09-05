@@ -34,7 +34,7 @@ const App = createStackNavigator({
     NewPostComplete,
     SinglePost
   }, {
-    initialRouteName: "BottomTabRouter",
+    initialRouteName: "SinglePost",
     headerMode: "none"
   });
 
