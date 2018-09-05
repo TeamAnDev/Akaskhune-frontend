@@ -12,9 +12,9 @@ const SinglePostHeader = () => {
         <Header style={{ backgroundColor: colors.primaryColor}}
             androidStatusBarColor={colors.primaryColor}>
             <Left style={{flex:1}}>
-                 <TouchableOpacity   onPress={() => {}}>
-                    <Icon style={{color:'white', marginLeft: 4,}} name='more-horizontal' type="Feather"/>
-                </TouchableOpacity>
+                 <Button transparent rounded primary style={{borderRadius:50}}   onPress={() => {}}>
+                    <Icon style={{color:'white'}} name='more-horizontal' type="Feather"/>
+                </Button>
             </Left>
             <Body style={{flex:1, alignItems:'center'}}>
             </Body>
