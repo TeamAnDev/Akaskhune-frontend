@@ -1,35 +1,32 @@
 import React from 'react';
 import {Component} from 'react';
-import {ScrollView, View, Image, ListView, Text} from 'react-native';
+import {View, Image, ListView, Text, FlatList} from 'react-native';
 import styles from './styles';
 import FHRow from '../../components/FHRow';
 import {requestImages} from '../../actions/profile/profileRequest'
 import {connect} from 'react-redux';
 import {Spinner, Icon} from 'native-base';
 import colors from '../../config/colors';
+import {rest} from '../../config/urls';
 
 
 class Images extends Component {
 
     constructor(props) {
         super(props);
-        this.dataSource = undefined;
-        this.props.requestImages();     
+        this.dataSource = [];
+        this.props.requestImages(rest.imagesSelf);     
     }
 
     render() {
-        
+        let toReturn;
         if(this.props.success) {
-            const ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2});
             let data = [];
-            if(this.props.images.length === 0)
-            {
-                return (
-                    <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-                        <Icon type="Feather" name="close"/>
-                        <Text>هیچ پستی وجود ندارد</Text>
-                    </View>
-                )
+            if(this.props.images.length === 0) {
+                toReturn = <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+                    <Icon type="Feather" name="close"/>
+                    <Text>هیچ پستی وجود ندارد</Text>
+                </View>            
             }
             else {
                 for (let i = 0; i < this.props.images.length; i+=2) {
@@ -37,32 +34,32 @@ class Images extends Component {
                     if(this.props.images[i+1] !== undefined) {
                         rightImage =  this.props.images[i+1].photo_url
                     } ;
-                    data[i/2] = [{uri:this.props.images[i].photo_url}, {uri: rightImage}];
+                    let leftImage = '';
+                    if(this.props.images[i] !== undefined) {
+                        leftImage =  this.props.images[i].photo_url
+                    } ;
+                    data[i/2] = [{uri:leftImage}, {uri: rightImage}];
                 }
-                this.dataSource = ds.cloneWithRows(data);
-                return ( 
-                    <ListView 
-                        dataSource={this.dataSource}
-                        renderRow={(rowData) => <FHRow leftImage={rowData[0]} rightImage={rowData[1]}/>}
-                        onEndReachedThreshold={10}
-                        onEndReached={() => console.warn("end")}
-                    />
-                );
+                this.dataSource = data;
+                toReturn = <FlatList
+                    refreshing={this.props.loading}
+                    data = {this.dataSource}
+                    renderItem = {({item}) => <FHRow leftImage={item[0]} rightImage={item[1]}/>}
+                    onEndReached = {() => {this.props.requestImages(this.props.url); console.warn("end")}}
+                    
+                />
             }
         } 
         else if(this.props.loading) {
-            return (
-                <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+            toReturn = <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
                     <Spinner style={{alignSelf:'center'}} color={colors.accentColor}/>
                     <Text>در حال بارگزاری اطلاعات</Text>
-                </View>
-            )
+                </View>  
         }
         else {
-            return (
-                <View><Text>error</Text></View>
-            )
+            toReturn = <View><Text>error</Text></View>
         }
+        return toReturn;
     }
 }
 
@@ -70,13 +67,14 @@ const mapStateToProps = state => {
     return ({
         images : state.profileApp.imagesRequestReducer.images,
         success : state.profileApp.imagesRequestReducer.success,
-        loading : state.profileApp.imagesRequestReducer.loading
+        loading : state.profileApp.imagesRequestReducer.loading,
+        url : state.profileApp.imagesRequestReducer.url
     });
 }
 
 const mapDispatchToProps = dispatch => {
     return ({
-        requestImages : () => dispatch(requestImages())
+        requestImages : (url) => dispatch(requestImages(url))
     });
 }
 

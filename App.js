@@ -17,7 +17,7 @@ import EditProfile from './src/containers/setting/editProfile/EditProfile';
 import Sample from './sample';
 import InviteFriends from './src/containers/inviteFriends/inviteFriends';
 import Setting from './src/containers/setting/Setting';
-console.disableYellowBox = true;
+console.disableYellowBox = false;
 export default class App extends Component {
   render() {
     return (
