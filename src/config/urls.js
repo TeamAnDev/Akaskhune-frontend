@@ -17,6 +17,7 @@ export const rest = {
     newPost : '/post/',
     unfollow : '/friends/unfollow/',
     feeds : '/user/feed/',
+    singlePost : '/post/',
     
 }
 

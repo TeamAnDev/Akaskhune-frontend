@@ -1,6 +1,6 @@
 // NavigationService.js
 
-import { NavigationActions ,StackActions } from 'react-navigation';
+import { NavigationActions ,StackActions, NavigationParams } from 'react-navigation';
 import { retrieveToken } from './src/config/token';
 
 let _navigator;
@@ -50,6 +50,11 @@ export function goBack(){
   _navigator.dispatch(
     NavigationActions.back()
   );
+}
+
+export function getParam(param)
+{
+  const p = _navigator.getParam(param, '1');
 }
 // add other navigation functions that you need and export them
 

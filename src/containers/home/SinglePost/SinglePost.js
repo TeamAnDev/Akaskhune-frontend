@@ -6,8 +6,16 @@ import PostHeader from './PostHeader';
 import PostBody from './PostBody';
 import PostFooter from '../PostCardFooter';
 import CommentList from './CommentList';
-export default class SinglePost extends Component
+import {connect} from 'react-redux';
+
+import {singlePostRequest} from '../../../actions/home/singlePostRequest';
+class SinglePost extends Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.props.singlePostRequest(this.props.navigation.getParam('id'));
+    }
     render()
     {
         return(
@@ -16,23 +24,23 @@ export default class SinglePost extends Component
 
                 <Card transparent>
                     <PostHeader
-                        location = "ماسال"
-                        name = "فرزاد حبیبی"
-                        profilePhotourl = ""
-                        time = "۳ ساعت پیش"
-                        id = ""/>
+                        location = {this.props.post.location}
+                        name = {this.props.post.user_fullname}
+                        profilePhotoUrl = {this.props.post.avatar_url}
+                        time = {this.props.post.created_at}
+                        id = {this.props.post.user_id}/>
                     <PostBody
-                        caption = "من در ماسال"
-                        sourceImgae = ""
-                        id = ""/>
+                        caption = {this.props.post.caption}
+                        sourceImage = {this.props.post.photo_url}
+                        id = {this.props.post.user_id}/>
                     <PostFooter
                         likeCallback={()=>{}}
-                        numberOfLikes="200"
+                        numberOfLikes={this.props.post.likes_count}
                         commentCallback={()=>{}}
-                        numberOfComments="30"
+                        numberOfComments={this.props.post.comments_count}
                         shareCallback={()=>{}}
                         bookmarkCallback={()=>{}}
-                        id="" />
+                        id = {this.props.post.user_id}/>
                     
                     {/* <CommentList/> */}
 
@@ -42,3 +50,19 @@ export default class SinglePost extends Component
         )
     }
 }
+
+const mapStateToProps = state => {
+    return({
+        post : state.homeApp.singlePostReducer.post,
+        loading : state.homeApp.singlePostReducer.loading,
+    });
+}
+
+const mapDispatchToProps = dispatch => {
+    return({
+        singlePostRequest : (id) => dispatch(singlePostRequest(id)),
+      
+    });
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SinglePost);

@@ -26,10 +26,11 @@ const PostHeader = (props) => {
                      textAlign:'right', direction:'rtl'}}>{props.time}</Text>
             </View>
             <View>
-                <ImageBackground source={{uri : props.profilePhotoUrl}}
+                <ImageBackground source={{uri :  props.profilePhotoUrl}}
                 style={{backgroundColor:colors.blackGrey, width:widthOfAvatar, height:widthOfAvatar
                     ,borderRadius:widthOfAvatar/2, margin:4}}
                 imageStyle={{borderRadius:widthOfAvatar/2}}>
+
 
                 </ImageBackground>
             </View>

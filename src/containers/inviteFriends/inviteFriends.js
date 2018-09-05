@@ -11,14 +11,28 @@ import {changeFilter} from '../../actions/inviteFriends/inviteFriendsAction';
 import {connect} from 'react-redux';
 import {contactsRequest} from '../../actions/inviteFriends/inviteFriendsRequest'
 import colors from '../../config/colors';
+async function requestContactsPermission() {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
+        {
+          'title': 'دسترسی به مخاطبین',
+          'message': 'برنامه‌ی عکاسخانه به دسترسی به مخاطبین نیاز دارد. '
+        }
+      )
+    } catch (err) {
+      console.warn(err)
+    }
+  }
 class InviteFriends extends Component {
-
+    
     constructor(props) {
         super(props);
+       
         this.dataSource = undefined;
         this.state = {data:[], allContacts: []};
     }
-
+    
     getAllContactsWithStatus(err, contacts) {
         let allContacts = [];
         if(err === 'denied'){
@@ -64,7 +78,8 @@ class InviteFriends extends Component {
         this.setState({data});
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        await requestContactsPermission();
         Contacts.getAll((err, contacts) => {
             this.getAllContactsWithStatus(err, contacts);
             this.props.contactsRequest(this.state.allContacts)
