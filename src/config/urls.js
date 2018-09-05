@@ -14,7 +14,8 @@ export const rest = {
     imagesSelf : '/user/post/recent/',
     contacts : '/friends/contacts/',
     follow : '/friends/follow/',
-    newPost : '/post/'
+    newPost : '/post/',
+    unfollow : '/friends/unfollow/'
     
 }
 
