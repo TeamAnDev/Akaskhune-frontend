@@ -64,6 +64,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent : 'center',
     color : colors.accentColor
+  },
+  peopleImage : {
+    width:40,
+    height:40,
+    borderRadius:50
   }
 
   });

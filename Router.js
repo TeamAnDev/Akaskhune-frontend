@@ -11,8 +11,7 @@ import NewPost from './src/containers/newPost/NewPost';
 import NewPostComplete from './src/containers/newPost/NewPostComplete';
 import InviteFriends from './src/containers/inviteFriends/inviteFriends';
 import SinglePost from './src/containers/home/SinglePost/SinglePost';
-
-
+import FollowersList from './src/containers/peopleList/FollowersList';
 
 const Auth = createStackNavigator({
     Signup,
@@ -32,9 +31,10 @@ const App = createStackNavigator({
     InviteFriends,
     NewPost,
     NewPostComplete,
-    SinglePost
+    SinglePost,
+    FollowersList
   }, {
-    initialRouteName: "SinglePost",
+    initialRouteName: "FollowersList",
     headerMode: "none"
   });
 
