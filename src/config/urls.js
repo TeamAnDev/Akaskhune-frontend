@@ -17,11 +17,13 @@ export const rest = {
     newPost : '/post/',
     unfollow : '/friends/unfollow/',
     feeds : '/user/feed/',
+    followersList : '/user/followers/',
+    followingsList : '/user/followings/'
     
 }
 
 export let axiosInstance = axios.create({
-    baseURL: 'http://192.168.11.138/api/v1',
+    baseURL: 'http://185.162.235.243/api/v1',
     timeout:10000,
     headers:{
         'Content-Type': 'application/json',

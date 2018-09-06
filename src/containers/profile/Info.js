@@ -5,6 +5,7 @@ import axios from 'axios';
 import {requestInfo} from '../../actions/profile/profileRequest';
 import {connect} from 'react-redux';
 import colors from '../../config/colors';
+import {navigate} from '../../../NavigationService';
 
 class ProfileInfo extends Component {
 
@@ -20,7 +21,10 @@ class ProfileInfo extends Component {
                 </View>
                 <View style={{flex:2, flexDirection:'column', marginRight:20, marginTop:5}}>
                     <Text style={{fontWeight:'bold', fontSize:20,textAlign:'right'}}>{this.props.fullname}</Text>
-                    <Text style={{marginTop:5,textAlign:'right'}}>{this.props.follower_count}{" دنبال کننده"}{"     "}{this.props.following_count}{" دنبال شونده"}</Text>
+                    <View style={{flexDirection:'row', justifyContent:'flex-end'}}>
+                        <Text style={{textAlign:'right', marginRight:10}} onPress={() => navigate("FollowingsList")}>{this.props.following_count}{" دنبال شونده"}</Text>
+                        <Text style={{textAlign:'right'}} onPress={() => navigate("FollowersList")}>{this.props.follower_count}{" دنبال کننده"}</Text>
+                    </View>
                     <Text style={{fontSize:12 ,fontWeight:'bold', textAlign:'right', marginTop:5}}>{this.props.bio}</Text>
                 </View>
             </View>

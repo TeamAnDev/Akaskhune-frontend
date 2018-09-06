@@ -36,7 +36,7 @@ const App = createStackNavigator({
     FollowersList,
     FollowingsList
   }, {
-    initialRouteName: "FollowingsList",
+    initialRouteName: "BottomTabRouter",
     headerMode: "none"
   });
 
