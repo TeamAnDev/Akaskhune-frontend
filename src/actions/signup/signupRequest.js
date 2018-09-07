@@ -31,7 +31,7 @@ export function signup(email){
         await signupAxiosRequest(email).then(function(response) {
             dispatch(signupSucces());
         }).catch(function(error){
-            dispatch(signupError(error.response.data.error));
+            dispatch(signupError(error.response.data));
         })
     }    
 }

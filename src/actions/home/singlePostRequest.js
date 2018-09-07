@@ -5,7 +5,6 @@ export const SINGLE_POST_REQ_SENT = "SINGLE_POST_REQ_SENT";
 export const SINGLE_POST_REQ_SUCCESS = "SINGLE_POST_REQ_SUCCESS";
 export const SINGLE_POST_REQ_ERR = "SINGLE_POST_REQ_ERR";
 
-
 function singlePostReqSent() {
     return({
         type: SINGLE_POST_REQ_SENT
@@ -27,6 +26,7 @@ function singlePostReqErr(error) {
     })
 }
 
+
 export function singlePostRequest(id) {
     return async (dispatch) => {
             dispatch(singlePostReqSent());
@@ -34,7 +34,7 @@ export function singlePostRequest(id) {
             .then(function(response){
                 dispatch(singlePostReqSuccess(response.data));
             }).catch(function(error){
-                dispatch(singlePostReqErr(error.response.data.error));
+                dispatch(singlePostReqErr(error.response.data));
             })
         
     }

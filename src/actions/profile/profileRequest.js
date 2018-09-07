@@ -1,14 +1,21 @@
 import imagesRequest from '../../axiosRequests/profile/profileImages';
 import infoRequest from '../../axiosRequests/profile/profileInfo';
-
+export const IMAGES_REQ_INIT = "IMAGES_REQ_INIT"; 
 export const IMAGES_REQ_SENT = "IMAGES_REQ_SENT";
 export const IMAGES_REQ_SUCCESS = "IMAGES_REQ_SUCCESS";
 export const IMAGES_REQ_ERROR = "IMAGES_REQ_ERROR";
 export const INFO_REQ_SUCCESS = "INFO_REQ_SUCCESS";
 
+
+export function imageRequestInit()
+{
+    return {
+        type : IMAGES_REQ_INIT,
+    }
+}
 export function imagesRequestSent() {
     return ({
-        type: IMAGES_REQ_SENT
+        type: IMAGES_REQ_SENT,
     })
 }
 

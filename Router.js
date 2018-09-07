@@ -11,7 +11,8 @@ import NewPost from './src/containers/newPost/NewPost';
 import NewPostComplete from './src/containers/newPost/NewPostComplete';
 import InviteFriends from './src/containers/inviteFriends/inviteFriends';
 import SinglePost from './src/containers/home/SinglePost/SinglePost';
-
+import AuthLoadingScreen from './AuthLoadingScreen';
+import NoConnectionScreen from './NoConnectionScreen';
 
 
 const Auth = createStackNavigator({
@@ -40,10 +41,12 @@ const App = createStackNavigator({
 
 const Router = createSwitchNavigator({
   Auth,
-  App
+  App,
+  AuthLoadingScreen,
+  NoConnectionScreen
 },
 {
-  initialRouteName : "App"
+  initialRouteName : "AuthLoadingScreen"
 })
   // const prevGetStateForAction = Router.router.getStateForAction;
       

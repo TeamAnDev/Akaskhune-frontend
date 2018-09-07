@@ -7,14 +7,14 @@ let _navigator;
 
 export function setTopLevelNavigator(navigatorRef) {
   _navigator = navigatorRef;
-  navigateToBaseIfLogined();
+  // navigateToBaseIfLogined();
 }
 async function navigateToBaseIfLogined()
 {
   let token = await retrieveToken();
   if(token === "" || token === undefined)
   {
-    navigate('Login');
+    navigate('Auth');
   }
 }
 

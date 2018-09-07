@@ -13,10 +13,7 @@ import getTheme from './native-base-theme/components';
 import akaskhune from './native-base-theme/variables/akaskhune';
 import Router from './Router';
 import { setTopLevelNavigator} from './NavigationService';
-import EditProfile from './src/containers/setting/editProfile/EditProfile';
-import Sample from './sample';
-import InviteFriends from './src/containers/inviteFriends/inviteFriends';
-import Setting from './src/containers/setting/Setting';
+
 // console.disableYellowBox = true;
 export default class App extends Component {
   render() {

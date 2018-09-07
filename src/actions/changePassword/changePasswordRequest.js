@@ -31,7 +31,7 @@ export function changePassword(oldPassword, newPassword) {
             dispatch(changePasswordSuccess(response.data.message));
         }).catch(function(error) {
             console.warn(error);
-            dispatch(changePasswordError(error.response.data.error));
+            dispatch(changePasswordError(error.response.data));
         })
     }
 }

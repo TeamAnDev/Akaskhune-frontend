@@ -1,6 +1,6 @@
 import React from 'react';
 import {Component} from 'react';
-import {View, FlatList, Text, Dimensions} from 'react-native';
+import {View, FlatList, Text, Dimensions, RefreshControl} from 'react-native';
 import {Spinner, Icon} from 'native-base';
 import HomeHeader from './Header';
 import PostCard from './PostCard';
@@ -8,28 +8,7 @@ import {connect} from 'react-redux';
 import colors from '../../config/colors';
 import {feedsListRequest, feedsListInitial} from '../../actions/home/feedListsRequest';
 import {rest} from '../../config/urls';
-const feeds = [{
-    id : 1,
-    user : "فرزاد حبیبی",
-    profilePhotoUrl : "",
-    created_at : "۳ ساعت پیش",
-    location : undefined,
-    caption : "من یهویی",
-    photo_url : "",
-    likes_count : 100,
-    comments_count : 20,
-}, 
-{
-    id : 1,
-    user : "فرزاد حبیبی",
-    profilePhotoUrl : "",
-    created_at : "۳ ساعت پیش",
-    location : "تهران",
-    caption : "من یهویی",
-    photo_url : "",
-    likes_count : 100,
-    comments_count : 20,
-}]
+import {PulseIndicator} from 'react-native-indicators';
 const emptyPost  = () => (
     <View style={{flex:1, height:Dimensions.get("window").height*3/4,  justifyContent:'center', alignItems:'center'}}>
     <Text style={{padding : 10}} >
@@ -40,6 +19,14 @@ const emptyPost  = () => (
         <Text style={{padding : 10}} >
             برای بارگزاری مجدد صفحه را پایین بکشید.
         </Text>
+    </View>
+)
+const emptyPostLoading = () => (
+    <View style={{flex:1, height:Dimensions.get("window").height*3/4,  justifyContent:'center', alignItems:'center'}}>
+        <View style={{ height:80, width:80}}>
+        <PulseIndicator count={8} size={70} color={colors.accentColor}/>
+        </View>
+        <Text>در حال دریافت اطلاعات</Text>
     </View>
 )
 class Home extends Component{
@@ -69,10 +56,17 @@ class Home extends Component{
             <View style={{flex:1}}>
                 <HomeHeader/>
                 <FlatList
-                    ListEmptyComponent = {emptyPost}
-                    refreshing = {this.props.loading}
-                    onRefresh = {this.refreshFeeds}
-                    onEndReached = {() => {this.props.feedsListRequest(this.props.url); console.warn("end man")}}
+                    ListEmptyComponent = {this.props.loading ? emptyPostLoading : emptyPost}
+                    refreshControl = {
+                       <RefreshControl
+                       colors={[colors.accentColor]} 
+                       tintColor={colors.accentColor} 
+                       refreshing = {this.props.loading}
+                       onRefresh = {this.refreshFeeds}
+                       />
+                    }
+                    onEndReachedThreshold = {0.5}
+                    onEndReached = {() => {if(!this.props.loading){this.props.feedsListRequest(this.props.url)}}}
                     style = {{backgroundColor: 'white',}}
                     data = {this.props.feeds}
                     ListFooterComponent = {this.props.endLoading ? <View style={{backgroundColor:'white'}}><Spinner/></View> : null}   

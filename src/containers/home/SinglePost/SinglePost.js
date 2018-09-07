@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View} from 'react-native';
+import {View, ScrollView, RefreshControl} from 'react-native';
 import SinglePostHeader from './Header';
 import { Card } from 'native-base';
 import PostHeader from './PostHeader';
@@ -9,6 +9,8 @@ import CommentList from './CommentList';
 import {connect} from 'react-redux';
 
 import {singlePostRequest} from '../../../actions/home/singlePostRequest';
+import CommentInput from './CommentInput';
+import colors from '../../../config/colors';
 class SinglePost extends Component
 {
     constructor(props)
@@ -21,7 +23,13 @@ class SinglePost extends Component
         return(
             <View style={{flex:1, backgroundColor:'white'}}>
                 <SinglePostHeader/>
-
+                <ScrollView style={{flex:1, backgroundColor:'white'}}
+                    refreshControl ={<RefreshControl
+                                        colors={[colors.accentColor]}
+                                        tintColor={colors.accentColor} 
+                                        refreshing={this.props.loading} 
+                                        onRefresh={()=>{this.props.singlePostRequest(this.props.navigation.getParam('id'))}}
+                                    />}>
                 <Card transparent>
                     <PostHeader
                         location = {this.props.post.location}
@@ -40,12 +48,12 @@ class SinglePost extends Component
                         numberOfComments={this.props.post.comments_count}
                         shareCallback={()=>{}}
                         bookmarkCallback={()=>{}}
-                        id = {this.props.post.user_id}/>
-                    
-                    {/* <CommentList/> */}
-
-                    
+                        id = {this.props.post.user_id}
+                        singlePost = {true}/>                
                 </Card>
+                <CommentList/>
+                </ScrollView>
+                <CommentInput/>
             </View>
         )
     }

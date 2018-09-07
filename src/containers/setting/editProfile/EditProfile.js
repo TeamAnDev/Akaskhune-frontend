@@ -11,6 +11,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {getSelfInfo} from '../../../actions/userInfo/userInfoRequest';
 import colors from '../../../config/colors';
 import FHError from '../../../components/FHError';
+import {PulseIndicator} from 'react-native-indicators';
 
 class EditProfile extends Component 
 {
@@ -37,7 +38,9 @@ class EditProfile extends Component
         <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
         <FHError errorText={this.props.errorGettingSelf}/>
         </View>) : (<View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-        <Spinner style={{alignSelf:'center'}} color={colors.accentColor}/>
+        <View style={{ height:80, width:80}}>
+        <PulseIndicator count={8} size={70} color={colors.accentColor}/>
+        </View>
         <Text>در حال بارگزاری اطلاعات</Text>
         </View>) ;
         return(

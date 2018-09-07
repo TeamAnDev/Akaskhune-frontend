@@ -31,7 +31,7 @@ export function contactsRequest(contacts) {
         .then(function(response){
             dispatch(contactsReqSuccess(response.data.contacts));
         }).catch(function(error){
-            dispatch(contactsReqErr(error.response.data.error));
+            dispatch(contactsReqErr(error.response.data));
         })
     }
 }
