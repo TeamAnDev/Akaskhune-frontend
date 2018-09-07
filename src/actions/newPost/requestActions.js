@@ -32,7 +32,7 @@ export function createNewPost(sourceImage, caption, tags) {
             dispatch(newPostSuccess());
             dispatch(requestImages())
         }).catch (function(error) {
-            dispatch(newPostError(error.response.data));
+            dispatch(newPostError(error.response.data.error));
         })
     }
 }

@@ -29,7 +29,7 @@ export function editUserInfo(fullname, bio, avatar){
             dispatch(requestInfo());
             dispatch(setInfoSucces());
         }).catch(function(error){
-            dispatch(setInfoError(error.response.data));
+            dispatch(setInfoError(error.response.data.error))
         })
     }    
 }

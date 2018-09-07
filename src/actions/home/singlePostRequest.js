@@ -34,7 +34,7 @@ export function singlePostRequest(id) {
             .then(function(response){
                 dispatch(singlePostReqSuccess(response.data));
             }).catch(function(error){
-                dispatch(singlePostReqErr(error.response.data));
+                dispatch(singlePostReqErr(error.response.data.error));
             })
         
     }

@@ -27,7 +27,7 @@ export function getSelfInfo(){
         await getSelfInfoAxiosRequest().then(function(response) {
             dispatch(getInfoSucces(response.data));
         }).catch(function(error){
-            dispatch(getInfoError(error.response.data));
+            dispatch(getInfoError(error.response.data.error));
         })
     }    
 }
