@@ -43,7 +43,7 @@ export function feedsListRequest(feedsUrl) {
             .then(function(response){
                 dispatch(feedsListReqSuccess(response.data.results, response.data.next));
             }).catch(function(error){
-                dispatch(feedsListReqErr(error));
+                dispatch(feedsListReqErr(error.response.data.error));
             })
         }
     }

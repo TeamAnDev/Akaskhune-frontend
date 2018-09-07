@@ -9,7 +9,7 @@ import { Item, Input, Icon } from 'native-base';
 const mainHeignt = Dimensions.get('window').height * 60/640;
 const CommentInput = (props) => {
     const reply = props.isReplay ? 
-    <View style={{position: 'absolute', bottom: mainHeignt, width: "100%", height: mainHeignt/2, backgroundColor: colors.meduimGrey , justifyContent:'center'}}>
+    <View style={{ width: "100%", height: mainHeignt/2, backgroundColor: colors.meduimGrey , justifyContent:'center'}}>
         <Text style={{textAlign: 'right'}}>
             {props.replyName}
         </Text>
@@ -20,7 +20,7 @@ const CommentInput = (props) => {
     return (
         <View>
         {reply}
-        <View style={{position: 'absolute', bottom: 0, width: "100%", height: mainHeignt, backgroundColor: colors.grey, alignItems:'center', justifyContent:'center'}}>
+        <View style={{ width: "100%", height: mainHeignt, backgroundColor: colors.grey, alignItems:'center', justifyContent:'center'}}>
            <Item regular style={{backgroundColor:'white', width:'88%', height: '70%', borderRadius:mainHeignt/7}}>
                 <TouchableOpacity style={{}}>
                     <Text style={{padding:10, color:'black', fontWeight:'bold'}}>

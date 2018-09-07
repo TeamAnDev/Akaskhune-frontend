@@ -19,6 +19,8 @@ export const rest = {
     unfollow : '/friends/unfollow/',
     feeds : '/user/feed/',
     singlePost : '/post/',
+    commentList : (postId) => '/post/' + postId.toString() + '/comments/list/',
+    commentCreate : (postId) => '/post/' + postId.toString() + '/comments/create/'
     
 }
 

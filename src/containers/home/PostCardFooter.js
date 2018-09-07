@@ -5,7 +5,7 @@ import colors from '../../config/colors';
 // import FHIcon from '../../components/FHIcon';
 const CardFooter = (props) => {
     return (
-        <CardItem bordered styl={{ borderBottomLeftRadius: 8, borderBottomRightRadius: 8}}>
+        <CardItem bordered style={{ borderBottomLeftRadius: 8, borderBottomRightRadius: 8,}}>
             <Left>
                 <TouchableOpacity onPress={() => props.likeCallback()}>
                     <Icon name='heart-o' type='FontAwesome' style={{color:colors.fontColor, fontSize: 25,}} />

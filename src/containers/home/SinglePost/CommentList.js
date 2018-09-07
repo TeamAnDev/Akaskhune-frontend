@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import {View, Text, ImageBackground, Image, Dimensions, TouchableOpacity
         , FlatList} from 'react-native';
-import {Card, CardItem, Left, Body, Right, Button, Icon} from 'native-base';
+import {Card, CardItem, Left, Body, Right, Button, Icon, Spinner} from 'native-base';
 import colors from '../../../config/colors';
-
-
+import {commentListInitial, commentListRequest} from '../../../actions/home/comentsRequest';
+import { rest } from '../../../config/urls';
+import {connect} from 'react-redux';
 const Comment = (props) => {
     let widthOfAvatar = Dimensions.get('window').width * 30 / 360;
     widthOfAvatar = props.isReplay ? widthOfAvatar *3/4 : widthOfAvatar;
@@ -42,82 +43,61 @@ const Comment = (props) => {
       
     </CardItem>
 )}
-comments = [
-    {
-        name : 'فرزاد',
-        time : '۳ ساعت پیش',
-        text : 'به به چه عکسی',
-        id : 3,
-        avatar_url : '',
-        replies : [
-             {
-                name : 'فرزاد',
-                time : '۳ ساعت پیش',
-                text : 'به به چه عکسی',
-                id : 3,
-                avatar_url : '',
-             },
-             {
-                name : 'فرزاد',
-                time : '۳ ساعت پیش',
-                text : 'به به چه عکسی',
-                id : 3,
-                avatar_url : '',
-             }
-       
-        ]
 
-    },
+class CommentList extends Component 
+{
+    constructor(props)
     {
-        name : 'فرزاد',
-        time : '۳ ساعت پیش',
-        text : 'به به چه عکسی',
-        id : 3,
-        avatar_url : '',
-        replies : [
-             {
-                name : 'فرزاد',
-                time : '۳ ساعت پیش',
-                text : 'به به چه عکسی',
-                id : 3,
-                avatar_url : '',
-             },
-             {
-                name : 'فرزاد',
-                time : '۳ ساعت پیش',
-                text : 'به به چه عکسی',
-                id : 3,
-                avatar_url : '',
-             }
+        super(props);
        
-        ]
-
+        this.state={
+            comments: []
+        }
+        this.refreshComments = this.refreshComments.bind(this);
     }
-];
-const CommentList = (props) => {
+    refreshComments()
+    {
+        this.props.commentListInitial(this.props.id);
+        this.props.commentListRequest(rest.commentList(this.props.id));
+    }
+    componentWillMount()
+    {
+        this.props.commentListInitial(this.props.id);
+        this.props.commentListRequest(rest.commentList(this.props.id));
+    }
+    render(){
+        console.warn(this.props.id, typeof(this.props.id))
     return (
             <FlatList
-            onEndReached = {()=>{}}
             style = {{backgroundColor: 'white'}}
-            data = {comments}
+            data = {this.props.comments}
+            ListFooterComponent =
+             {this.props.endLoading  || this.props.loading? <Spinner color={colors.accentColor}/> : this.props.url !== null ? 
+                <View style={{justifyContent:'center', alignItems:'center', width:'100%'}}>
+                    <TouchableOpacity
+                    onPress = {() => {if(!this.props.loading){this.props.commentListRequest(this.props.url)}}} >
+                        <Icon type="EvilIcons" name="plus" style={{fontSize:50, padding:10}}/>
+                    </TouchableOpacity>
+                </View>
+                : null}
+           
             renderItem = {({item}) =>
             { let comment = item;
             return <View>
                         <Comment
                         name = {comment.name}
-                        time = {comment.time}
+                        time = {comment.created_at}
                         text = {comment.text}
                         profilePhotoUrl = {comment.avatar_url}
                         id = {comment.id}
                         isReplay = {false}/>
                         <FlatList
-                        onEndReached = {() => {}}
                         style = {{backgroundColor: 'white'}}
                         data = {comment.replies}
                         renderItem = {({item}) => 
                             <Comment
                             name = {item.name}
-                            time = {item.time}
+                            time = {item.created_at}
                             text = {item.text}
                             profilePhotoUrl = {item.text}
                             id = {item.id}
@@ -126,6 +106,22 @@ const CommentList = (props) => {
                     </View>}
                 }/>
         
-)}
+            )}
+}
+const mapStateToProps = state => {
+    return({
+        comments : state.homeApp.commentListReducer.comments,
+        loading : state.homeApp.commentListReducer.loading,
+        url : state.homeApp.commentListReducer.url,
+        endLoading : state.homeApp.commentListReducer.endLoading,
+    });
+}
 
-export default CommentList;
+const mapDispatchToProps = dispatch => {
+    return({
+        commentListRequest : (url) => dispatch(commentListRequest(url)),
+        commentListInitial : (postId) => dispatch(commentListInitial(postId)),
+    });
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentList);
