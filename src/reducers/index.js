@@ -10,6 +10,8 @@ import newPostApp from './newPost/newPost';
 import inviteFriendsApp from './inviteFriends/inviteFriends';
 import followApp from './follow/request';
 import homeApp from './home/home';
+import followersApp from './peopleList/followersRequest';
+import followingsApp from './peopleList/followingsRequest';
 
 
 const AkaskhuneApp = combineReducers({
@@ -23,7 +25,9 @@ const AkaskhuneApp = combineReducers({
     newPostApp,
     inviteFriendsApp,
     followApp,
-    homeApp
+    homeApp,
+    followersApp,
+    followingsApp
 });
 
 export default AkaskhuneApp;

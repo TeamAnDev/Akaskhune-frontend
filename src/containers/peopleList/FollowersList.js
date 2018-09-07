@@ -4,10 +4,13 @@ import FHPeopleItem from '../../components/FHPeopleItem';
 import FHHeader from '../../components/FHHeader';
 import FHInput from '../../components/FHInput';
 import {Icon} from 'native-base';
+import {requestFollowersList} from '../../actions/peopleList/followersListRequest';
+import {connect} from 'react-redux';
 
 class FollowersList extends Component {
     constructor(props) {
         super(props);
+        this.props.requestFollowersList();
     }
 
     render() {
@@ -25,4 +28,18 @@ class FollowersList extends Component {
     }
 }
 
-export default FollowersList;
+const mapStateToProps = state => {
+    return({
+        loading : state.followersApp.followersRequestReducer.loading,
+        followers : state.followersApp.followersRequestReducer.followers,
+        error : state.followersApp.followersRequestReducer.error
+    })
+}
+
+const mapDispatchToProps = dispatch => {
+    return({
+        requestFollowersList : () => dispatch(requestFollowersList())
+    })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FollowersList);
