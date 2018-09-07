@@ -6,6 +6,8 @@ const heightOfTextArea = Dimensions.get("window").height * 30/ 100 > 105 ? 105 :
 const cameraViewWidthAndHeight = Dimensions.get("window").width * 28 / 100 ;
 const marginTopOfCameraSelect = Dimensions.get("window").height * 13 / 100 ;
 const marginBottomOfCameraSelect = Dimensions.get("window").height * 3 / 100 ;
+const boardImageWidth = Dimensions.get("window").width / 3;
+const boardImageHeight = boardImageWidth;
 const styles = StyleSheet.create({
     col: {
       flex: 1,
@@ -69,6 +71,12 @@ const styles = StyleSheet.create({
     width:40,
     height:40,
     borderRadius:50
+  },
+  boardImage : {
+      width : boardImageWidth,
+      height : boardImageHeight,
+      borderRadius : 10,
+      margin : 8
   }
 
   });
