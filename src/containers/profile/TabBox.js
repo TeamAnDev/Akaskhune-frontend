@@ -6,6 +6,7 @@ import styles from './styles';
 import Images from './Images';
 import colors from '../../config/colors';
 import {connect} from 'react-redux';
+import Boards from './Boards';
 
 class TabBox extends Component {
     constructor(props)
@@ -30,6 +31,7 @@ class TabBox extends Component {
                     backgroundColor: colors.primaryColor,
                     height: 2}}>
                     <Tab heading={"علاقمندیها" + this.props.board_count} tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
+                        <Boards/>
                     </Tab>
                     <Tab heading={"عکسها" + this.props.posts_count} tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
                         <Images/>

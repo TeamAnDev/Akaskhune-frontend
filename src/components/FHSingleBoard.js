@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import {FlatList, Image, View, I18nManager, ScrollView, Text} from 'react-native';
+import {FlatList, Image, View, ScrollView, Text} from 'react-native';
 import styles from './styles';
 
 class FHSingleBoard extends Component {
@@ -26,7 +26,7 @@ class FHSingleBoard extends Component {
                         <ScrollView
                             {...props}
                             style={{
-                                flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row' }}
+                                flexDirection: 'row-reverse'}}
                         />
                     }
                     horizontal = {true}

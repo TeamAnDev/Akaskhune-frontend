@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, I18nManager} from 'react-native';
 import { StyleProvider, Root } from 'native-base';
 import getTheme from './native-base-theme/components';
 import akaskhune from './native-base-theme/variables/akaskhune';
@@ -20,6 +20,7 @@ import Setting from './src/containers/setting/Setting';
 console.disableYellowBox = true;
 export default class App extends Component {
   render() {
+    I18nManager.allowRTL(false);
     return (
       <StyleProvider  style={getTheme(akaskhune)}>
       <Root>
