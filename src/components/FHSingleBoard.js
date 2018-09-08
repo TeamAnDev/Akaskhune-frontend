@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
 import {FlatList, Image, View, ScrollView, Text} from 'react-native';
 import styles from './styles';
+import {navigate} from '../../NavigationService';
 
 class FHSingleBoard extends Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class FHSingleBoard extends Component {
         return (
         <View>
             <View style={{flexDirection: 'row', justifyContent:'space-between', padding:10}}>
-                <Text style={{fontWeight:'bold'}}>همه</Text>
+                <Text onPress={() => navigate("Board")} style={{fontWeight:'bold'}}>همه</Text>
                 <View style={{flexDirection: 'row'}}> 
                     <Text style={{fontSize: 12}}>{this.props.count + "  عکس"}</Text>
                     <Text style={{fontWeight:'bold'}}>{this.props.name + "    "}</Text>
