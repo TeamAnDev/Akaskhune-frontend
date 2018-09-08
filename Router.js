@@ -13,7 +13,7 @@ import InviteFriends from './src/containers/inviteFriends/inviteFriends';
 import SinglePost from './src/containers/home/SinglePost/SinglePost';
 import FollowersList from './src/containers/peopleList/FollowersList';
 import FollowingsList from './src/containers/peopleList/FollowingsList';
-import Boards from './src/containers/profile/Boards';
+import Board from './src/containers/board/Board';
 
 const Auth = createStackNavigator({
     Signup,
@@ -36,9 +36,9 @@ const App = createStackNavigator({
     SinglePost,
     FollowersList,
     FollowingsList,
-    Boards
+    Board
   }, {
-    initialRouteName: "BottomTabRouter",
+    initialRouteName: "Board",
     headerMode: "none"
   });
 
