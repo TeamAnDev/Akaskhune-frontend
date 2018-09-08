@@ -4,6 +4,7 @@ import FHRow from '../../components/FHRow';
 import FHHeader from '../../components/FHHeader';
 import Modal from 'react-native-modal';
 import styles from './styles';
+import { navigate } from '../../../NavigationService';
 class Board extends Component {
     constructor(props) {
         super(props);
@@ -23,7 +24,9 @@ class Board extends Component {
                     
         return (
             <View>
-                <FHHeader onPressTrash={() => this.setModalVisibility(true)} title="عکس های من" board={true}/>
+                <FHHeader onPressTrash={() => this.setModalVisibility(true)}
+                onPressAdd = {() => navigate("OwnPhotos")}
+                title="عکس های من" board={true}/>
                 <FlatList 
                     data={this.data}
                     renderItem = {({item}) => <FHRow leftImage={item[0]} rightImage={item[1]}/>}

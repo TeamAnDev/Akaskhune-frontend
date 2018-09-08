@@ -8,7 +8,7 @@ const FHBoardAction = (props) => {
         return (
             <View style={{flexDirection:'row'}}>
                 <View>
-                <Icon type='Feather' name="plus" style={{color:'white'}}/>
+                <Icon  onPress={props.onPressAdd} type='Feather' name="plus" style={{color:'white'}}/>
                     </View>
                 <View style={{marginLeft:10}}>
                     <Icon onPress={props.onPressTrash} type='Octicons' name="trashcan" style={{color:'white'}}/>

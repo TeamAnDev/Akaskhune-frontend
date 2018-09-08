@@ -2,7 +2,8 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 const trashModalWidth = Dimensions.get("window").width * 280 / 330;
 const trashModalHeight = Dimensions.get("window").height / 6;
-
+const imageWidth = Dimensions.get("window").width * 117 / 260;
+const imageHeight = imageWidth;
 const styles = StyleSheet.create({
     trashModal : {
         backgroundColor : 'white',
@@ -39,6 +40,16 @@ const styles = StyleSheet.create({
     answerBoxBorder : {
         borderLeftWidth : 1,
         borderColor : '#EFEFEF'
+    },
+    image : {
+        justifyContent:'center',
+        width:imageWidth,
+        height:imageHeight
+    },
+    addButton : {
+        position:'absolute',
+        marginTop: Dimensions.get("window").height * 3 / 4,
+        width : '100%'
     }
 })
 
