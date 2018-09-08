@@ -11,9 +11,15 @@ import NewPost from './src/containers/newPost/NewPost';
 import NewPostComplete from './src/containers/newPost/NewPostComplete';
 import InviteFriends from './src/containers/inviteFriends/inviteFriends';
 import SinglePost from './src/containers/home/SinglePost/SinglePost';
+<<<<<<< HEAD
 import FollowersList from './src/containers/peopleList/FollowersList';
 import FollowingsList from './src/containers/peopleList/FollowingsList';
 import Board from './src/containers/board/Board';
+=======
+import AuthLoadingScreen from './AuthLoadingScreen';
+import NoConnectionScreen from './NoConnectionScreen';
+
+>>>>>>> 26cdf407590970bf47d51d12632ae1ca415fe8e0
 
 const Auth = createStackNavigator({
     Signup,
@@ -38,31 +44,17 @@ const App = createStackNavigator({
     FollowingsList,
     Board
   }, {
-    initialRouteName: "Board",
+    initialRouteName: "BottomTabRouter",
     headerMode: "none"
   });
 
 const Router = createSwitchNavigator({
   Auth,
-  App
+  App,
+  AuthLoadingScreen,
+  NoConnectionScreen
 },
 {
-  initialRouteName : "App"
+  initialRouteName : "AuthLoadingScreen"
 })
-  // const prevGetStateForAction = Router.router.getStateForAction;
-      
-  // Router.router.getStateForAction = (action, state) => {
-  // // Do not allow to go back to Signup
-  // if (action.type === "Navigation/BACK" && state) {
-  //     const newRoutes = state.routes.filter(r => r.routeName !== "Signup");
-  //     const newIndex = newRoutes.length - 1;
-  //     return prevGetStateForAction(action, { index: newIndex, routes: newRoutes });
-  // } else if(action.type === "Navigation/BACK" && state) {
-  //   const newRoutes = state.routes.filter(r => r.routeName !== "Signup");
-  //   const newIndex = newRoutes.length - 1;
-  //   return prevGetStateForAction(action, { index: newIndex, routes: newRoutes });
-  // } 
-  // return prevGetStateForAction(action, state);
-  // };
-
-  export default Router;
+ export default Router;

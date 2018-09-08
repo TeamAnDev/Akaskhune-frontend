@@ -32,9 +32,7 @@ export function login(email, password) {
             await storeToken(response.data.token.access);
             await storeRefresh(response.data.token.refresh);
             dispatch(loginSuccess());
-        }).catch (function(error) {
-            console.warn(error.response.data.error);
-            
+        }).catch (function(error) { 
             dispatch(loginError(error.response.data.error));
         })
     }

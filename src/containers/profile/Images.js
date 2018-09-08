@@ -3,11 +3,12 @@ import {Component} from 'react';
 import {View, Image, ListView, Text, FlatList} from 'react-native';
 import styles from './styles';
 import FHRow from '../../components/FHRow';
-import {requestImages} from '../../actions/profile/profileRequest'
+import {requestImages, imageRequestInit} from '../../actions/profile/profileRequest'
 import {connect} from 'react-redux';
 import {Spinner, Icon} from 'native-base';
 import colors from '../../config/colors';
 import {rest} from '../../config/urls';
+import {PulseIndicator} from 'react-native-indicators';
 
 
 class Images extends Component {
@@ -15,6 +16,7 @@ class Images extends Component {
     constructor(props) {
         super(props);
         this.dataSource = [];
+        this.props.init();
         this.props.requestImages(rest.imagesSelf);     
     }
 
@@ -52,7 +54,9 @@ class Images extends Component {
         } 
         else if(this.props.loading) {
             toReturn = <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-                    <Spinner style={{alignSelf:'center'}} color={colors.accentColor}/>
+                    <View style={{ height:80, width:80}}>
+                    <PulseIndicator count={8} size={70} color={colors.accentColor}/>
+                    </View>
                     <Text>در حال بارگزاری اطلاعات</Text>
                 </View>  
         }
@@ -74,7 +78,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return ({
-        requestImages : (url) => dispatch(requestImages(url))
+        requestImages : (url) => dispatch(requestImages(url)),
+        init : () => imageRequestInit()
     });
 }
 

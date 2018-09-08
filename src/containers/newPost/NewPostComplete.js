@@ -21,7 +21,7 @@ class NewPostComplete extends Component
     {
         if(nextProps.succes !== this.props.succes && nextProps.succes)
         {
-            showSucces("تصویر با موفقیت ارسال گردید",undefined, 7000);
+            showSucces("تصویر با موفقیت ارسال گردید",undefined, 4000);
             popToTop();
 
         }

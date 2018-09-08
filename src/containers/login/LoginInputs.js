@@ -15,6 +15,7 @@ class LoginInputs extends Component
     constructor(props)
     {
         super(props);
+        this.inputs = {};
     }
     componentWillReceiveProps(nextProps)
     {
@@ -25,11 +26,14 @@ class LoginInputs extends Component
     }
     render()
     { 
+      
         return(
             <View style={{flex:1, width:"100%", marginTop:22}}>
                 <Form>
-                <FHInput text="ایمیل" onTextChange = {this.props.changeEmail} error = {!this.props.emailValidation}/>
-                <FHPasswordInput text="رمزعبور" onTextChange = {this.props.changePassword} error ={!this.props.passwordValidation}/> 
+                <FHInput text="ایمیل" onTextChange = {this.props.changeEmail} error = {!this.props.emailValidation}
+                    blurOnSubmit={false}   returnKeyType={ "next" }  onSubmitEditing = {() => this.inputs['passInput'].focus()}/>
+                <FHPasswordInput text="رمزعبور" onTextChange = {this.props.changePassword} error ={!this.props.passwordValidation}
+                    blurOnSubmit={true}   returnKeyType={ "done" } />
                 <FHButton title="ورود" onPress={() => this.props.login(this.props.email, this.props.password)}
                         disabled={(this.props.emailValidation && this.props.passwordValidation) ? false : true}
                         loading={this.props.loading}

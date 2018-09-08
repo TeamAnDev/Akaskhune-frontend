@@ -1,7 +1,9 @@
-import {IMAGES_REQ_SENT, IMAGES_REQ_SUCCESS, IMAGES_REQ_ERROR, INFO_REQ_SUCCESS} from '../../actions/profile/profileRequest';
+import {IMAGES_REQ_SENT,IMAGES_REQ_INIT, IMAGES_REQ_SUCCESS, IMAGES_REQ_ERROR, INFO_REQ_SUCCESS} from '../../actions/profile/profileRequest';
 import {rest} from '../../config/urls';
 export function imagesRequestReducer(state={images:[], err:"", loading:false, success:false, url:rest.imagesSelf}, action) {
     switch(action.type) {
+        case IMAGES_REQ_INIT :
+            return Object.assign({}, state, {images : []});
         case IMAGES_REQ_SENT :
             return Object.assign({}, state, {loading:true});
         case IMAGES_REQ_SUCCESS :

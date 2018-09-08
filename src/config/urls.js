@@ -1,6 +1,7 @@
 import axios from 'axios'
-import {AsyncStorage} from 'react-native';
+import {navigate} from '../../NavigationService';
 import {retrieveToken, retrieveRefresh, storeToken} from '../config/token';
+
 export const rest = {
     login : '/auth/login/',
     signupValidation : '/auth/signup/validation/',
@@ -18,8 +19,12 @@ export const rest = {
     unfollow : '/friends/unfollow/',
     feeds : '/user/feed/',
     followersList : '/user/followers/',
-    followingsList : '/user/followings/'
+    followingsList : '/user/followings/',
     
+    singlePost : '/post/',
+    commentList : (postId) => '/post/' + postId.toString() + '/comments/list/',
+    commentCreate : (postId) => '/post/' + postId.toString() + '/comments/create/',
+    like : (postId) => '/post/' + postId.toString() + 'likes',
 }
 
 export let axiosInstance = axios.create({
@@ -56,6 +61,11 @@ async function refreshAccessToken(value) {
 axiosInstance.interceptors.response.use(response => {
   return response;
 },async function (error){
+  if(error.response === undefined) // Server not responding
+  {
+    navigate('NoConnectionScreen')
+    return Promise.reject({response:{ data : ""}});
+  }
   const { config, response: { status } } = error;
   const originalRequest = config;
   let refreshToken = await retrieveRefresh();
@@ -68,7 +78,8 @@ axiosInstance.interceptors.response.use(response => {
     catch (err){
       return Promise.reject(err);
     }
-  } else {
+  }
+  else {
     return Promise.reject(error);
   }
 });
