@@ -28,7 +28,7 @@ export const rest = {
 }
 
 export let axiosInstance = axios.create({
-    baseURL: 'http://rc.nasser.ir/api/v1',
+    baseURL: 'http://185.162.235.243:13976/api/v1',
     timeout:10000,
     headers:{
         'Content-Type': 'application/json',
