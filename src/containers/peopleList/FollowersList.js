@@ -32,7 +32,8 @@ const mapStateToProps = state => {
     return({
         loading : state.followersApp.followersRequestReducer.loading,
         followers : state.followersApp.followersRequestReducer.followers,
-        error : state.followersApp.followersRequestReducer.error
+        error : state.followersApp.followersRequestReducer.error,
+        success : state.followersApp.followersRequestReducer.success
     })
 }
 

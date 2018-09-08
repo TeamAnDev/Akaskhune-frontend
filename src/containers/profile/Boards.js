@@ -9,16 +9,16 @@ class Boards extends Component {
     }
 
     render() {
-        this.data = [{name:"عکس های من", images:[{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"}]},
-        {name:"عکس های من", images:[{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"}]},
-        {name:"عکس های من", images:[{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"}]},
-        {name:"عکس های من", images:[{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"}]},
-        {name:"عکس های من", images:[{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"}]}];
+        this.data = [{count: 6, name:"عکس های من", images:[{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"}]},
+        {count: 6, name:"عکس های من", images:[{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"}]},
+        {count: 6, name:"عکس های من", images:[{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"}]},
+        {count: 6, name:"عکس های من", images:[{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"}]},
+        {count: 6, name:"عکس های من", images:[{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"},{uri : "https://cdn.pbrd.co/images/HB6nBtS.jpg"}]}];
         return (
             <View>
                 <FlatList 
                     data = {this.data}
-                    renderItem = {({item}) => <FHSingleBoard name={item.name} images={item.images}/>}
+                    renderItem = {({item}) => <FHSingleBoard name={item.name} images={item.images} count={item.count}/>}
                 /> 
             </View>
         )
