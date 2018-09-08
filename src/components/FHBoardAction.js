@@ -11,7 +11,7 @@ const FHBoardAction = (props) => {
                 <Icon type='Feather' name="plus" style={{color:'white'}}/>
                     </View>
                 <View style={{marginLeft:10}}>
-                    <Icon type='Octicons' name="trashcan" style={{color:'white'}}/>
+                    <Icon onPress={props.onPressTrash} type='Octicons' name="trashcan" style={{color:'white'}}/>
                 </View>
             </View>
         )
