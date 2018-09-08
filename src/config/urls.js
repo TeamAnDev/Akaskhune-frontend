@@ -20,8 +20,8 @@ export const rest = {
     feeds : '/user/feed/',
     singlePost : '/post/',
     commentList : (postId) => '/post/' + postId.toString() + '/comments/list/',
-    commentCreate : (postId) => '/post/' + postId.toString() + '/comments/create/'
-    
+    commentCreate : (postId) => '/post/' + postId.toString() + '/comments/create/',
+    like : (postId) => '/post/' + postId.toString() + 'likes',
 }
 
 export let axiosInstance = axios.create({
