@@ -48,7 +48,6 @@ export function requestImages(imagesUrl) {
             dispatch(imagesRequestSent());
             await imagesRequest(imagesUrl)
             .then(function(response){
-                console.warn(response.data);
                 dispatch(imagesRequestSuccess(response.data.results, response.data.next));
             }).catch(function(error) {
                 dispatch(imagesRequestError(error));

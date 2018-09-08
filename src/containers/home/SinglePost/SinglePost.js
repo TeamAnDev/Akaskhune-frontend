@@ -19,6 +19,10 @@ class SinglePost extends Component
     {
         super(props);
         this.props.singlePostRequest(this.props.navigation.getParam('id'));
+        postId = this.props.navigation.getParam('id');
+        this.state ={
+            postId
+        }
         this.refresh = this.refresh.bind(this);
     }
     refresh()
@@ -60,9 +64,9 @@ class SinglePost extends Component
                         id = {this.props.post.user_id}
                         singlePost = {true}/>                
                 </Card>
-                <CommentList id = {this.props.navigation.getParam('id')}/>
+                <CommentList id = {this.state.postId}/>
                 </ScrollView>
-                <CommentInput/>
+                <CommentInput id= {this.state.postId}/>
             </View>
         )
     }

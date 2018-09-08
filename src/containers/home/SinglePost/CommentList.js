@@ -6,6 +6,7 @@ import colors from '../../../config/colors';
 import {commentListInitial, commentListRequest} from '../../../actions/home/comentsRequest';
 import { rest } from '../../../config/urls';
 import {connect} from 'react-redux';
+import  {addReply} from '../../../actions/home/comments';
 const Comment = (props) => {
     let widthOfAvatar = Dimensions.get('window').width * 30 / 360;
     widthOfAvatar = props.isReplay ? widthOfAvatar *3/4 : widthOfAvatar;
@@ -13,7 +14,7 @@ const Comment = (props) => {
     <CardItem bordered>
       <Left>
           {!props.isReplay ? 
-             <TouchableOpacity>
+             <TouchableOpacity onPress={()=>{props.addReply(props.id, props.name)}}>
                 <Text>
                     پاسخ
                 </Text>
@@ -55,6 +56,7 @@ class CommentList extends Component
         }
         this.refreshComments = this.refreshComments.bind(this);
     }
+    
     refreshComments()
     {
         this.props.commentListInitial(this.props.id);
@@ -85,21 +87,22 @@ class CommentList extends Component
             { let comment = item;
             return <View>
                         <Comment
-                        name = {comment.name}
+                        name = {comment.user_name}
                         time = {comment.created_at}
                         text = {comment.text}
                         profilePhotoUrl = {comment.avatar_url}
                         id = {comment.id}
+                        addReply = {this.props.addReply}
                         isReplay = {false}/>
                         <FlatList
                         style = {{backgroundColor: 'white'}}
                         data = {comment.replies}
                         renderItem = {({item}) => 
                             <Comment
-                            name = {item.name}
+                            name = {item.user_name}
                             time = {item.created_at}
                             text = {item.text}
-                            profilePhotoUrl = {item.text}
+                            profilePhotoUrl = {item.avatar_url}
                             id = {item.id}
                             isReplay = {true}/>}
                         />
@@ -121,6 +124,7 @@ const mapDispatchToProps = dispatch => {
     return({
         commentListRequest : (url) => dispatch(commentListRequest(url)),
         commentListInitial : (postId) => dispatch(commentListInitial(postId)),
+        addReply : (postId, userName) => dispatch(addReply(postId, userName)), 
     });
 }
 

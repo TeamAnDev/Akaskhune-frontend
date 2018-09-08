@@ -66,7 +66,7 @@ class Home extends Component{
                        />
                     }
                     onEndReachedThreshold = {0.5}
-                    onEndReached = {() => {if(!this.props.loading){this.props.feedsListRequest(this.props.url)}}}
+                    onEndReached = {() => {if(!this.props.loading && !this.props.endLoading){this.props.feedsListRequest(this.props.url)}}}
                     style = {{backgroundColor: 'white',}}
                     data = {this.props.feeds}
                     ListFooterComponent = {this.props.endLoading ? <View style={{backgroundColor:'white'}}><Spinner/></View> : null}   

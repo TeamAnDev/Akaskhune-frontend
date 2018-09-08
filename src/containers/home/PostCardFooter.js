@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import {View, Text, ImageBackground, Image, Dimensions, TouchableOpacity} from 'react-native';
 import {Card, CardItem, Left, Body, Right, Button, Icon} from 'native-base';
 import colors from '../../config/colors';
+import {connect} from 'react-redux';
+import {startCommenting} from '../../actions/home/comments';
+import {navigate} from '../../../NavigationService';
 // import FHIcon from '../../components/FHIcon';
 const CardFooter = (props) => {
     return (
@@ -12,12 +15,18 @@ const CardFooter = (props) => {
                     {/* user heart for liked */}
                 </TouchableOpacity>
                 <Text style={{padding:6}}>{props.numberOfLikes}</Text>
+
                 {!props.singlePost ? <View style={{flexDirection:'row'}}>
-                <TouchableOpacity onPress={() => props.commentCallback()} style={{marginLeft:4}}>
+                <TouchableOpacity onPress={() => { props.startCommenting();navigate('SinglePost', {id :props.id});}} style={{marginLeft:4}}>
                     <Icon name='comment' type="Octicons" style={{color:colors.fontColor, fontSize: 27,paddingTop: 3,}} />
                 </TouchableOpacity>
                 <Text style={{padding:6}}>{props.numberOfComments}</Text>
-                </View> : null}
+                </View> : 
+                <View style={{flexDirection:'row'}}>
+                    <Icon name='comment' type="Octicons" style={{color:colors.fontColor, fontSize: 27,paddingTop: 3,}} />
+                    <Text style={{padding:6}}>{props.numberOfComments}</Text>
+                </View>}
+
                 <TouchableOpacity onPress={() => props.shareCallback()} style={{marginLeft:10}}>
                     <Icon name='share-2' type="Feather" style={{color:colors.fontColor, fontSize: 25,paddingTop: 3,}} />
                 </TouchableOpacity> 
@@ -31,4 +40,10 @@ const CardFooter = (props) => {
     
 )}
 
-export default CardFooter;
+const mapDispatchToProps = dispatch => {
+    return({
+      startCommenting : () => dispatch(startCommenting())
+    });
+}
+
+export default connect(null, mapDispatchToProps)(CardFooter);
