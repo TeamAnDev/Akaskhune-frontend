@@ -26,6 +26,25 @@ export function changeComment(comment) {
     }
 }
 
+
+export const ADD_COMMENT_TO_STATE = "ADD_COMMENT_TO_STATE";
+export function addCommentToState(postId, index)
+{
+    return {
+        type : ADD_COMMENT_TO_STATE,
+        postId ,
+        index
+    }
+}
+export const ADD_COMMENT_TO_STATE_FEEDS = "ADD_COMMENT_TO_STATE_FEEDS";
+export function addCommentToStateFeeds(postId, index)
+{
+    return {
+        type : ADD_COMMENT_TO_STATE_FEEDS,
+        postId ,
+        index
+    }
+}
 export const COMMENT_REQ_SENT = "COMMENT_REQ_SENT";
 export const COMMENT_REQ_SUCCESS = "COMMENT_REQ_SUCCESS";
 export const COMMENT_REQ_ERR = "COMMENT_REQ_ERR";
@@ -35,13 +54,11 @@ function commentReqSent() {
         type: COMMENT_REQ_SENT
     });
 }
-
 function commentReqSuccess() {
     return({
         type: COMMENT_REQ_SUCCESS,
     })
 }
-
 function commentReqErr(error) {
     return({
         type: COMMENT_REQ_ERR,
@@ -49,7 +66,7 @@ function commentReqErr(error) {
     })
 }
 
-export function commentRequestAction(postId, comment, reply) {
+export function commentRequestAction(postId, comment, index,reply) {
     return async (dispatch) => {
         dispatch(commentReqSent());
         await commentAxios(postId, comment, reply)
@@ -57,6 +74,8 @@ export function commentRequestAction(postId, comment, reply) {
             dispatch(commentReqSuccess());
             dispatch(commentClear());
             dispatch(deleteReply());
+            dispatch(addCommentToState(postId, index));
+            dispatch(addCommentToStateFeeds(postId, index));
             dispatch(commentListInitial(postId));
             dispatch(commentListRequest(rest.commentList(postId.toString())));
         }).catch(function(error){
@@ -65,6 +84,7 @@ export function commentRequestAction(postId, comment, reply) {
        
     }
 }
+
 export const CLEAR_COMMNET = "CLEAR_COMMENT";
 function commentClear()
 {

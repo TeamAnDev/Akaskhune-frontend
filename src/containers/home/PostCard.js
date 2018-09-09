@@ -28,16 +28,15 @@ export default class PostCard extends Component
                 <CardBody
                 caption={this.props.caption}
                 sourceImage={this.props.photoUrl}
-                id={this.props.id}/>
+                id={this.props.id}
+                index={this.props.index}/>
 
                 <CardFooter
-                likeCallback={()=>{}}
                 numberOfLikes={this.props.likesCount}
-                commentCallback={()=>{}}
                 numberOfComments={this.props.commentsCount}
-                shareCallback={()=>{}}
-                bookmarkCallback={()=>{}}
-                id={this.props.id} />
+                id={this.props.id} 
+                index={this.props.index}
+                is_liked = {this.props.is_liked}/>
             </Card>
         </View>);
     }

@@ -14,8 +14,6 @@ class CommentInput extends Component
     constructor(props)
     {
         super(props);
-    
-        
     }
     componentWillReceiveProps(nextProps)
     {
@@ -49,7 +47,8 @@ class CommentInput extends Component
            <Item regular style={{backgroundColor:'white', width:'88%', height: '70%', borderRadius:mainHeignt/7}}>
 
                 {!this.props.loading && this.props.comment !== ""? <TouchableOpacity 
-                 onPress={() => {this.props.isReply ? this.props.sendComment(this.props.id, this.props.comment) : this.props.sendComment(this.props.id, this.props.comment, this.props.replyId)}}>
+                 onPress={() => {this.props.isReply ? this.props.sendComment(this.props.id, this.props.comment, this.props.index) 
+                 : this.props.sendComment(this.props.id, this.props.comment, this.props.index, this.props.replyId)}}>
                     <Text style={{padding:10, color:'black', fontWeight:'bold'}}>
                         ارسال
                     </Text>
@@ -59,7 +58,8 @@ class CommentInput extends Component
                         placeholderTextColor={colors.blackGrey} ref={input => {cmInputRef = input}} 
                         value = {this.props.comment}
                         returnKeyType = "send"
-                        onSubmitEditing = {() => {this.props.isReply ? this.props.sendComment(this.props.id, this.props.comment) : this.props.sendComment(this.props.id, this.props.comment, this.props.replyId)}}
+                        onSubmitEditing = {() => {this.props.isReply ? this.props.sendComment(this.props.id, this.props.comment, this.props.index) 
+                            : this.props.sendComment(this.props.id, this.props.comment, this.props.index, this.props.replyId)}}
                         />
            </Item>
         </View>
@@ -81,7 +81,7 @@ const mapDispatchToProps = dispatch => {
     return({
        deleteReply : () => dispatch(deleteReply()),
        changeComment : (comment) => dispatch(changeComment(comment)),
-       sendComment : (postId, comment, reply) => dispatch(commentRequestAction(postId,  comment, reply)),
+       sendComment : (postId, comment, index,reply) => dispatch(commentRequestAction(postId,  comment, index, reply)),
        stopCommenting : () => dispatch(stopCommenting()),
     });
 }

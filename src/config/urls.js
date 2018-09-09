@@ -24,11 +24,11 @@ export const rest = {
     singlePost : '/post/',
     commentList : (postId) => '/post/' + postId.toString() + '/comments/list/',
     commentCreate : (postId) => '/post/' + postId.toString() + '/comments/create/',
-    like : (postId) => '/post/' + postId.toString() + 'likes',
+    like : (postId) => '/post/' + postId.toString() + '/likes/',
 }
 
 export let axiosInstance = axios.create({
-    baseURL: 'http://rc.nasser.ir/api/v1',
+    baseURL: 'http://192.168.11.138/api/v1',
     timeout:10000,
     headers:{
         'Content-Type': 'application/json',
