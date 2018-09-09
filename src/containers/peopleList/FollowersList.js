@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, View, Text} from 'react-native';
 import FHPeopleItem from '../../components/FHPeopleItem';
 import FHHeader from '../../components/FHHeader';
 import FHInput from '../../components/FHInput';
-import {Icon} from 'native-base';
+import {Icon, Spinner} from 'native-base';
 import {requestFollowersList} from '../../actions/peopleList/followersListRequest';
 import {connect} from 'react-redux';
+import colors from '../../config/colors';
 
 class FollowersList extends Component {
     constructor(props) {
@@ -14,16 +15,27 @@ class FollowersList extends Component {
     }
 
     render() {
-        this.data = [{username:"aaa",name:"ششش"},{username:"aaa",name:"ششش"},{username:"aaa",name:"ششش"},{username:"aaa",name:"ششش"}]
+        console.warn(this.props.followers);
+        let toReturn;
+        if(this.props.success) {
+            toReturn = <View style={{backgroundColor: 'white', flex:1}}>
+                            <FHHeader title={"دنبال کننده ها"}/>
+                            <FHInput width={'95%'} icon={<Icon type="Feather" name="search"/>} text="جستجوی دنبال کننده ها"/>
+                            <FlatList 
+                            data = {this.props.followers}
+                            renderItem = {({item}) => <FHPeopleItem username={item.username} name={item.fullname} avatar={item.avatar} following={item.following}/>}
+                            />
+                        </View>
+        } else if(this.props.loading) {
+            toReturn = <View style={{backgroundColor: 'white', flex:1}}>
+                            <FHHeader title={"دنبال کننده ها"}/>
+                            <Spinner style={{alignSelf:'center'}} color={colors.accentColor}/>
+                        </View>
+        } else (
+            toReturn = <View><Text>error</Text></View>
+        )
         return (
-            <View style={{backgroundColor: 'white', flex:1}}>
-                <FHHeader title={"دنبال کننده ها"}/>
-                <FHInput width={'95%'} icon={<Icon type="Feather" name="search"/>} text="جستجوی دنبال کننده ها"/>
-                <FlatList 
-                data = {this.data}
-                renderItem = {({item}) => <FHPeopleItem username={item.username} name={item.name}/>}
-                />
-            </View>
+            toReturn
         )
     }
 }

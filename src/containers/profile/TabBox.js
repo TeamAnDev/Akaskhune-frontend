@@ -18,20 +18,20 @@ class TabBox extends Component {
     }
     componentDidMount()
     {
-            setTimeout(()=>{
-            this.setState({activeTab:1})
+        //     setTimeout(()=>{
+        //     this.setState({activeTab:1})
         
-        },1000)
+        // },1000)
     }
     render() {
         return (
             <Container>
-                <Tabs  page={1} tabContainerStyle={{height:50} } 
+                <Tabs  page={0} tabContainerStyle={{height:50} } 
                     tabBarUnderlineStyle={{
                     backgroundColor: colors.primaryColor,
                     height: 2}}
                     locked>
-                    <Tab heading={"علاقمندیها   " + this.props.board_count} tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
+                    <Tab heading={"علاقمندیها   " + this.props.boards_count} tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
                         <Boards/>
                     </Tab>
                     <Tab heading={"عکسها   " + this.props.posts_count} tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
@@ -46,7 +46,7 @@ class TabBox extends Component {
 const mapStateToProps = state => {
     return({
         posts_count : state.profileApp.infoRequestReducer.posts_count,
-        board_count : state.profileApp.infoRequestReducer.board_count
+        boards_count : state.profileApp.infoRequestReducer.boards_count
     })
 }
 

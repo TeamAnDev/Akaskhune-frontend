@@ -20,10 +20,11 @@ export const rest = {
     feeds : '/user/feed/',
     followersList : '/user/followers/',
     followingsList : '/user/followings/',
-    
     singlePost : '/post/',
     commentList : (postId) => '/post/' + postId.toString() + '/comments/list/',
     commentCreate : (postId) => '/post/' + postId.toString() + '/comments/create/',
+    allBoards : '/board/get/',
+    singleBoard : '/board/',
     like : (postId) => '/post/' + postId.toString() + '/likes/',
     block : (postId) => '/user/feed/blacklist/' + postId.toString() + '/',
     

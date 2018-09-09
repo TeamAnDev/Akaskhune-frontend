@@ -16,13 +16,13 @@ export function imagesRequestReducer(state={images:[], err:"", loading:false, su
     }
 }
 
-export function infoRequestReducer(state={username:"", fullname:"", bio:"", follower_count:"", following_count:"", avatar:"", posts_count:0, board_count:0}, action) {
+export function infoRequestReducer(state={username:"", fullname:"", bio:"", follower_count:"", following_count:"", avatar:"", posts_count:0, boards_count:0}, action) {
     switch(action.type) {
         case INFO_REQ_SUCCESS :
             return Object.assign({}, state, {username:action.data.username, fullname:action.data.fullname,
                     bio:action.data.bio, follower_count:action.data.follower_count,
                     following_count:action.data.following_count, avatar:action.data.avatar,
-                    posts_count:action.data.posts_count, board_count:action.data.board_count});
+                    posts_count:action.data.posts_count, boards_count:action.data.boards_count});
         default :
             return state;         
     }

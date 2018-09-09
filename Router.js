@@ -16,6 +16,7 @@ import FollowingsList from './src/containers/peopleList/FollowingsList';
 import Board from './src/containers/board/Board';
 import AuthLoadingScreen from './AuthLoadingScreen';
 import NoConnectionScreen from './NoConnectionScreen';
+import OwnPhotos from './src/containers/board/OwnPhotos';
 
 
 const Auth = createStackNavigator({
@@ -39,7 +40,8 @@ const App = createStackNavigator({
     SinglePost,
     FollowersList,
     FollowingsList,
-    Board
+    Board,
+    OwnPhotos
   }, {
     initialRouteName: "BottomTabRouter",
     headerMode: "none"

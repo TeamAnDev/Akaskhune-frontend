@@ -9,7 +9,7 @@ const FHHeader = (props) => {
         <Header style={{ backgroundColor: colors.primaryColor}}
         androidStatusBarColor={colors.primaryColor}>
             <Left style={{flex:1}}>
-                <FHBoardAction onPressTrash={props.onPressTrash} board={props.board}/>
+                <FHBoardAction onPressTrash={props.onPressTrash} onPressAdd={props.onPressAdd} board={props.board}/>
             </Left>
             <Body style={{flex:1, alignItems:'center'}}>
                 <Title>{props.title}</Title>
