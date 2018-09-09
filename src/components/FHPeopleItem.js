@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, Image, View} from 'react-native';
+import {Text, Image, View, ImageBackground} from 'react-native';
 import styles from './styles';
 import FHFollowButton from './FHFollowButton';
 
@@ -20,7 +20,9 @@ class FHPeopleItem extends Component {
                     <Text>{this.props.name}</Text>
                 </View>
                 <View>
-                    <Image style={styles.peopleImage} source={{uri : this.props.avatar}}/>
+                    {/* <Image style={styles.peopleImage} source={{uri : this.props.avatar}}/> */}
+                    <ImageBackground source={{uri : this.props.avatar}} imageStyle={styles.peopleImage}
+                    style={[styles.peopleImage, {backgroundColor:'#EFEFEF'}]}/>
                 </View>
             </View>
         </View>
