@@ -25,6 +25,8 @@ export const rest = {
     commentList : (postId) => '/post/' + postId.toString() + '/comments/list/',
     commentCreate : (postId) => '/post/' + postId.toString() + '/comments/create/',
     like : (postId) => '/post/' + postId.toString() + '/likes/',
+    block : (postId) => '/user/feed/blacklist/' + postId.toString() + '/',
+    
 }
 
 export let axiosInstance = axios.create({

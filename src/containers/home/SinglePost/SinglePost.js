@@ -51,7 +51,7 @@ class SinglePost extends Component
                         name = {this.props.post.user_fullname}
                         profilePhotoUrl = {this.props.post.avatar_url}
                         time = {this.props.post.created_at}
-                        id = {this.props.post.user_id}/>
+                        id = {this.state.postId}/>
                     <PostBody
                         caption = {this.props.post.caption}
                         sourceImage = {this.props.post.photo_url}

@@ -21,9 +21,10 @@ export default class PostCard extends Component
                  location={this.props.location}
                  name={this.props.fullName}
                  time={this.props.time} 
+                 isOwner={this.props.isOwner}
                  profilePhotoUrl={this.props.profilePhotoUrl}
-                 moreCallback={()=>{}}
-                 id={this.props.id}/>
+                 id={this.props.id}
+                 username={this.props.username}/>
                 
                 <CardBody
                 caption={this.props.caption}

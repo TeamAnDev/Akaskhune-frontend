@@ -28,7 +28,8 @@ class Board extends Component {
                     data={this.data}
                     renderItem = {({item}) => <FHRow leftImage={item[0]} rightImage={item[1]}/>}
                 />
-                <Modal isVisible={this.state.isModalVisible}>
+                <Modal isVisible={this.state.isModalVisible}
+                onBackdropPress = {() => this.setModalVisibility(false)}>
                     <View style={styles.trashModal}>
                         <View style={styles.modalContainer}>
                             <View style={{flex:1, justifyContent:'center'}}>

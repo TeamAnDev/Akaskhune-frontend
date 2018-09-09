@@ -83,7 +83,9 @@ class Home extends Component{
                         likesCount = {feed.likes_count}
                         commentsCount = {feed.comments_count}
                         is_liked = {feed.is_liked}
-                        index = {index}/>}
+                        index = {index}
+                        username = {feed.username}
+                        isOwner = {feed.is_owner}/>}
                         
                      }/>
         

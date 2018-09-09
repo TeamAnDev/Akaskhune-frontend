@@ -49,4 +49,10 @@ export function feedsListRequest(feedsUrl) {
     }
 }
 
-
+export const DELETE_USER_POST_FROM_FEEDS = "DELETE_USER_POST_FROM_FEEDS";
+export function deleteUserPost (username) {
+    return {
+        type : DELETE_USER_POST_FROM_FEEDS,
+        username
+    }
+}
