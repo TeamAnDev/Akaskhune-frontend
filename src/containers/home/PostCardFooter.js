@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {startCommenting} from '../../actions/home/comments';
 import {navigate} from '../../../NavigationService';
 import {likeRequestAction} from '../../actions/home/like';
+import Bookmark from './Bookmark';
 // import FHIcon from '../../components/FHIcon';
 class CardFooter extends Component
 {
@@ -66,14 +67,12 @@ class CardFooter extends Component
                     <Text style={{padding:6}}>{this.props.numberOfComments}</Text>
                 </View>}
 
-                <TouchableOpacity onPress={() => this.props.shareCallback()} style={{marginLeft:10}}>
+                <TouchableOpacity onPress={() => {}} style={{marginLeft:10}}>
                     <Icon name='share-2' type="Feather" style={{color:colors.fontColor, fontSize: 25,paddingTop: 3,}} />
                 </TouchableOpacity> 
             </Left>
             <Right>
-                <TouchableOpacity onPress={() => this.props.bookmarkCallback()} style={{marginLeft:10}}>
-                    <Icon name='bookmark' type="Feather" style={{color:colors.fontColor, fontSize: 25,paddingTop: 3,}} />
-                </TouchableOpacity>
+               <Bookmark/>
             </Right>
         </CardItem>
         
