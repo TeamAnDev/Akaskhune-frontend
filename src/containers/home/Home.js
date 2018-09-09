@@ -70,7 +70,7 @@ class Home extends Component{
                     style = {{backgroundColor: 'white',}}
                     data = {this.props.feeds}
                     ListFooterComponent = {this.props.endLoading ? <View style={{backgroundColor:'white'}}><Spinner/></View> : null}   
-                    renderItem = {({item}) =>
+                    renderItem = {({item, index}) =>
                     { let feed = item;
                     return <PostCard
                         id = {feed.id}
@@ -81,7 +81,12 @@ class Home extends Component{
                         caption = {feed.caption}
                         photoUrl = {feed.photo_url}
                         likesCount = {feed.likes_count}
-                        commentsCount = {feed.comments_count}/>}
+                        commentsCount = {feed.comments_count}
+                        is_liked = {feed.is_liked}
+                        index = {index}
+                        username = {feed.username}
+                        isOwner = {feed.is_owner}/>}
+                        
                      }/>
         
             </View>

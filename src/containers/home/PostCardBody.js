@@ -9,7 +9,7 @@ const heightOfBody = Dimensions.get('window').height * 60/640;
 const CardBody = (props) => {
     return (
     <View>
-    <CardItem button cardBody onPress={() => navigate('SinglePost', {id :props.id})}>
+    <CardItem button cardBody onPress={() => navigate('SinglePost', {id :props.id, index : props.index})}>
         <ImageBackground source={{uri : props.sourceImage}}
                     style={{backgroundColor:colors.grey, width:"100%"
                         // width:widthOfCardImage

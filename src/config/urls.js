@@ -23,9 +23,11 @@ export const rest = {
     singlePost : '/post/',
     commentList : (postId) => '/post/' + postId.toString() + '/comments/list/',
     commentCreate : (postId) => '/post/' + postId.toString() + '/comments/create/',
-    like : (postId) => '/post/' + postId.toString() + 'likes',
     allBoards : '/board/get/',
-    singleBoard : '/board/'
+    singleBoard : '/board/',
+    like : (postId) => '/post/' + postId.toString() + '/likes/',
+    block : (postId) => '/user/feed/blacklist/' + postId.toString() + '/',
+    
 }
 
 export let axiosInstance = axios.create({

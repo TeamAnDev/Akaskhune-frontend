@@ -19,9 +19,11 @@ class SinglePost extends Component
     {
         super(props);
         this.props.singlePostRequest(this.props.navigation.getParam('id'));
+        let index = props.navigation.getParam('index');
         postId = this.props.navigation.getParam('id');
         this.state ={
-            postId
+            postId,
+            index
         }
         this.refresh = this.refresh.bind(this);
     }
@@ -49,24 +51,23 @@ class SinglePost extends Component
                         name = {this.props.post.user_fullname}
                         profilePhotoUrl = {this.props.post.avatar_url}
                         time = {this.props.post.created_at}
-                        id = {this.props.post.user_id}/>
+                        id = {this.state.postId}/>
                     <PostBody
                         caption = {this.props.post.caption}
                         sourceImage = {this.props.post.photo_url}
                         id = {this.props.post.user_id}/>
                     <PostFooter
-                        likeCallback={()=>{}}
                         numberOfLikes={this.props.post.likes_count}
-                        commentCallback={()=>{}}
                         numberOfComments={this.props.post.comments_count}
-                        shareCallback={()=>{}}
-                        bookmarkCallback={()=>{}}
-                        id = {this.props.post.user_id}
-                        singlePost = {true}/>                
+                        userId = {this.props.post.user_id}
+                        id = {this.state.postId}
+                        singlePost = {true}
+                        is_liked = {this.props.post.is_liked}
+                       />                
                 </Card>
                 <CommentList id = {this.state.postId}/>
                 </ScrollView>
-                <CommentInput id= {this.state.postId}/>
+                <CommentInput id= {this.state.postId} index = {this.state.index}/>
             </View>
         )
     }

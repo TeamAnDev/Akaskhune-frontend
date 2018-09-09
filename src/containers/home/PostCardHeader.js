@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {View, Text, ImageBackground, Dimensions, TouchableOpacity} from 'react-native';
 import {Card, CardItem, Left, Body, Right, Button, Icon} from 'native-base';
 import colors from '../../config/colors';
+import ThreeDot from './ThreeDot';
 
 const widthOfAvatar = Dimensions.get('window').width * 25/350;
 const heightOfHeader = Dimensions.get('window').height * 40/640;
@@ -14,9 +15,10 @@ const CardHeader = (props) => {
     return (
     <CardItem bordered style={{height:heightOfHeader, borderTopLeftRadius: 8, borderTopRightRadius: 8}}>
         <Left>
-            <TouchableOpacity onPress={()=>props.moreCallback()}>
-                <Icon name="more-horizontal" type="Feather" style={{color:colors.fontColor, fontSize:20}}/>
-            </TouchableOpacity>
+           {!props.isOwner ? <ThreeDot
+            name = {props.name}
+            postId = {props.id}
+            username = {props.username}/> : null}
         </Left>
         <Body style={{justifyContent:'center', alignItems:"center"}}>
                {location}

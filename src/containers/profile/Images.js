@@ -79,7 +79,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return ({
         requestImages : (url) => dispatch(requestImages(url)),
-        init : () => imageRequestInit()
+        init : () => dispatch(imageRequestInit())
     });
 }
 
