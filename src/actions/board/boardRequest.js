@@ -5,7 +5,8 @@ export const ALLBOARDS_REQ_SUCCESS = "ALLBOARDS_REQ_SUCCESS";
 export const ALLBOARDS_REQ_ERR = "ALLBOARDS_REQ_ERR";
 export const SINGLEBOARD_REQ_SENT = "SINGLEBOARD_REQ_SENT";
 export const SINGLEBOARD_REQ_SUCCESS = "SINGLEBOARD_REQ_SUCCESS";
-export const SINGLEBOARD_REQ_ERR = "ALLBOARDS_REQ_ERR";
+export const SINGLEBOARD_REQ_ERR = "SINGLEBOARD_REQ_ERR";
+export const SINGLEBOARD_ID = "SINGLEBOARD_ID";
 
 function allBoardsReqSent() {
     return ({
@@ -48,6 +49,13 @@ function singleBoardReqErr(error) {
     return({
         type : SINGLEBOARD_REQ_ERR,
         error
+    })
+}
+
+export function singleBoardId(id) {
+    return({
+        type : SINGLEBOARD_ID,
+        id
     })
 }
 
