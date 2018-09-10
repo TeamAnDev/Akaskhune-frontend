@@ -13,7 +13,7 @@ import {addBoardRequest} from '../../actions/board/addBoardRequest';
 import BoardAddInput from './BookmarkComponents/BoardAddInput';
 import {addPostsToBoardRequest} from '../../actions/board/addPostsToBoard';
 import showSuccess from '../../components/Toasts/showSucces';
-
+import showError from '../../components/Toasts/showError';
 
 const BoardAddingHeader = () => ( 
     <CardItem  bordered style={{borderRadius: 8, height:HeighOfTitle, alignItems :  "center", justifyContent : 'center', flexDirection:'column'}}>
@@ -47,16 +47,14 @@ class Bookmark extends Component {
   }
   componentWillReceiveProps(nextProps)
   {
-    console.warn(nextProps);
     if(nextProps.success && nextProps.success !== this.props.success)
     {
       showSuccess("پست با موفقیت به بورد اضافه شد", undefined, 3000);
     }
-    // if(nextProps.successAddingBoard && nextProps.successAddingBoard !== this.props.successAddingBoard)
-    // {
-    //   this.addPostToBoard(nextProps.newBoard.id);
-     
-    // }
+    if(nextProps.errbool && nextProps.errbool !== this.props.errbool)
+    {
+      showError(nextProps.error, undefined, 2000);
+    }
   }
   addBoard = (name) => {
     this.props.addNewBoard(name, this.props.postId);
@@ -65,7 +63,7 @@ class Bookmark extends Component {
   addPostToBoard = (boardId) =>
   {
     posts = [this.props.postId];
-    this.props.addPostsToBoard(posts);
+    this.props.addPostsToBoard(posts, boardId);
     this.setModalVisibility(false);
   }
   render() {
@@ -110,6 +108,8 @@ const mapStateToProps = state => {
         url : state.boardsApp.allBoardsRequestReducer.next,
         newBoard : state.boardsApp.addBoardReducer.board,
         success : state.boardsApp.addPostsToBoardReducer.success,
+        errbool : state.boardsApp.addPostsToBoardReducer.errbool,
+        error : state.boardsApp.addPostsToBoardReducer.error,
         successAddingBoard : state.boardsApp.addBoardReducer.success,
 
     });
