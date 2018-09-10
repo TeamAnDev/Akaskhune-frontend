@@ -44,7 +44,7 @@ const App = createStackNavigator({
     OwnPhotos,
     TagPosts
   }, {
-    initialRouteName: "TagPosts",
+    initialRouteName: "BottomTabRouter",
     headerMode: "none"
   });
 
