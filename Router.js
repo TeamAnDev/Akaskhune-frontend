@@ -17,7 +17,7 @@ import Board from './src/containers/board/Board';
 import AuthLoadingScreen from './AuthLoadingScreen';
 import NoConnectionScreen from './NoConnectionScreen';
 import OwnPhotos from './src/containers/board/OwnPhotos';
-import Search from './src/containers/search/Search';
+// import Search from './src/containers/search/Search';
 
 
 const Auth = createStackNavigator({
@@ -43,9 +43,9 @@ const App = createStackNavigator({
     FollowingsList,
     Board,
     OwnPhotos,
-    Search
+    // Search
   }, {
-    initialRouteName: "Search",
+    initialRouteName: "BottomTabRouter",
     headerMode: "none"
   });
 

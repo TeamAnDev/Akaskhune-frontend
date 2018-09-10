@@ -4,6 +4,8 @@ import colors from '../../config/colors';
 import styles from '../profile/styles';
 import FHPeopleItem from '../../components/FHPeopleItem';
 import {FlatList} from 'react-native';
+import {connect} from 'react-redux';
+import FHTagItem from '../../components/FHTagItem';
 
 class TabBox extends Component {
     constructor(props) {
@@ -11,10 +13,10 @@ class TabBox extends Component {
     }
 
     render() {
-        this.data = [{username:"HamedKh", name:"حامد خانکی", following:false, avatar:"https://cdn.pbrd.co/images/HB6o7oF.jpg"},
-        {username:"HamedKh", name:"حامد خانکی", following:false, avatar:"https://cdn.pbrd.co/images/HB6o7oF.jpg"},
-        {username:"HamedKh", name:"حامد خانکی", following:false, avatar:"https://cdn.pbrd.co/images/HB6o7oF.jpg"},
-        {username:"HamedKh", name:"حامد خانکی", following:false, avatar:"https://cdn.pbrd.co/images/HB6o7oF.jpg"}];
+        this.data = [{name : 'هشتگ', count_of_uses : 100},
+                    {name : 'هشتگ', count_of_uses : 100},
+                    {name : 'هشتگ', count_of_uses : 100},
+                    {name : 'هشتگ', count_of_uses : 100},]
         return(
             <Container>
                 <Tabs tabContainerStyle={{height:50} } 
@@ -22,13 +24,15 @@ class TabBox extends Component {
                     backgroundColor: colors.primaryColor,
                     height: 2}}>
                     <Tab heading="هشتگ" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
-
-                    </Tab>
-                    <Tab heading="کاربران" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
-                        {/* <FHPeopleItem username="HamedKh" name="حامد خانکی" following={false} avatar="https://cdn.pbrd.co/images/HB6o7oF.jpg"/> */}
                         <FlatList
                             data = {this.data}
-                            renderItem={({item}) => <FHPeopleItem username={item.username} name={item.name} following={item.following} avatar={item.avatar}/>}
+                            renderItem={({item}) => <FHTagItem count_of_uses={item.count_of_uses} name={item.name}/>}
+                        />
+                    </Tab>
+                    <Tab heading="کاربران" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
+                        <FlatList
+                            data = {this.props.users}
+                            renderItem={({item}) => <FHPeopleItem username={item.username} name={item.fullname} following={item.is_following} avatar={item.avatar}/>}
                         />
                     </Tab>
                 </Tabs>
@@ -37,4 +41,14 @@ class TabBox extends Component {
     }
 }
 
-export default TabBox;
+const mapStateToProps = state => {
+    return({
+        loading : state.searchUserApp.searchUserRequestReducer.loading,
+        success : state.searchUserApp.searchUserRequestReducer.success,
+        users : state.searchUserApp.searchUserRequestReducer.users,
+        error : state.searchUserApp.searchUserRequestReducer.error,
+        next : state.searchUserApp.searchUserRequestReducer.next,
+    })
+}
+
+export default connect(mapStateToProps, null)(TabBox);

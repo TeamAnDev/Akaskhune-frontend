@@ -27,6 +27,7 @@ export const rest = {
     singleBoard : '/board/',
     like : (postId) => '/post/' + postId.toString() + '/likes/',
     block : (postId) => '/user/feed/blacklist/' + postId.toString() + '/',
+    searchUser : '/search/user/'
     
 }
 

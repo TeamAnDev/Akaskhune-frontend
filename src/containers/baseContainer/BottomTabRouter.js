@@ -1,7 +1,8 @@
 import {createBottomTabNavigator} from 'react-navigation';
 import Profile from '../profile/Profile';
 import Home from '../../containers/home/Home';
-import {Test as Search} from './TestComp';
+// import {Test as Search} from './TestComp';
+import Search from '../search/Search';
 import {Test as Notifications} from './TestComp';
 import React from 'react';
 import colors from '../../config/colors';
