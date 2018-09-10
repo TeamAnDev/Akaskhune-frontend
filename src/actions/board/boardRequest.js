@@ -6,6 +6,13 @@ export const ALLBOARDS_REQ_ERR = "ALLBOARDS_REQ_ERR";
 export const SINGLEBOARD_REQ_SENT = "SINGLEBOARD_REQ_SENT";
 export const SINGLEBOARD_REQ_SUCCESS = "SINGLEBOARD_REQ_SUCCESS";
 export const SINGLEBOARD_REQ_ERR = "ALLBOARDS_REQ_ERR";
+export const ALLBOARDS_INIT = "ALLBOARDS_INIT";
+
+export function initAllBoards(){
+    return {
+        type : ALLBOARDS_INIT,
+    }
+}
 
 function allBoardsReqSent() {
     return ({
@@ -51,16 +58,18 @@ function singleBoardReqErr(error) {
     })
 }
 
-export function allBoardsRequest() {
+export function allBoardsRequest(url) {
     return async (dispatch) => {
-        dispatch(allBoardsReqSent());
-        await requestAllBoards()
-        .then(function(response){
-            console.warn(response.data);
-            dispatch(allBoardsReqSuccess(response.data.count, response.data.next, response.data.results));
-        }).catch(function(error) {
-            dispatch(allBoardsReqErr(error.response.data.error));
-        })
+        if(url !== null)
+        {
+            dispatch(allBoardsReqSent());
+            await requestAllBoards(url)
+            .then(function(response){
+                dispatch(allBoardsReqSuccess(response.data.count, response.data.next, response.data.results));
+            }).catch(function(error) {
+                dispatch(allBoardsReqErr(error.response.data.error));
+            })
+        }
     }
 }
 

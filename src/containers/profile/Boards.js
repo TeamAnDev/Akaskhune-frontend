@@ -1,11 +1,12 @@
 import React , {Component} from 'react';
 import {FlatList, View, Text} from 'react-native';
 import FHSingleBoard from '../../components/FHSingleBoard';
-import {allBoardsRequest} from '../../actions/board/boardRequest'
+import {allBoardsRequest, initAllBoards} from '../../actions/board/boardRequest'
 import {connect} from 'react-redux';
 import {Icon, Spinner} from 'native-base';
 import colors from '../../config/colors';
 import {PulseIndicator} from 'react-native-indicators'
+import { rest } from '../../config/urls';
 
 const NoBoardComponent = () => {
     return (
@@ -18,7 +19,8 @@ const NoBoardComponent = () => {
 class Boards extends Component {
     constructor(props) {
         super(props);
-        this.props.allBoardsRequest();
+        this.props.initAllBoards();
+        this.props.allBoardsRequest(rest.allBoards);
     }
 
     render() {
@@ -56,7 +58,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return({
-        allBoardsRequest : () => dispatch(allBoardsRequest())
+        allBoardsRequest : (url) => dispatch(allBoardsRequest(url)),
+        initAllBoards : () => dispatch(initAllBoards()),
     })
 }
 

@@ -72,7 +72,7 @@ class CardFooter extends Component
                 </TouchableOpacity> 
             </Left>
             <Right>
-               <Bookmark/>
+               <Bookmark postId = {this.props.id}/>
             </Right>
         </CardItem>
         
