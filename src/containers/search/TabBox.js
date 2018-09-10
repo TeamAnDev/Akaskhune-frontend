@@ -13,10 +13,6 @@ class TabBox extends Component {
     }
 
     render() {
-        this.data = [{name : 'هشتگ', count_of_uses : 100},
-                    {name : 'هشتگ', count_of_uses : 100},
-                    {name : 'هشتگ', count_of_uses : 100},
-                    {name : 'هشتگ', count_of_uses : 100},]
         return(
             <Container>
                 <Tabs tabContainerStyle={{height:50} } 
@@ -25,8 +21,8 @@ class TabBox extends Component {
                     height: 2}}>
                     <Tab heading="هشتگ" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
                         <FlatList
-                            data = {this.data}
-                            renderItem={({item}) => <FHTagItem count_of_uses={item.count_of_uses} name={item.name}/>}
+                            data = {this.props.tags}
+                            renderItem={({item}) => <FHTagItem countOfUses={item.count_of_uses} name={item.name}/>}
                         />
                     </Tab>
                     <Tab heading="کاربران" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
@@ -43,11 +39,16 @@ class TabBox extends Component {
 
 const mapStateToProps = state => {
     return({
-        loading : state.searchUserApp.searchUserRequestReducer.loading,
-        success : state.searchUserApp.searchUserRequestReducer.success,
+        loadingUser : state.searchUserApp.searchUserRequestReducer.loading,
+        successUser : state.searchUserApp.searchUserRequestReducer.success,
         users : state.searchUserApp.searchUserRequestReducer.users,
-        error : state.searchUserApp.searchUserRequestReducer.error,
-        next : state.searchUserApp.searchUserRequestReducer.next,
+        errorUser : state.searchUserApp.searchUserRequestReducer.error,
+        nextUserUrl : state.searchUserApp.searchUserRequestReducer.next,
+        loadingTag : state.searchUserApp.searchTagRequestReducer.loading,
+        successTag : state.searchUserApp.searchTagRequestReducer.success,
+        tags : state.searchUserApp.searchTagRequestReducer.tags,
+        errorTag : state.searchUserApp.searchTagRequestReducer.error,
+        nextTagUrl : state.searchUserApp.searchTagRequestReducer.next
     })
 }
 

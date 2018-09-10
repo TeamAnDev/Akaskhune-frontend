@@ -31,7 +31,6 @@ class Board extends Component {
             } ;
             this.data[i/2] = [{uri:leftImage}, {uri: rightImage}];
         }
-        console.warn(this.data);
         return (
             <View style={{flex:1}}>
                 <FHHeader onPressTrash={() => this.setModalVisibility(true)}

@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import {Icon} from 'native-base';
 import styles from './styles';
 
 const FHTagItem = (props) => {
     return(
+        <TouchableOpacity>
         <View style={styles.contactItem}>
             <View>
-                <Text>{props.count_of_uses}</Text>
+                <Text>{props.countOfUses}</Text>
             </View>
             <View style={{flexDirection:'row'}}>
                 <View style={{justifyContent:'center', marginRight:10, alignItems:"flex-end"}}>
@@ -18,6 +19,7 @@ const FHTagItem = (props) => {
                 </View>
             </View>
         </View>
+        </TouchableOpacity>
     )
 }
 

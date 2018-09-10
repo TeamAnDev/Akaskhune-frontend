@@ -17,8 +17,7 @@ import Board from './src/containers/board/Board';
 import AuthLoadingScreen from './AuthLoadingScreen';
 import NoConnectionScreen from './NoConnectionScreen';
 import OwnPhotos from './src/containers/board/OwnPhotos';
-// import Search from './src/containers/search/Search';
-
+import TagPosts from './src/containers/tagPosts/TagPosts';
 
 const Auth = createStackNavigator({
     Signup,
@@ -43,9 +42,9 @@ const App = createStackNavigator({
     FollowingsList,
     Board,
     OwnPhotos,
-    // Search
+    TagPosts
   }, {
-    initialRouteName: "BottomTabRouter",
+    initialRouteName: "TagPosts",
     headerMode: "none"
   });
 

@@ -6,8 +6,7 @@ import colors from '../../config/colors';
 import TabBox from './TabBox';
 import {changeKeyword} from '../../actions/search/searchAction';
 import {connect} from 'react-redux';
-import {requestSearchUser} from '../../actions/search/searchRequest';
-
+import {requestSearchUser, requestSearchTag} from '../../actions/search/searchRequest';
 class Search extends Component {
     constructor(props) {
         super(props);
@@ -17,6 +16,7 @@ class Search extends Component {
         if(this.props.keyword !== nextProps.keyword) {
             // if(nextProps.keyword !== '') {
                 this.props.requestSearchUser(nextProps.keyword);
+                this.props.requestSearchTag(nextProps.keyword);
             // }
         }
     }
@@ -48,7 +48,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return({
         changeKeyword : keyword => dispatch(changeKeyword(keyword)),
-        requestSearchUser : (keyword) => dispatch(requestSearchUser(keyword))
+        requestSearchUser : keyword => dispatch(requestSearchUser(keyword)),
+        requestSearchTag : keyword => dispatch(requestSearchTag(keyword))
     })
 }
 

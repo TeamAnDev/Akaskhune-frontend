@@ -1,6 +1,7 @@
 import {SEARCH_USER_REQ_SENT, SEARCH_USER_REQ_SUCCESS, SEARCH_USER_REQ_ERR} from "../../actions/search/searchRequest";
 import {combineReducers} from 'redux';
 import {changeKeywordReducer} from './search'
+import {searchTagRequestReducer} from './tagRequest'
 
 function searchUserRequestReducer(state={users:[], next:'', loading:false, success:false, error:''}, action) {
     switch(action.type) {
@@ -16,5 +17,5 @@ function searchUserRequestReducer(state={users:[], next:'', loading:false, succe
 }
 
 export default searchUserApp = combineReducers({
-    searchUserRequestReducer, changeKeywordReducer
+    searchUserRequestReducer, changeKeywordReducer, searchTagRequestReducer
 })
