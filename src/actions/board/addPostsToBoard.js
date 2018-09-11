@@ -24,10 +24,10 @@ function addPostToBoardReqErr(error) {
     })
 }
 
-export function addPostsToBoardRequest(name, boardId) {
+export function addPostsToBoardRequest(posts, boardId) {
     return async (dispatch) => {
         dispatch(addPostToBoardReqSent());
-        await addPostsToBoardAxios(name, boardId)
+        await addPostsToBoardAxios(posts, boardId)
         .then(function(response){
             dispatch(addPostToBoardReqSuccess());
         }).catch(function(error) {

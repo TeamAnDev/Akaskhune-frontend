@@ -14,6 +14,7 @@ import followersApp from './peopleList/followersRequest';
 import followingsApp from './peopleList/followingsRequest';
 import boardsApp from './boards/request';
 import singleBoardApp from './singleBoard/request';
+import notificationsApp from './notifications/notifications';
 
 
 const AkaskhuneApp = combineReducers({
@@ -31,7 +32,8 @@ const AkaskhuneApp = combineReducers({
     followersApp,
     followingsApp,
     boardsApp,
-    singleBoardApp
+    singleBoardApp,
+    notificationsApp
 });
 
 export default AkaskhuneApp;
