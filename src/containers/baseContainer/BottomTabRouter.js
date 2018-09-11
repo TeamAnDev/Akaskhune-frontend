@@ -5,7 +5,7 @@ import Home from '../../containers/home/Home';
 import Search from '../search/Search';
 import {Test as Notifications} from './TestComp';
 // import {Test as Search} from './TestComp';
-import Notifications from '../../containers/notifications/Notifications';
+// import Notifications from '../../containers/notifications/Notifications';
 import React from 'react';
 import colors from '../../config/colors';
 import {HomeIcon, ProfileIcon, NotifiactionIcon, SearchIcon} from './Icons';

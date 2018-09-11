@@ -7,6 +7,7 @@ import styles from './styles';
 import { navigate } from '../../../NavigationService';
 import {connect} from 'react-redux';
 import {singleBoardRequest} from '../../actions/board/boardRequest';
+import rowSplit from '../../components/Functions/rowSplit';
 class Board extends Component {
     constructor(props) {
         super(props);
@@ -19,18 +20,7 @@ class Board extends Component {
     }
 
     render() {
-        this.data = [];
-        for (let i = 0; i < this.props.images.length; i+=2) {
-            let rightImage = "" ;
-            if(this.props.images[i+1] !== undefined) {
-                rightImage =  this.props.images[i+1].photo_url
-            } ;
-            let leftImage = '';
-            if(this.props.images[i] !== undefined) {
-                leftImage =  this.props.images[i].photo_url
-            } ;
-            this.data[i/2] = [{uri:leftImage}, {uri: rightImage}];
-        }
+        this.data = rowSplit(this.props.images[this.props.id]);
         return (
             <View style={{flex:1}}>
                 <FHHeader onPressTrash={() => this.setModalVisibility(true)}

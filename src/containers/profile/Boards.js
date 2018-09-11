@@ -50,7 +50,7 @@ const mapStateToProps = state => {
         loading : state.boardsApp.allBoardsRequestReducer.loading,
         success : state.boardsApp.allBoardsRequestReducer.success,
         error : state.boardsApp.allBoardsRequestReducer.error,
-        count : state.boardsApp.allBoardsRequestReducer.count,
+        // count : state.boardsApp.allBoardsRequestReducer.count,
         boards : state.boardsApp.allBoardsRequestReducer.boards,
         next : state.boardsApp.allBoardsRequestReducer.next
     })

@@ -24,7 +24,7 @@ export const rest = {
     commentList : (postId) => '/post/' + postId.toString() + '/comments/list/',
     commentCreate : (postId) => '/post/' + postId.toString() + '/comments/create/',
     allBoards : '/board/get/',
-    singleBoard : '/board/',
+    singleBoard : '/board/post/',
     addBoards : '/board/add/',
     addPostsToBoard : (boardId) => '/board/' + boardId.toString() + '/post/',
     like : (postId) => '/post/' + postId.toString() + '/likes/',
