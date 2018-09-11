@@ -9,6 +9,7 @@ import FHError from '../../components/FHError';
 import FHInput from '../../components/FHInput';
 import FHPasswordInput from '../../components/FHPasswordInput';
 import {Form} from 'native-base';
+import {navigate} from '../../../NavigationService';
 
 class LoginInputs extends Component
 {
@@ -38,7 +39,7 @@ class LoginInputs extends Component
                         disabled={(this.props.emailValidation && this.props.passwordValidation) ? false : true}
                         loading={this.props.loading}
                 />
-                <Text style = {{color:'white',alignSelf: 'center', marginTop:10}} onPress = {() => console.warn("")}>رمز عبور خود را فراموش کرده‌اید؟</Text>
+                <Text style = {{color:'white',alignSelf: 'center', marginTop:10}} onPress = {() => navigate("FPGetEmail")}>رمز عبور خود را فراموش کرده‌اید؟</Text>
                 <FHError errorText={this.props.error}/>
                 </Form>
             </View>

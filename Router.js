@@ -18,11 +18,14 @@ import AuthLoadingScreen from './AuthLoadingScreen';
 import NoConnectionScreen from './NoConnectionScreen';
 import OwnPhotos from './src/containers/board/OwnPhotos';
 import TagPosts from './src/containers/tagPosts/TagPosts';
+import FPGetEmail from './src/containers/forgetPassword/FPGetEmail';
+
 
 const Auth = createStackNavigator({
     Signup,
     Login,
     SignupCompleteProfile,
+    FPGetEmail,
 }, {
   initialRouteName : "Login",
   headerMode: "none"
