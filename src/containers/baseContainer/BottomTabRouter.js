@@ -1,17 +1,18 @@
+
 import {createBottomTabNavigator} from 'react-navigation';
 import Profile from '../profile/Profile';
 import Home from '../../containers/home/Home';
-// import {Test as Search} from './TestComp';
+import Notifications from '../notifications/Notifications';
+import React , {Component} from 'react';
 import Search from '../search/Search';
-import {Test as Notifications} from './TestComp';
-// import {Test as Search} from './TestComp';
-// import Notifications from '../../containers/notifications/Notifications';
-import React from 'react';
 import colors from '../../config/colors';
 import {HomeIcon, ProfileIcon, NotifiactionIcon, SearchIcon} from './Icons';
 import { Dimensions, View, SafeAreaView} from 'react-native';
 import {ifIphoneX, getStatusBarHeight, isIphoneX} from 'react-native-iphone-x-helper';
 import PlusButton from './PlusButton';
+import {getNotifications, notificationsInit} from '../../actions/notifications/requestActions';
+import { rest } from '../../config/urls';
+import {connect} from 'react-redux';
 let heightOfTabBar = Dimensions.get("window").height * 9/ 100;
 if(isIphoneX())
 {
@@ -79,13 +80,30 @@ const BottomRouter =  createBottomTabNavigator({
     
     
 });
+class BottomTab extends Component{
+    constructor(props)
+    {
+        super(props);
+        setInterval(() => {
+            this.props.notificationsInit();
+            this.props.getNotifications(rest.notifications);
+        },5 * 60000);
+    }
+    render() {
+    return (
+        <View style={{flex:1}}>
+                <BottomRouter />
+                <PlusButton heightOfTabBar = {heightOfTabBar}/>
+            </View>
+    );
+}
+}
+const mapDispatchToProps = dispatch => {
+    return({
+        notificationsInit : () => dispatch(notificationsInit()),
+        getNotifications : (url) => dispatch(getNotifications(url))
+    })
+}
 
-export default (props) => (
-   
-       <View style={{flex:1}}>
-            <BottomRouter />
-            <PlusButton heightOfTabBar = {heightOfTabBar}/>
-        </View>
-   );
-
+export default connect(null,mapDispatchToProps)(BottomTab);
 // export default BottomRoute;

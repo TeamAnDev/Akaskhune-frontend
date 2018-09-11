@@ -14,7 +14,7 @@ import akaskhune from './native-base-theme/variables/akaskhune';
 import Router from './Router';
 import { setTopLevelNavigator} from './NavigationService';
 
-console.disableYellowBox = false;
+console.disasbleYellowBox = false;
 export default class App extends Component {
   render() {
     I18nManager.allowRTL(false);

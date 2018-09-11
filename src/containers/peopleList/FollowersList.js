@@ -19,7 +19,6 @@ class FollowersList extends Component {
         let toReturn;
         if(this.props.success) {
             toReturn = <View style={{backgroundColor: 'white', flex:1}}>
-                            <FHHeader title={"دنبال کننده ها"}/>
                             <FHInput width={'95%'} icon={<Icon type="Feather" name="search"/>} text="جستجوی دنبال کننده ها"/>
                             <FlatList 
                             data = {this.props.followers}
@@ -28,14 +27,18 @@ class FollowersList extends Component {
                         </View>
         } else if(this.props.loading) {
             toReturn = <View style={{backgroundColor: 'white', flex:1}}>
-                            <FHHeader title={"دنبال کننده ها"}/>
+                            
                             <Spinner style={{alignSelf:'center'}} color={colors.accentColor}/>
                         </View>
         } else (
             toReturn = <View><Text>error</Text></View>
         )
         return (
-            toReturn
+            <View style={{backgroundColor: 'white', flex:1}}>
+                <FHHeader title={"دنبال کننده ها"}/>
+                {toReturn}
+            </View>
+            
         )
     }
 }

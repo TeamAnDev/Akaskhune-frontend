@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   peopleImage : {
     width:40,
     height:40,
-    borderRadius:50
+    borderRadius:20
   },
   boardImage : {
       width : boardImageWidth,

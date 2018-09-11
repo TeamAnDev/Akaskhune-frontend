@@ -1,25 +1,18 @@
 import React, { Component } from 'react'
-import {View, SectionList, Text} from 'react-native';
+import {View, FlatList,Text, Dimensions, RefreshControl} from 'react-native';
 import NotificationsHeader from './NotificationsHeader';
 import PostLikeOrCommentNotif from './PostLikeOrCommentNotif';
 import FollowNotif from './FollowNotif';
-const data ={
-  today : [
+import colors from '../../config/colors';
+import EmptyNotificationsList from './EmptyNoficationsList';
+import {connect} from 'react-redux';
+import {getNotifications, notificationsInit} from '../../actions/notifications/requestActions';
+import { rest } from '../../config/urls';
+
+const data =[
     {
-      type : 'comment',
-      fullname : 'فرزاد حبیبی',
-      post_id : 12,
-      time : "۳ ساعت پیش ",
-      photo_url : "",
-      comment_text : "به به به به ..."
-    },
-    {
-      type : 'like',
-      fullname : 'فرزاد حبیبی',
-      post_id : 12,
-      time : "۳ ساعت پیش ",
-      photo_url : "",
-      comment_text : "به به به به ..."
+      type :'day',
+      name : 'امروز'
     },
     {
       type : 'comment',
@@ -38,6 +31,23 @@ const data ={
       comment_text : "به به به به ..."
     },
     {
+      type : 'comment',
+      fullname : 'فرزاد حبیبی',
+      post_id : 12,
+      time : "۳ ساعت پیش ",
+      photo_url : "",
+      comment_text : "به به به به ..."
+    },
+    {
+      type : 'like',
+      fullname : 'فرزاد حبیبی',
+      post_id : 12,
+      time : "۳ ساعت پیش ",
+      photo_url : "",
+      comment_text : "به به به به ..."
+    },
+    {
+      fullname : 'فرزاد حبیبی',
       type : 'follow',
       user_id : 1,
       username : '‌',
@@ -46,6 +56,7 @@ const data ={
       avatar_url : ""
     },
     {
+      fullname : 'فرزاد حبیبی',
       type : 'follow',
       user_id : 1,
       username : '‌',
@@ -53,6 +64,7 @@ const data ={
       time : "۴ساعت پیش ",
       avatar_url : ""
     },{
+      fullname : 'فرزاد حبیبی',
       type : 'follow',
       user_id : 1,
       username : '‌',
@@ -60,8 +72,10 @@ const data ={
       time : "۴ساعت پیش ",
       avatar_url : ""
     },
-  ],
-  yesterday :  [
+    {
+      type :'day',
+      name : 'امروز'
+    },
     {
       type : 'comment',
       fullname : 'فرزاد حبیبی',
@@ -95,6 +109,7 @@ const data ={
       comment_text : "به به به به ..."
     },
     {
+      fullname : 'فرزاد حبیبی',
       type : 'follow',
       user_id : 1,
       username : '‌',
@@ -103,6 +118,7 @@ const data ={
       avatar_url : ""
     },
     {
+      fullname : 'فرزاد حبیبی',
       type : 'follow',
       user_id : 1,
       username : '‌',
@@ -110,6 +126,7 @@ const data ={
       time : "۴ساعت پیش ",
       avatar_url : ""
     },{
+      fullname : 'فرزاد حبیبی',
       type : 'follow',
       user_id : 1,
       username : '‌',
@@ -117,80 +134,53 @@ const data ={
       time : "۴ساعت پیش ",
       avatar_url : ""
     },
-  ],
-  last_days :  [
-    {
-      type : 'comment',
-      fullname : 'فرزاد حبیبی',
-      post_id : 12,
-      time : "۳ ساعت پیش ",
-      photo_url : "",
-      comment_text : "به به به به ..."
-    },
-    {
-      type : 'like',
-      fullname : 'فرزاد حبیبی',
-      post_id : 12,
-      time : "۳ ساعت پیش ",
-      photo_url : "",
-      comment_text : "به به به به ..."
-    },
-    {
-      type : 'comment',
-      fullname : 'فرزاد حبیبی',
-      post_id : 12,
-      time : "۳ ساعت پیش ",
-      photo_url : "",
-      comment_text : "به به به به ..."
-    },
-    {
-      type : 'like',
-      fullname : 'فرزاد حبیبی',
-      post_id : 12,
-      time : "۳ ساعت پیش ",
-      photo_url : "",
-      comment_text : "به به به به ..."
-    },
-    {
-      type : 'follow',
-      user_id : 1,
-      username : '‌',
-      is_followed : true,
-      time : "۴ساعت پیش ",
-      avatar_url : ""
-    },
-    {
-      type : 'follow',
-      user_id : 1,
-      username : '‌',
-      is_followed : true,
-      time : "۴ساعت پیش ",
-      avatar_url : ""
-    },{
-      type : 'follow',
-      user_id : 1,
-      username : '‌',
-      is_followed : true,
-      time : "۴ساعت پیش ",
-      avatar_url : ""
-    },
-  ],
+  ]
+const heightOfDayTitle = Dimensions.get('window').height *43/640;
 
-}
+class Notifications extends Component {
+  constructor(props)
+  {
+    super(props);
+    this.refreshNotifications();
+    this.onEndReachedCalledDuringMomentum = true;
+  }
+  refreshNotifications = () => {
+    this.props.notificationsInit()
+    this.props.getNotifications(rest.notifications);
+  }
 
-
-export default class Notification extends Component {
- 
   render() {
+    // console.warn(this.props.notifications);
     return (
       <View style={{flex:1, backgroundColor:'white'}}>
         <NotificationsHeader/>
         <View style={{flex:1}}>
-        <SectionList
-        renderItem={({item, index, section}) =>{
+        <FlatList
+        data = {this.props.notifications}
+        ListEmptyComponent = {<EmptyNotificationsList/>}
+
+        refreshControl ={<RefreshControl
+          colors={[colors.accentColor]} 
+          tintColor={colors.accentColor} 
+          refreshing = {this.props.loading}
+          onRefresh = {this.refreshNotifications}
+          />}
+        onEndReached = { () => {if(!this.onEndReachedCalledDuringMomentum){
+          this.props.getNotifications(this.props.url);
+          this.onEndReachedCalledDuringMomentum = true;} }}
+        onEndReachedThreshold = {0.5}
+        onScrollBeginDrag={() => { this.onEndReachedCalledDuringMomentum = false; }}
+        renderItem={({item}) =>{
           switch(item.type)
           {
-            case('like' || 'comment'):
+            case('like'):
+              return <PostLikeOrCommentNotif
+                    userName = {item.fullname}
+                    time = {item.time}
+                    status = {item.type}
+                    postId = {item.post_id}
+                    photoUrl = {item.photo_url}/>
+            case('comment'):
               return <PostLikeOrCommentNotif
                     userName = {item.fullname}
                     time = {item.time}
@@ -206,26 +196,35 @@ export default class Notification extends Component {
                     username = {item.username}
                     following = {item.is_followed}
                     avatarUrl = {item.avatar_url}/>
+            case('day'):
+              return <View style={{height:heightOfDayTitle, borderBottomColor : colors.grey, borderBottomWidth:1, 
+                                    justifyContent : 'center', }}>
+                        <Text style = {{textAlign : 'right', paddingRight : heightOfDayTitle/3, color:'black'}}>{item.name}</Text>
+                      </View>
             default : 
               return <View/>
           }
           
         }}
-        renderSectionHeader={({section: {title}}) => (
-          <Text style={{fontWeight: 'bold'}}>{title}</Text>
-        )}
-        sections={[
-          {title: "امروز", data: data.today},
-          {title: 'دیروز', data: data.yesterday},
-          {title: 'روز‌های قبل', data: data.last_days},
-        ]}
-        keyExtractor={(item, index) => item + index}
       />
-        
-          
-
         </View>
       </View>
     )
   }
 }
+const mapStateToProps = state => {
+    return({
+      loading : state.notificationsApp.notificationsRequestReducer.loading,
+      url : state.notificationsApp.notificationsRequestReducer.url, 
+      notifications : state.notificationsApp.notificationsRequestReducer.notifications, 
+    })
+}
+
+const mapDispatchToProps = dispatch => {
+    return({
+        notificationsInit : () => dispatch(notificationsInit()),
+        getNotifications : (url) => dispatch(getNotifications(url))
+    })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Notifications);

@@ -1,14 +1,14 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, Dimensions } from 'react-native';
 import {Button, Icon, Header, Body, Right, Left} from 'native-base';
 import colors from '../../config/colors'
 
 
-
+const heightOfHeader = Dimensions.get('window').height *60/640
 const NotificationsHeader = () => {
     
     return (
-        <Header style={{ backgroundColor: colors.primaryColor}}
+        <Header style={{ backgroundColor: colors.primaryColor, height : heightOfHeader}}
             androidStatusBarColor={colors.primaryColor}>
             <Left style={{flex:1}}>
                  

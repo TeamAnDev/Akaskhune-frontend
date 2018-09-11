@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {navigate} from '../../NavigationService';
-import {retrieveToken, retrieveRefresh, storeToken} from '../config/token';
+import {retrieveToken, retrieveRefresh, storeToken, storeRefresh} from '../config/token';
 
 export const rest = {
     login : '/auth/login/',
@@ -29,13 +29,15 @@ export const rest = {
     addPostsToBoard : (boardId) => '/board/' + boardId.toString() + '/post/',
     like : (postId) => '/post/' + postId.toString() + '/likes/',
     block : (postId) => '/user/feed/blacklist/' + postId.toString() + '/',
+    notifications : '/notification/',
+    
     searchUser : '/search/user/',
     searchTag : '/search/tag/',
     
 }
 
 export let axiosInstance = axios.create({
-    baseURL: 'http://192.168.11.138/api/v1',
+    baseURL: 'http://192.168.11.138:80/api/v1',
     timeout:10000,
     headers:{
         'Content-Type': 'application/json',
@@ -53,6 +55,7 @@ axiosInstance.interceptors.request.use(async function (config) {
   });
 
 //Refreshing 
+let maxRequestForRefresh = 5;
 async function refreshAccessToken(value) {  
     try
     {
@@ -76,8 +79,9 @@ axiosInstance.interceptors.response.use(response => {
   const { config, response: { status } } = error;
   const originalRequest = config;
   let refreshToken = await retrieveRefresh();
-  if (status === 401 && refreshToken !== "") {
+  if (status === 401 && refreshToken !== "" && maxRequestForRefresh > 0) {
     try{
+      maxRequestForRefresh -= 1 ;
       let newToken = await refreshAccessToken(refreshToken);
       originalRequest.headers['Authorization'] = 'Bearer ' + newToken;
       return axiosInstance(originalRequest);
@@ -86,7 +90,12 @@ axiosInstance.interceptors.response.use(response => {
       return Promise.reject(err);
     }
   }
-  else {
+  else if(maxRequestForRefresh < 1)
+  {
+    storeToken("");
+    storeRefresh("");
+    navigate('AuthLoadingScreen');
+  }else {
     return Promise.reject(error);
   }
 });

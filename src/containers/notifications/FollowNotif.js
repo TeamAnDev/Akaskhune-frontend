@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Dimensions, ImageBackground, Text} from 'react-native';
-import { CardItem, Right, Body, Left } from 'native-base';
 import colors from '../../config/colors';
 import FHFollowButton from '../../components/FHFollowButton';
 const heightOfBar = Dimensions.get("window").height * 60/640;
