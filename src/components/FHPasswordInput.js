@@ -20,7 +20,7 @@ class FHPasswordInput extends Component {
               secureTextEntry 
               style={{textAlign:"right"}}
               {...this.props}
-              
+              ref = {(input) => this.props.refrence  ? this.props.refrence(input) : null}
             />
              
           </Item>);

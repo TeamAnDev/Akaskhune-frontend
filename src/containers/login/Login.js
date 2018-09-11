@@ -19,7 +19,7 @@ export default class Login extends Component
        
         return(
             
-            <KeyboardAwareScrollView keyboardShouldPersistTaps="always" contentContainerStyle={{flexGrow:1}}>
+            <KeyboardAwareScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{flexGrow:1}}>
             <View style={{flex:1}}>
                 <AnimatedLinearGradiant customColors={colors.animatedBackgroundColor} style={{
                             justifyContent: 'center',

@@ -17,11 +17,12 @@ class CompleteProfileInputs extends Component
     constructor(props)
     {
         super(props);
+        this.inputs = {};
         
     }
     componentWillReceiveProps(nextProps) 
     {
-        if(this.props.error !== undefined && this.props.error !== "" && this.props.error !== nextProps.error)
+        if(nextProps.error !== undefined && nextProps.error !== "" && this.props.error !== nextProps.error)
         {
            showError(this.props.error, "باشه");
         } 
@@ -31,14 +32,39 @@ class CompleteProfileInputs extends Component
         console.log(this.props.bio)
         return(
             <View style={{flex:1, width:"100%"}}>
-                <FHInput text="نام کاربری" onTextChange = {this.props.changeUsername} error={!this.props.usernameValidation}/>
-                <FHInput text="نام خانوادگی" onTextChange = {this.props.chnageNameAndFamily} />
-                <FHInput text="ایمیل" value={this.props.email} disabled={true}/>
-                <FHTextarea text="درباره خودتون بگید" onTextChange = {this.props.changeBio}/>
-                <FHButton title="تکمیل اطلاعات" 
-                onPress={ () => this.props.completeProfile(this.props.username, this.props.nameAndFamily , this.props.bio, this.props.avatar, this.props.password, this.props.email)} 
-                        disabled={!this.props.usernameValidation}
-                        loading={this.props.loading}/>
+                <FHInput 
+                    text="نام کاربری" 
+                    onTextChange = {this.props.changeUsername} 
+                    error={!this.props.usernameValidation}
+                    onSubmitEditing = {() => this.inputs['name']._root.focus()}
+                    returnKeyType={ "next" }  
+                    blurOnSubmit={false} />
+
+                <FHInput 
+                    text="نام و نام‌ خانوادگی" 
+                    onTextChange = {this.props.chnageNameAndFamily} 
+                    refrence = {(input) => this.inputs['name'] = input}
+                    onSubmitEditing = {() => this.inputs['bio']._root.focus()}
+                    returnKeyType={ "next" }  
+                    blurOnSubmit={false} />
+
+                <FHInput 
+                    text="ایمیل" 
+                    value={this.props.email} 
+                    disabled={true}
+                     />
+
+                <FHTextarea 
+                    text="درباره خودتون بگید" 
+                    onTextChange = {this.props.changeBio}
+                    refrence = {(input) => this.inputs['bio'] = input}  
+                     />
+
+                <FHButton 
+                    title="تکمیل اطلاعات" 
+                    onPress={ () => this.props.completeProfile(this.props.username, this.props.nameAndFamily , this.props.bio, this.props.avatar, this.props.password, this.props.email)} 
+                    disabled={!this.props.usernameValidation}
+                    loading={this.props.loading}/>
             </View>
         );
     }
