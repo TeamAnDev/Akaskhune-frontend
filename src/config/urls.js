@@ -30,9 +30,9 @@ export const rest = {
     like : (postId) => '/post/' + postId.toString() + '/likes/',
     block : (postId) => '/user/feed/blacklist/' + postId.toString() + '/',
     notifications : '/notification/',
-    
     searchUser : '/search/user/',
     searchTag : '/search/tag/',
+    forgetPassword : '/user/password/reset/',
     
 }
 

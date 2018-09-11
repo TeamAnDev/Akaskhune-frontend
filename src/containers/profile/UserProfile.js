@@ -5,18 +5,18 @@ import ProfileHeader from './Header';
 import {View, ScrollView, RefreshControl, Dimensions} from 'react-native';
 import TabBox from './TabBox';
 
-class Profile extends Component {
+class UserProfile extends Component {
 
     render() {
         return (
             <View style={{flex:1}}>
-                <ProfileHeader navigation={this.props.navigation} isSelf = {true}/>
+                <ProfileHeader navigation={this.props.navigation} isSelf = {false}/>
                 <View style={{flex:1}}>
                     <View style={{flex:105, marginTop:10}}>
-                        <Info/>
+                        <Info username = {this.props.navigation.getParam('username')}/>
                     </View>
                     <View style={{flex:350}}>
-                        <TabBox/>
+                        <TabBox username = {this.props.navigation.getParam('username')}/>
                     </View>
                 </View>
             </View>
@@ -25,4 +25,4 @@ class Profile extends Component {
 
 }
 
-export default Profile;
+export default UserProfile;

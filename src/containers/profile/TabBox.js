@@ -35,7 +35,7 @@ class TabBox extends Component {
                         <Boards/>
                     </Tab>
                     <Tab heading={"عکسها   " + this.props.posts_count} tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
-                        <Images/>
+                        <Images username = {this.props.username}/>
                     </Tab>
                 </Tabs>
             </Container>

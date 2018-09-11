@@ -7,6 +7,7 @@ function showError(message, buttonMessage, dur=30000,onCloseFunc)
         duration:dur,
         textStyle :{textAlign:'right'},
         type:"danger",
+        position : 'top',
         textStyle :{textAlign:'right'},
         buttonTextStyle: { color: "#008000" },
         buttonStyle: { backgroundColor: "#5cb85c" },

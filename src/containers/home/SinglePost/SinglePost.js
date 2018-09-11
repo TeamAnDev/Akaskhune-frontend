@@ -37,7 +37,11 @@ class SinglePost extends Component
     {
         return(
             <View style={{flex:1, backgroundColor:'white'}}>
-                <SinglePostHeader/>
+                <SinglePostHeader
+                     name = {this.props.post.name}
+                     postId = {this.props.post.id}
+                     username = {this.props.post.username}
+                     isOwner = {this.props.post.is_owner}/>
                 <ScrollView style={{flex:1, backgroundColor:'white'}}
                     refreshControl ={<RefreshControl
                                         colors={[colors.accentColor]}

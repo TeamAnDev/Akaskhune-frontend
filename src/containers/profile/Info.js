@@ -11,7 +11,7 @@ class ProfileInfo extends Component {
 
     constructor(props) {
         super(props);
-        this.props.requestInfo();
+        this.props.requestInfo(this.props.username);
     }
     render() {
         return (
@@ -44,7 +44,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return({
-        requestInfo : () => dispatch(requestInfo())
+        requestInfo : (username) => dispatch(requestInfo(username))
     });
 }
 

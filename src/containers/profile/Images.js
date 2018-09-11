@@ -17,7 +17,14 @@ class Images extends Component {
     constructor(props) {
         super(props);
         this.props.init();
-        this.props.requestImages(rest.imagesSelf);     
+        if(this.props.username)
+        {
+            let url = "";
+            this.props.requestImages(url); 
+        } else{
+            this.props.requestImages(rest.imagesSelf); 
+        }
+           
     }
 
     render() {
@@ -25,7 +32,7 @@ class Images extends Component {
         if(this.props.success) {
             if(this.props.images.length === 0) {
                 toReturn = <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-                    <Icon type="Feather" name="close"/>
+                    <Icon type="Feather" name="camera-off"/>
                     <Text>هیچ پستی وجود ندارد</Text>
                 </View>            
             }

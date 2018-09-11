@@ -56,11 +56,10 @@ export function requestImages(imagesUrl) {
     }
 }
 
-export function requestInfo() {
+export function requestInfo(username) {
     return async (dispatch) => {
-        await infoRequest()
+        await infoRequest(username)
         .then(function(response){
-            console.warn(response.data);
             dispatch(infoRequestSuccess(response.data));
         });
     }

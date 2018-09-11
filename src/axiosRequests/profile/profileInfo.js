@@ -1,9 +1,12 @@
 import {axiosInstance, rest} from '../../config/urls';
 import {retrieveToken} from '../../config/token'
-function infoRequest() {
-
-    console.warn("token is " + axiosInstance.defaults.headers.common['Authorization']);
-    return axiosInstance.get(rest.userSelf);
+function infoRequest(username) {
+    let url = rest.userSelf;
+    if(username)
+    {
+        url = "";
+    }
+    return axiosInstance.get(url);
 }
 
 export default infoRequest;

@@ -20,7 +20,15 @@ class Boards extends Component {
     constructor(props) {
         super(props);
         this.props.initAllBoards();
-        this.props.allBoardsRequest(rest.allBoards);
+        if(this.props.username)
+        {
+            let url = "";
+            this.props.allBoardsRequest(url);
+        }
+        else{
+            this.props.allBoardsRequest(rest.allBoards);
+        }
+       
     }
 
     render() {
