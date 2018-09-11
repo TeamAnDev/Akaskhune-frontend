@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import {FlatList, Image, View, ScrollView, Text} from 'react-native';
+import {FlatList, Image, ImageBackground, View, ScrollView, Text} from 'react-native';
 import styles from './styles';
 import {navigate} from '../../NavigationService';
 import {singleBoardRequest} from '../actions/board/boardRequest';
@@ -7,6 +7,8 @@ import {connect} from 'react-redux';
 import {PacmanIndicator} from 'react-native-indicators';
 import colors from '../config/colors';
 import {singleBoardId} from '../actions/board/boardRequest';
+import {TouchableOpacity} from 'react-native';
+
 
 class FHSingleBoard extends Component {
     constructor(props) {
@@ -21,7 +23,14 @@ class FHSingleBoard extends Component {
         } else if(this.props.success) {
             toShow = <FlatList 
                         data = {this.props.images[this.props.id]}
-                        renderItem = {({item}) => <Image source={{uri : item.photo_url}} style={styles.boardImage} />}    
+                        renderItem = {({item}) =>
+                        <TouchableOpacity onPress = {()=>{navigate('SinglePost', {id:item.id})}}>
+                         <ImageBackground 
+                            imageStyle={{borderRadius : 10}}
+                            source={{uri : item.photo_url}} 
+                            style={styles.boardImage} />
+                         </TouchableOpacity>
+                        }    
                         horizontal = {true}
                         showsHorizontalScrollIndicator = {false}
                     />

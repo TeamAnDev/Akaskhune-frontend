@@ -1,4 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import colors from '../../config/colors';
 const imageWidth = Dimensions.get("window").width * 117 / 260;
 const imageHeight = imageWidth;
 const styles = StyleSheet.create({
@@ -13,7 +14,8 @@ const styles = StyleSheet.create({
     image : {
         width : imageWidth,
         height : imageHeight,
-        borderRadius : 10
+        borderRadius : 10,
+        backgroundColor : colors.blackGrey
     },
     imageRow : {
         flexDirection : 'row',
