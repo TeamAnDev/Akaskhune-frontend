@@ -33,6 +33,7 @@ export const rest = {
     
     searchUser : '/search/user/',
     searchTag : '/search/tag/',
+    popularTags : '/search/tag/get/'
     
 }
 

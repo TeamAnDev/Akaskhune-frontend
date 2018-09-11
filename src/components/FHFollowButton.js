@@ -13,21 +13,21 @@ class FHFollowButton extends Component {
     }
 
     onPress = () => {
-        if(this.state.following) {
+        if(this.state.following === 'followed') {
             this.props.unfollowRequest(this.props.username);
-            this.setState({following : false});
-        } else {
+            this.setState({following : 'not_followed'});
+        } else if(this.state.following === 'not_followed'){
             this.props.followRequest(this.props.username);
-            this.setState({following : true});
+            this.setState({following : 'followed'});
         }
     }
 
     render() {
-        if(this.state.following) {
+        if(this.state.following === 'followed') {
             return <Button onPress={this.onPress} style={styles.contactButton}><Text style={{fontWeight:'bold', color:'white'}}>دنبال شده</Text></Button>;
-        } else {
+        } else if(this.state.following === 'not_followed'){
             return <Button onPress={this.onPress} style={styles.contactButton} bordered><Text style={{fontWeight:'bold', color:colors.accentColor}}>دنبال کن</Text></Button>;
-        }
+        } 
     }
 }
 
