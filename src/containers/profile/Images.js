@@ -9,13 +9,13 @@ import {Spinner, Icon} from 'native-base';
 import colors from '../../config/colors';
 import {rest} from '../../config/urls';
 import {PulseIndicator} from 'react-native-indicators';
+import rowSplit from '../../components/Functions/rowSplit';
 
 
 class Images extends Component {
 
     constructor(props) {
         super(props);
-        this.dataSource = [];
         this.props.init();
         this.props.requestImages(rest.imagesSelf);     
     }
@@ -23,7 +23,6 @@ class Images extends Component {
     render() {
         let toReturn;
         if(this.props.success) {
-            let data = [];
             if(this.props.images.length === 0) {
                 toReturn = <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
                     <Icon type="Feather" name="close"/>
@@ -31,18 +30,7 @@ class Images extends Component {
                 </View>            
             }
             else {
-                for (let i = 0; i < this.props.images.length; i+=2) {
-                    let rightImage = "" ;
-                    if(this.props.images[i+1] !== undefined) {
-                        rightImage =  this.props.images[i+1].photo_url
-                    } ;
-                    let leftImage = '';
-                    if(this.props.images[i] !== undefined) {
-                        leftImage =  this.props.images[i].photo_url
-                    } ;
-                    data[i/2] = [{uri:leftImage}, {uri: rightImage}];
-                }
-                this.dataSource = data;
+                this.dataSource = rowSplit(this.props.images);
                 toReturn = <FlatList
                     refreshing={this.props.loading}
                     data = {this.dataSource}
