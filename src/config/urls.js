@@ -31,6 +31,8 @@ export const rest = {
     block : (postId) => '/user/feed/blacklist/' + postId.toString() + '/',
     notifications : '/notification/',
     
+    searchUser : '/search/user/',
+    searchTag : '/search/tag/',
     
 }
 

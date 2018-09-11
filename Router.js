@@ -17,6 +17,7 @@ import Board from './src/containers/board/Board';
 import AuthLoadingScreen from './AuthLoadingScreen';
 import NoConnectionScreen from './NoConnectionScreen';
 import OwnPhotos from './src/containers/board/OwnPhotos';
+import TagPosts from './src/containers/tagPosts/TagPosts';
 import FPGetEmail from './src/containers/forgetPassword/FPGetEmail';
 
 
@@ -43,7 +44,8 @@ const App = createStackNavigator({
     FollowersList,
     FollowingsList,
     Board,
-    OwnPhotos
+    OwnPhotos,
+    TagPosts
   }, {
     initialRouteName: "BottomTabRouter",
     headerMode: "none"

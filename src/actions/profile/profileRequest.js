@@ -60,6 +60,7 @@ export function requestInfo() {
     return async (dispatch) => {
         await infoRequest()
         .then(function(response){
+            console.warn(response.data);
             dispatch(infoRequestSuccess(response.data));
         });
     }

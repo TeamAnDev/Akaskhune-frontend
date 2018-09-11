@@ -6,6 +6,7 @@ import {singleBoardRequest} from '../actions/board/boardRequest';
 import {connect} from 'react-redux';
 import {PacmanIndicator} from 'react-native-indicators';
 import colors from '../config/colors';
+import {singleBoardId} from '../actions/board/boardRequest';
 
 class FHSingleBoard extends Component {
     constructor(props) {
@@ -31,7 +32,7 @@ class FHSingleBoard extends Component {
         return (
         <View>
             <View style={{flexDirection: 'row', justifyContent:'space-between', padding:10}}>
-                <Text onPress={() => navigate("Board")} style={{fontWeight:'bold'}}>همه</Text>
+                <Text onPress={() => {this.props.singleBoardId(this.props.id);navigate("Board")}} style={{fontWeight:'bold'}}>همه</Text>
                 <View style={{flexDirection: 'row'}}> 
                     <Text style={{fontSize: 12}}>{this.props.count + "  عکس"}</Text>
                     <Text style={{fontWeight:'bold'}}>{this.props.name + "    "}</Text>
@@ -58,7 +59,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return({
-        singleBoardRequest : (id) => dispatch(singleBoardRequest(id)) 
+        singleBoardRequest : (id) => dispatch(singleBoardRequest(id)),
+        singleBoardId : (id) => dispatch(singleBoardId(id))
     })
 }
 

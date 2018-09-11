@@ -2,9 +2,9 @@
 import {createBottomTabNavigator} from 'react-navigation';
 import Profile from '../profile/Profile';
 import Home from '../../containers/home/Home';
-import {Test as Search} from './TestComp';
 import Notifications from '../notifications/Notifications';
 import React , {Component} from 'react';
+import Search from '../search/Search';
 import colors from '../../config/colors';
 import {HomeIcon, ProfileIcon, NotifiactionIcon, SearchIcon} from './Icons';
 import { Dimensions, View, SafeAreaView} from 'react-native';

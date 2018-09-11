@@ -5,10 +5,13 @@ import FHHeader from '../../components/FHHeader';
 import Modal from 'react-native-modal';
 import styles from './styles';
 import { navigate } from '../../../NavigationService';
+import {connect} from 'react-redux';
+import {singleBoardRequest} from '../../actions/board/boardRequest';
 class Board extends Component {
     constructor(props) {
         super(props);
         this.state = {isModalVisible : false};
+        this.props.singleBoardRequest(this.props.id);
     }
 
     setModalVisibility = (isModalVisible) => {
@@ -16,21 +19,29 @@ class Board extends Component {
     }
 
     render() {
-        this.data = [[{id:1, uri : "https://cdn.pbrd.co/images/HB6of7L.jpg"},{id:2, uri : "https://cdn.pbrd.co/images/HB6of7L.jpg"}],
-                    [{id:3, uri : "https://cdn.pbrd.co/images/HB6of7L.jpg"},{id:4, uri : "https://cdn.pbrd.co/images/HB6of7L.jpg"}],
-                    [{id:5, uri : "https://cdn.pbrd.co/images/HB6of7L.jpg"},{id:6, uri : "https://cdn.pbrd.co/images/HB6of7L.jpg"}],
-                    [{id:7, uri : "https://cdn.pbrd.co/images/HB6of7L.jpg"},{id:8, uri : "https://cdn.pbrd.co/images/HB6of7L.jpg"}],
-                    [{id:9, uri : "https://cdn.pbrd.co/images/HB6of7L.jpg"},{id:10, uri : "https://cdn.pbrd.co/images/HB6of7L.jpg"}]];
-                    
+        this.data = [];
+        for (let i = 0; i < this.props.images.length; i+=2) {
+            let rightImage = "" ;
+            if(this.props.images[i+1] !== undefined) {
+                rightImage =  this.props.images[i+1].photo_url
+            } ;
+            let leftImage = '';
+            if(this.props.images[i] !== undefined) {
+                leftImage =  this.props.images[i].photo_url
+            } ;
+            this.data[i/2] = [{uri:leftImage}, {uri: rightImage}];
+        }
         return (
-            <View>
+            <View style={{flex:1}}>
                 <FHHeader onPressTrash={() => this.setModalVisibility(true)}
                 onPressAdd = {() => navigate("OwnPhotos")}
                 title="عکس های من" board={true}/>
-                <FlatList 
-                    data={this.data}
-                    renderItem = {({item}) => <FHRow leftImage={item[0]} rightImage={item[1]}/>}
-                />
+                <View style={{flex:1}}>
+                    <FlatList 
+                        data={this.data}
+                        renderItem = {({item}) => <FHRow leftImage={{uri : item[0].uri}} rightImage={{uri : item[1].uri}}/>}
+                    />
+                </View>
                 <Modal isVisible={this.state.isModalVisible}
                 onBackdropPress = {() => this.setModalVisibility(false)}>
                     <View style={styles.trashModal}>
@@ -61,4 +72,21 @@ class Board extends Component {
 
 }
 
-export default Board;
+const mapStateToProps = state => {
+    return({
+        loading : state.singleBoardApp.singleBoardRequestReducer.loading,
+        success : state.singleBoardApp.singleBoardRequestReducer.success,
+        images : state.singleBoardApp.singleBoardRequestReducer.images,
+        next : state.singleBoardApp.singleBoardRequestReducer.next,
+        error : state.singleBoardApp.singleBoardRequestReducer.error,
+        id : state.singleBoardApp.singleBoardRequestReducer.id
+    })
+}
+
+const mapDispatchToProps = dispatch => {
+    return({
+        singleBoardRequest : (id) => dispatch(singleBoardRequest(id))
+    })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board);
