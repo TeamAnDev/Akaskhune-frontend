@@ -1,8 +1,9 @@
 import requestConacts from '../../axiosRequests/inviteFriends/inviteFriends';
-
+import requestInvite from '../../axiosRequests/inviteFriends/invite';
 export const CONTACTS_REQ_SENT = "CONTACTS_REQ_SENT";
 export const CONTACTS_REQ_SUCCESS = "CONTACTS_REQ_SUCCESS";
 export const CONTACTS_REQ_ERR = "CONTACTS_REQ_ERR";
+export const INVITE_CONTACT_SUCCESS = "INVITE_CONTACT_SUCCESS";
 
 function contactsReqSent() {
     return({
@@ -23,6 +24,22 @@ function contactsReqErr(error) {
         error
     })
 }
+
+function inviteReqSuccess() {
+    return({
+        type : INVITE_CONTACT_SUCCESS
+    })
+}
+
+export function inviteRequest(email) {
+    return async (dispatch) => {
+        await requestInvite(email)
+        .then(function(response){
+            dispatch(inviteReqSuccess());
+        })
+    }
+}
+
 
 export function contactsRequest(contacts) {
     return async (dispatch) => {

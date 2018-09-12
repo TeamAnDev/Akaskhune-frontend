@@ -20,6 +20,7 @@ const FHInput = (props) => {
                                , props.style]}>
                 
             <Input 
+              onTouchStart={props.onClick}
               placeholderTextColor={colors.blackGrey}  
               style={{textAlign:'right'}} 
               placeholder={props.text} 

@@ -18,6 +18,7 @@ import NoConnectionScreen from './NoConnectionScreen';
 import OwnPhotos from './src/containers/board/OwnPhotos';
 import TagPosts from './src/containers/tagPosts/TagPosts';
 import FPGetEmail from './src/containers/forgetPassword/FPGetEmail';
+import Search from './src/containers/search/Search';
 import UserProfile from './src/containers/profile/UserProfile';
 
 
@@ -45,7 +46,8 @@ const App = createStackNavigator({
     FollowingsList,
     Board,
     OwnPhotos,
-    TagPosts
+    TagPosts,
+    Search
   }, {
     initialRouteName: "BottomTabRouter",
     headerMode: "none"

@@ -56,7 +56,7 @@ export function requestSearchUser(keyword) {
         dispatch(searchUserReqSent());
         await searchUserRequest(keyword)
         .then(function(response){
-            // console.warn(response.data);
+            console.warn(response.data);
             dispatch(searchUserReqSuccess(response.data.results, response.data.next));
         }).catch(function(error){
             dispatch(searchUserReqErr(error.response.data.error));
@@ -69,7 +69,7 @@ export function requestSearchTag(keyword) {
         dispatch(searchTagReqSent());
         await searchTagRequest(keyword)
         .then(function(response){
-            console.warn(response.data);
+            // console.warn(response.data);
             dispatch(searchTagReqSuccess(response.data.results, response.data.next));
         }).catch(function(error){
             dispatch(searchTagReqErr(error.response.data.error));

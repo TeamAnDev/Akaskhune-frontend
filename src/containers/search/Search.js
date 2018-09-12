@@ -7,6 +7,8 @@ import TabBox from './TabBox';
 import {changeKeyword} from '../../actions/search/searchAction';
 import {connect} from 'react-redux';
 import {requestSearchUser, requestSearchTag} from '../../actions/search/searchRequest';
+import PopularTagsPattern from './PopularTagsPattern';
+import FHBackIcon from '../../components/FHBackIcon';
 class Search extends Component {
     constructor(props) {
         super(props);
@@ -27,13 +29,15 @@ class Search extends Component {
     render() {
         console.warn(this.props.keyword);
         return(
-        <View style={{flex:1}}>
+        <View style={{flex:1, backgroundColor:'white'}}>
+            {/* <PopularTagsPattern/> */}
             <Header style={{backgroundColor: colors.primaryColor}}
             androidStatusBarColor={colors.primaryColor}>
-                <FHInput onTextChange={this.onTextChange} width='100%' text="جستجوی تگ یا کاربر" icon={<Icon type="Feather" name="search"/>}/>
+                <FHInput onTextChange={this.onTextChange} width='100%' text="جستجوی تگ یا کاربر" icon={<FHBackIcon color={colors.primaryColor}/>}/>
                 
             </Header>
             <TabBox/>
+
         </View>
         );
     }

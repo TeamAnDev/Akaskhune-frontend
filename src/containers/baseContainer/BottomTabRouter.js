@@ -5,6 +5,7 @@ import Home from '../../containers/home/Home';
 import Notifications from '../notifications/Notifications';
 import React , {Component} from 'react';
 import Search from '../search/Search';
+import PopularTags from '../search/PopularTags';
 import colors from '../../config/colors';
 import {HomeIcon, ProfileIcon, NotifiactionIcon, SearchIcon} from './Icons';
 import { Dimensions, View, SafeAreaView} from 'react-native';
@@ -36,7 +37,7 @@ const BottomRouter =  createBottomTabNavigator({
         })
    },
    Search : {
-       screen : Search,
+       screen : PopularTags,
        navigationOptions: () => ({
         tabBarIcon: ({tintColor}) => (
             <SearchIcon tintColor={tintColor}/>)
