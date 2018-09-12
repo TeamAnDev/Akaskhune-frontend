@@ -4,7 +4,8 @@ import {Button} from 'native-base';
 import styles from './styles';
 import colors from '../config/colors';
 import {connect} from 'react-redux';
-import {followRequest, unfollowRequest} from '../actions/follow/followRequest'
+import {followRequest, unfollowRequest} from '../actions/follow/followRequest';
+import {inviteRequest} from '../actions/inviteFriends/inviteFriendsRequest';
 
 class FHActionButton extends Component {
     
@@ -33,6 +34,9 @@ class FHActionButton extends Component {
         } else if(this.state.status === 'followed') {
             this.props.unfollowRequest(this.props.username);
             this.setState({status : 'not_followed'});
+        } else if(this.state.status === 'not_invited') {
+            this.props.inviteRequest(this.props.email);
+            this.setState({status : 'invited'});
         }
     }
 
@@ -56,14 +60,16 @@ class FHActionButton extends Component {
 const mapStateToProps = state => {
     return({
         followSuccess : state.followApp.followRequestReducer.followSuccess,
-        unfollowSuccess : state.followApp.unfollowRequestReducer.unfollowSuccess
+        unfollowSuccess : state.followApp.unfollowRequestReducer.unfollowSuccess,
+        inviteSuccess : state.inviteFriendsApp.inviteContactRequestReducer.inviteSuccess
     })
 }
 
 const mapDispatchToProps = dispatch => {
     return({
         followRequest : username => dispatch(followRequest(username)),
-        unfollowRequest : username => dispatch(unfollowRequest(username))
+        unfollowRequest : username => dispatch(unfollowRequest(username)),
+        inviteRequest : email => dispatch(inviteRequest(email))
     })
 }
 

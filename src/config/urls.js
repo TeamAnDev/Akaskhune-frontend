@@ -33,7 +33,9 @@ export const rest = {
     
     searchUser : '/search/user/',
     searchTag : '/search/tag/',
-    popularTags : '/search/tag/get/'
+    popularTags : '/search/tag/get/',
+    invite : '/friends/invite/',
+    deleteBoard : '/board/delete/'
     
 }
 

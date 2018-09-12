@@ -11,7 +11,7 @@ class FHContactItem extends Component {
     render() {
         return (
             <View style={styles.contactItem}>
-                <FHActionButton status={this.props.status} username={this.props.username}/>
+                <FHActionButton status={this.props.status} username={this.props.username} email={this.props.email}/>
                 <View style={{flexDirection:'column', alignItems:'flex-end'}}>
                     <Text style={{fontWeight:'bold'}}>{this.props.name}</Text>
                     <Text>{this.props.email}</Text>
