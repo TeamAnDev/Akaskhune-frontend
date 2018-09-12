@@ -24,7 +24,7 @@ class CompleteProfileInputs extends Component
     {
         if(nextProps.error !== undefined && nextProps.error !== "" && this.props.error !== nextProps.error)
         {
-           showError(this.props.error, "باشه");
+           showError(nextProps.error, "باشه");
         } 
     }
     render()

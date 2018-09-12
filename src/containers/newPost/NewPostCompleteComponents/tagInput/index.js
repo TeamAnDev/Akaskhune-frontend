@@ -4,6 +4,7 @@ import { View, Text, TextInput, TouchableOpacity } from "react-native";
 
 import Tag from "./Tag";
 import styles from "./styles";
+import FHInput from "../../../../components/FHInput";
 
 class Tags extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class Tags extends React.Component {
   }
 
   onChangeText = text => {
+    const reg = /^(?=.*[a-z])|(?=.*[0-9])/;
     if (text.length === 0) {
       // `onKeyPress` isn't currently supported on Android; I've placed an extra
       //  space character at the start of `TextInput` which is used to determine if the
@@ -38,7 +40,7 @@ class Tags extends React.Component {
           this.props.onChangeTags && this.props.onChangeTags(this.state.tags)
       );
     } else if (
-      text.length > 1 &&
+      text.length > 1 && reg.test(text) &&
       (text.slice(-1) === " " || text.slice(-1) === ",") &&
       !(this.state.tags.indexOf(text.slice(0, -1).trim()) > -1)
     ) {
@@ -105,9 +107,10 @@ class Tags extends React.Component {
               
               <TextInput
                 value={this.state.text === " " ? undefined : this.state.text}
+                
                 style={[styles.textInput, inputStyle]}
                 onChangeText={this.onChangeText}
-                // underlineColorAndroid="transparent"
+                underlineColorAndroid="transparent"
                 placeholder={this.props.placeholder}
 
               />

@@ -15,14 +15,14 @@ const TopInputs = (props) => (
                 text = "توضیحات عکس"
                 style={{width:"95%", marginTop:0}}
                 />
-</View>     
-<View style={{flex:123}} >
-    <ImageBackground source={{uri : props.sourceImage}} 
-    style={{backgroundColor : colors.grey, width : widthAndHeightOfImage, marginLeft : 8,
-            height : widthAndHeightOfImage, borderRadius:widthAndHeightOfImage/11}}
-    imageStyle = {{borderRadius:widthAndHeightOfImage/10}}>
+    </View>     
+    <View style={{flex:123}} >
+        <ImageBackground source={{uri : props.sourceImage}} 
+        style={{backgroundColor : colors.grey, width : widthAndHeightOfImage, marginLeft : 8,
+                height : widthAndHeightOfImage, borderRadius:widthAndHeightOfImage/11}}
+        imageStyle = {{borderRadius:widthAndHeightOfImage/10}}>
 
-    </ImageBackground>
-</View>           
+        </ImageBackground>
+    </View>           
 </View>)
 export default TopInputs;

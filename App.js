@@ -15,7 +15,7 @@ import Router from './Router';
 import { setTopLevelNavigator} from './NavigationService';
 
 
-console.disableYellowBox = true;
+console.disableYellowBox = false;
 
 export default class App extends Component {
   render() {

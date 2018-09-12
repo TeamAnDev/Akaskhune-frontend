@@ -15,19 +15,53 @@ function getInfoError(error){
         error
     })
 }
-function getInfoSucces(data){
+function getInfoSucces(data, username){
     return({
         type : GETTING_SELF_INFO_SUCCES,
-        data
+        data,
+        username
     })
 }
-export function getSelfInfo(){
+export function getSelfInfo(username){
     return async (dispatch) => {
         dispatch(getInfoStarted());
-        await getSelfInfoAxiosRequest().then(function(response) {
-            dispatch(getInfoSucces(response.data));
+        await getSelfInfoAxiosRequest(username).then(function(response) {
+            dispatch(getInfoSucces(response.data, username));
         }).catch(function(error){
             dispatch(getInfoError(error.response.data.error));
+        })
+    }    
+}
+
+export const GETTING_USER_INFO_STARTED = "GETTING_USER_INFO_STARTED";
+export const GETTING_USER_INFO_ERR = "GETTING_USER_INFO_ERR";
+export const GETTING_USER_INFO_SUCCES = "GETTING_USER_INFO_SUCCES";
+function getUserStarted(){
+    return({
+        type : GETTING_USER_INFO_STARTED,
+
+    })
+}
+function getUserError(error){
+    return({
+        type : GETTING_USER_INFO_ERR,
+        error
+    })
+}
+function getUserSucces(data, username){
+    return({
+        type : GETTING_USER_INFO_SUCCES,
+        data,
+        username
+    })
+}
+export function getUserInfo(username){
+    return async (dispatch) => {
+        dispatch(getUserStarted());
+        await getSelfInfoAxiosRequest(username).then(function(response) {
+            dispatch(getUserSucces(response.data, username));
+        }).catch(function(error){
+            dispatch(getUserError(error.response.data.error));
         })
     }    
 }

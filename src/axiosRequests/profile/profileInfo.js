@@ -4,7 +4,7 @@ function infoRequest(username) {
     let url = rest.userSelf;
     if(username)
     {
-        url = "";
+        url = rest.userSelf + username + '/';
     }
     return axiosInstance.get(url);
 }

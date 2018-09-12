@@ -1,7 +1,6 @@
 import React , {Component} from 'react';
 import {FlatList, View, Text} from 'react-native';
 import FHSingleBoard from '../../components/FHSingleBoard';
-import {allBoardsRequest, initAllBoards} from '../../actions/board/boardRequest'
 import {connect} from 'react-redux';
 import {Icon, Spinner} from 'native-base';
 import colors from '../../config/colors';
@@ -16,14 +15,13 @@ const NoBoardComponent = () => {
         </View>
     )
 }
-class Boards extends Component {
+export default class Boards extends Component {
     constructor(props) {
         super(props);
         this.props.initAllBoards();
         if(this.props.username)
         {
-            let url = "";
-            this.props.allBoardsRequest(url);
+            this.props.allBoardsRequest(rest.othersAllBoards(this.props.username));
         }
         else{
             this.props.allBoardsRequest(rest.allBoards);
@@ -39,7 +37,7 @@ class Boards extends Component {
             toReturn =  <View>
                             <FlatList 
                             data = {this.props.boards}
-                            renderItem = {({item}) => <FHSingleBoard name={item.name} id={item.id}/>}
+                            renderItem = {({item}) => <FHSingleBoard username={this.props.username} name={item.name} id={item.id}/>}
                             ListEmptyComponent = {<View style={{flex:1 ,justifyContent:'center', alignItems:'center', marginTop:100}}><NoBoardComponent/></View>}
                             /> 
                         </View>
@@ -52,23 +50,3 @@ class Boards extends Component {
     }
 
 }
-
-const mapStateToProps = state => {
-    return({
-        loading : state.boardsApp.allBoardsRequestReducer.loading,
-        success : state.boardsApp.allBoardsRequestReducer.success,
-        error : state.boardsApp.allBoardsRequestReducer.error,
-        // count : state.boardsApp.allBoardsRequestReducer.count,
-        boards : state.boardsApp.allBoardsRequestReducer.boards,
-        next : state.boardsApp.allBoardsRequestReducer.next
-    })
-}
-
-const mapDispatchToProps = dispatch => {
-    return({
-        allBoardsRequest : (url) => dispatch(allBoardsRequest(url)),
-        initAllBoards : () => dispatch(initAllBoards()),
-    })
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Boards);

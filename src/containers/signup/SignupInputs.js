@@ -57,7 +57,7 @@ class SignupInputs extends Component
                 <FHButton 
                     title="ثبت نام" 
                     onPress={() => this.props.signup(this.props.email, this.props.password)} 
-                    disabled={(this.props.emailValidation && this.props.confrimPasswordValidation) ? false : true}
+                    disabled={!(this.props.emailValidation && this.props.confirmPasswordValidation) }
                     loading={this.props.loading}/>
 
                 <FHError errorText={this.props.error}/>

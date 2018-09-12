@@ -15,16 +15,38 @@ class EditProfileInputs extends Component
     {
         super(props);
         this.props.setPrevDetails(this.props.prevFullname, this.props.prevBio);
+        this.inputs = {};
     }
     render()
     { 
         console.log(this.props.bio)
         return(
             <View style={{flex:1, width:"100%"}}>
-                <FHInput value={this.props.username} disabled={true} ordinary={true} />
-                <FHInput value={this.props.fullname} onTextChange = {this.props.changeFullname}  ordinary={true}  />
-                <FHInput text="ایمیل" value={this.props.email} disabled={true}  ordinary={true} />
-                <FHTextarea value={this.props.bio} onTextChange = {this.props.changeBio}  />
+                <FHInput 
+                    value={this.props.username} 
+                    disabled={true} 
+                    ordinary={true}/>
+                <FHInput 
+                    text="نام و نام خانوادگی" 
+                    value={this.props.fullname} 
+                    onTextChange = {this.props.changeFullname}  
+                    ordinary={true} 
+                    blurOnSubmit={false}   
+                    refrence = {(input) => {this.inputs['fullname'] = input}}
+                    returnKeyType={ "next" }  
+                    onSubmitEditing = {() => this.inputs['bio']._root.focus()}  />
+                <FHInput 
+                    text="ایمیل" 
+                    value={this.props.email} 
+                    disabled={true}  
+                    ordinary={true} />
+                <FHTextarea 
+                    text="درباره خودتون بگید" 
+                    value={this.props.bio} 
+                    onTextChange = {this.props.changeBio} 
+                    blurOnSubmit={false}   
+                    refrence = {(input) => this.inputs['bio'] = input}
+                     />
             </View>
         );
     }

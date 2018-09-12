@@ -13,6 +13,7 @@ export const rest = {
     refresh : '/auth/refresh/',
     userSelf : '/user/',
     imagesSelf : '/user/post/recent/',
+    imagesOthers : (username) => '/user/' + username + '/post/recent/',
     contacts : '/friends/contacts/',
     follow : '/friends/follow/',
     newPost : '/post/',
@@ -24,6 +25,7 @@ export const rest = {
     commentList : (postId) => '/post/' + postId.toString() + '/comments/list/',
     commentCreate : (postId) => '/post/' + postId.toString() + '/comments/create/',
     allBoards : '/board/get/',
+    othersAllBoards : (username) => '/board/get/' + username.toString() + '/',
     singleBoard : '/board/post/',
     addBoards : '/board/add/',
     addPostsToBoard : (boardId) => '/board/' + boardId.toString() + '/post/',
@@ -38,7 +40,7 @@ export const rest = {
 }
 
 export let axiosInstance = axios.create({
-    baseURL: 'http://185.162.235.243:8080/api/v1',
+    baseURL: 'http://192.168.10.107/api/v1',
     timeout:10000,
     headers:{
         'Content-Type': 'application/json',

@@ -1,5 +1,6 @@
 import {IMAGES_REQ_SENT,IMAGES_REQ_INIT, IMAGES_REQ_SUCCESS, IMAGES_REQ_ERROR, INFO_REQ_SUCCESS} from '../../actions/profile/profileRequest';
 import {rest} from '../../config/urls';
+import {IMAGES_OTHERS_REQ_ERROR, IMAGES_OTHERS_REQ_INIT, IMAGES_OTHERS_REQ_SENT, IMAGES_OTHERS_REQ_SUCCESS} from '../../actions/profile/othersImages';
 export function imagesRequestReducer(state={images:[], err:"", loading:false, success:false, url:rest.imagesSelf}, action) {
     switch(action.type) {
         case IMAGES_REQ_INIT :
@@ -25,5 +26,21 @@ export function infoRequestReducer(state={username:"", fullname:"", bio:"", foll
                     posts_count:action.data.posts_count, boards_count:action.data.boards_count});
         default :
             return state;         
+    }
+}
+
+export function othersImagesRequestReducer(state={images:[], err:"", loading:false, success:false, url:rest.imagesSelf}, action) {
+    switch(action.type) {
+        case IMAGES_OTHERS_REQ_INIT :
+            return Object.assign({}, state, {images : []});
+        case IMAGES_OTHERS_REQ_SENT :
+            return Object.assign({}, state, {loading:true});
+        case IMAGES_OTHERS_REQ_SUCCESS :
+            let newImages = state.images.concat(action.images);
+            return Object.assign({}, state, {images: newImages, loading:false, success:true, url:action.next});
+        case IMAGES_OTHERS_REQ_ERROR :
+            return Object.assign({}, state, {err: action.error, loading:false, success:false});
+        default :
+            return state;    
     }
 }

@@ -40,7 +40,7 @@ class FHSingleBoard extends Component {
         return (
         <View>
             <View style={{flexDirection: 'row', justifyContent:'space-between', padding:10}}>
-                <Text onPress={() => {this.props.singleBoardId(this.props.id);navigate("Board")}} style={{fontWeight:'bold'}}>همه</Text>
+                <Text onPress={() => {this.props.singleBoardId(this.props.id);navigate("Board", {username : this.props.username})}} style={{fontWeight:'bold'}}>همه</Text>
                 <View style={{flexDirection: 'row', justifyContent:'center', alignItems:'center'}}> 
                     <Text style={{fontSize: 12}}>{this.props.count[this.props.id] + "  عکس"}</Text>
                     <Text style={{fontWeight:'bold'}}>{this.props.name + "    "}</Text>

@@ -49,26 +49,34 @@ class CardFooter extends Component
         <CardItem bordered style={{ borderBottomLeftRadius: 8, borderBottomRightRadius: 8,}}>
             <Left>
                 <TouchableOpacity onPress={this.likeAndUnlikePost}>
-                    <Icon name={this.state.liked ? 'heart' : 'heart-o'} 
-                    type='FontAwesome' style={{color: !this.state.liked ? colors.fontColor : colors.accentColor, fontSize: 25,}} />
+                    <Icon 
+                        name={this.state.liked ? 'heart' : 'heart-o'} 
+                        type='FontAwesome' 
+                        style={{color: !this.state.liked ? colors.fontColor : colors.accentColor, fontSize: 25,}} />
                 </TouchableOpacity>
                 <Text style={{padding:6}}>
                     {(this.props.numberOfLikes || this.state.liked)?( this.props.numberOfLikes + (this.props.is_liked ? this.state.liked ? 0 : -1 : this.state.liked ? +1 : 0) ): null}
                 </Text>
 
-                {!this.props.singlePost ? <View style={{flexDirection:'row'}}>
-                <TouchableOpacity onPress={() => { this.props.startCommenting();navigate('SinglePost', {id :this.props.id, index : this.props.index});}} style={{marginLeft:4}}>
-                    <Icon name='comment' type="Octicons" style={{color:colors.fontColor, fontSize: 27,paddingTop: 3,}} />
-                </TouchableOpacity>
-                <Text style={{padding:6}}>{this.props.numberOfComments}</Text>
-                </View> : 
                 <View style={{flexDirection:'row'}}>
-                    <Icon name='comment' type="Octicons" style={{color:colors.fontColor, fontSize: 27,paddingTop: 3,}} />
+                    <TouchableOpacity onPress={() => { this.props.startCommenting();
+                            if(!this.props.singlePost) {  navigate('SinglePost', {id :this.props.id, index : this.props.index})}}} 
+                            style={{marginLeft:4}}>
+                        <Icon 
+                            name='comment' 
+                            type="Octicons" 
+                            style={{color:colors.fontColor, fontSize: 27,paddingTop: 3,}} />
+                    </TouchableOpacity>
                     <Text style={{padding:6}}>{this.props.numberOfComments}</Text>
-                </View>}
+                </View> 
 
-                <TouchableOpacity onPress={() => {}} style={{marginLeft:10}}>
-                    <Icon name='share-2' type="Feather" style={{color:colors.fontColor, fontSize: 25,paddingTop: 3,}} />
+                <TouchableOpacity 
+                    onPress={() => {}} 
+                    style={{marginLeft:10}}>
+                    <Icon 
+                        name='share-2' 
+                        type="Feather" 
+                        style={{color:colors.fontColor, fontSize: 25,paddingTop: 3,}} />
                 </TouchableOpacity> 
             </Left>
             <Right>

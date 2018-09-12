@@ -1,6 +1,11 @@
 import {rest, axiosInstance} from '../../config/urls'
 
 
-export default function getSelfInfoAxiosRequest() {
-    return axiosInstance.get(rest.userInfo);
+export default function getSelfInfoAxiosRequest(username) {
+    let url = rest.userInfo;
+    if(username)
+    {
+        url = rest.userInfo + username + '/';
+    }
+    return axiosInstance.get(url);
 }
