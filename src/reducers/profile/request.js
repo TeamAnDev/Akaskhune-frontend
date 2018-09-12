@@ -29,15 +29,15 @@ export function infoRequestReducer(state={username:"", fullname:"", bio:"", foll
     }
 }
 
-export function othersImagesRequestReducer(state={images:[], err:"", loading:false, success:false, url:rest.imagesSelf}, action) {
+export function othersImagesRequestReducer(state={images:[], err:"", loading:false, success:false, url:""}, action) {
     switch(action.type) {
         case IMAGES_OTHERS_REQ_INIT :
             return Object.assign({}, state, {images : []});
         case IMAGES_OTHERS_REQ_SENT :
             return Object.assign({}, state, {loading:true});
         case IMAGES_OTHERS_REQ_SUCCESS :
-            let newImages = state.images.concat(action.images);
-            return Object.assign({}, state, {images: newImages, loading:false, success:true, url:action.next});
+            let nImages = state.images.concat(action.images);
+            return Object.assign({}, state, {images: nImages, loading:false, success:true, url:action.next});
         case IMAGES_OTHERS_REQ_ERROR :
             return Object.assign({}, state, {err: action.error, loading:false, success:false});
         default :

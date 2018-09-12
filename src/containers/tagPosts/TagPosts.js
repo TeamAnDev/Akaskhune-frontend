@@ -21,7 +21,7 @@ class TagPosts extends Component {
                 <View style={{flex:1}}>
                     <FlatList
                         data = {this.data}
-                        renderItem = {({item}) => <FHRow leftImage={{uri : item[0].uri}} rightImage={{uri : item[1].uri}}/>}
+                        renderItem = {({item}) => <FHRow leftImage={item[0]} rightImage={item[1]}/>}
                     />
                 </View>
             </View>
