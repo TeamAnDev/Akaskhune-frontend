@@ -36,7 +36,6 @@ export function completeProfile(username, fullname, bio, avatar, password, email
             storeRefresh(response.data.token.refresh);
             dispatch(completeProfileSucces());
         }).catch(function(error){
-            
             dispatch(completeProfileError(error.response.data.error));
         })
     }    

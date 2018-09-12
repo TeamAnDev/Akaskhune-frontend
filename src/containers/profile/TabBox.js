@@ -8,7 +8,7 @@ import colors from '../../config/colors';
 import {connect} from 'react-redux';
 import Boards from './Boards';
 
-class TabBox extends Component {
+export default class TabBox extends Component {
     constructor(props)
     {
         super(props);
@@ -18,36 +18,43 @@ class TabBox extends Component {
     }
     componentDidMount()
     {
-        //     setTimeout(()=>{
-        //     this.setState({activeTab:1})
+            setTimeout(()=>{
+            this.setState({activeTab:1})
         
-        // },1000)
+        },1000)
     }
     render() {
         return (
             <Container>
-                <Tabs  page={0} tabContainerStyle={{height:50} } 
+                <Tabs  page={this.state.activeTab} tabContainerStyle={{height:50} } 
                     tabBarUnderlineStyle={{
                     backgroundColor: colors.primaryColor,
                     height: 2}}
                     locked>
-                    <Tab heading={"علاقمندیها   " + this.props.boards_count} tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
-                        <Boards/>
+                    <Tab heading={"علاقمندیها   " + (this.props.boards_count ? this.props.boards_count : "")} tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
+                        <Boards
+                            username = {this.props.username}
+                             loading = {this.props.boardsLoading}
+                             success = {this.props.boardsSuccess}
+                             error = {this.props.error}
+                             boards = {this.props.boards}
+                             next = {this.props.next}
+                             allBoardsRequest = {this.props.allBoardsRequest}
+                             initAllBoards = {this.props.initAllBoards}/>
                     </Tab>
-                    <Tab heading={"عکسها   " + this.props.posts_count} tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
-                        <Images/>
+                    <Tab heading={"عکسها   " + (this.props.posts_count ? this.props.posts_count : "")} tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
+                        <Images 
+                            username = {this.props.username}
+                            images = {this.props.images}
+                            success = {this.props.imagesSuccess}
+                            loading = {this.props.imagesLoading}
+                            url = {this.props.url}
+                            requestImages = {this.props.requestImages}
+                            init = {this.props.init}
+                            />
                     </Tab>
                 </Tabs>
             </Container>
         );
     }
 }
-
-const mapStateToProps = state => {
-    return({
-        posts_count : state.profileApp.infoRequestReducer.posts_count,
-        boards_count : state.profileApp.infoRequestReducer.boards_count
-    })
-}
-
-export default connect(mapStateToProps, null)(TabBox);

@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import {FlatList, Image, View, ScrollView, Text} from 'react-native';
+import {FlatList, Image, ImageBackground, View, ScrollView, Text} from 'react-native';
 import styles from './styles';
 import {navigate} from '../../NavigationService';
 import {singleBoardRequest} from '../actions/board/boardRequest';
@@ -7,6 +7,8 @@ import {connect} from 'react-redux';
 import {PacmanIndicator} from 'react-native-indicators';
 import colors from '../config/colors';
 import {singleBoardId} from '../actions/board/boardRequest';
+import {TouchableOpacity} from 'react-native';
+
 
 class FHSingleBoard extends Component {
     constructor(props) {
@@ -21,7 +23,14 @@ class FHSingleBoard extends Component {
         } else if(this.props.success) {
             toShow = <FlatList 
                         data = {this.props.images[this.props.id]}
-                        renderItem = {({item}) => <Image source={{uri : item.photo_url}} style={styles.boardImage} />}    
+                        renderItem = {({item}) =>
+                        <TouchableOpacity onPress = {()=>{navigate('SinglePost', {id:item.id})}}>
+                         <ImageBackground 
+                            imageStyle={{borderRadius : 10}}
+                            source={{uri : item.photo_url}} 
+                            style={styles.boardImage} />
+                         </TouchableOpacity>
+                        }    
                         horizontal = {true}
                         showsHorizontalScrollIndicator = {false}
                     />
@@ -31,7 +40,7 @@ class FHSingleBoard extends Component {
         return (
         <View>
             <View style={{flexDirection: 'row', justifyContent:'space-between', padding:10}}>
-                <Text onPress={() => {this.props.singleBoardId(this.props.id);navigate("Board")}} style={{fontWeight:'bold'}}>همه</Text>
+                <Text onPress={() => {this.props.singleBoardId(this.props.id);navigate("Board", {username : this.props.username})}} style={{fontWeight:'bold'}}>همه</Text>
                 <View style={{flexDirection: 'row', justifyContent:'center', alignItems:'center'}}> 
                     <Text style={{fontSize: 12}}>{this.props.count[this.props.id] + "  عکس"}</Text>
                     <Text style={{fontWeight:'bold'}}>{this.props.name + "    "}</Text>

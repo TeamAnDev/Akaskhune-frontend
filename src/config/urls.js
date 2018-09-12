@@ -13,6 +13,7 @@ export const rest = {
     refresh : '/auth/refresh/',
     userSelf : '/user/',
     imagesSelf : '/user/post/recent/',
+    imagesOthers : (username) => '/user/' + username + '/post/recent/',
     contacts : '/friends/contacts/',
     follow : '/friends/follow/',
     newPost : '/post/',
@@ -20,22 +21,26 @@ export const rest = {
     feeds : '/user/feed/',
     followersList : '/user/followers/',
     followingsList : '/user/followings/',
+    othersFollowingsList : (username) => '/user/' + username + '/followings/',
+    othersFollowersList : (username) => '/user/' + username + '/followers/',
     singlePost : '/post/',
     commentList : (postId) => '/post/' + postId.toString() + '/comments/list/',
     commentCreate : (postId) => '/post/' + postId.toString() + '/comments/create/',
     allBoards : '/board/get/',
+    othersAllBoards : (username) => '/board/get/' + username.toString() + '/',
     singleBoard : '/board/post/',
     addBoards : '/board/add/',
     addPostsToBoard : (boardId) => '/board/' + boardId.toString() + '/post/',
     like : (postId) => '/post/' + postId.toString() + '/likes/',
     block : (postId) => '/user/feed/blacklist/' + postId.toString() + '/',
     notifications : '/notification/',
-    
     searchUser : '/search/user/',
     searchTag : '/search/tag/',
     popularTags : '/search/tag/get/',
     invite : '/friends/invite/',
-    deleteBoard : '/board/delete/'
+    deleteBoard : '/board/delete/',
+    forgetPassword : '/user/password/reset/',
+    popularTags : '/search/tag/get/'
     
 }
 

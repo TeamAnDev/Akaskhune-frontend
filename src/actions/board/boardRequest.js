@@ -73,8 +73,6 @@ export function allBoardsRequest(url) {
             dispatch(allBoardsReqSent());
             await requestAllBoards(url)
             .then(function(response){
-                console.warn("allBoards")
-                console.warn(response.data);
                 dispatch(allBoardsReqSuccess(response.data.count, response.data.next, response.data.results));
             }).catch(function(error) {
                 dispatch(allBoardsReqErr(error.response.data.error));
@@ -88,10 +86,8 @@ export function singleBoardRequest(id) {
         dispatch(singleBoardReqSent());
         await requestSingleBoard(id)
         .then(function(response){
-            console.warn(response.data);
             dispatch(singleBoardReqSuccess(id, response.data.count, response.data.results, response.data.next));
         }).catch(function(error){
-            console.warn(error);
             dispatch(singleBoardReqErr(error.response.data.error));
         })
     }

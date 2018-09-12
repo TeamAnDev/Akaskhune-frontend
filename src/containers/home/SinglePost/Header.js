@@ -5,6 +5,7 @@ import colors from '../../../config/colors'
 
 import {navigate} from '../../../../NavigationService';
 import FHBackIcon from '../../../components/FHBackIcon';
+import ThreeDot from '../ThreeDot';
 
 const SinglePostHeader = () => {
     
@@ -12,9 +13,7 @@ const SinglePostHeader = () => {
         <Header style={{ backgroundColor: colors.primaryColor}}
             androidStatusBarColor={colors.primaryColor}>
             <Left style={{flex:1}}>
-                 <Button transparent rounded primary style={{borderRadius:50}}   onPress={() => {}}>
-                    <Icon style={{color:'white'}} name='more-horizontal' type="Feather"/>
-                </Button>
+        
             </Left>
             <Body style={{flex:1, alignItems:'center'}}>
             </Body>

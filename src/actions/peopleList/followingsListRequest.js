@@ -24,14 +24,13 @@ function followingsReqError(error) {
     })
 }
 
-export function requestFollowingsList() {
+export function requestFollowingsList(username) {
     return async (dispatch) => {
         dispatch(followingsReqSent());
-        await followingsListRequest()
+        await followingsListRequest(username)
         .then(function(response) {
             dispatch(followingsReqSuccess(response.data.followings));
         }).catch(function(error){
-            console.warn(error);
             dispatch(followingsReqError(error));
         })     
     }

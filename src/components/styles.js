@@ -76,7 +76,8 @@ const styles = StyleSheet.create({
       width : boardImageWidth,
       height : boardImageHeight,
       borderRadius : 10,
-      margin : 8
+      margin : 8,
+      backgroundColor : colors.blackGrey,
   }
 
   });

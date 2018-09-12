@@ -4,7 +4,7 @@ import FHRow from '../../components/FHRow';
 import FHHeader from '../../components/FHHeader';
 import Modal from 'react-native-modal';
 import styles from './styles';
-import { navigate } from '../../../NavigationService';
+import { navigate, getParam } from '../../../NavigationService';
 import {connect} from 'react-redux';
 import {singleBoardRequest} from '../../actions/board/boardRequest';
 import rowSplit from '../../components/Functions/rowSplit';
@@ -22,14 +22,14 @@ class Board extends Component {
     render() {
         this.data = rowSplit(this.props.images[this.props.id]);
         return (
-            <View style={{flex:1}}>
+            <View style={{flex:1, backgroundColor:'white'}}>
                 <FHHeader onPressTrash={() => this.setModalVisibility(true)}
                 onPressAdd = {() => navigate("OwnPhotos")}
-                title="عکس های من" board={true}/>
+                title={!this.props.navigation.getParam('username') ?  "عکس های من" : "عکس‌ها"} board={this.props.navigation.getParam('username') ? false : true}/>
                 <View style={{flex:1}}>
                     <FlatList 
                         data={this.data}
-                        renderItem = {({item}) => <FHRow leftImage={{uri : item[0].uri}} rightImage={{uri : item[1].uri}}/>}
+                        renderItem = {({item}) => <FHRow leftImage={item[0]} rightImage={item[1]}/>}
                     />
                 </View>
                 <Modal isVisible={this.state.isModalVisible}

@@ -16,10 +16,11 @@ function emailCheckReducer(state=false, action) {
     }
 } 
 
+const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[0-9])(?=.{8,})/;
 function passwordCheckReducer(state=false , action) {
     switch(action.type) {
         case LOGIN_PASSWORD_CHANGED :
-            if(action.password !== "") 
+            if(PASSWORD_REGEX.test(action.password)) 
                 return true;
             else
                 return false;

@@ -14,7 +14,7 @@ const colors = {
     bottomTabBarInActive: "rgb(152,152,152)"  ,
     bottomTabBar : "rgb(239,239,239)",
 
-    // animatedBackgroundColor : ["#6B946C", "#618e8a","#4D7B4D", "#4d2968","#6B946C","#2F592F" ,"#3c358c","#39787a","#91B191", "#618e8a","#6B946C" ]
+    
     animatedBackgroundColor : [ "#4D7B4D",
     "rgb(107,148,108)",
     'rgb(142, 191, 186)',
@@ -25,6 +25,8 @@ const colors = {
     'rgb(224, 142, 65)',
     'rgb(152, 197, 190)',
     'rgb(100, 173, 186)',],
+
+    
 
 
    

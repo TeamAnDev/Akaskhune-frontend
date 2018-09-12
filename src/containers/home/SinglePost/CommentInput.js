@@ -17,6 +17,7 @@ class CommentInput extends Component
     }
     componentWillReceiveProps(nextProps)
     {
+        this.props.stopCommenting();
         if(nextProps.isReplay && nextProps.isReplay !== this.props.isReplay)
         {
             cmInputRef._root.focus();

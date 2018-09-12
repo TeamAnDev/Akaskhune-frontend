@@ -24,10 +24,10 @@ function followersReqError(error) {
     })
 }
 
-export function requestFollowersList() {
+export function requestFollowersList(username) {
     return async (dispatch) => {
         dispatch(followersReqSent());
-        await followersListRequest()
+        await followersListRequest(username)
         .then(function(response) {
             dispatch(followersReqSuccess(response.data.followers));
         }).catch(function(error){

@@ -34,13 +34,15 @@ class NewPostComplete extends Component
         return(
             <View style={{flex:1, backgroundColor:"white"}}>
                 <FHHeader title="ثبت‌ توضیح"/>
-                <KeyboardAwareScrollView keyboardShouldPersistTaps="always" contentContainerStyle={{flexGrow:1}} >
+                <KeyboardAwareScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{flexGrow:1}} >
                     <View style={{flex:241}}>
                         <NewPostCompleteInputs/>
                     </View>
-                    <View style={{width:"100%", position:"absolute", bottom:bottomOfButton}}>
+                    <View style={{flex:400, justifyContent : 'flex-end'}}>
+                    <View style={{marginBottom:bottomOfButton}}>
                         <FHButton title="ارسال پست" 
                         onPress={() => this.props.createNewPost(this.props.sourceImage, this.props.caption, this.props.tags)} loading={this.props.loading}/>
+                    </View>
                     </View>
                  </KeyboardAwareScrollView>
             </View>

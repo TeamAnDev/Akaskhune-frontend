@@ -11,7 +11,7 @@ import {connect} from 'react-redux';
 class FollowingsList extends Component {
     constructor(props) {
         super(props);
-        this.props.requestFollowingsList();
+        this.props.requestFollowingsList(this.props.navigation.getParam('username'));
     }
 
     render() {
@@ -51,7 +51,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return({
-        requestFollowingsList : () => dispatch(requestFollowingsList())
+        requestFollowingsList : (username) => dispatch(requestFollowingsList(username))
     })
 }
 

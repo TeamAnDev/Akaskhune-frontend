@@ -14,6 +14,7 @@ class SignupInputs extends Component
     constructor(props)
     {
         super(props);
+        this.inputs = {};
     }
     componentWillReceiveProps(nextProps)
     {
@@ -27,12 +28,38 @@ class SignupInputs extends Component
     { 
         return(
             <View style={{flex:1, width:"100%", marginTop:22}}>
-                <FHInput text="آدرس ایمیل" onTextChange = {this.props.changeEmail} error={!this.props.emailValidation}/>
-                <FHPasswordInput text="رمزعبور" onTextChange = {this.props.changePassword} /> 
-                <FHPasswordInput text="تکرار رمزعبور" onTextChange = {this.props.changeConfirmPassword} error = {!this.props.passwordValidation}/> 
-                <FHButton title="ثبت نام" onPress={() => this.props.signup(this.props.email, this.props.password)} 
-                        disabled={(this.props.emailValidation && this.props.passwordValidation) ? false : true}
-                        loading={this.props.loading}/>
+                <FHInput 
+                    text="آدرس ایمیل" 
+                    onTextChange = {this.props.changeEmail} 
+                    error={!this.props.emailValidation}
+                    onSubmitEditing = {() => this.inputs['password']._root.focus()}
+                    returnKeyType={ "next" }
+                    blurOnSubmit={false}     />
+
+                <FHPasswordInput 
+                    text="رمزعبور" 
+                    onTextChange = {this.props.changePassword} 
+                    error = {!this.props.passwordValidation}
+                    refrence = {(input) => this.inputs['password'] = input}
+                    onSubmitEditing = {() => this.inputs['confirmPassword']._root.focus()}
+                    returnKeyType={ "next" }  
+                    blurOnSubmit={false}   
+                  /> 
+
+                <FHPasswordInput 
+                    text="تکرار رمزعبور" 
+                    onTextChange = {this.props.changeConfirmPassword} 
+                    error = {!this.props.confirmPasswordValidation}
+                    refrence = {(input) => this.inputs['confirmPassword'] = input}
+                    onSubmitEditing = {() => {(this.props.emailValidation && this.props.confirmPasswordValidation) ? this.props.signup(this.props.email, this.props.password) : null}}
+                    returnKeyType={ "done" }  /> 
+
+                <FHButton 
+                    title="ثبت نام" 
+                    onPress={() => this.props.signup(this.props.email, this.props.password)} 
+                    disabled={!(this.props.emailValidation && this.props.confirmPasswordValidation) }
+                    loading={this.props.loading}/>
+
                 <FHError errorText={this.props.error}/>
             </View>
         );
@@ -42,7 +69,8 @@ class SignupInputs extends Component
 const mapStateToProps = state => {
     return ({
     error : state.signupApp.signupRequestReducer.err,
-    passwordValidation : state.signupApp.passwordCheckReducer.valid,
+    confirmPasswordValidation : state.signupApp.passwordCheckReducer.valid,
+    passwordValidation : state.signupApp.passwordCheckReducer.passvalid,
     emailValidation : state.signupApp.emailCheckReducer,
     email : state.signupApp.signupReducer.email,
     password : state.signupApp.signupReducer.password,

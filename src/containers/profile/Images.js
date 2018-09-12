@@ -12,12 +12,18 @@ import {PulseIndicator} from 'react-native-indicators';
 import rowSplit from '../../components/Functions/rowSplit';
 
 
-class Images extends Component {
+export default class Images extends Component {
 
     constructor(props) {
         super(props);
         this.props.init();
-        this.props.requestImages(rest.imagesSelf);     
+        if(this.props.username)
+        {
+            this.props.requestImages(rest.imagesOthers(this.props.username)); 
+        } else{
+            this.props.requestImages(rest.imagesSelf); 
+        }
+           
     }
 
     render() {
@@ -25,7 +31,7 @@ class Images extends Component {
         if(this.props.success) {
             if(this.props.images.length === 0) {
                 toReturn = <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-                    <Icon type="Feather" name="close"/>
+                    <Icon type="Feather" name="camera-off"/>
                     <Text>هیچ پستی وجود ندارد</Text>
                 </View>            
             }
@@ -54,21 +60,3 @@ class Images extends Component {
         return toReturn;
     }
 }
-
-const mapStateToProps = state => {
-    return ({
-        images : state.profileApp.imagesRequestReducer.images,
-        success : state.profileApp.imagesRequestReducer.success,
-        loading : state.profileApp.imagesRequestReducer.loading,
-        url : state.profileApp.imagesRequestReducer.url
-    });
-}
-
-const mapDispatchToProps = dispatch => {
-    return ({
-        requestImages : (url) => dispatch(requestImages(url)),
-        init : () => dispatch(imageRequestInit())
-    });
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Images);

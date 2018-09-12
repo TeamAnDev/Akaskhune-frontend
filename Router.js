@@ -2,7 +2,6 @@ import Login from './src/containers/login/Login';
 import Signup from './src/containers/signup/Signup';
 import SignupCompleteProfile from './src/containers/signupCompleteProfile/SignupCompleteProfile';
 import {createStackNavigator, createSwitchNavigator} from 'react-navigation';
-import Profile from './src/containers/profile/Profile';
 import BottomTabRouter from './src/containers/baseContainer/BottomTabRouter';
 import EditProfile from './src/containers/setting/editProfile/EditProfile';
 import Setting from './src/containers/setting/Setting';
@@ -20,6 +19,7 @@ import OwnPhotos from './src/containers/board/OwnPhotos';
 import TagPosts from './src/containers/tagPosts/TagPosts';
 import FPGetEmail from './src/containers/forgetPassword/FPGetEmail';
 import Search from './src/containers/search/Search';
+import UserProfile from './src/containers/profile/UserProfile';
 
 
 const Auth = createStackNavigator({
@@ -33,7 +33,7 @@ const Auth = createStackNavigator({
 });
 const App = createStackNavigator({
     
-    Profile,
+    UserProfile,
     Setting,
     ChangePassword,
     BottomTabRouter,
