@@ -4,10 +4,11 @@ import FHRow from '../../components/FHRow';
 import FHHeader from '../../components/FHHeader';
 import Modal from 'react-native-modal';
 import styles from './styles';
-import { navigate, getParam } from '../../../NavigationService';
+import { navigate, getParam, goBack } from '../../../NavigationService';
 import {connect} from 'react-redux';
 import {singleBoardRequest} from '../../actions/board/boardRequest';
 import rowSplit from '../../components/Functions/rowSplit';
+import { deleteBoardRequest } from "../../actions/board/deleteBoardRequest";
 class Board extends Component {
     constructor(props) {
         super(props);
@@ -48,7 +49,11 @@ class Board extends Component {
                                     </TouchableOpacity>
                                 </View>
                                 <View style={[styles.singleAnswerBox, styles.answerBoxBorder]}>
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={() => {
+                                        this.props.deleteBoardRequest(this.props.id);
+                                        this.setModalVisibility(false);
+                                        goBack();
+                                    }}>
                                         <Text style={styles.trashText}>بلی</Text>
                                     </TouchableOpacity>
                                 </View>
@@ -69,13 +74,15 @@ const mapStateToProps = state => {
         images : state.singleBoardApp.singleBoardRequestReducer.images,
         next : state.singleBoardApp.singleBoardRequestReducer.next,
         error : state.singleBoardApp.singleBoardRequestReducer.error,
-        id : state.singleBoardApp.singleBoardRequestReducer.id
+        id : state.singleBoardApp.singleBoardRequestReducer.id,
+        deleteSuccess : state.singleBoardApp.deleteBoardRequestReducer.deleteSuccess
     })
 }
 
 const mapDispatchToProps = dispatch => {
     return({
-        singleBoardRequest : (id) => dispatch(singleBoardRequest(id))
+        singleBoardRequest : (id) => dispatch(singleBoardRequest(id)),
+        deleteBoardRequest : (id) => dispatch(deleteBoardRequest(id))
     })
 }
 

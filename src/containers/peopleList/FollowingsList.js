@@ -23,7 +23,7 @@ class FollowingsList extends Component {
                             <FHInput width={'95%'} icon={<Icon type="Feather" name="search"/>} text="جستجوی دنبال شده ها"/>
                             <FlatList 
                             data = {this.props.followings}
-                            renderItem = {({item}) => <FHPeopleItem username={item.username} name={item.fullname} avatar={item.avatar} following={item.follow_status}/>}
+                            renderItem = {({item}) => <FHPeopleItem isPrivate={item.isPrivate} username={item.username} name={item.fullname} avatar={item.avatar} following={item.follow_status}/>}
                             />
                         </View>
         } else if(this.props.loading) {

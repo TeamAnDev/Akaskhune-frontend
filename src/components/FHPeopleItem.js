@@ -12,7 +12,7 @@ class FHPeopleItem extends Component {
         return (
         <View style={styles.contactItem}>
             <View>
-                <FHFollowButton following={this.props.following} username={this.props.username}/>
+                <FHFollowButton isPrivate={this.props.isPrivate} following={this.props.following} username={this.props.username}/>
             </View>
             <View style={{flexDirection:'row'}}>
                 <View style={{flexDirection:'column', marginRight:10, alignItems:"flex-end"}}>

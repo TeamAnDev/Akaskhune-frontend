@@ -28,7 +28,7 @@ class TabBox extends Component {
                     <Tab heading="کاربران" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
                         <FlatList
                             data = {this.props.users}
-                            renderItem={({item}) => <FHPeopleItem username={item.username} name={item.fullname} following={item.is_following} avatar={item.avatar}/>}
+                            renderItem={({item}) => <FHPeopleItem isPrivate={item.isPrivate} username={item.username} name={item.fullname} following={item.is_following} avatar={item.avatar}/>}
                         />
                     </Tab>
                 </Tabs>

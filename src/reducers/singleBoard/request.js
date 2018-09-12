@@ -1,5 +1,6 @@
 import {SINGLEBOARD_REQ_SENT, SINGLEBOARD_REQ_SUCCESS, SINGLEBOARD_REQ_ERR, SINGLEBOARD_ID} from '../../actions/board/boardRequest'
 import {combineReducers} from 'redux';
+import deleteBoardRequestReducer from './deleteBoard';
 
 function singleBoardRequestReducer(state={loading:false, count:{} , success:false, error:'', images:{}, next:'', id:0},action) {
     switch(action.type) {
@@ -21,5 +22,5 @@ function singleBoardRequestReducer(state={loading:false, count:{} , success:fals
 }
 
 export default singleBoardApp = combineReducers({
-    singleBoardRequestReducer
+    singleBoardRequestReducer, deleteBoardRequestReducer
 })

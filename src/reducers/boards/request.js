@@ -43,5 +43,5 @@ export default boardsApp = combineReducers({
     allBoardsRequestReducer,
     addPostsToBoardReducer, 
     addBoardReducer,
-    othersAllBoardsRequestReducer
+    othersAllBoardsRequestReducer,
 })

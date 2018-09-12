@@ -17,8 +17,13 @@ class FHFollowButton extends Component {
             this.props.unfollowRequest(this.props.username);
             this.setState({following : 'not_followed'});
         } else if(this.state.following === 'not_followed'){
-            this.props.followRequest(this.props.username);
-            this.setState({following : 'followed'});
+            if(this.props.isPrivate) {
+                this.props.followRequest(this.props.username);
+                this.setState({following : 'requested'});
+            } else {
+                this.props.followRequest(this.props.username);
+                this.setState({following : 'followed'});
+            }
         }
     }
 
@@ -27,6 +32,8 @@ class FHFollowButton extends Component {
             return <Button onPress={this.onPress} style={styles.contactButton}><Text style={{fontWeight:'bold', color:'white'}}>دنبال شده</Text></Button>;
         } else if(this.state.following === 'not_followed'){
             return <Button onPress={this.onPress} style={styles.contactButton} bordered><Text style={{fontWeight:'bold', color:colors.accentColor}}>دنبال کن</Text></Button>;
+        } else if(this.state.following === 'requested') {
+            return <Button onPress={this.onPress} style={styles.contactButton} light><Text style={{fontWeight:'bold', color:'white'}}></Text></Button>
         } else {
             return <View></View>
         }
