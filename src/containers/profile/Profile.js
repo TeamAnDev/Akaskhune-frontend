@@ -16,7 +16,7 @@ class Profile extends Component {
     render() {
         return (
             <View style={{flex:1}}>
-                <ProfileHeader navigation={this.props.navigation} isSelf = {true}/>
+                <ProfileHeader navigation={this.props.navigation} user_name={this.props.username} isSelf = {true}/>
                 <View style={{flex:1}}>
                     <View style={{flex:105, marginTop:10}}>
                         <Info
@@ -60,6 +60,7 @@ const mapStateToProps = state => {
     return({
         fullname : state.userInfoApp.getSelfInfoReducer.data.fullname,
         bio : state.userInfoApp.getSelfInfoReducer.data.bio,
+        username : state.userInfoApp.getSelfInfoReducer.data.username,
         follower_count : state.userInfoApp.getSelfInfoReducer.data.follower_count,
         following_count : state.userInfoApp.getSelfInfoReducer.data.following_count,
         avatar : state.userInfoApp.getSelfInfoReducer.data.avatar,

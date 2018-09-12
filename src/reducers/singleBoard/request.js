@@ -1,7 +1,7 @@
 import {SINGLEBOARD_REQ_SENT, SINGLEBOARD_REQ_SUCCESS, SINGLEBOARD_REQ_ERR, SINGLEBOARD_ID} from '../../actions/board/boardRequest'
 import {combineReducers} from 'redux';
 
-function singleBoardRequestReducer(state={loading:false, count:{} , success:false, error:'', images:{}, next:'', id:0},action) {
+function singleBoardRequestReducer(state={loading:false, count:{} , success:false, error:'', name : '', images:{}, next:'', id:0},action) {
     switch(action.type) {
         case SINGLEBOARD_REQ_SENT :
             return Object.assign({}, state, {loading:true});
@@ -10,7 +10,7 @@ function singleBoardRequestReducer(state={loading:false, count:{} , success:fals
             dictImages[action.id] = action.images;
             let dictCount = Object.assign({}, state.count);
             dictCount[action.id] = action.count;
-            return Object.assign({}, state, {loading:false, count:dictCount ,success:true, images:dictImages, next:action.next});
+            return Object.assign({}, state, {loading:false, count:dictCount ,success:true, images:dictImages, next:action.next, name : action.name});
         case SINGLEBOARD_REQ_ERR :
             return Object.assign({}, state, {loading:false, success:false, error:action.error});
         case SINGLEBOARD_ID :

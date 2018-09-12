@@ -42,13 +42,14 @@ function singleBoardReqSent() {
     })
 }
 
-function singleBoardReqSuccess(id ,count, images, next) {
+function singleBoardReqSuccess(id ,count, images, next, name) {
     return({
         type : SINGLEBOARD_REQ_SUCCESS,
         id,
         count,
         images,
-        next
+        next,
+        name
     })
 } 
 
@@ -86,7 +87,7 @@ export function singleBoardRequest(id) {
         dispatch(singleBoardReqSent());
         await requestSingleBoard(id)
         .then(function(response){
-            dispatch(singleBoardReqSuccess(id, response.data.count, response.data.results, response.data.next));
+            dispatch(singleBoardReqSuccess(id, response.data.count, response.data.results, response.data.next, response.data.name));
         }).catch(function(error){
             dispatch(singleBoardReqErr(error.response.data.error));
         })
