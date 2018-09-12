@@ -16,7 +16,10 @@ class UserProfile extends Component {
     render() {
         return (
             <View style={{flex:1}}>
-                <ProfileHeader navigation={this.props.navigation} isSelf = {false}/>
+                <ProfileHeader 
+                navigation={this.props.navigation} 
+                user_name = {this.props.navigation.getParam('username')}
+                isSelf = {false}/>
                 <View style={{flex:1}}>
                     <View style={{flex:105, marginTop:10}}>
                         <Info  

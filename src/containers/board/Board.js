@@ -26,7 +26,7 @@ class Board extends Component {
             <View style={{flex:1, backgroundColor:'white'}}>
                 <FHHeader onPressTrash={() => this.setModalVisibility(true)}
                 onPressAdd = {() => navigate("OwnPhotos")}
-                title={!this.props.navigation.getParam('username') ?  "عکس های من" : "عکس‌ها"} board={this.props.navigation.getParam('username') ? false : true}/>
+                title={this.props.name} board={this.props.navigation.getParam('username') ? false : true}/>
                 <View style={{flex:1}}>
                     <FlatList 
                         data={this.data}
@@ -75,7 +75,8 @@ const mapStateToProps = state => {
         next : state.singleBoardApp.singleBoardRequestReducer.next,
         error : state.singleBoardApp.singleBoardRequestReducer.error,
         id : state.singleBoardApp.singleBoardRequestReducer.id,
-        deleteSuccess : state.singleBoardApp.deleteBoardRequestReducer.deleteSuccess
+        deleteSuccess : state.singleBoardApp.deleteBoardRequestReducer.deleteSuccess,
+        name : state.singleBoardApp.singleBoardRequestReducer.name
     })
 }
 

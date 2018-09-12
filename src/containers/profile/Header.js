@@ -20,7 +20,7 @@ const ProfileHeader = (props) => {
                 
             </Left>
             <Body style={{flex:1, alignItems:'center'}}>
-                <Text style={styles.username}>{props.username}</Text>
+                <Text style={styles.username}>{props.user_name}</Text>
             </Body>
             <Right style={{flex:1}}>
                 {props.isSelf ? 

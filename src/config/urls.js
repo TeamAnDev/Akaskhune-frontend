@@ -40,7 +40,8 @@ export const rest = {
     invite : '/friends/invite/',
     deleteBoard : '/board/delete/',
     forgetPassword : '/user/password/reset/',
-    popularTags : '/search/tag/get/'
+    popularTags : '/search/tag/get/',
+    privacy : '/user/status/',
     
 }
 
