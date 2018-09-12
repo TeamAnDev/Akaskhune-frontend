@@ -54,7 +54,7 @@ const BottomRouter =  createBottomTabNavigator({
        screen : () => null
    }
 },{
-    initialRouteName: 'Notifications',
+    initialRouteName: 'Home',
     order : ['Profile', 'Notifications', 'AddPost', 'Search', 'Home'],
     tabBarOptions:{
         activeTintColor: colors.bottomTabBarActive,
