@@ -4,7 +4,7 @@ import {combineReducers} from 'redux';
 function followingsRequestReducer(state={loading:false, followings:[], error:"", success:false}, action) {
     switch(action.type) {
         case FOLLOWINGS_REQ_SENT :
-            return Object.assign({}, state, {loading:true});
+            return Object.assign({}, state, {loading:true,  success : false, error : "" , followings : []});
         case FOLLOWINGS_REQ_SUCCESS :
             return Object.assign({}, state, {loading:false, followings:action.followings, success:true});
         case FOLLOWINGS_REQ_ERR :

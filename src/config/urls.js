@@ -21,6 +21,8 @@ export const rest = {
     feeds : '/user/feed/',
     followersList : '/user/followers/',
     followingsList : '/user/followings/',
+    othersFollowingsList : (username) => '/user/' + username + '/followings/',
+    othersFollowersList : (username) => '/user/' + username + '/followers/',
     singlePost : '/post/',
     commentList : (postId) => '/post/' + postId.toString() + '/comments/list/',
     commentCreate : (postId) => '/post/' + postId.toString() + '/comments/create/',

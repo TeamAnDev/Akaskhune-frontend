@@ -20,7 +20,8 @@ class UserProfile extends Component {
                 <View style={{flex:1}}>
                     <View style={{flex:105, marginTop:10}}>
                         <Info  
-                            fxullname = {this.props.fullname}
+                            username = {this.props.navigation.getParam('username')}
+                            fullname = {this.props.fullname}
                             bio = {this.props.bio}
                             follower_count = {this.props.follower_count}
                             following_count = {this.props.following_count}

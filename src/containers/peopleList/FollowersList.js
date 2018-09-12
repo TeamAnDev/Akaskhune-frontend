@@ -11,11 +11,11 @@ import colors from '../../config/colors';
 class FollowersList extends Component {
     constructor(props) {
         super(props);
-        this.props.requestFollowersList();
+        
+        this.props.requestFollowersList(this.props.navigation.getParam('username'));
     }
 
     render() {
-        console.warn(this.props.followers);
         let toReturn;
         if(this.props.success) {
             toReturn = <View style={{backgroundColor: 'white', flex:1}}>
@@ -54,7 +54,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return({
-        requestFollowersList : () => dispatch(requestFollowersList())
+        requestFollowersList : (username) => dispatch(requestFollowersList(username))
     })
 }
 
