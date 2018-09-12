@@ -19,7 +19,7 @@ const FHInput = (props) => {
                                width: props.width ? props.width : '85%'}
                                , props.style]}>
                 
-            <Input placeholderTextColor={colors.blackGrey}  style={{textAlign:'right'}} placeholder={props.text} onChangeText={props.onTextChange} 
+            <Input onTouchStart={props.onClick} placeholderTextColor={colors.blackGrey}  style={{textAlign:'right'}} placeholder={props.text} onChangeText={props.onTextChange} 
               value={props.value ? props.value : null} disabled={props.disabled ? props.disabled : null} {...props} />
             {props.icon} 
          </Item>);
