@@ -37,7 +37,8 @@ export const rest = {
     searchUser : '/search/user/',
     searchTag : '/search/tag/',
     forgetPassword : '/user/password/reset/',
-    popularTags : '/search/tag/get/'
+    popularTags : '/search/tag/get/',
+    privacy : '/user/status/',
     
 }
 

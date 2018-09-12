@@ -17,6 +17,7 @@ import singleBoardApp from './singleBoard/request';
 import notificationsApp from './notifications/notifications';
 import searchUserApp from './search/userRequest';
 import tagPostsApp from './tagPosts/request';
+import settingsApp from './settings/index';
 
 
 const AkaskhuneApp = combineReducers({
@@ -37,7 +38,8 @@ const AkaskhuneApp = combineReducers({
     singleBoardApp,
     notificationsApp,
     searchUserApp,
-    tagPostsApp
+    tagPostsApp,
+    settingsApp
 });
 
 export default AkaskhuneApp;
