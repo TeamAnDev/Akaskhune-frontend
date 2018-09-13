@@ -4,22 +4,24 @@ import Row from './Row';
 import FHHeader from '../../components/FHHeader';
 import FHButton from '../../components/FHButton';
 import styles from './styles';
-import {requestImages, imageRequestInit} from '../../actions/profile/profileRequest';
+// import {requestImages, imageRequestInit} from '../../actions/profile/profileRequest';
 import {rest} from '../../config/urls';
 import rowSplit from '../../components/Functions/rowSplit';
 import {connect} from 'react-redux';
 import { addPostsToBoardRequest } from "../../actions/board/addPostsToBoard";
+import {ownPhotosRequest} from '../../actions/board/ownPhotos'
 
 class OwnPhotos extends Component {
     constructor(props) {
         super(props);
-        this.props.init();
-        this.props.requestImages(rest.imagesSelf);     
+        // this.props.init();
+        this.props.ownPhotosRequest(this.props.boardId);     
     }
 
     render() {
-        console.warn(this.props.selectedPosts);
+        // console.warn(this.props.selectedPosts);
         this.data = rowSplit(this.props.images);
+        console.warn("wtf", this.data);
         return(
             <View style={{flex:1}}>
                 <FHHeader title="عکس های اشتراکی شما"/>
@@ -41,10 +43,10 @@ class OwnPhotos extends Component {
 
 const mapStateToProps = state => {
     return ({
-        images : state.profileApp.imagesRequestReducer.images,
-        success : state.profileApp.imagesRequestReducer.success,
-        loading : state.profileApp.imagesRequestReducer.loading,
-        url : state.profileApp.imagesRequestReducer.url,
+        images : state.ownPhotosApp.ownPhotosRequestReducer.images,
+        success : state.ownPhotosApp.ownPhotosRequestReducer.success,
+        loading : state.ownPhotosApp.ownPhotosRequestReducer.loading,
+        next : state.ownPhotosApp.ownPhotosRequestReducer.next,
         selectedPosts : state.boardsApp.addPostsToBoardReducer.posts,
         boardId : state.singleBoardApp.singleBoardRequestReducer.id
     });
@@ -52,8 +54,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return ({
-        requestImages : (url) => dispatch(requestImages(url)),
-        init : () => dispatch(imageRequestInit()),
+        ownPhotosRequest : (id) => dispatch(ownPhotosRequest(id)),
+        // init : () => dispatch(imageRequestInit()),
         addPostsToBoardRequest : (selectedPosts, boardId) => dispatch(addPostsToBoardRequest(selectedPosts, boardId))
     });
 }

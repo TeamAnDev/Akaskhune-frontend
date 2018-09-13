@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import {FlatList, Image, ImageBackground, View, ScrollView, Text} from 'react-native';
 import styles from './styles';
-import {push} from '../../NavigationService';
+import {push, navigate} from '../../NavigationService';
 import {singleBoardRequest} from '../actions/board/boardRequest';
 import {connect} from 'react-redux';
 import {PacmanIndicator} from 'react-native-indicators';
