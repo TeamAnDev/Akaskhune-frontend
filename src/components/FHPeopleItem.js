@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text, Image, View, ImageBackground, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import FHFollowButton from './FHFollowButton';
-import {navigate} from '../../NavigationService';
+import {push} from '../../NavigationService';
 
 class FHPeopleItem extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class FHPeopleItem extends Component {
             <View>
                 <FHFollowButton isPrivate={this.props.isPrivate} following={this.props.following} username={this.props.username}/>
             </View>
-            <TouchableOpacity onPress = {()=> {navigate('UserProfile', {username : this.props.username})}}>
+            <TouchableOpacity onPress = {()=> {push('UserProfile', {username : this.props.username})}}>
             <View style={{flexDirection:'row'}}>
                 <View style={{flexDirection:'column', marginRight:10, alignItems:"flex-end"}}>
                     

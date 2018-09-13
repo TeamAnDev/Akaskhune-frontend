@@ -1,8 +1,8 @@
 import imagesRequest from '../../axiosRequests/profile/profileImages';
-export const IMAGES_OTHERS_REQ_INIT = "IMAGES_REQ_INIT"; 
-export const IMAGES_OTHERS_REQ_SENT = "IMAGES_REQ_SENT";
-export const IMAGES_OTHERS_REQ_SUCCESS = "IMAGES_REQ_SUCCESS";
-export const IMAGES_OTHERS_REQ_ERROR = "IMAGES_REQ_ERROR";
+export const IMAGES_OTHERS_REQ_INIT = "IMAGES_OTHERS_REQ_INIT"; 
+export const IMAGES_OTHERS_REQ_SENT = "IMAGES_OTHERS_REQ_SENT";
+export const IMAGES_OTHERS_REQ_SUCCESS = "IMAGES_OTHERS_REQ_SUCCESS";
+export const IMAGES_OTHERS_REQ_ERROR = "IMAGES_OTHERS_REQ_ERROR";
 
 export function imageOtherRequestInit()
 {

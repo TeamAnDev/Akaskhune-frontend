@@ -52,9 +52,14 @@ export function goBack(){
   );
 }
 
-export function getParam(param)
-{
-  const p = _navigator.getParam(param, '1');
+export function push(routeName, params) {
+  _navigator.dispatch(
+    StackActions.push({
+      routeName,
+      params,
+    })
+  );
+
 }
 // add other navigation functions that you need and export them
 

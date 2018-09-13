@@ -4,7 +4,7 @@ import {Card, CardItem, Left, Body, Right, Button, Icon} from 'native-base';
 import colors from '../../config/colors';
 import {connect} from 'react-redux';
 import {startCommenting} from '../../actions/home/comments';
-import {navigate} from '../../../NavigationService';
+import {push} from '../../../NavigationService';
 import {likeRequestAction} from '../../actions/home/like';
 import Bookmark from './Bookmark';
 // import FHIcon from '../../components/FHIcon';
@@ -60,7 +60,7 @@ class CardFooter extends Component
 
                 <View style={{flexDirection:'row'}}>
                     <TouchableOpacity onPress={() => { this.props.startCommenting();
-                            if(!this.props.singlePost) {  navigate('SinglePost', {id :this.props.id, index : this.props.index})}}} 
+                            if(!this.props.singlePost) {  push('SinglePost', {id :this.props.id, index : this.props.index})}}} 
                             style={{marginLeft:4}}>
                         <Icon 
                             name='comment' 

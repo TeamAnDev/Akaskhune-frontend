@@ -7,14 +7,19 @@ function singlePostReducer(state={success:false, error:"", errbool:false, loadin
     switch(action.type)
     {
         case(SINGLE_POST_REQ_SENT):
-            return Object.assign({}, state, {loading:true, success:false, errbool:false, error:"", post:{}})
+            let postInit = Object.assign({}, state.post);
+            postInit[action.postId] = {};
+            return Object.assign({}, state, {loading:true, success:false, errbool:false, error:"", post : postInit});
         case(SINGLE_POST_REQ_ERR):
             return Object.assign({}, state, {loading:false, errbool:true, error:action.error});
         case(SINGLE_POST_REQ_SUCCESS):
-            return Object.assign({}, state, {loading:false, success:true, post : action.post});
+            let postSuccess = Object.assign({}, state.post);
+            postSuccess[action.postId] = action.post ;
+            return Object.assign({}, state, {loading:false, success:true, post : postSuccess});
         case(ADD_COMMENT_TO_STATE):
-            let newPost = Object.assign({}, state.post, {comments_count : state.post.comments_count + 1});
-            return Object.assign({}, state, {post : newPost});
+            let postWithNewComment = Object.assign({}, state.post);
+            postWithNewComment[action.postId].comments_count = state.post[action.postId].comments_count + 1;
+            return Object.assign({}, state, {post : postWithNewComment});
         default:
             return state;
     }

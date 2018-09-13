@@ -1,6 +1,7 @@
 import {FEED_LISTS_REQ_ERR, FEED_LISTS_REQ_SENT, FEED_LISTS_REQ_SUCCESS, FEED_LISTS_INITIAL, DELETE_USER_POST_FROM_FEEDS} from '../../actions/home/feedListsRequest';
 import {ADD_COMMENT_TO_STATE_FEEDS} from '../../actions/home/comments';
 import {DELETE_BLOCK_POST_FROM_FEED} from '../../actions/home/blockPost';
+import  { LIKE_REQ_SUCCESS } from '../../actions/home/like';
 import { rest } from '../../config/urls';
 
 function feedsListReducer(state={success:false, error:"", errbool:false, loading:false, feeds:[],
@@ -51,6 +52,16 @@ function feedsListReducer(state={success:false, error:"", errbool:false, loading
                 }
             }
             return Object.assign({}, state, {feeds : withDeletedFeed});
+        case(LIKE_REQ_SUCCESS):
+            let feedsWithLikedPost = state.feeds.map((item)=>{
+                if(item.id === action.postId)
+                {
+                    return action.isLiking ? Object.assign({}, item, {likes_count : item.likes_count + 1, is_liked : true}) :
+                                                Object.assign({}, item, {likes_count : item.likes_count - 1, is_liked : false});
+                }
+                return item
+            })
+            return Object.assign({}, state, {feeds : feedsWithLikedPost});
         default:
             return state;
     }
