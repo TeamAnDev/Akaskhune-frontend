@@ -6,12 +6,14 @@ import colors from '../../config/colors';
 import TabBox from './TabBox';
 import {changeKeyword} from '../../actions/search/searchAction';
 import {connect} from 'react-redux';
-import {requestSearchUser, requestSearchTag} from '../../actions/search/searchRequest';
+import {requestSearchUser, requestSearchTag, initSearchTag, initSearchUser} from '../../actions/search/searchRequest';
 import PopularTagsPattern from './PopularTagsPattern';
 import FHBackIcon from '../../components/FHBackIcon';
 class Search extends Component {
     constructor(props) {
         super(props);
+        this.props.initSearchTag();
+        this.props.initSearchUser();
     }
 
     componentWillReceiveProps(nextProps) {
@@ -53,7 +55,9 @@ const mapDispatchToProps = dispatch => {
     return({
         changeKeyword : keyword => dispatch(changeKeyword(keyword)),
         requestSearchUser : keyword => dispatch(requestSearchUser(keyword)),
-        requestSearchTag : keyword => dispatch(requestSearchTag(keyword))
+        requestSearchTag : keyword => dispatch(requestSearchTag(keyword)),
+        initSearchTag : () => dispatch(initSearchTag()),
+        initSearchUser : () => dispatch(initSearchUser())
     })
 }
 

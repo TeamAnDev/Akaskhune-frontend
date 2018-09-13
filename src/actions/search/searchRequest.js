@@ -7,6 +7,8 @@ export const SEARCH_USER_REQ_ERR = "SEARCH_USER_REQ_ERR";
 export const SEARCH_TAG_REQ_SENT = "SEARCH_TAG_REQ_SENT";
 export const SEARCH_TAG_REQ_SUCCESS = "SEARCH_TAG_REQ_SUCCESS";
 export const SEARCH_TAG_REQ_ERR = "SEARCH_TAG_REQ_ERR";
+export const INIT_SEARCH_TAG = "INIT_SEARCH_TAG";
+export const INIT_SEARCH_USER = "INIT_SEARCH_USER";
 
 
 function searchUserReqSent() {
@@ -48,6 +50,18 @@ function searchTagReqErr(error) {
     return({
         type : SEARCH_TAG_REQ_ERR,
         error
+    })
+}
+
+export function initSearchTag() {
+    return({
+        type : INIT_SEARCH_TAG
+    })
+}
+
+export function initSearchUser() {
+    return({
+        type : INIT_SEARCH_USER
     })
 }
 
