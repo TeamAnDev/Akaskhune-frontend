@@ -68,7 +68,7 @@ const data =[
       type : 'follow',
       user_id : 1,
       username : '‌',
-      is_followed : true,
+      follow_status : "followed",
       time : "۴ساعت پیش ",
       avatar_url : ""
     },
@@ -150,13 +150,13 @@ class Notifications extends Component {
   }
 
   render() {
-    // console.warn(this.props.notifications);
+   
     return (
       <View style={{flex:1, backgroundColor:'white'}}>
         <NotificationsHeader/>
         <View style={{flex:1}}>
         <FlatList
-        data = {this.props.notifications}
+        data = {data}
         ListEmptyComponent = {<EmptyNotificationsList/>}
 
         refreshControl ={<RefreshControl
@@ -194,7 +194,7 @@ class Notifications extends Component {
                     time = {item.time}
                     userId = {item.user_id}
                     username = {item.username}
-                    following = {item.is_followed}
+                    following = {item.follow_status}
                     avatarUrl = {item.avatar_url}/>
             case('day'):
               return <View style={{height:heightOfDayTitle, borderBottomColor : colors.grey, borderBottomWidth:1, 

@@ -20,9 +20,11 @@ const PostHeader = (props) => {
         <Body style={{justifyContent:'center', alignItems:"center"}}>
             {location}
         </Body>
-        <TouchableOpacity onPress = {()=> push('UserProfile', {username : props.username})} >
+        
         <Right>
+        <TouchableOpacity onPress = {()=> push('UserProfile', {username : props.username})} >
             <View style={{flexDirection:'row'}}>
+                
                 <View>
                     <Text 
                     style={{
@@ -56,8 +58,9 @@ const PostHeader = (props) => {
                     </ImageBackground>
                 </View>
             </View>
+            </TouchableOpacity>
         </Right>
-        </TouchableOpacity>
+       
     </CardItem>
 )}
 
