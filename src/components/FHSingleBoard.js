@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import {FlatList, Image, ImageBackground, View, ScrollView, Text} from 'react-native';
 import styles from './styles';
-import {navigate} from '../../NavigationService';
+import {push} from '../../NavigationService';
 import {singleBoardRequest} from '../actions/board/boardRequest';
 import {connect} from 'react-redux';
 import {PacmanIndicator} from 'react-native-indicators';
@@ -24,7 +24,7 @@ class FHSingleBoard extends Component {
             toShow = <FlatList 
                         data = {this.props.images[this.props.id]}
                         renderItem = {({item}) =>
-                        <TouchableOpacity onPress = {()=>{navigate('SinglePost', {id:item.id})}}>
+                        <TouchableOpacity onPress = {()=>{push('SinglePost', {id:item.id})}}>
                          <ImageBackground 
                             imageStyle={{borderRadius : 10}}
                             source={{uri : item.photo_url}} 

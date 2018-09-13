@@ -9,9 +9,11 @@ function likeReqSent() {
     });
 }
 
-function likeReqSuccess() {
+function likeReqSuccess(postId, isLiking) {
     return({
         type: LIKE_REQ_SUCCESS,
+        postId,
+        isLiking
     })
 }
 
@@ -27,7 +29,7 @@ export function likeRequestAction(postId, isLiking) {
         dispatch(likeReqSent());
         await likeAxios(postId, isLiking)
         .then(function(response){
-            dispatch(likeReqSuccess());
+            dispatch(likeReqSuccess(postId, isLiking));
         }).catch(function(error){
             dispatch(likeReqErr(error.response.data.error));
         })

@@ -40,8 +40,7 @@ class Tags extends React.Component {
           this.props.onChangeTags && this.props.onChangeTags(this.state.tags)
       );
     } else if (
-      text.length > 1 && reg.test(text) &&
-      (text.slice(-1) === " " || text.slice(-1) === ",") &&
+      text.length > 1 && (text.slice(-1) === " " || text.slice(-1) === ",") &&
       !(this.state.tags.indexOf(text.slice(0, -1).trim()) > -1)
     ) {
       this.setState(

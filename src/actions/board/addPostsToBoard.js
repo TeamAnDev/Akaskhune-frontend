@@ -1,4 +1,6 @@
 import addPostsToBoardAxios from '../../axiosRequests/board/addPosts';
+import { rest } from '../../config/urls';
+import { initAllBoards, allBoardsRequest , singleBoardRequest} from '../../actions/board/boardRequest';
 
 export const ADD_POSTS_TO_BOARD_REQ_SENT = "ADD_POSTS_TO_BOARD_REQ_SENT";
 export const ADD_POSTS_TO_BOARD_REQ_SUCCESS = "ADD_POSTS_TO_BOARD_REQ_SUCCESS";
@@ -53,6 +55,10 @@ export function addPostsToBoardRequest(posts, boardId) {
         await addPostsToBoardAxios(posts, boardId)
         .then(function(response){
             dispatch(addPostToBoardReqSuccess());
+            dispatch(initAllBoards());
+            dispatch(allBoardsRequest(rest.allBoards));
+            dispatch(singleBoardRequest(boardId)); 
+            
         }).catch(function(error) {
             dispatch(addPostToBoardReqErr(error.response.data.error));
         })
