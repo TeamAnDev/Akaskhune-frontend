@@ -42,6 +42,7 @@ export const rest = {
     forgetPassword : '/user/password/reset/',
     popularTags : '/search/tag/get/',
     privacy : '/user/status/',
+    ownPhotosForBoard : '/board/other/'
     
 }
 

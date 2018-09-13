@@ -10,7 +10,7 @@ import { rest } from '../../config/urls';
 const NoBoardComponent = () => {
     return (
         <View style={{flex:1, flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
-            <Icon type="MaterialCommunityIcons" name="bookmark-off-outline"/>
+            <Icon type="MaterialIcons" name="grid-off"/>
             <Text>هیچ بردی وجود ندارد</Text>
         </View>
     )

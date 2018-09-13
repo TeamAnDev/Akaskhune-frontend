@@ -67,6 +67,14 @@ const styles = StyleSheet.create({
     justifyContent : 'center',
     color : colors.accentColor
   },
+  requested : {
+    width:100,
+    height:30,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent : 'center',
+    backgroundColor : "#56000a"
+  },
   peopleImage : {
     width:40,
     height:40,

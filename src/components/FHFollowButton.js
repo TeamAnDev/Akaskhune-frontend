@@ -33,7 +33,7 @@ class FHFollowButton extends Component {
         } else if(this.state.following === 'not_followed'){
             return <Button onPress={this.onPress} style={styles.contactButton} bordered><Text style={{fontWeight:'bold', color:colors.accentColor}}>دنبال کن</Text></Button>;
         } else if(this.state.following === 'requested') {
-            return <Button onPress={this.onPress} style={styles.contactButton} light><Text style={{fontWeight:'bold', color:'white'}}></Text></Button>
+            return <Button onPress={this.onPress} style={styles.requested}><Text style={{fontWeight:'bold', color:'white'}}>درخواست شده</Text></Button>
         } else {
             return <View></View>
         }
