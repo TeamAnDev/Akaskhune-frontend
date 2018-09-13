@@ -4,15 +4,19 @@ import Info from './Info';
 import ProfileHeader from './Header';
 import {View, ScrollView, RefreshControl, Dimensions} from 'react-native';
 import TabBox from './TabBox';
-import {getSelfInfo} from '../../actions/userInfo/userInfoRequest';
+import {getSelfInfo, getSelfInfoInit} from '../../actions/userInfo/userInfoRequest';
 import {connect} from 'react-redux';
 import {requestImages, imageRequestInit} from '../../actions/profile/profileRequest';
 import {allBoardsRequest, initAllBoards} from '../../actions/board/boardRequest';
 class Profile extends Component {
     constructor(props) {
         super(props);
-        this.props.getSelfInfo(this.props.navigation.getParam('username'));
-    }f
+        this.props.initSelfInfo();
+        this.props.navigation.addListener("didFocus", () => {
+            this.props.getSelfInfo(this.props.navigation.getParam('username'));
+          })
+        
+    }
     render() {
         return (
             <View style={{flex:1}}>
@@ -84,6 +88,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return({
+        initSelfInfo : () => dispatch(getSelfInfoInit()),
        getSelfInfo : (username) => dispatch(getSelfInfo(username)),
        requestImages : (url) => dispatch(requestImages(url)),
         init : () => dispatch(imageRequestInit()),

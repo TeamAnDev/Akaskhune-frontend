@@ -1,10 +1,12 @@
-import {GETTING_SELF_INFO_SUCCES, GETTING_SELF_INFO_ERR, GETTING_SELF_INFO_STARTED} from '../../actions/userInfo/userInfoRequest'
+import {GETTING_SELF_INFO_SUCCES, GETTING_SELF_INIT, GETTING_SELF_INFO_ERR, GETTING_SELF_INFO_STARTED} from '../../actions/userInfo/userInfoRequest'
 import {FOLLOW_REQ_SUCCESS, UNFOLLOW_REQ_SUCCESS} from '../../actions/follow/followRequest';
 function getSelfInfoReducer(state={loading:false, data:{}, error:"", succes:false}, action)
 {
     switch(action.type){
+        case(GETTING_SELF_INIT):
+            return Object.assign({}, state, {data : {}})
         case(GETTING_SELF_INFO_STARTED):
-            return Object.assign({}, state, {loading:true, data : {}});
+            return Object.assign({}, state, {loading:true});
         case(GETTING_SELF_INFO_ERR):
             return Object.assign({}, state, {error:action.error, loading:false});
         case(GETTING_SELF_INFO_SUCCES):

@@ -3,6 +3,13 @@ import getSelfInfoAxiosRequest from "../../axiosRequests/userInfo/getSelfInfo";
 export const GETTING_SELF_INFO_STARTED = "GETTING_SELF_INFO_STARTED";
 export const GETTING_SELF_INFO_ERR = "GETTING_SELF_INFO_ERR";
 export const GETTING_SELF_INFO_SUCCES = "GETTING_SELF_INFO_SUCCES";
+export const GETTING_SELF_INIT = "GETTING_SELF_INIT";
+
+export function getSelfInfoInit() {
+    return {
+        type : GETTING_SELF_INIT,
+    }
+}
 function getInfoStarted(){
     return({
         type : GETTING_SELF_INFO_STARTED,
