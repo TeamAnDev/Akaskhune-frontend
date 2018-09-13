@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     justifyContent : 'center',
-    color : colors.accentColor
+    color : colors.accentColor,
   },
   requested : {
     width:100,

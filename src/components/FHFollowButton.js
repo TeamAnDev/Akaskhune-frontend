@@ -11,7 +11,7 @@ class FHFollowButton extends Component {
         super(props);
         this.state = {following : this.props.following};
     }
-
+   
     onPress = () => {
         if(this.state.following === 'followed') {
             this.props.unfollowRequest(this.props.username);
@@ -29,11 +29,18 @@ class FHFollowButton extends Component {
 
     render() {
         if(this.state.following === 'followed') {
-            return <Button onPress={this.onPress} style={styles.contactButton}><Text style={{fontWeight:'bold', color:'white'}}>دنبال شده</Text></Button>;
+            return <Button 
+                        onPress={this.onPress} 
+                        style={[styles.contactButton, this.props.style]}>
+                        <Text style={{fontWeight:'bold', color:'white'}}>دنبال شده</Text>
+                    </Button>;
         } else if(this.state.following === 'not_followed'){
-            return <Button onPress={this.onPress} style={styles.contactButton} bordered><Text style={{fontWeight:'bold', color:colors.accentColor}}>دنبال کن</Text></Button>;
+            return <Button onPress={this.onPress} style={[styles.contactButton, this.props.style]} bordered>
+                <Text style={{fontWeight:'bold', color:colors.accentColor}}>دنبال کن</Text></Button>;
         } else if(this.state.following === 'requested') {
-            return <Button onPress={this.onPress} style={styles.requested}><Text style={{fontWeight:'bold', color:'white'}}>درخواست شده</Text></Button>
+            return <Button onPress={this.onPress} style={[styles.requested, this.props.style]}>
+                        <Text style={{fontWeight:'bold', color:'white'}}>درخواست شده</Text>
+                    </Button>
         } else {
             return <View></View>
         }

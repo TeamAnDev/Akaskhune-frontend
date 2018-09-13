@@ -1,8 +1,8 @@
 import editUserInfoAxiosRequest from "../../axiosRequests/userInfo/editUserInfo";
-import {requestInfo} from '../profile/profileRequest';
 export const SETTING_SELF_INFO_STARTED = "SETTING_SELF_INFO_STARTED";
 export const SETTING_SELF_INFO_ERR = "SETTING_SELF_INFO_ERR";
 export const SETTING_SELF_INFO_SUCCES = "SETTING_SELF_INFO_SUCCES";
+import {getSelfInfo} from '../userInfo/userInfoRequest'
 function setInfoStarted(){
     return({
         type : SETTING_SELF_INFO_STARTED,
@@ -25,9 +25,8 @@ export function editUserInfo(fullname, bio, avatar){
     return async (dispatch) => {
         dispatch(setInfoStarted());
         await editUserInfoAxiosRequest(fullname, bio, avatar).then(function(response) {
-            console.warn(response)
-            dispatch(requestInfo());
             dispatch(setInfoSucces());
+            dispatch(getSelfInfo());
         }).catch(function(error){
             dispatch(setInfoError(error.response.data.error))
         })

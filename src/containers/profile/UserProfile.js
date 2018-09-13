@@ -31,6 +31,7 @@ class UserProfile extends Component {
                             avatar = {this.props.avatar}
                             is_private = {this.props.is_private}
                             status = {this.props.status}
+                            isOthers = {true}
                             />
                     </View>
                     <View style={{flex:350}}>
@@ -54,7 +55,9 @@ class UserProfile extends Component {
                             next = {this.props.next}
                             allBoardsRequest = {this.props.allBoardsRequest}
                             initAllBoards = {this.props.initAllBoards}
-
+                            
+                            is_private = {this.props.is_private}
+                            status = {this.props.status}
                             />
                     </View>
                 </View>
@@ -74,7 +77,7 @@ const mapStateToProps = state => {
         posts_count : state.userInfoApp.getUserInfoReducer.data.posts_count,
         boards_count : state.userInfoApp.getUserInfoReducer.data.boards_count,
         is_private : state.userInfoApp.getUserInfoReducer.data.is_private,
-        status : state.userInfoApp.getUserInfoReducer.data.followed,
+        status : state.userInfoApp.getUserInfoReducer.data.follow_status,
 
         images : state.profileApp.othersImagesRequestReducer.images,
         imagesSuccess : state.profileApp.othersImagesRequestReducer.success,

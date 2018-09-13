@@ -1,7 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
-import {Text, View, Image} from 'react-native';
-import { Container, Header, Content, Tab, Tabs} from 'native-base';
+import {Text, View, Image, Dimensions} from 'react-native';
+import { Container, Header, Content, Tab, Tabs, Icon} from 'native-base';
 import styles from './styles';
 import Images from './Images';
 import colors from '../../config/colors';
@@ -23,6 +23,10 @@ export default class TabBox extends Component {
         
         },1000)
     }
+    renderLock = () => <View style={{justifyContent : 'center' , alignItems : 'center', height: Dimensions.get('window').height * 1 /2 }}>
+        <Icon type = "Feather" name = "lock" style={{fontSize : 50}} />
+        <Text>این اکانت خصوصی میباشد.</Text>
+    </View>
     render() {
         return (
             <Container>
@@ -32,7 +36,7 @@ export default class TabBox extends Component {
                     height: 2}}
                     locked>
                     <Tab heading={"علاقمندیها   " + (this.props.boards_count ? this.props.boards_count : "")} tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
-                        <Boards
+                        {!this.props.is_private || this.props.status === 'followed' ?  <Boards
                             username = {this.props.username}
                              loading = {this.props.boardsLoading}
                              success = {this.props.boardsSuccess}
@@ -40,10 +44,10 @@ export default class TabBox extends Component {
                              boards = {this.props.boards}
                              next = {this.props.next}
                              allBoardsRequest = {this.props.allBoardsRequest}
-                             initAllBoards = {this.props.initAllBoards}/>
+                             initAllBoards = {this.props.initAllBoards}/> : this.renderLock() }
                     </Tab>
                     <Tab heading={"عکسها   " + (this.props.posts_count ? this.props.posts_count : "")} tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
-                        <Images 
+                        {!this.props.is_private || this.props.status === 'followed' ? <Images 
                             username = {this.props.username}
                             images = {this.props.images}
                             success = {this.props.imagesSuccess}
@@ -51,7 +55,7 @@ export default class TabBox extends Component {
                             url = {this.props.url}
                             requestImages = {this.props.requestImages}
                             init = {this.props.init}
-                            />
+                            /> : this.renderLock()}
                     </Tab>
                 </Tabs>
             </Container>

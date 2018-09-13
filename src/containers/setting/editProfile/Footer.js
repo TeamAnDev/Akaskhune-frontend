@@ -23,7 +23,8 @@ class Footer extends Component
         }
         if(this.props.succes !== nextProps.succes && nextProps.succes)
         {
-            showSuccess("تغییرات با موفقیت صورت گرفت", "بازگشت", 15000, goBack);  
+            showSuccess("تغییرات با موفقیت صورت گرفت");  
+            goBack();
         }
     }
     render()
