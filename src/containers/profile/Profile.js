@@ -13,7 +13,7 @@ class Profile extends Component {
         super(props);
         this.props.initSelfInfo();
         this.props.navigation.addListener("didFocus", () => {
-            this.props.getSelfInfo(this.props.navigation.getParam('username'));
+            this.props.getSelfInfo();
           })
         
     }
@@ -25,12 +25,14 @@ class Profile extends Component {
                     <View style={{flex:105, marginTop:10}}>
                         <Info
                             fullname = {this.props.fullname}
+                            username = {this.props.username}
                             bio = {this.props.bio}
                             follower_count = {this.props.follower_count}
                             following_count = {this.props.following_count}
                             avatar = {this.props.avatar}
                             is_private = {false}
                             status = {"followed"}
+                            isOthers = {false}
                             />
                     </View>
                     <View style={{flex:350}}>
@@ -52,6 +54,9 @@ class Profile extends Component {
                             next = {this.props.next}
                             allBoardsRequest = {this.props.allBoardsRequest}
                             initAllBoards = {this.props.initAllBoards}
+
+                            is_private = {false}
+                            status = {"followed"}
                             />
                     </View>
                 </View>
