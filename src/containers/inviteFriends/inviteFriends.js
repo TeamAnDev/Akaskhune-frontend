@@ -60,7 +60,6 @@ class InviteFriends extends Component {
             console.warn(err);
         } else {
             for (let i = 0; i < this.props.contacts.length; i++) {
-                console.warn("Hey");
                 let flag = false;
                 for (let j = 0; j < contacts.length; j++) {
                     if(contacts[j].emailAddresses.length !== 0) {

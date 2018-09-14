@@ -20,14 +20,15 @@ const FollowNotif = ({name, time, following, username, avatarUrl}) => (
             <FHFollowButton following = {following} username = {username} />
         </View>
         <View style={{flex:7, marginRight : widthOfImage/2}}>
-          
-            <View>
-                 <Text style = {{width : '100%', textAlign : 'right', color : 'black'}}> 
-                {name + " شما را دنبال کرد " }
+            <View style={{flexDirection : 'row', justifyContent:'flex-end'}}>
+                <Text style = {{ textAlign : 'right', color : 'black'}}> 
+                    {" شما را دنبال کرد " }
                 </Text>
-                <Text style = {{width : '100%', textAlign : 'right'}}>{time}</Text>
+                <Text style = {{ textAlign : 'right', color : 'black'}}> 
+                    {name}
+                </Text>
             </View>
-           
+            <Text style = {{width : '100%', textAlign : 'right'}}>{time}</Text>
         </View>
         <View style={{flex:1, marginRight : marginOfAvatar}}>
             <ImageBackground 

@@ -22,14 +22,15 @@ const RequestNotif = ({name, time, username, avatarUrl}) => (
             username = {username}/>
         </View>
         <View style={{flex:8, marginRight : widthOfImage/2}}>
-          
-            <View>
-                 <Text style = {{width : '100%', textAlign : 'right', color : 'black'}}> 
-                {name + " برای شما درخواست دوستی فرستاده " }
+            <View style={{flexDirection : 'row', justifyContent:'flex-end'}}>
+                <Text style = {{ textAlign : 'right', color : 'black'}}> 
+                    {" برای شما درخواست دوستی فرستاده " }
                 </Text>
-                <Text style = {{width : '100%', textAlign : 'right'}}>{time}</Text>
+                <Text style = {{ textAlign : 'right', color : 'black'}}> 
+                    {name}
+                </Text>
             </View>
-           
+            <Text style = {{width : '100%', textAlign : 'right'}}>{time}</Text>
         </View>
         <View style={{flex:1, marginRight : marginOfAvatar}}>
             <ImageBackground
