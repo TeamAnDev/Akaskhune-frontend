@@ -8,15 +8,23 @@ import showSuccess from '../../../components/Toasts/showSucces';
 import { Icon , Toast} from 'native-base';
 import FHError from '../../../components/FHError';
 import {connect} from 'react-redux';
-import {changeOldPassword, changeNewPassword, changeConfirmPassword} from '../../../actions/changePassword/changePasswordAction';
+import {changeOldPassword, changeNewPassword, changeConfirmPassword, changePassInit} from '../../../actions/changePassword/changePasswordAction';
 import {changePassword} from '../../../actions/changePassword/changePasswordRequest'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {goBack} from '../../../../NavigationService';
+
 
 class ChangePassword extends Component {
 
+    constructor(props)
+    {
+        super(props);
+        this.props.changePassInit();
+    }
     componentWillReceiveProps(nextProps){
         if(this.props.success !== nextProps.success && nextProps.success) {
-            showSuccess("رمز با موفقیت تغییر کرد", "باشه" , 4000);
+            showSuccess("رمز با موفقیت تغییر کرد" ,undefined,  4000);
+            goBack();
         }
     }
 
@@ -76,7 +84,8 @@ const mapDispatchToProps = dispatch => {
         changeOldPassword : oldPassword => dispatch(changeOldPassword(oldPassword)),
         changeNewPassword : newPassword => dispatch(changeNewPassword(newPassword)),
         changeConfirmPassword : confirmPassword => dispatch(changeConfirmPassword(confirmPassword)),
-        changePassword : (oldPassword, newPassword) => dispatch(changePassword(oldPassword, newPassword))
+        changePassword : (oldPassword, newPassword) => dispatch(changePassword(oldPassword, newPassword)),
+        changePassInit : () => dispatch(changePassInit()),
     });
 }
 

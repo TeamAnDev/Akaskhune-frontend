@@ -22,3 +22,10 @@ export function changeConfirmPassword(confirmPassword) {
         confirmPassword
     }
 } 
+
+export const CHANGE_PASSWORD_INIT = "CHANGE_PASSWORD_INIT"; 
+export function changePassInit() {
+    return {
+        type : CHANGE_PASSWORD_INIT
+    }
+}
