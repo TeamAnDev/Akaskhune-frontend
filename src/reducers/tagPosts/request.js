@@ -4,7 +4,7 @@ import {combineReducers} from 'redux';
 function tagPostsRequestReducer(state={loading:false, success:false, images:[], error:'', next:'', name:''}, action){
     switch(action.type) {
         case TAGPOSTS_REQ_SENT :
-            return Object.assign({}, state, {loading:true});
+            return Object.assign({}, state, {loading:true, images:[]});
         case TAGPOSTS_REQ_SUCCESS :
             return Object.assign({}, state, {loading:false, success:true, images:action.images, next:action.next});
         case TAGPOSTS_REQ_ERR :

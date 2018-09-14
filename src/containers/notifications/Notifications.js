@@ -3,6 +3,7 @@ import {View, FlatList,Text, Dimensions, RefreshControl} from 'react-native';
 import NotificationsHeader from './NotificationsHeader';
 import PostLikeOrCommentNotif from './PostLikeOrCommentNotif';
 import FollowNotif from './FollowNotif';
+import RequestNotif from './RequestNotif';
 import colors from '../../config/colors';
 import EmptyNotificationsList from './EmptyNoficationsList';
 import {connect} from 'react-redux';
@@ -57,12 +58,11 @@ const data =[
     },
     {
       fullname : 'فرزاد حبیبی',
-      type : 'follow',
+      type : 'request',
       user_id : 1,
-      username : '‌',
-      is_followed : true,
+      username : 'gsoosk‌',
       time : "۴ساعت پیش ",
-      avatar_url : ""
+      avatar_url : "url/"
     },{
       fullname : 'فرزاد حبیبی',
       type : 'follow',
@@ -156,7 +156,7 @@ class Notifications extends Component {
         <NotificationsHeader/>
         <View style={{flex:1}}>
         <FlatList
-        data = {data}
+        data = {this.props.notifications}
         ListEmptyComponent = {<EmptyNotificationsList/>}
 
         refreshControl ={<RefreshControl
@@ -190,6 +190,14 @@ class Notifications extends Component {
                     commentText = {item.comment_text}/>
             case('follow'):
               return <FollowNotif
+                    name = {item.fullname}
+                    time = {item.time}
+                    userId = {item.user_id}
+                    username = {item.username}
+                    following = {item.follow_status}
+                    avatarUrl = {item.avatar_url}/>
+            case('request'):
+              return <RequestNotif
                     name = {item.fullname}
                     time = {item.time}
                     userId = {item.user_id}
