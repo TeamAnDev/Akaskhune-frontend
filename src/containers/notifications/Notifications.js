@@ -9,7 +9,7 @@ import EmptyNotificationsList from './EmptyNoficationsList';
 import {connect} from 'react-redux';
 import {getNotifications, notificationsInit} from '../../actions/notifications/requestActions';
 import { rest } from '../../config/urls';
-
+import {emptyPostLoading} from '../home/EmptyPost';
 const data =[
     {
       type :'day',
@@ -157,7 +157,7 @@ class Notifications extends Component {
         <View style={{flex:1}}>
         <FlatList
         data = {this.props.notifications}
-        ListEmptyComponent = {<EmptyNotificationsList/>}
+        ListEmptyComponent = {this.props.loading ? emptyPostLoading : <EmptyNotificationsList/>}
 
         refreshControl ={<RefreshControl
           colors={[colors.accentColor]} 
