@@ -38,7 +38,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return({
-        handleFollowReq : (type) => dispatch(handleFollowReq(type)),
+        handleFollowReq : (username, type) => dispatch(handleFollowReq(username, type)),
     })
 }
 

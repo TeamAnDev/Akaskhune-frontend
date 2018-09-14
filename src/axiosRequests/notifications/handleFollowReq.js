@@ -6,6 +6,7 @@ function handleFollowReqAxios(username, type)
         url = rest.accept(username);
     else if(type === "reject")
         url = rest.reject(username);
+    console.warn(url);
     return axiosInstance.post(url);
 }
 export default handleFollowReqAxios;

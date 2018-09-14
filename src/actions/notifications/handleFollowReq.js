@@ -1,5 +1,7 @@
 
 import handleFollowReqAxios from '../../axiosRequests/notifications/handleFollowReq';
+import {notificationsInit, getNotifications} from './requestActions';
+import {rest} from '../../config/urls';
 export const HANDLE_FOLLOW_REQ_SENT = "HANDLE_FOLLOW_REQ_SENT";
 export const HANDLE_FOLLOW_REQ_SUCCESS = "HANDLE_FOLLOW_REQ_SUCCESS";
 export const HANDLE_FOLLOW_REQ_ERROR = "HANDLE_FOLLOW_REQ_ERROR";
@@ -29,8 +31,9 @@ export function handleFollowReq(username, type)
         dispatch(followReqSent());
         await handleFollowReqAxios(username, type)
         .then (function(response){
-            console.warn('success accept or reject', response);
             dispatch(followReqSuccess());
+            dispatch(notificationsInit());
+            dispatch(getNotifications(rest.notifications))
         }).catch (function(error) {
             dispatch(followReqError(error));
         })
