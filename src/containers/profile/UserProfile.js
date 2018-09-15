@@ -14,6 +14,7 @@ class UserProfile extends Component {
         this.username = this.props.navigation.getParam('username');
         this.props.getUserInfo(this.props.navigation.getParam('username'));
     }
+    
     render() {
         let userData = Object.assign({} ,this.props.userData[this.props.navigation.getParam('username')]);
         let imagesData = Object.assign({}, this.props.imagesData[this.props.navigation.getParam('username')]);
@@ -62,8 +63,8 @@ class UserProfile extends Component {
                             allBoardsRequest = {this.props.allBoardsRequest}
                             initAllBoards = {this.props.initAllBoards}
                             
-                            is_private = {this.props.is_private}
-                            status = {this.props.status}
+                            is_private = {userData.is_private}
+                            status = {userData.follow_status}
                             />
                     </View>
                 </View>

@@ -6,7 +6,7 @@ import FHFollowButton from '../../components/FHFollowButton';
 export default class ProfileInfo extends Component {
 
     render() {
-        console.warn("status",this.props);
+       
         return (
             <View style={{flex : 1, flexDirection: 'row-reverse', justifyContent:'space-between'}}>
                 <View style={{flex:1}}>

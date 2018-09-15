@@ -28,6 +28,7 @@ export default class TabBox extends Component {
         <Text>این اکانت خصوصی میباشد.</Text>
     </View>
     render() {
+        console.warn("status is " , this.props.is_private);
         return (
             <Container>
                 <Tabs  page={this.state.activeTab} tabContainerStyle={{height:50} } 
