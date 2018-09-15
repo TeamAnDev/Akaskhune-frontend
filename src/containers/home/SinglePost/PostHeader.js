@@ -2,7 +2,8 @@ import React from 'react';
 import {View, Dimensions, ImageBackground, Text, TouchableOpacity} from 'react-native';
 import { CardItem, Body, Right, Icon} from 'native-base';
 import colors from '../../../config/colors';
-import {push} from '../../../../NavigationService';
+import {navigateToProfile} from '../../../../NavigationService';
+import {connect} from 'react-redux';
 const widthOfAvatar = Dimensions.get('window').width * 25/350;
 const heightOfHeader = Dimensions.get('window').height * 59/640;
 
@@ -22,7 +23,7 @@ const PostHeader = (props) => {
         </Body>
         
         <Right>
-        <TouchableOpacity onPress = {()=> push('UserProfile', {username : props.username})} >
+        <TouchableOpacity onPress = {()=> {navigateToProfile(props.username, props.ownUsername)}} >
             <View style={{flexDirection:'row'}}>
                 
                 <View>
@@ -63,5 +64,10 @@ const PostHeader = (props) => {
        
     </CardItem>
 )}
+const mapStateToProps = state => {
+    return({
+        ownUsername : state.userInfoApp.getSelfInfoReducer.data.username,
+    })
+}
 
-export default PostHeader;
+export default connect(mapStateToProps, null)(PostHeader);

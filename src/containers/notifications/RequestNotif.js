@@ -1,15 +1,16 @@
 import React from 'react';
 import {View, Dimensions, ImageBackground, Text, TouchableOpacity} from 'react-native';
 import colors from '../../config/colors';
-import {push} from '../../../NavigationService';
+import {connect} from 'react-redux';
+import {navigateToProfile} from '../../../NavigationService';
 import AcceptOrRejectButton from './AcceptOrRejectButton';
 
 const heightOfBar = Dimensions.get("window").height * 60/640;
 const widthOfImage = Dimensions.get('window').width * 28/360;
 const marginOfAvatar = Dimensions.get('window').width * 17/360;
 
-const RequestNotif = ({name, time, username, avatarUrl}) => (
-    <TouchableOpacity onPress = {()=>{push('UserProfile', {username : username})}}>
+const RequestNotif = ({name, time, username, avatarUrl, ownUsername}) => (
+    <TouchableOpacity onPress = {()=>{navigateToProfile(username, ownUsername)}}>
     <View 
     style={{height : heightOfBar, 
     flexDirection : 'row', 
@@ -24,7 +25,7 @@ const RequestNotif = ({name, time, username, avatarUrl}) => (
         <View style={{flex:8, marginRight : widthOfImage/2}}>
             <View style={{flexDirection : 'row', justifyContent:'flex-end'}}>
                 <Text style = {{ textAlign : 'right', color : 'black'}}> 
-                    {" برای شما درخواست دوستی فرستاده " }
+                    {" درخواست دوستی فرستاده " }
                 </Text>
                 <Text style = {{ textAlign : 'right', color : 'black'}}> 
                     {name}
@@ -45,4 +46,10 @@ const RequestNotif = ({name, time, username, avatarUrl}) => (
     </View>
     </TouchableOpacity>
 )
-export default RequestNotif;
+const mapStateToProps = state => {
+    return({
+        ownUsername : state.userInfoApp.getSelfInfoReducer.data.username,
+    })
+}
+
+export default connect(mapStateToProps, null)(RequestNotif);

@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Text, Image, View, ImageBackground, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import FHFollowButton from './FHFollowButton';
-import {push} from '../../NavigationService';
-
+import {push, navigateToProfile} from '../../NavigationService';
+import {connect} from 'react-redux';
 class FHPeopleItem extends Component {
     constructor(props) {
         super(props);
@@ -15,7 +15,7 @@ class FHPeopleItem extends Component {
             <View>
                 <FHFollowButton isPrivate={this.props.isPrivate} following={this.props.following} username={this.props.username}/>
             </View>
-            <TouchableOpacity onPress = {()=> {push('UserProfile', {username : this.props.username})}}>
+            <TouchableOpacity onPress = {()=> {navigateToProfile(this.props.username, this.props.ownUsername)}}>
             <View style={{flexDirection:'row'}}>
                 <View style={{flexDirection:'column', marginRight:10, alignItems:"flex-end"}}>
                     
@@ -33,5 +33,10 @@ class FHPeopleItem extends Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return({
+        ownUsername : state.userInfoApp.getSelfInfoReducer.data.username,
+    })
+}
 
-export default FHPeopleItem;
+export default connect(mapStateToProps, null)(FHPeopleItem);

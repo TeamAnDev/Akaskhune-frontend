@@ -14,6 +14,7 @@ import PlusButton from './PlusButton';
 import {getNotifications, notificationsInit} from '../../actions/notifications/requestActions';
 import { rest } from '../../config/urls';
 import {connect} from 'react-redux';
+import {getSelfInfoInit, getSelfInfo} from '../../actions/userInfo/userInfoRequest';
 let heightOfTabBar = Dimensions.get("window").height * 9/ 100;
 if(isIphoneX())
 {
@@ -85,6 +86,8 @@ class BottomTab extends Component{
     constructor(props)
     {
         super(props);
+        this.props.getSelfInfoInit();
+        this.props.getSelfInfo();
         setInterval(() => {
             this.props.notificationsInit();
             this.props.getNotifications(rest.notifications);
@@ -102,7 +105,9 @@ class BottomTab extends Component{
 const mapDispatchToProps = dispatch => {
     return({
         notificationsInit : () => dispatch(notificationsInit()),
-        getNotifications : (url) => dispatch(getNotifications(url))
+        getNotifications : (url) => dispatch(getNotifications(url)),
+        getSelfInfo : () => dispatch(getSelfInfo()),
+        getSelfInfoInit : () => dispatch(getSelfInfoInit())
     })
 }
 

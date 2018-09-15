@@ -20,7 +20,8 @@ import TagPosts from './src/containers/tagPosts/TagPosts';
 import FPGetEmail from './src/containers/forgetPassword/FPGetEmail';
 import Search from './src/containers/search/Search';
 import UserProfile from './src/containers/profile/UserProfile';
-import TestShare from './TestShare';
+import Profile from './src/containers/profile/Profile';
+
 
 const Auth = createStackNavigator({
     Signup,
@@ -48,7 +49,7 @@ const App = createStackNavigator({
     OwnPhotos,
     TagPosts,
     Search,
-    TestShare
+    Profile
   }, {
     initialRouteName: "BottomTabRouter",
     headerMode: "none"

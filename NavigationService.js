@@ -61,9 +61,10 @@ export function push(routeName, params) {
   );
 
 }
-// add other navigation functions that you need and export them
 
-// export default {
-//   navigate,
-//   setTopLevelNavigator,
-// };
+export function navigateToProfile(username, ownUsername) {
+  if(username === ownUsername)
+    push('Profile');
+  else 
+    push('UserProfile', {username : username});
+}

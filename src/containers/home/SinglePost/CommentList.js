@@ -7,6 +7,7 @@ import {commentListInitial, commentListRequest} from '../../../actions/home/come
 import { rest } from '../../../config/urls';
 import {connect} from 'react-redux';
 import  {addReply} from '../../../actions/home/comments';
+import {navigateToProfile} from '../../../../NavigationService';
 const Comment = (props) => {
     let widthOfAvatar = Dimensions.get('window').width * 30 / 360;
     widthOfAvatar = props.isReplay ? widthOfAvatar *3/4 : widthOfAvatar;
@@ -22,6 +23,7 @@ const Comment = (props) => {
            
         </Left>
         <Right>
+            <TouchableOpacity onPress={()=>{navigateToProfile(props.username , props.ownUsername)}}>
             <View style={{flexDirection:'row'}}>
                 <View>
                     <View style={{flexDirection:'row'}}>
@@ -40,6 +42,7 @@ const Comment = (props) => {
                 </ImageBackground>
                 </View>
             </View>
+            </TouchableOpacity>
         </Right>
       
     </CardItem>
@@ -86,19 +89,21 @@ class CommentList extends Component
             { let comment = item;
             return <View>
                         <Comment
-                        name = {comment.user_name}
+                        name = {comment.fullname}
                         time = {comment.created_at}
                         text = {comment.text}
                         profilePhotoUrl = {comment.avatar_url}
                         id = {comment.id}
                         addReply = {this.props.addReply}
+                        username = {comment.username}
                         isReplay = {false}/>
                         <FlatList
                         style = {{backgroundColor: 'white'}}
                         data = {comment.replies}
                         renderItem = {({item}) => 
                             <Comment
-                            name = {item.user_name}
+                            name = {item.fullname}
+                            username = {item.username}
                             time = {item.created_at}
                             text = {item.text}
                             profilePhotoUrl = {item.avatar_url}
@@ -116,6 +121,7 @@ const mapStateToProps = state => {
         loading : state.homeApp.commentListReducer.loading,
         url : state.homeApp.commentListReducer.url,
         endLoading : state.homeApp.commentListReducer.endLoading,
+        ownUsername : state.userInfoApp.getSelfInfoReducer.data.username,
     });
 }
 

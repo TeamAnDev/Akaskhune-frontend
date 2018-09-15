@@ -1,12 +1,10 @@
 import {rest, axiosInstance} from '../../config/urls';
 function handleFollowReqAxios(username, type)
 {
-    let url = "";
     if(type === "accept")
-        url = rest.accept(username);
+        return axiosInstance.post(rest.accept(username));
     else if(type === "reject")
-        url = rest.reject(username);
-    console.warn(url);
-    return axiosInstance.post(url);
+        return axiosInstance.delete(rest.reject(username));
+    return ;
 }
 export default handleFollowReqAxios;
