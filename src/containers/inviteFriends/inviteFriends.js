@@ -110,6 +110,7 @@ class InviteFriends extends Component {
         } else if(this.props.success) {
             const ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2});
             this.dataSource = ds.cloneWithRows(this.state.data);
+            console.warn(this.state.data);
             toReturn = <View style={{flex:1, backgroundColor:'white'}}>
                         <FHHeader navigation={this.props.navigation} title="دعوت از دوستان"/> 
                         <View style={{flex:1, justifyContent:'center'}}>
@@ -118,7 +119,7 @@ class InviteFriends extends Component {
                             <ListView 
                                 dataSource = {this.dataSource}
                                 renderHeader = {() => <FHContactsHeader/>}
-                                renderRow = {(rowData) => <FHContactItem name={rowData.name} email={rowData.email} status={rowData.status} username={rowData.username}/>}
+                                renderRow = {(rowData) => <FHContactItem name={rowData.name} email={rowData.email} status={rowData.status} username={rowData.username} isPrivate={rowData.isPrivate}/>}
                             />
                         </View>
                     </View>

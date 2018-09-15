@@ -24,10 +24,14 @@ class Search extends Component {
             // }
         }
     }
+    
+    componentWillUpdate() {
+    }
 
     onTextChange = (keyword) => {
         this.props.changeKeyword(keyword);
     }
+
     render() {
         console.warn(this.props.keyword);
         return(
@@ -35,7 +39,10 @@ class Search extends Component {
             {/* <PopularTagsPattern/> */}
             <Header style={{backgroundColor: colors.primaryColor}}
             androidStatusBarColor={colors.primaryColor}>
-                <FHInput onTextChange={this.onTextChange} width='100%' text="جستجوی تگ یا کاربر" icon={<FHBackIcon color={colors.primaryColor}/>}/>
+                <FHInput onTextChange={this.onTextChange} 
+                        width='100%' text="جستجوی تگ یا کاربر" 
+                        icon={<FHBackIcon color={colors.primaryColor}/>}
+                        focus={true}/>
                 
             </Header>
             <TabBox/>

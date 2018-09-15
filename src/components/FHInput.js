@@ -26,9 +26,10 @@ const FHInput = (props) => {
               placeholder={props.text} 
               onChangeText={props.onTextChange} 
               value={props.value ? props.value : null} 
-              disabled={props.disabled ? props.disabled : null} 
+              disabled={props.disabled ? props.disabled : null}
               ref = {(input) => props.refrence ? props.refrence(input) : null}
-              {...props} />
+              {...props}
+              autoFocus = {props.focus ? true : null} />
             {props.icon} 
          </Item>);
 }

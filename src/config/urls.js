@@ -45,13 +45,14 @@ export const rest = {
     privacy : '/user/status/',
     ownPhotosForBoard : '/board/post/other/',
     accept : (username) => '/friends/follow/accept/' + username + '/',
-    reject : (username) => '/friends/follow/reject/' + username + '/'
+    reject : (username) => '/friends/follow/reject/' + username + '/',
+    recommendation : '/recommendation/'
     
 }
 
 export let axiosInstance = axios.create({
     baseURL: 'http://185.162.235.243:8080/api/v1',
-    timeout:10000,
+    timeout:20000,
     headers:{
         'Content-Type': 'application/json',
     }
