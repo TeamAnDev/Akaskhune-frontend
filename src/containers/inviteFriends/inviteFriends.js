@@ -101,7 +101,6 @@ class InviteFriends extends Component {
     }
 
     render() {
-        console.warn(this.props.contacts);
         let toReturn;
         if(this.props.loading) {
             toReturn = <View style={{flex:1, backgroundColor:'white'}}>
