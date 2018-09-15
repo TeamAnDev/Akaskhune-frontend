@@ -39,7 +39,7 @@ export const rest = {
     popularTags : '/search/tag/get/',
     invite : '/friends/invite/',
     deleteBoard : '/board/delete/',
-    forgetPassword : '/user/password/reset/',
+    forgetPassword : '/auth/password/reset/',
     popularTags : '/search/tag/get/',
     privacy : '/user/status/',
     ownPhotosForBoard : '/board/post/other/',

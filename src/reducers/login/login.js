@@ -1,5 +1,6 @@
 import {LOGIN_EMAIL_CHANGED , LOGIN_PASSWORD_CHANGED, LOGIN, LOGIN_GOOGLE, SIGNUP, SIGNUP_PAGE} from '../../actions/login/loginAction';
 import {combineReducers} from 'redux';
+import forgetPasswordReducer from './forgetPassword';
 import errors from "../../config/errors";
 import loginRequestReducer from './request'
 
@@ -59,6 +60,11 @@ function loginReducer(state={email:"", password:"", login:false, token:"", err:"
 }
 
 const loginApp = combineReducers({
-    loginReducer, emailCheckReducer, passwordCheckReducer, loginRequestReducer
+    loginReducer, 
+    emailCheckReducer, 
+    passwordCheckReducer, 
+    loginRequestReducer,
+    forgetPasswordReducer
+
 });
 export default loginApp;

@@ -7,12 +7,44 @@ import AnimatedLinearGradiant from 'react-native-animated-linear-gradient';
 import FHInput from '../../components/FHInput';
 import FHButton from '../../components/FHButton';
 import FHBackIcon from '../../components/FHBackIcon';
+import {forgetPassword} from '../../actions/login/forgetPassword';
+import {connect} from 'react-redux';
+import {goBack} from '../../../NavigationService';
+import showSuccess from '../../components/Toasts/showSucces';
+import showError from '../../components/Toasts/showError';
 const marginFromTop = Dimensions.get("window").height * 165/640;
-export default class FPGetEmail extends Component
+const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+class FPGetEmail extends Component
 {
     constructor(props){
         super(props);
+        this.state = {
+            valid : false, 
+            email : '',
+        }
 
+    }
+    componentWillReceiveProps(nextProps)
+    {
+        if(nextProps.success !== this.props.success && nextProps.success)
+        {
+            showSuccess("پسورد جدید برای شما ایمیل شد");
+            goBack();
+        }
+        if(nextProps.errbool !== this.props.errbool && nextProps.errbool)
+        {
+            showError(nextProps.error);
+        }
+    }
+    emailChanged = (email) => {
+        if(EMAIL_REGEX.test(email))
+        {
+            this.setState({email, valid : true})
+        }
+        else 
+        {
+            this.setState({email, valid : false})
+        }
     }
     render()
     {
@@ -29,12 +61,16 @@ export default class FPGetEmail extends Component
                             اگر رمز عبور خود را فراموش کرده‌اید،‌ایمیل خود را اینجا وارد نمایید
                         </Text>
                         <View style={{marginTop : marginFromTop / 4}}>
-                            <FHInput onTextChange ={()=>{}} 
+                            <FHInput onTextChange ={this.emailChanged} 
                                     text = "آدرس ایمیل" 
-                                    error = {false}/>
+                                    error = {!this.state.valid}/>
                         </View>
                         <View>
-                            <FHButton title="ارسال لینک بازیابی" loading={false} onPress = {()=>{}}/>
+                            <FHButton 
+                            title="ارسال لینک بازیابی" 
+                            loading={this.props.loading}  
+                            disabled={!this.state.valid} 
+                            onPress = {() => {this.props.forgetPassword(this.state.email)}}/>
                         </View>
                         
                     </View>
@@ -47,3 +83,20 @@ export default class FPGetEmail extends Component
         )
     }
 }
+const mapStateToProps = state => {
+    return({
+        loading : state.loginApp.forgetPasswordReducer.loading,
+        success : state.loginApp.forgetPasswordReducer.success,
+        error : state.loginApp.forgetPasswordReducer.error,
+        errbool : state.loginApp.forgetPasswordReducer.errbool,
+
+    });
+}
+
+const mapDispatchToProps = dispatch => {
+    return({
+        forgetPassword : (email) => dispatch(forgetPassword(email)),
+    });
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FPGetEmail);
