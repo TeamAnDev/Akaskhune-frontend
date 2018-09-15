@@ -16,11 +16,12 @@ export default class Images extends Component {
 
     constructor(props) {
         super(props);
-        this.props.init();
         if(this.props.username)
         {
-            this.props.requestImages(rest.imagesOthers(this.props.username)); 
+            this.props.init(this.props.username);
+            this.props.requestImages(rest.imagesOthers(this.props.username), this.props.username); 
         } else{
+            this.props.init();
             this.props.requestImages(rest.imagesSelf); 
         }
            
@@ -41,7 +42,7 @@ export default class Images extends Component {
                     refreshing={this.props.loading}
                     data = {this.dataSource}
                     renderItem = {({item}) => <FHRow leftImage={item[0]} rightImage={item[1]}/>}
-                    onEndReached = {() => {this.props.requestImages(this.props.url); console.warn("end")}}
+                    onEndReached = {() => {!this.props.loading ? this.props.requestImages(this.props.url, this.props.username) : null}}
                     
                 />
             }

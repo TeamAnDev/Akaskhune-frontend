@@ -4,6 +4,7 @@ import NotificationsHeader from './NotificationsHeader';
 import PostLikeOrCommentNotif from './PostLikeOrCommentNotif';
 import FollowNotif from './FollowNotif';
 import RequestNotif from './RequestNotif';
+import AcceptOrRejectNotif from './AcceptOrRejectNotif';
 import colors from '../../config/colors';
 import EmptyNotificationsList from './EmptyNoficationsList';
 import {connect} from 'react-redux';
@@ -165,54 +166,50 @@ class Notifications extends Component {
           refreshing = {this.props.loading}
           onRefresh = {this.refreshNotifications}
           />}
-        onEndReached = { () => {if(!this.onEndReachedCalledDuringMomentum){
-          this.props.getNotifications(this.props.url);
-          this.onEndReachedCalledDuringMomentum = true;} }}
+        // onEndReached = { () => {if(!this.onEndReachedCalledDuringMomentum){
+        //   this.props.getNotifications(this.props.url);
+        //   this.onEndReachedCalledDuringMomentum = true;} }}
         onEndReachedThreshold = {0.5}
         onScrollBeginDrag={() => { this.onEndReachedCalledDuringMomentum = false; }}
         renderItem={({item}) =>{
-          switch(item.type)
-          {
-            case('like'):
-              return <PostLikeOrCommentNotif
-                    userName = {item.fullname}
-                    time = {item.time}
-                    status = {item.type}
-                    postId = {item.post_id}
-                    photoUrl = {item.photo_url}/>
-            case('comment'):
-              return <PostLikeOrCommentNotif
-                    userName = {item.fullname}
-                    time = {item.time}
-                    status = {item.type}
-                    postId = {item.post_id}
-                    photoUrl = {item.photo_url}
-                    commentText = {item.comment_text}/>
-            case('follow'):
-              return <FollowNotif
-                    name = {item.fullname}
-                    time = {item.time}
-                    userId = {item.user_id}
-                    username = {item.username}
-                    following = {item.follow_status}
-                    avatarUrl = {item.avatar_url}/>
-            case('request'):
-              return <RequestNotif
-                    name = {item.fullname}
-                    time = {item.time}
-                    userId = {item.user_id}
-                    username = {item.username}
-                    following = {item.follow_status}
-                    avatarUrl = {item.avatar_url}/>
-            case('day'):
-              return <View style={{height:heightOfDayTitle, borderBottomColor : colors.grey, borderBottomWidth:1, 
-                                    justifyContent : 'center', }}>
-                        <Text style = {{textAlign : 'right', paddingRight : heightOfDayTitle/3, color:'black'}}>{item.name}</Text>
-                      </View>
-            default : 
-              return <View/>
-          }
-          
+          if(item.type === 'like' || item.type === 'comment')
+            return <PostLikeOrCommentNotif
+              userName = {item.fullname}
+              time = {item.time}
+              status = {item.type}
+              postId = {item.post_id}
+              photoUrl = {item.photo_url}
+              commentText = {item.comment_text}/>
+          else if(item.type === 'follow')
+            return <FollowNotif
+              name = {item.fullname}
+              time = {item.time}
+              userId = {item.user_id}
+              username = {item.username}
+              following = {item.follow_status}
+              avatarUrl = {item.avatar_url}/>
+          else if(item.type === 'request')
+            return <RequestNotif
+              name = {item.fullname}
+              time = {item.time}
+              userId = {item.user_id}
+              username = {item.username}
+              following = {item.follow_status}
+              avatarUrl = {item.avatar_url}/>
+          else if(item.type === 'accept' || item.type === 'reject')
+            return <AcceptOrRejectNotif
+              name = {item.fullname}
+              time = {item.time}
+              username = {item.username}
+              avatarUrl = {item.avatar_url}
+              type = {item.type}/>
+          else if(item.type === 'day')
+            return <View style={{height:heightOfDayTitle, borderBottomColor : colors.grey, borderBottomWidth:1, 
+                                  justifyContent : 'center', }}>
+                      <Text style = {{textAlign : 'right', paddingRight : heightOfDayTitle/3, color:'black'}}>{item.name}</Text>
+                    </View>
+          else 
+              return <View/>          
         }}
       />
         </View>
