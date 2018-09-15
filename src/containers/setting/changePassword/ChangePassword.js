@@ -1,6 +1,6 @@
 import React from 'react';
 import {Component} from 'react';
-import {View, Dimensions} from 'react-native';
+import {View, Dimensions, Text} from 'react-native';
 import FHHeader from '../../../components/FHHeader';
 import FHButton from '../../../components/FHButton';
 import FHPasswordInput from '../../../components/FHPasswordInput';
@@ -49,6 +49,10 @@ class ChangePassword extends Component {
                             text="تکرار رمز عبور جدید"
                             error ={!this.props.confirmPasswordValidation}/>
                             <FHError errorText={this.props.error}/>
+                            <Text 
+                                style = {{color:'black',alignSelf: 'center', margin:3, textAlign : 'center'}} >
+                                رمز عبور باید حداقل شامل ۸ کاراکتر،حروف و اعداد انگلیسی باشد.
+                            </Text>
                         </View>
                         <View style={{flex:1, width:'100%', marginTop:Dimensions.get("window").height / 5}}>
                             <FHButton title="ثبت رمز عبور جدید"

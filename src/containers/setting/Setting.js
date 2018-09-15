@@ -1,6 +1,6 @@
 import React from 'react';
 import {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import SettingList from './List';
 import FHHeader from '../../components/FHHeader'
 import {storeToken, storeRefresh} from '../../config/token';
@@ -22,7 +22,9 @@ const Setting = (props) => {
                 <SettingList navigation={props.navigation}/>
             </View>
             <View style={{flex:15, alignItems:'center', flexDirection:'column-reverse'}}>
-                <Text onPress={logout} style={{margin:30}}>خروج از حساب</Text>
+                <TouchableOpacity onPress={logout}>
+                    <Text onPress={logout} style={{margin:30}}>خروج از حساب</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )

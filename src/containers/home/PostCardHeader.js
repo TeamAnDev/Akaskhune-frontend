@@ -7,7 +7,8 @@ import {connect} from 'react-redux';
 import {navigateToProfile} from '../../../NavigationService';
 
 const widthOfAvatar = Dimensions.get('window').width * 25/350;
-const heightOfHeader = Dimensions.get('window').height * 40/640;
+const widthOfName = Dimensions.get('window').width * 80/100;
+const heightOfHeader = Dimensions.get('window').height * 45/640;
 const CardHeader = (props) => {
     const location = props.location ? 
     <View style={{flexDirection:'row'}}>
@@ -25,8 +26,8 @@ const CardHeader = (props) => {
         <Body style={{justifyContent:'center', alignItems:"center"}}>
                {location}
         </Body>
-        <Right>
-            
+        <Right >
+            <View style = {{width : widthOfName, alignItems : 'flex-end'}}>
             <TouchableOpacity onPress = {()=>{navigateToProfile(props.username, props.ownUsername)}}>
             <View style={{flexDirection:'row'}}>
                 <View>
@@ -45,6 +46,7 @@ const CardHeader = (props) => {
                 </View>
             </View>
             </TouchableOpacity>
+            </View>
         </Right>
     </CardItem>
 

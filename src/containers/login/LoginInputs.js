@@ -29,7 +29,7 @@ class LoginInputs extends Component
     { 
       
         return(
-            <View style={{flex:1, width:"100%", marginTop:22}}>
+            <View style={{flex:1, width:"100%", marginTop:22, alignItems : 'center'}}>
                 <FHInput 
                     text="ایمیل" 
                     onTextChange = {this.props.changeEmail} 
@@ -45,6 +45,10 @@ class LoginInputs extends Component
                     returnKeyType={ "done" } 
                     refrence = {(input) => this.inputs['passInput'] = input} 
                     onSubmitEditing = {() => {(this.props.emailValidation && this.props.passwordValidation) ? this.props.login(this.props.email, this.props.password) : null}}/>
+                <Text 
+                    style = {{color:'white',alignSelf: 'center', margin:3, textAlign : 'center'}} >
+                    رمز عبور باید حداقل شامل ۸ کاراکتر،حروف و اعداد انگلیسی باشد.
+                </Text>
                 <FHButton 
                     title="ورود" 
                     onPress={() => this.props.login(this.props.email, this.props.password)}

@@ -77,7 +77,9 @@ class Bookmark extends Component {
           isVisible={this.state.isModalVisible} 
           style={{justifyContent:'center', alignItems:'center'}}
           onBackdropPress = {() => this.setModalVisibility(false)}
-          >
+          animationIn = "zoomIn"
+          animationInTiming = {200}
+          animationOut = "zoomOut">
             <Card style={{width:ModalWidth, height:ModalHeight, borderRadius:8}}>
               
                 <BoardAddingHeader/>

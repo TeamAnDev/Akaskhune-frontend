@@ -45,7 +45,7 @@ class SignupInputs extends Component
                     returnKeyType={ "next" }  
                     blurOnSubmit={false}   
                   /> 
-
+                 
                 <FHPasswordInput 
                     text="تکرار رمزعبور" 
                     onTextChange = {this.props.changeConfirmPassword} 
@@ -53,12 +53,15 @@ class SignupInputs extends Component
                     refrence = {(input) => this.inputs['confirmPassword'] = input}
                     onSubmitEditing = {() => {(this.props.emailValidation && this.props.confirmPasswordValidation) ? this.props.signup(this.props.email, this.props.password) : null}}
                     returnKeyType={ "done" }  /> 
-
                 <FHButton 
                     title="ثبت نام" 
                     onPress={() => this.props.signup(this.props.email, this.props.password)} 
                     disabled={!(this.props.emailValidation && this.props.confirmPasswordValidation) }
                     loading={this.props.loading}/>
+                <Text 
+                    style = {{color:'white',alignSelf: 'center', margin:3, textAlign : 'center'}} >
+                    رمز عبور باید حداقل شامل ۸ کاراکتر،حروف و اعداد انگلیسی باشد.
+                </Text>
 
                 <FHError errorText={this.props.error}/>
             </View>

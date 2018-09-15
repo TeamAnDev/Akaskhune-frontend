@@ -1,5 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native'
-const marginTopOfLogo = Dimensions.get("window").height * 155 / 1000 > 80 ?  Dimensions.get("window").height * 155 / 1000 :80
+const marginTopOfLogo = Dimensions.get("window").height * 135 / 1000 ;
 const styles = StyleSheet.create({
     logo : {
         width : 50,
