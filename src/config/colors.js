@@ -1,6 +1,8 @@
 const colors = {
     
     primaryColor: "#6B946C",
+    primaryDark : "#6B896C",
+
     primaryColorRGB : "107,148,108",
     accentColor : "#D55E6C",
     accentColorOver : "#a54752",

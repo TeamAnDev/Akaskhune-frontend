@@ -15,6 +15,7 @@ import {getNotifications, notificationsInit} from '../../actions/notifications/r
 import { rest } from '../../config/urls';
 import {connect} from 'react-redux';
 import {getSelfInfoInit, getSelfInfo} from '../../actions/userInfo/userInfoRequest';
+import {getActivities, activitiesInit} from '../../actions/notifications/activities';
 let heightOfTabBar = Dimensions.get("window").height * 9/ 100;
 if(isIphoneX())
 {
@@ -91,6 +92,8 @@ class BottomTab extends Component{
         setInterval(() => {
             this.props.notificationsInit();
             this.props.getNotifications(rest.notifications);
+            this.props.activitiesInit();
+            this.props.getActivities(rest.activities);
         },5 * 60000);
     }
     render() {
@@ -107,7 +110,9 @@ const mapDispatchToProps = dispatch => {
         notificationsInit : () => dispatch(notificationsInit()),
         getNotifications : (url) => dispatch(getNotifications(url)),
         getSelfInfo : () => dispatch(getSelfInfo()),
-        getSelfInfoInit : () => dispatch(getSelfInfoInit())
+        getSelfInfoInit : () => dispatch(getSelfInfoInit()),
+        activitiesInit : () => dispatch(activitiesInit()),
+        getActivities : (url) => dispatch(getActivities(url)),
     })
 }
 

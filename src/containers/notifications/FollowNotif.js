@@ -8,7 +8,7 @@ const heightOfBar = Dimensions.get("window").height * 60/640;
 const widthOfImage = Dimensions.get('window').width * 28/360;
 const marginOfAvatar = Dimensions.get('window').width * 17/360;
 
-const FollowNotif = ({name, time, following, username, avatarUrl,isPrivate,  ownUsername}) => (
+const FollowNotif = ({name, time, following, username, avatarUrl,isPrivate,  ownUsername, secondName}) => (
     <TouchableOpacity onPress = {()=>{navigateToProfile(username, ownUsername)}}>
     <View 
     style={{height : heightOfBar, 
@@ -23,7 +23,10 @@ const FollowNotif = ({name, time, following, username, avatarUrl,isPrivate,  own
         <View style={{flex:7, marginRight : widthOfImage/2}}>
             <View style={{flexDirection : 'row', justifyContent:'flex-end'}}>
                 <Text style = {{ textAlign : 'right', color : 'black'}}> 
-                    {" شما را دنبال کرد " }
+                    {" را دنبال کرد " }
+                </Text>
+                <Text style = {{ textAlign : 'right', color : 'black'}}> 
+                    {secondName ? secondName : ' شما'}
                 </Text>
                 <Text style = {{ textAlign : 'right', color : 'black'}}> 
                     {name}
