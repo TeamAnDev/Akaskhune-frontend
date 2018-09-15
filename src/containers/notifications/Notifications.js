@@ -8,6 +8,9 @@ import { Tabs, Tab } from 'native-base';
 import Yours from './Yours';
 import {getActivities, activitiesInit} from '../../actions/notifications/activities';
 import Activities from './Activites';
+import NotificationsHeader from './NotificationsHeader';
+
+
 class Notifications extends Component {
   constructor(props)
   {
@@ -29,11 +32,12 @@ class Notifications extends Component {
    
     return (
       <View style={{flex:1, backgroundColor:'white'}}>
-        {/* <NotificationsHeader/> */}
+        <NotificationsHeader/>
         <Tabs
         tabContainerStyle = {{backgroundColor : 'white'}} 
         tabBarInactiveTextColor="white"
         locked = {true}
+        // style = {{height : heightOfHeader}}
         >
           <Tab 
           tabStyle={{backgroundColor : colors.primaryColor}}

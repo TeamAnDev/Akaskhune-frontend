@@ -43,7 +43,7 @@ export default class Activities extends Component
               username = {item.username}
               following = {item.follow_status}
               avatarUrl = {item.avatar_url}
-              isPrivate = {item.isPrivate}
+              isPrivate = {item.is_private}
               secondName = {item.second_fullname}/>
           else if(item.type === 'day')
             return <View style={{height:heightOfDayTitle, borderBottomColor : colors.grey, borderBottomWidth:1, 

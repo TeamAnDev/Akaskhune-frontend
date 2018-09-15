@@ -4,7 +4,7 @@ import {Button, Icon, Header, Body, Right, Left} from 'native-base';
 import colors from '../../config/colors'
 
 
-const heightOfHeader = Dimensions.get('window').height *60/640
+const heightOfHeader = Dimensions.get('window').height *40/640
 const NotificationsHeader = () => {
     
     return (

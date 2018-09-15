@@ -16,6 +16,7 @@ export default class Yours extends Component
     }
     render()
     {
+        console.warn(this.props.data)
         return <View style={{flex:1}}>
         <FlatList
         data = {this.props.data}
@@ -43,7 +44,7 @@ export default class Yours extends Component
               username = {item.username}
               following = {item.follow_status}
               avatarUrl = {item.avatar_url}
-              isPrivate = {item.isPrivate}/>
+              isPrivate = {item.is_private}/>
           else if(item.type === 'request')
             return <RequestNotif
               name = {item.fullname}
