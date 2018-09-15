@@ -78,7 +78,7 @@ class Home extends Component{
                         isOwner = {feed.is_owner}/>}
                         
                      }/>
-                <ShareComponent visible={this.state.shareVisible}/>
+                {/* <ShareComponent visible={this.state.shareVisible}/> */}
             </View>
         )
     }
