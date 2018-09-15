@@ -4,6 +4,7 @@ import {BallIndicator} from 'react-native-indicators';
 import colors from '../../config/colors';
 import { View, Text, FlatList } from 'react-native';
 import FHHeader from '../../components/FHHeader';
+import FHPeopleItem from '../../components/FHPeopleItem';
 import {connect} from 'react-redux';
 
 class Recommendation extends Component {
@@ -13,15 +14,17 @@ class Recommendation extends Component {
     }
 
     render() {
+        console.warn(this.props.recommendations);
         let toShow;
         if(this.props.loading) {
             toShow = <BallIndicator size={70} color={colors.accentColor}/>
         } else if(this.props.success) {
             toShow = <View style={{flex : 1, backgroundColor:'white'}}>
-                        {/* <FlatList 
+                        <FlatList 
                             data={this.props.recommendations}
+                            renderItem = {({item}) => <FHPeopleItem isPrivate={item.is_private} username={item.username} name={item.fullname} avatar={item.avatar_url} following={item.user_status}/>}
 
-                        /> */}
+                        />
                     </View>
         } else {
             toShow = <View><Text>error</Text></View>

@@ -29,8 +29,8 @@ export function requestRecommendations() {
         dispatch(recomReqSent());
         await recommendationRequest()
         .then(function(response){
-            console.warn(response.data.results)
-            dispatch(recomReqSuccess());
+            // console.warn(response.data.results)
+            dispatch(recomReqSuccess(response.data.results));
         }).catch(function(error){
             dispatch(recomReqErr(error.response.data.error));
         })
