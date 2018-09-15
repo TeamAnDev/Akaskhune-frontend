@@ -42,7 +42,9 @@ export const rest = {
     forgetPassword : '/user/password/reset/',
     popularTags : '/search/tag/get/',
     privacy : '/user/status/',
-    ownPhotosForBoard : '/board/post/other/'
+    ownPhotosForBoard : '/board/post/other/',
+    accept : (username) => '/friends/follow/accept/' + username + '/',
+    reject : (username) => '/friends/follow/reject/' + username + '/'
     
 }
 

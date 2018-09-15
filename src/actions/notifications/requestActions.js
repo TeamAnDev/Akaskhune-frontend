@@ -30,7 +30,6 @@ function notificationsError(error) {
 }
 
 export function getNotifications(url) {
-    console.warn("heh")
     return async (dispatch) => {
         if(url !== null){
             dispatch(notificationsReqSent());

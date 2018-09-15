@@ -7,11 +7,15 @@ function getUserInfoReducer(state={loading:false, data:{}, error:"", succes:fals
 {
     switch(action.type){
         case(GETTING_USER_INFO_STARTED):
-            return Object.assign({}, state, {loading:true, data : {}});
+            let userInit = Object.assign({}, state.data);
+            userInit[action.username] = {};
+            return Object.assign({}, state, {loading:true, data : userInit});
         case(GETTING_USER_INFO_ERR):
             return Object.assign({}, state, {error:action.error, loading:false});
         case(GETTING_USER_INFO_SUCCES):
-            return Object.assign({}, state, {data:action.data, succes:true, loading:false});
+            let userInfoSuccess = Object.assign({}, state.data);
+            userInfoSuccess[action.username] = action.data ;
+            return Object.assign({}, state, {data:userInfoSuccess, succes:true, loading:false});
         default :
             return state;
     }

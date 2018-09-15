@@ -68,7 +68,6 @@ class CommentList extends Component
         this.props.commentListRequest(rest.commentList(this.props.id));
     }
     render(){
-        console.warn(this.props.id, typeof(this.props.id))
     return (
             <FlatList
             style = {{backgroundColor: 'white'}}

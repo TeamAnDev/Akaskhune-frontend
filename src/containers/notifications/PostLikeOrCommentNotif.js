@@ -21,7 +21,7 @@ const PostLikeOrCommentNotif = ({userName, time, status, photoUrl, commentText, 
                         ({commentText})
                     </Text> : null}
                     <Text style = {{ textAlign : 'right', color : 'black'}}> 
-                    {status === 'like' ?  " این عکس رو پسندید " :  " نظر ثبت کرده "}
+                    {status === 'like' ?  " این عکس رو پسندید " :  " نظر ثبت کرده: "}
                     </Text>
                     <Text style = {{textAlign : 'right', color : 'black'}}>{userName}</Text>
                 </View>

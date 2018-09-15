@@ -16,7 +16,7 @@ class TagPosts extends Component {
         this.data = rowSplit(this.props.images);
         console.warn(this.data);
         return(
-            <View style={{flex:1}}>
+            <View style={{flex:1, backgroundColor : 'white'}}>
                 <FHHeader title={this.props.name}/>
                 <View style={{flex:1}}>
                     <FlatList

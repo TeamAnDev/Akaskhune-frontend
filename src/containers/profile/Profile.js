@@ -25,7 +25,6 @@ class Profile extends Component {
                     <View style={{flex:105, marginTop:10}}>
                         <Info
                             fullname = {this.props.fullname}
-                            username = {this.props.username}
                             bio = {this.props.bio}
                             follower_count = {this.props.follower_count}
                             following_count = {this.props.following_count}

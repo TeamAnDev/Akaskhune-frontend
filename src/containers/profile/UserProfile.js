@@ -11,9 +11,15 @@ import {initOthersAllBoards, othersAllBoardsRequest} from '../../actions/board/o
 class UserProfile extends Component {
     constructor(props) {
         super(props);
+        this.username = this.props.navigation.getParam('username');
         this.props.getUserInfo(this.props.navigation.getParam('username'));
     }
     render() {
+        let userData = Object.assign({} ,this.props.userData[this.props.navigation.getParam('username')]);
+        let imagesData = Object.assign({}, this.props.imagesData[this.props.navigation.getParam('username')]);
+        let images = imagesData.images;
+        let url = imagesData.url;
+        let boardsData = Object.assign({}, this.props.boardsData[this.props.navigation.getParam('username')]);
         return (
             <View style={{flex:1}}>
                 <ProfileHeader 
@@ -24,13 +30,13 @@ class UserProfile extends Component {
                     <View style={{flex:105, marginTop:10}}>
                         <Info  
                             username = {this.props.navigation.getParam('username')}
-                            fullname = {this.props.fullname}
-                            bio = {this.props.bio}
-                            follower_count = {this.props.follower_count}
-                            following_count = {this.props.following_count}
-                            avatar = {this.props.avatar}
-                            is_private = {this.props.is_private}
-                            status = {this.props.status}
+                            fullname = {userData.fullname}
+                            bio = {userData.bio}
+                            follower_count = {userData.follower_count}
+                            following_count = {userData.following_count}
+                            avatar = {userData.avatar}
+                            is_private = {userData.is_private}
+                            status = {userData.follow_status}
                             isOthers = {true}
                             />
                     </View>
@@ -38,21 +44,21 @@ class UserProfile extends Component {
                         <TabBox 
                             username = {this.props.navigation.getParam('username')}
 
-                            boards_count = {this.props.boards_count}
-                            posts_count = {this.props.posts_count}
+                            boards_count = {userData.boards_count}
+                            posts_count = {userData.posts_count}
 
-                            images = {this.props.images}
+                            images = { images ? images : []}
                             imagesSuccess = {this.props.imagesSuccess}
                             imagesLoading = {this.props.imagesLoading}
-                            url = {this.props.url}
+                            url = { url}
                             requestImages = {this.props.requestImages}
                             init = {this.props.init}
 
                             boardsLoading = {this.props.boardsLoading}
                             boardsSuccess = {this.props.boardsSuccess}
                             error = {this.props.error}
-                            boards = {this.props.boards}
-                            next = {this.props.next}
+                            boards = {boardsData.boards ? boardsData.boards : []}
+                            next = {boardsData.url}
                             allBoardsRequest = {this.props.allBoardsRequest}
                             initAllBoards = {this.props.initAllBoards}
                             
@@ -69,26 +75,19 @@ class UserProfile extends Component {
 
 const mapStateToProps = state => {
     return({
-        fullname : state.userInfoApp.getUserInfoReducer.data.fullname,
-        bio : state.userInfoApp.getUserInfoReducer.data.bio,
-        follower_count : state.userInfoApp.getUserInfoReducer.data.follower_count,
-        following_count : state.userInfoApp.getUserInfoReducer.data.following_count,
-        avatar : state.userInfoApp.getUserInfoReducer.data.avatar,
-        posts_count : state.userInfoApp.getUserInfoReducer.data.posts_count,
-        boards_count : state.userInfoApp.getUserInfoReducer.data.boards_count,
-        is_private : state.userInfoApp.getUserInfoReducer.data.is_private,
-        status : state.userInfoApp.getUserInfoReducer.data.follow_status,
+        userData : state.userInfoApp.getUserInfoReducer.data,
 
-        images : state.profileApp.othersImagesRequestReducer.images,
+
+        imagesData : state.profileApp.othersImagesRequestReducer.data,
         imagesSuccess : state.profileApp.othersImagesRequestReducer.success,
         imagesLoading : state.profileApp.othersImagesRequestReducer.loading,
-        url : state.profileApp.othersImagesRequestReducer.url,
 
         boardsLoading : state.boardsApp.othersAllBoardsRequestReducer.loading,
         boardsSuccess : state.boardsApp.othersAllBoardsRequestReducer.success,
         error : state.boardsApp.othersAllBoardsRequestReducer.error,
-        boards : state.boardsApp.othersAllBoardsRequestReducer.boards,
-        next : state.boardsApp.othersAllBoardsRequestReducer.next
+        boardsData : state.boardsApp.othersAllBoardsRequestReducer.data,
+        // boards : state.boardsApp.othersAllBoardsRequestReducer.boards,
+        // next : state.boardsApp.othersAllBoardsRequestReducer.next
 
     });
 }
@@ -96,10 +95,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return({
        getUserInfo : (username) => dispatch(getUserInfo(username)),
-       requestImages : (url) => dispatch(requestOthersImages(url)),
-        init : () => dispatch(imageOtherRequestInit()),
-        allBoardsRequest : (url) => dispatch(othersAllBoardsRequest(url)),
-        initAllBoards : () => dispatch(initOthersAllBoards()),
+       requestImages : (url, username) => dispatch(requestOthersImages(url, username)),
+        init : (username) => dispatch(imageOtherRequestInit(username)),
+        allBoardsRequest : (url, username) => dispatch(othersAllBoardsRequest(url, username)),
+        initAllBoards : (username) => dispatch(initOthersAllBoards(username)),
     });
 }
 
