@@ -28,7 +28,8 @@ const FHInput = (props) => {
               value={props.value ? props.value : null} 
               disabled={props.disabled ? props.disabled : null} 
               ref = {(input) => props.refrence ? props.refrence(input) : null}
-              {...props} />
+              {...props}
+              autoFocus = {(props.focus) ? true : false} />
             {props.icon} 
          </Item>);
 }

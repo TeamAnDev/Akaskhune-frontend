@@ -29,7 +29,7 @@ class PopularTags extends Component {
             <View style={{flex:1, backgroundColor:'white'}}>
                 <Header style={{backgroundColor: colors.primaryColor}}
                 androidStatusBarColor={colors.primaryColor}>
-                <FHInput onClick={() => navigate("Search")} onTextChange={this.onTextChange} width='100%' text="جستجوی تگ یا کاربر" icon={<Icon type="Feather" name="search"/>}/>
+                <FHInput onClick={() => navigate("Search")} width='100%' text="جستجوی تگ یا کاربر" icon={<Icon type="Feather" name="search"/>}/>
                 </Header>
                 <View style={{flex:1}}>
                     {toReturn}    

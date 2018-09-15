@@ -6,7 +6,7 @@ import { Button } from 'native-base';
 const FHContactsHeader = (props) => {
     return (
         <View style={styles.contactItem}>
-            <Button style={styles.contactButton} transparent dark><Text style={{fontWeight:'bold'}}>دعوت از همه</Text></Button>
+            <Button style={styles.contactButton} transparent dark><Text style={{fontWeight:'bold'}}></Text></Button>
             <Text>لیست مخاطبان</Text>
         </View>
     )
