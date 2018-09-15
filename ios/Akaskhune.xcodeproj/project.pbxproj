@@ -66,6 +66,7 @@
 		FDBDBE129D8C4D76844CF9F9 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43BF777C41E64E3585F715E3 /* libRNImagePicker.a */; };
 		142AEC2ED88D46379853022C /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1D45AF1CC64A2F9E7611B8 /* libRNSVG.a */; };
 		90B0EAA16955411B8BC24020 /* libRNSVG-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5E730FD46E4AEC9F70013F /* libRNSVG-tvOS.a */; };
+		0F69E8D419C24AFBA57F4EAB /* libRNShare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1347296DEE64536A39901B8 /* libRNShare.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -485,6 +486,8 @@
 		23D4D208C1AF477D97605036 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; name = "RNSVG.xcodeproj"; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		DA1D45AF1CC64A2F9E7611B8 /* libRNSVG.a */ = {isa = PBXFileReference; name = "libRNSVG.a"; path = "libRNSVG.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		AA5E730FD46E4AEC9F70013F /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; name = "libRNSVG-tvOS.a"; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		326A7BF8736A47D099066934 /* RNShare.xcodeproj */ = {isa = PBXFileReference; name = "RNShare.xcodeproj"; path = "../node_modules/react-native-share/ios/RNShare.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		E1347296DEE64536A39901B8 /* libRNShare.a */ = {isa = PBXFileReference; name = "libRNShare.a"; path = "libRNShare.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -524,6 +527,7 @@
 				3CE9B5A275294DD480465228 /* libRNCamera.a in Frameworks */,
 				0FD6529C67A1456EA66D7D6D /* libRCTContacts.a in Frameworks */,
 				142AEC2ED88D46379853022C /* libRNSVG.a in Frameworks */,
+				0F69E8D419C24AFBA57F4EAB /* libRNShare.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,6 +726,7 @@
 				34956D76DADF4F32AF2310F4 /* RNCamera.xcodeproj */,
 				D6404DD545614DBCB67136B4 /* RCTContacts.xcodeproj */,
 				23D4D208C1AF477D97605036 /* RNSVG.xcodeproj */,
+				326A7BF8736A47D099066934 /* RNShare.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1570,12 +1575,14 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-share\ios",
 				);
 				INFOPLIST_FILE = AkaskhuneTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1608,12 +1615,14 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-share\ios",
 				);
 				INFOPLIST_FILE = AkaskhuneTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1647,6 +1656,7 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-share\ios",
 				);
 				INFOPLIST_FILE = Akaskhune/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1675,6 +1685,7 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-share\ios",
 				);
 				INFOPLIST_FILE = Akaskhune/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1710,11 +1721,13 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-share\ios",
 				);
 				INFOPLIST_FILE = "Akaskhune-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1757,11 +1770,13 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-share\ios",
 				);
 				INFOPLIST_FILE = "Akaskhune-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1803,11 +1818,13 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-share\ios",
 				);
 				INFOPLIST_FILE = "Akaskhune-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1849,11 +1866,13 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)..\node_modules\neact-native-contactsiosRCTContacts",
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-share\ios",
 				);
 				INFOPLIST_FILE = "Akaskhune-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

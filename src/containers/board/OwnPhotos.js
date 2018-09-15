@@ -9,7 +9,8 @@ import {rest} from '../../config/urls';
 import rowSplit from '../../components/Functions/rowSplit';
 import {connect} from 'react-redux';
 import { addPostsToBoardRequest } from "../../actions/board/addPostsToBoard";
-import {ownPhotosRequest} from '../../actions/board/ownPhotos'
+import {ownPhotosRequest} from '../../actions/board/ownPhotos';
+import {goBack} from '../../../NavigationService'
 
 class OwnPhotos extends Component {
     constructor(props) {
@@ -33,7 +34,7 @@ class OwnPhotos extends Component {
                         />
                     </View>
                     <View style={styles.addButton}>
-                        <FHButton onPress={() => this.props.addPostsToBoardRequest(this.props.selectedPosts, this.props.boardId)} title="اضافه کردن"/>
+                        <FHButton onPress={() => {this.props.addPostsToBoardRequest(this.props.selectedPosts, this.props.boardId); goBack();}} title="اضافه کردن"/>
                     </View>
                 </View>
             </View>

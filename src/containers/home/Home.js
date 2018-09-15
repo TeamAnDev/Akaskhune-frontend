@@ -9,6 +9,8 @@ import colors from '../../config/colors';
 import {feedsListRequest, feedsListInitial} from '../../actions/home/feedListsRequest';
 import {rest} from '../../config/urls';
 import {PulseIndicator} from 'react-native-indicators';
+import ShareComponent from './Share';
+
 const emptyPost  = () => (
     <View style={{flex:1, height:Dimensions.get("window").height*3/4,  justifyContent:'center', alignItems:'center'}}>
     <Text style={{padding : 10}} >
@@ -36,7 +38,8 @@ class Home extends Component{
        
         this.state={
             refresh : false,
-            feeds : []
+            feeds : [],
+            shareVisible : false
         }
         this.refreshFeeds = this.refreshFeeds.bind(this);
     }
@@ -50,8 +53,14 @@ class Home extends Component{
         this.props.feedsListInitial();
         this.props.feedsListRequest(rest.feeds);
     }
+
+    toggleShareVisible = () => {
+        this.setState({shareVisible : !this.setState.shareVisible})
+    }
+
     render()
     {
+        console.warn(this.state.shareVisible)
         return(
             <View style={{flex:1}}>
                 <HomeHeader/>
@@ -73,6 +82,7 @@ class Home extends Component{
                     renderItem = {({item, index}) =>
                     { let feed = item;
                     return <PostCard
+                        toggleShareVisible = {this.toggleShareVisible}
                         id = {feed.id}
                         fullName = {feed.user}
                         profilePhotoUrl = {feed.avatar_url}
@@ -88,7 +98,7 @@ class Home extends Component{
                         isOwner = {feed.is_owner}/>}
                         
                      }/>
-        
+                <ShareComponent visible={this.state.shareVisible}/>
             </View>
         )
     }

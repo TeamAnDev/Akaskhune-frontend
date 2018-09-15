@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {View, Text, ImageBackground, Image, Dimensions, TouchableOpacity} from 'react-native';
-import {Card, CardItem, Left, Body, Right, Button, Icon} from 'native-base';
+import {Card, CardItem, Left, Body, Right, Icon} from 'native-base';
 import colors from '../../config/colors';
 import {connect} from 'react-redux';
 import {startCommenting} from '../../actions/home/comments';
@@ -71,7 +71,7 @@ class CardFooter extends Component
                 </View> 
 
                 <TouchableOpacity 
-                    onPress={() => {}} 
+                    onPress={() => {this.props.toggleShareVisible()}} 
                     style={{marginLeft:10}}>
                     <Icon 
                         name='share-2' 
@@ -91,7 +91,7 @@ class CardFooter extends Component
 const mapDispatchToProps = dispatch => {
     return({
       startCommenting : () => dispatch(startCommenting()),
-      like : (postId, isLiking) => dispatch(likeRequestAction(postId, isLiking))
+      like : (postId, isLiking) => dispatch(likeRequestAction(postId, isLiking)),
     });
 }
 
