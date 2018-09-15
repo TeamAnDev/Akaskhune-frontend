@@ -18,7 +18,8 @@ class Home extends Component{
        
         this.state={
             refresh : false,
-            feeds : []
+            feeds : [],
+            shareVisible : false
         }
         this.refreshFeeds = this.refreshFeeds.bind(this);
     }
@@ -32,8 +33,14 @@ class Home extends Component{
         this.props.feedsListInitial();
         this.props.feedsListRequest(rest.feeds);
     }
+
+    toggleShareVisible = () => {
+        this.setState({shareVisible : !this.setState.shareVisible})
+    }
+
     render()
     {
+        console.warn(this.state.shareVisible)
         return(
             <View style={{flex:1}}>
                 <HomeHeader/>
@@ -55,6 +62,7 @@ class Home extends Component{
                     renderItem = {({item, index}) =>
                     { let feed = item;
                     return <PostCard
+                        toggleShareVisible = {this.toggleShareVisible}
                         id = {feed.id}
                         fullName = {feed.user}
                         profilePhotoUrl = {feed.avatar_url}
@@ -70,7 +78,7 @@ class Home extends Component{
                         isOwner = {feed.is_owner}/>}
                         
                      }/>
-        
+                {/* <ShareComponent visible={this.state.shareVisible}/> */}
             </View>
         )
     }

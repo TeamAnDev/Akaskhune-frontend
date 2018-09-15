@@ -9,17 +9,16 @@ import {rest} from '../../config/urls';
 import rowSplit from '../../components/Functions/rowSplit';
 import {connect} from 'react-redux';
 import { addPostsToBoardRequest } from "../../actions/board/addPostsToBoard";
-import {ownPhotosRequest} from '../../actions/board/ownPhotos'
+import {ownPhotosRequest} from '../../actions/board/ownPhotos';
+import {goBack} from '../../../NavigationService'
 
 class OwnPhotos extends Component {
     constructor(props) {
         super(props);
-        // this.props.init();
         this.props.ownPhotosRequest(this.props.boardId);     
     }
 
     render() {
-        // console.warn(this.props.selectedPosts);
         this.data = rowSplit(this.props.images);
         console.warn("wtf", this.data);
         return(
@@ -33,7 +32,7 @@ class OwnPhotos extends Component {
                         />
                     </View>
                     <View style={styles.addButton}>
-                        <FHButton onPress={() => this.props.addPostsToBoardRequest(this.props.selectedPosts, this.props.boardId)} title="اضافه کردن"/>
+                        <FHButton onPress={() => {this.props.addPostsToBoardRequest(this.props.selectedPosts, this.props.boardId); goBack();}} title="اضافه کردن"/>
                     </View>
                 </View>
             </View>
@@ -55,7 +54,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return ({
         ownPhotosRequest : (id) => dispatch(ownPhotosRequest(id)),
-        // init : () => dispatch(imageRequestInit()),
         addPostsToBoardRequest : (selectedPosts, boardId) => dispatch(addPostsToBoardRequest(selectedPosts, boardId))
     });
 }

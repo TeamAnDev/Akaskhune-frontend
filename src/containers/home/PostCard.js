@@ -33,6 +33,7 @@ export default class PostCard extends Component
                 index={this.props.index}/>
 
                 <CardFooter
+                toggleShareVisible = {this.props.toggleShareVisible}
                 numberOfLikes={this.props.likesCount}
                 numberOfComments={this.props.commentsCount}
                 id={this.props.id} 
