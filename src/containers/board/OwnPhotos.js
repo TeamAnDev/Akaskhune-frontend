@@ -15,12 +15,10 @@ import {goBack} from '../../../NavigationService'
 class OwnPhotos extends Component {
     constructor(props) {
         super(props);
-        // this.props.init();
         this.props.ownPhotosRequest(this.props.boardId);     
     }
 
     render() {
-        // console.warn(this.props.selectedPosts);
         this.data = rowSplit(this.props.images);
         console.warn("wtf", this.data);
         return(
@@ -56,7 +54,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return ({
         ownPhotosRequest : (id) => dispatch(ownPhotosRequest(id)),
-        // init : () => dispatch(imageRequestInit()),
         addPostsToBoardRequest : (selectedPosts, boardId) => dispatch(addPostsToBoardRequest(selectedPosts, boardId))
     });
 }
