@@ -22,7 +22,10 @@ class Recommendation extends Component {
             toShow = <View style={{flex : 1, backgroundColor:'white'}}>
                         <FlatList 
                             data={this.props.recommendations}
-                            renderItem = {({item}) => <FHPeopleItem isPrivate={item.is_private} username={item.username} name={item.fullname} avatar={item.avatar_url} following={item.user_status}/>}
+                            renderItem = {({item}) => <FHPeopleItem isPrivate={item.is_private}
+                                username={item.username} name={item.fullname}
+                                avatar={item.avatar_url} following={item.user_status}
+                                numOfMutual={item.count_of_common_friends}/>}
 
                         />
                     </View>
