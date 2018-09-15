@@ -73,8 +73,11 @@ class Bookmark extends Component {
               <Icon name='bookmark' type="Feather" style={{color:colors.fontColor, fontSize: 25,paddingTop: 3,}} />
           </TouchableOpacity>
 
-          <Modal isVisible={this.state.isModalVisible} style={{justifyContent:'center', alignItems:'center'}}
-                  onBackdropPress = {() => this.setModalVisibility(false)}>
+          <Modal 
+          isVisible={this.state.isModalVisible} 
+          style={{justifyContent:'center', alignItems:'center'}}
+          onBackdropPress = {() => this.setModalVisibility(false)}
+          >
             <Card style={{width:ModalWidth, height:ModalHeight, borderRadius:8}}>
               
                 <BoardAddingHeader/>
