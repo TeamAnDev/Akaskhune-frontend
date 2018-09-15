@@ -20,6 +20,7 @@ import tagPostsApp from './tagPosts/request';
 import settingsApp from './settings/index';
 import popularTagsApp from './popularTags/request';
 import ownPhotosApp from './singleBoard/ownPhotos';
+import recommendationApp from './recommendation/request';
 
 const AkaskhuneApp = combineReducers({
     loginApp,
@@ -42,7 +43,8 @@ const AkaskhuneApp = combineReducers({
     tagPostsApp,
     settingsApp,
     popularTagsApp,
-    ownPhotosApp
+    ownPhotosApp,
+    recommendationApp
 });
 
 export default AkaskhuneApp;

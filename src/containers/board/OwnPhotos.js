@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, FlatList} from 'react-native';
+import {View, FlatList, Text} from 'react-native';
 import Row from './Row';
 import FHHeader from '../../components/FHHeader';
 import FHButton from '../../components/FHButton';
@@ -20,21 +20,28 @@ class OwnPhotos extends Component {
 
     render() {
         this.data = rowSplit(this.props.images);
-        console.warn("wtf", this.data);
+        let toShow;
+        if(this.props.images.length === 0) {
+            toShow = <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+                        <Text>تمام عکس های شما به این بورد اضافه شده است</Text>
+                    </View>
+        } else {
+            toShow = <View style={{flex:1}}>
+                        <View> 
+                            <FlatList 
+                                data={this.data}
+                                renderItem={({item}) => <Row leftImage={{id : item[0].id ,uri : item[0].uri}} rightImage={{id:item[1].id ,uri: item[1].uri}}/>}
+                            />
+                        </View>
+                        <View style={styles.addButton}>
+                            <FHButton onPress={() => {this.props.addPostsToBoardRequest(this.props.selectedPosts, this.props.boardId); goBack();}} title="اضافه کردن"/>
+                        </View>
+                    </View>
+        }
         return(
             <View style={{flex:1}}>
                 <FHHeader title="عکس های اشتراکی شما"/>
-                <View style={{flex:1}}>
-                    <View> 
-                        <FlatList 
-                            data={this.data}
-                            renderItem={({item}) => <Row leftImage={{id : item[0].id ,uri : item[0].uri}} rightImage={{id:item[1].id ,uri: item[1].uri}}/>}
-                        />
-                    </View>
-                    <View style={styles.addButton}>
-                        <FHButton onPress={() => {this.props.addPostsToBoardRequest(this.props.selectedPosts, this.props.boardId); goBack();}} title="اضافه کردن"/>
-                    </View>
-                </View>
+                {toShow}
             </View>
         )
     }

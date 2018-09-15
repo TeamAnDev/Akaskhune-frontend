@@ -19,10 +19,9 @@ const HomeHeader = (props) => {
                 <Text style={{color:'white'}}>عکاسخونه</Text>
             </Body>
             <Right style={{flex:1}}>
-
-                {/* <Button transparent rounded primary style={{borderRadius:50}}   onPress={() => navigate('Setting')}>
-                    <Icon style={{color:'white'}} name='cog'/>
-                </Button> */}
+                <Button transparent rounded primary style={{borderRadius:50}}   onPress={() => navigate("Recommendation")}>
+                    <Icon style={{color : 'white'}} type='Ionicons' name="ios-people"/>
+                </Button>
             </Right>
         </Header>    
     )
