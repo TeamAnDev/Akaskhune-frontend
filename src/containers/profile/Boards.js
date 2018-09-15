@@ -18,12 +18,14 @@ const NoBoardComponent = () => {
 export default class Boards extends Component {
     constructor(props) {
         super(props);
-        this.props.initAllBoards();
+        
         if(this.props.username)
         {
-            this.props.allBoardsRequest(rest.othersAllBoards(this.props.username));
+            this.props.initAllBoards(this.props.username);
+            this.props.allBoardsRequest(rest.othersAllBoards(this.props.username), this.props.username);
         }
         else{
+            this.props.initAllBoards();
             this.props.allBoardsRequest(rest.allBoards);
         }
        

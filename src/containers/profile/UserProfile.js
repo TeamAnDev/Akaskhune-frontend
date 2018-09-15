@@ -19,6 +19,7 @@ class UserProfile extends Component {
         let imagesData = Object.assign({}, this.props.imagesData[this.props.navigation.getParam('username')]);
         let images = imagesData.images;
         let url = imagesData.url;
+        let boardsData = Object.assign({}, this.props.boardsData[this.props.navigation.getParam('username')]);
         return (
             <View style={{flex:1}}>
                 <ProfileHeader 
@@ -56,8 +57,8 @@ class UserProfile extends Component {
                             boardsLoading = {this.props.boardsLoading}
                             boardsSuccess = {this.props.boardsSuccess}
                             error = {this.props.error}
-                            boards = {this.props.boards}
-                            next = {this.props.next}
+                            boards = {boardsData.boards ? boardsData.boards : []}
+                            next = {boardsData.url}
                             allBoardsRequest = {this.props.allBoardsRequest}
                             initAllBoards = {this.props.initAllBoards}
                             
@@ -78,16 +79,15 @@ const mapStateToProps = state => {
 
 
         imagesData : state.profileApp.othersImagesRequestReducer.data,
-        // images : state.profileApp.othersImagesRequestReducer.images,
         imagesSuccess : state.profileApp.othersImagesRequestReducer.success,
         imagesLoading : state.profileApp.othersImagesRequestReducer.loading,
-        // url : state.profileApp.othersImagesRequestReducer.url,
 
         boardsLoading : state.boardsApp.othersAllBoardsRequestReducer.loading,
         boardsSuccess : state.boardsApp.othersAllBoardsRequestReducer.success,
         error : state.boardsApp.othersAllBoardsRequestReducer.error,
-        boards : state.boardsApp.othersAllBoardsRequestReducer.boards,
-        next : state.boardsApp.othersAllBoardsRequestReducer.next
+        boardsData : state.boardsApp.othersAllBoardsRequestReducer.data,
+        // boards : state.boardsApp.othersAllBoardsRequestReducer.boards,
+        // next : state.boardsApp.othersAllBoardsRequestReducer.next
 
     });
 }
@@ -97,8 +97,8 @@ const mapDispatchToProps = dispatch => {
        getUserInfo : (username) => dispatch(getUserInfo(username)),
        requestImages : (url, username) => dispatch(requestOthersImages(url, username)),
         init : (username) => dispatch(imageOtherRequestInit(username)),
-        allBoardsRequest : (url) => dispatch(othersAllBoardsRequest(url)),
-        initAllBoards : () => dispatch(initOthersAllBoards()),
+        allBoardsRequest : (url, username) => dispatch(othersAllBoardsRequest(url, username)),
+        initAllBoards : (username) => dispatch(initOthersAllBoards(username)),
     });
 }
 
