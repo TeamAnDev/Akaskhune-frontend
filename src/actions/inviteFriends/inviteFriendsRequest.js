@@ -46,7 +46,6 @@ export function contactsRequest(contacts) {
         dispatch(contactsReqSent());
         await requestConacts(contacts)
         .then(function(response){
-            console.warn(response.data.contacts);
             dispatch(contactsReqSuccess(response.data.contacts));
         }).catch(function(error){
             dispatch(contactsReqErr(error.response.data.error));

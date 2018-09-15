@@ -16,7 +16,7 @@ class FHContactItem extends Component {
             { this.props.status === 'followed' || this.props.status === 'not_followed' || this.props.status === 'requested' ?
              navigateToProfile(this.props.username, this.props.ownUsername) : null}}>
             <View style={styles.contactItem}>
-                <FHActionButton status={this.props.status} username={this.props.username} email={this.props.email}/>
+                <FHActionButton isPrivate={this.props.isPrivate} status={this.props.status} username={this.props.username} email={this.props.email}/>
                 <View style={{flexDirection:'column', alignItems:'flex-end'}}>
                     <Text style={{fontWeight:'bold'}}>{this.props.name}</Text>
                     <Text>{this.props.email}</Text>

@@ -24,13 +24,19 @@ class FHActionButton extends Component {
                 return "دنبال کن";
             case "followed" :
                 return "دنبال شده";
+            case "requested" :
+                return "درخواست شده";
         }
     }
 
     onPress = () => {
         if(this.state.status === 'not_followed') {
             this.props.followRequest(this.props.username);
-            this.setState({status : 'followed'});
+            if(this.props.isPrivate === true) {
+                this.setState({status : 'requested'});
+            } else {
+                this.setState({status : 'followed'});
+            }
         } else if(this.state.status === 'followed') {
             this.props.unfollowRequest(this.props.username);
             this.setState({status : 'not_followed'});
@@ -41,6 +47,7 @@ class FHActionButton extends Component {
     }
 
     render() {
+        console.warn(this.props.isPrivate);
         switch(this.state.status) {
             case "not_invited" :
                 return <Button onPress={this.onPress} style={styles.contactButton} transparent dark><Text style={{fontWeight:'bold'}}>{this.getButtonText(this.state.status)}</Text></Button>;
@@ -50,8 +57,10 @@ class FHActionButton extends Component {
                 return <Button onPress={this.onPress} style={styles.contactButton} bordered><Text style={{fontWeight:'bold', color:colors.accentColor}}>{this.getButtonText(this.state.status)}</Text></Button>;
             case "followed" :
                 return <Button onPress={this.onPress} style={styles.contactButton}><Text style={{fontWeight:'bold', color:'white'}}>{this.getButtonText(this.state.status)}</Text></Button>;
+            case "requested" :
+                return <Button onPress={this.onPress} style={styles.requested}><Text style={{fontWeight:'bold', color:'white'}}>{this.getButtonText(this.state.status)}</Text></Button>;
             default :
-                return <Button transparent dark><Text>{this.getButtonText(this.state.status)}</Text></Button>;
+                return <Button></Button>;
     
         }
     }
