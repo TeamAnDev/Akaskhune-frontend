@@ -25,7 +25,7 @@ const RequestNotif = ({name, time, username, avatarUrl, ownUsername}) => (
         <View style={{flex:8, marginRight : widthOfImage/2}}>
             <View style={{flexDirection : 'row', justifyContent:'flex-end'}}>
                 <Text style = {{ textAlign : 'right', color : 'black'}}> 
-                    {" برای شما درخواست دوستی فرستاده " }
+                    {" درخواست دوستی فرستاده " }
                 </Text>
                 <Text style = {{ textAlign : 'right', color : 'black'}}> 
                     {name}

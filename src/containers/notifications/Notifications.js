@@ -187,7 +187,8 @@ class Notifications extends Component {
               userId = {item.user_id}
               username = {item.username}
               following = {item.follow_status}
-              avatarUrl = {item.avatar_url}/>
+              avatarUrl = {item.avatar_url}
+              isPrivate = {item.isPrivate}/>
           else if(item.type === 'request')
             return <RequestNotif
               name = {item.fullname}

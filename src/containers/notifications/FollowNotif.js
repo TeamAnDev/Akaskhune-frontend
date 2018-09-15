@@ -8,7 +8,7 @@ const heightOfBar = Dimensions.get("window").height * 60/640;
 const widthOfImage = Dimensions.get('window').width * 28/360;
 const marginOfAvatar = Dimensions.get('window').width * 17/360;
 
-const FollowNotif = ({name, time, following, username, avatarUrl, ownUsername}) => (
+const FollowNotif = ({name, time, following, username, avatarUrl,isPrivate,  ownUsername}) => (
     <TouchableOpacity onPress = {()=>{navigateToProfile(username, ownUsername)}}>
     <View 
     style={{height : heightOfBar, 
@@ -18,7 +18,7 @@ const FollowNotif = ({name, time, following, username, avatarUrl, ownUsername}) 
     borderBottomWidth:1,
     borderBottomColor : colors.grey}}>
         <View style={{flex:4, marginLeft : marginOfAvatar}}>
-            <FHFollowButton following = {following} username = {username} />
+            <FHFollowButton following = {following} username = {username} isPrivate = {isPrivate} />
         </View>
         <View style={{flex:7, marginRight : widthOfImage/2}}>
             <View style={{flexDirection : 'row', justifyContent:'flex-end'}}>
