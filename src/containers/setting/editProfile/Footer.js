@@ -32,7 +32,7 @@ class Footer extends Component
         console.warn(this.props.avatar);
         return (
             <View style={{flex:1}}>
-                <FHButton title="دخیره‌ تغییرات" 
+                <FHButton title="ذخیره‌ی تغییرات" 
                 onPress={() => this.props.editUserInfo(this.props.fullname, this.props.bio, this.props.avatar)} 
                         loading={this.props.loading}/>
             </View>

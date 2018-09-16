@@ -5,7 +5,7 @@ import React from 'react';
 const Details = () => {
     return (
         <View style={styles.logoContainer}>
-            <Image source={require('../../../assets/logo.jpg')} style={styles.logo}/>
+            <Image source={require('../../../assets/logo.png')} style={styles.logo}/>
             <Text style={styles.text}>عکاسخونه</Text>
         
         </View>

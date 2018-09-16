@@ -52,7 +52,7 @@ export default class Images extends Component {
                     renderItem = {({item}) => <FHRow leftImage={item[0]} rightImage={item[1]}/>}
                     onScrollBeginDrag = {() => {if(!this.state.end){this.setState({end : true})}}}
                     onEndReached = {() => {
-                        if (this.state.end) {
+                        if (this.state.end && !this.props.loading) {
                             this.props.requestImages(this.props.url, this.props.username)
                             this.setState({end : false});
                           }
