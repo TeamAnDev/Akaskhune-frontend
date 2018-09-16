@@ -7,7 +7,7 @@ import FHPeopleItem from '../../components/FHPeopleItem';
 import {FlatList} from 'react-native';
 import {connect} from 'react-redux';
 import FHTagItem from '../../components/FHTagItem';
-import { SkypeIndicator } from 'react-native-indicators';
+import { SkypeIndicator, BarIndicator } from 'react-native-indicators';
 
 class TabBox extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class TabBox extends Component {
     render() {
         let toReturnUser;
         if(this.props.loadingUser) {
-            toReturnUser = <View style={{flex:1, justifyContent:'center', alignItems:'center'}}><SkypeIndicator size={70} color={colors.accentColor}/></View>
+            toReturnUser = <View style={{flex:1, justifyContent:'center', alignItems:'center'}}><BarIndicator size={70} color={colors.accentColor}/></View>
         } else if(this.props.successUser) {
             toReturnUser = <FlatList
             data = {this.props.users}
@@ -28,7 +28,7 @@ class TabBox extends Component {
         }
         let toReturnTag;
         if(this.props.loadingTag) {
-            toReturnTag = <View style={{flex:1, justifyContent:'center', alignItems:'center'}}><SkypeIndicator size={70} color={colors.accentColor}/></View>
+            toReturnTag = <View style={{flex:1, justifyContent:'center', alignItems:'center'}}><BarIndicator size={70} color={colors.accentColor}/></View>
         } else if(this.props.successTag) {
             toReturnTag = <FlatList
             data = {this.props.tags}
