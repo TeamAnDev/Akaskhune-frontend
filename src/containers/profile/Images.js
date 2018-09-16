@@ -16,7 +16,6 @@ export default class Images extends Component {
 
     constructor(props) {
         super(props);
-        this.onEndReachedCalledDuringMomentum = true;
         this.state = {
             end : false,
         }
@@ -29,6 +28,10 @@ export default class Images extends Component {
             this.props.requestImages(rest.imagesSelf); 
         }
            
+    }
+
+    setOnEndReach = (value) => {
+        this.setState({onEndReachedCalledDuringMomentum : value});
     }
 
     render() {

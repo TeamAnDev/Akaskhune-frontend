@@ -40,7 +40,7 @@ export default class Boards extends Component {
                             <FlatList 
                             data = {this.props.boards}
                             renderItem = {({item}) => <FHSingleBoard username={this.props.username} name={item.name} id={item.id}/>}
-                            ListEmptyComponent = {<View style={{flex:1 ,justifyContent:'center', alignItems:'center', marginTop:100}}><NoBoardComponent/></View>}
+                            ListEmptyComponent = {<View style={{flex:1 ,justifyContent:'center', alignItems:'center', marginTop:150}}><NoBoardComponent/></View>}
                             /> 
                         </View>
         } else {

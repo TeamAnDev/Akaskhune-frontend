@@ -19,7 +19,6 @@ class FHPeopleItem extends Component {
             <View>
                 <FHFollowButton isPrivate={this.props.isPrivate} following={this.props.following} username={this.props.username}/>
             </View>
-            {numOfMutual}
             <TouchableOpacity onPress = {()=> {navigateToProfile(this.props.username, this.props.ownUsername)}}>
             
             <View style={{flexDirection:'row'}}>
@@ -34,8 +33,11 @@ class FHPeopleItem extends Component {
                     style={[styles.peopleImage, {backgroundColor:'#EFEFEF'}]}/>
                 </View>
             </View>
+            {numOfMutual}
+
             </TouchableOpacity>
         </View>
+        
         )
     }
 }
