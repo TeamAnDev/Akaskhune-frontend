@@ -1,11 +1,13 @@
 import React , {Component} from 'react';
 import {Container, Tab, Tabs} from 'native-base';
+import {View, Text} from 'react-native';
 import colors from '../../config/colors';
 import styles from '../profile/styles';
 import FHPeopleItem from '../../components/FHPeopleItem';
 import {FlatList} from 'react-native';
 import {connect} from 'react-redux';
 import FHTagItem from '../../components/FHTagItem';
+import { SkypeIndicator } from 'react-native-indicators';
 
 class TabBox extends Component {
     constructor(props) {
@@ -13,6 +15,28 @@ class TabBox extends Component {
     }
 
     render() {
+        let toReturnUser;
+        if(this.props.loadingUser) {
+            toReturnUser = <View style={{flex:1, justifyContent:'center', alignItems:'center'}}><SkypeIndicator size={70} color={colors.accentColor}/></View>
+        } else if(this.props.successUser) {
+            toReturnUser = <FlatList
+            data = {this.props.users}
+            renderItem={({item}) => <FHPeopleItem isPrivate={item.isPrivate} username={item.username} name={item.fullname} following={item.is_following} avatar={item.avatar}/>}
+        />
+        } else {
+            toReturnUser = <View></View>
+        }
+        let toReturnTag;
+        if(this.props.loadingTag) {
+            toReturnTag = <View style={{flex:1, justifyContent:'center', alignItems:'center'}}><SkypeIndicator size={70} color={colors.accentColor}/></View>
+        } else if(this.props.successTag) {
+            toReturnTag = <FlatList
+            data = {this.props.tags}
+            renderItem={({item}) => <FHTagItem countOfUses={item.count_of_uses} name={item.name}/>}
+        />
+        } else {
+            toReturnTag = <View></View>
+        }
         return(
             <Container>
                 <Tabs tabContainerStyle={{height:50} } 
@@ -20,16 +44,10 @@ class TabBox extends Component {
                     backgroundColor: colors.primaryColor,
                     height: 2}}>
                     <Tab heading="هشتگ" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
-                        <FlatList
-                            data = {this.props.tags}
-                            renderItem={({item}) => <FHTagItem countOfUses={item.count_of_uses} name={item.name}/>}
-                        />
+                        {toReturnTag}
                     </Tab>
                     <Tab heading="کاربران" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab} activeTextStyle={styles.text}>
-                        <FlatList
-                            data = {this.props.users}
-                            renderItem={({item}) => <FHPeopleItem isPrivate={item.isPrivate} username={item.username} name={item.fullname} following={item.is_following} avatar={item.avatar}/>}
-                        />
+                        {toReturnUser}
                     </Tab>
                 </Tabs>
             </Container>
