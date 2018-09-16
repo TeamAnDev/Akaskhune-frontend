@@ -13,9 +13,11 @@ import {resetSelectingPost} from '../../actions/newPost/postActions';
 import {cropPhoto} from '../../actions/newPost/gallerySelectActions';
 import {navigate, replace} from '../../../NavigationService'
 const bottomOfButton = Dimensions.get("window").height * 3 / 100;
+
 class NewPost extends Component{
 
       constructor(props) {
+       
         super(props)
         this.state = {
           

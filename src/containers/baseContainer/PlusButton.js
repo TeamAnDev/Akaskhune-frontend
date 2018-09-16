@@ -6,9 +6,30 @@ import {TouchableHighlight, View} from 'react-native';
 import { Dimensions, Platform} from 'react-native';
 import {ifIphoneX, getStatusBarHeight, isIphoneX} from 'react-native-iphone-x-helper';
 import {navigate} from '../../../NavigationService';
+import { PermissionsAndroid } from 'react-native';
 const SIZE = Dimensions.get("window").height * 87/ 1000;
 
-
+async function requestCameraPermission() {
+    try {
+      const granted = await PermissionsAndroid.requestMultiple(
+        [PermissionsAndroid.PERMISSIONS.CAMERA,
+          PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE]
+          ,
+        {
+          'title': 'دسترسی به دوربین',
+          'message': 'برنامه‌ی عکاسخانه برای استفاده از دوربین به دسترسی دوربین نیاز دارد. ' +
+                     'لطفا اجازه‌ی استفاده از دوربین را بدهید.'
+        }
+      )
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.warn("You can use the camera")
+      } else {
+        console.warn("Camera permission denied")
+      }
+    } catch (err) {
+      console.warn(err)
+    }
+  }
 export default class PlusButton extends Component{
     constructor(props){
         super(props);
@@ -24,7 +45,7 @@ export default class PlusButton extends Component{
         return(
            
         <TouchableHighlight
-            onPress={()=>navigate('NewPost')}
+            onPress={()=>{requestCameraPermission().then(()=> navigate('NewPost'))}}
             underlayColor = {colors.accentColorOver}
             style={{
                 alignItems: 'center',

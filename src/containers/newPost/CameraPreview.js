@@ -6,30 +6,12 @@ import { PermissionsAndroid } from 'react-native';
 import colors from '../../config/colors';
 import {connect} from 'react-redux';
 import {takePhoto} from '../../actions/newPost/cameraSelectActions'
-async function requestCameraPermission() {
-  try {
-    const granted = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.CAMERA,
-      {
-        'title': 'دسترسی به دوربین',
-        'message': 'برنامه‌ی عکاسخانه برای استفاده از دوربین به دسترسی دوربین نیاز دارد. ' +
-                   'لطفا اجازه‌ی استفاده از دوربین را بدهید.'
-      }
-    )
-    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      console.warn("You can use the camera")
-    } else {
-      console.warn("Camera permission denied")
-    }
-  } catch (err) {
-    console.warn(err)
-  }
-}
+
 
 class CameraPreview extends Component{
     constructor(props){
         super(props);
-        requestCameraPermission();
+        // requestCameraPermission();
     }
     render()
     {
