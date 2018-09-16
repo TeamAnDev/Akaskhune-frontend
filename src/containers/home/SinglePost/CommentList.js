@@ -96,12 +96,15 @@ class CommentList extends Component
                         id = {comment.id}
                         addReply = {this.props.addReply}
                         username = {comment.username}
-                        isReplay = {false}/>
+                        isReplay = {false}
+                        ownUsername = {this.props.ownUsername}/>
+                        
                         <FlatList
                         style = {{backgroundColor: 'white'}}
                         data = {comment.replies}
                         renderItem = {({item}) => 
                             <Comment
+                            ownUsername = {this.props.ownUsername}
                             name = {item.fullname}
                             username = {item.username}
                             time = {item.created_at}

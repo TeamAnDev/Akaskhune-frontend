@@ -22,11 +22,13 @@ const FollowNotif = ({name, time, following, username, avatarUrl,isPrivate,  own
         </View>
         <View style={{flex:7, marginRight : widthOfImage/2}}>
             <View style={{flexDirection : 'row', justifyContent:'flex-end'}}>
+                <View>
                 <Text style = {{ textAlign : 'right', color : 'black'}}> 
                     {" را دنبال کرد " }
                 </Text>
+                </View>
                 <Text style = {{ textAlign : 'right', color : 'black'}}> 
-                    {secondName ? secondName : ' شما'}
+                    {secondName ? " " +  secondName : ' شما'}
                 </Text>
                 <Text style = {{ textAlign : 'right', color : 'black'}}> 
                     {name}

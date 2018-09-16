@@ -20,7 +20,7 @@ const HomeHeader = (props) => {
             </Body>
             <Right style={{flex:1}}>
                 <Button transparent rounded primary style={{borderRadius:50}}   onPress={() => navigate("Recommendation")}>
-                    <Icon style={{color : 'white'}} type='Ionicons' name="ios-people"/>
+                    <Icon style={{color : 'white'}} type='Feather' name="users"/>
                 </Button>
             </Right>
         </Header>    
