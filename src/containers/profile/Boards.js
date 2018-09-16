@@ -18,7 +18,7 @@ const NoBoardComponent = () => {
 export default class Boards extends Component {
     constructor(props) {
         super(props);
-        
+         
         if(this.props.username)
         {
             this.props.initAllBoards(this.props.username);
@@ -41,6 +41,9 @@ export default class Boards extends Component {
                             data = {this.props.boards}
                             renderItem = {({item}) => <FHSingleBoard username={this.props.username} name={item.name} id={item.id}/>}
                             ListEmptyComponent = {<View style={{flex:1 ,justifyContent:'center', alignItems:'center', marginTop:150}}><NoBoardComponent/></View>}
+                            onEndReached = {() => {
+                                this.props.allBoardsRequest(this.props.next, this.props.username);
+                                        }}
                             /> 
                         </View>
         } else {
