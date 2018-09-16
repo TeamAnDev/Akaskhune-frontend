@@ -1,6 +1,8 @@
 import {GETTING_SELF_INFO_SUCCES, GETTING_SELF_INIT, GETTING_SELF_INFO_ERR, GETTING_SELF_INFO_STARTED} from '../../actions/userInfo/userInfoRequest'
 import {FOLLOW_REQ_SUCCESS, UNFOLLOW_REQ_SUCCESS} from '../../actions/follow/followRequest';
 import {DELETE_BOARD_REQ_SUCCESS} from '../../actions/board/deleteBoardRequest';
+import {ADD_BOARD_REQ_SUCCESS} from '../../actions/board/addBoardRequest';
+
 function getSelfInfoReducer(state={loading:false, data:{}, error:"", succes:false}, action)
 {
     switch(action.type){
@@ -24,8 +26,11 @@ function getSelfInfoReducer(state={loading:false, data:{}, error:"", succes:fals
         case(DELETE_BOARD_REQ_SUCCESS) :
             let updatedDataBoard = Object.assign({}, state.data);
             updatedDataBoard.boards_count = updatedDataBoard.boards_count - 1;
-            console.warn("wtf", updatedDataBoard);
             return Object.assign({}, state, {data : updatedDataBoard});
+        case(ADD_BOARD_REQ_SUCCESS):
+            let updatedDataBoard2 = Object.assign({}, state.data);
+            updatedDataBoard2.boards_count = updatedDataBoard2.boards_count + 1;
+            return Object.assign({}, state, {data : updatedDataBoard2});
         default :
             return state;
     }
