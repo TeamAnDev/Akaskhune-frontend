@@ -12,7 +12,9 @@ import {PulseIndicator} from 'react-native-indicators';
 class PopularTags extends Component {
     constructor(props) {
         super(props);
-        this.props.requestPopularTags();
+        this.props.navigation.addListener("didFocus", () => {
+            this.props.requestPopularTags();
+          })
     }
 
     render() {
