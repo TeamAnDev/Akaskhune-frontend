@@ -74,6 +74,7 @@ export function allBoardsRequest(url) {
             dispatch(allBoardsReqSent());
             await requestAllBoards(url)
             .then(function(response){
+                console.warn("ok" , response.data)
                 dispatch(allBoardsReqSuccess(response.data.count, response.data.next, response.data.results));
             }).catch(function(error) {
                 dispatch(allBoardsReqErr(error.response.data.error));

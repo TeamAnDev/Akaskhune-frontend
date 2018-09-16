@@ -9,9 +9,16 @@ const PopularTag = (props) => {
     let toReturn;
     if(props.tagName) {
         toReturn = <TouchableOpacity onPress={() => {props.sendTagName(props.tagName);navigate("TagPosts")}} style={{margin:5, borderRadius:5}}>
-                        <ImageBackground style={{backgroundColor:'#EFEFEF', width:props.width, height:props.height,
+                        <ImageBackground style={{backgroundColor:'#EFEFEF', width:props.width, height:props.height,opacity : 0.9,
                              justifyContent:'center', borderRadius:5}} source={{uri : props.photo_url}} imageStyle={{borderRadius:5}}>
-                            <View style={{alignSelf:'center'}}><Text>{"#" + props.tagName}</Text></View>
+                            <View 
+                            style={{alignSelf:'center', 
+                            backgroundColor : 'white', 
+                            // opacity: 0.4,
+                            borderRadius:5,
+                            alignItems : 'center',
+                            justifyContent : 'center',
+                            }}><View style = {{opacity : 1}}><Text>{"#" + props.tagName}</Text></View></View>
                         </ImageBackground>
                     </TouchableOpacity>
     } else {

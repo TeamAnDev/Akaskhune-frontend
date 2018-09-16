@@ -47,9 +47,10 @@ export default class Images extends Component {
                 this.dataSource = rowSplit(this.props.images);
                 toReturn = <FlatList
                     refreshing={this.props.loading}
+                    ListFooterComponent = {this.props.endLoading ? <View style={{backgroundColor:'white'}}><Spinner/></View> : null}   
                     data = {this.dataSource}
                     renderItem = {({item}) => <FHRow leftImage={item[0]} rightImage={item[1]}/>}
-                    onMomentumScrollBegin = {() => {if(!this.state.end){this.setState({end : true})}}}
+                    onScrollBeginDrag = {() => {if(!this.state.end){this.setState({end : true})}}}
                     onEndReached = {() => {
                         if (this.state.end) {
                             this.props.requestImages(this.props.url, this.props.username)
