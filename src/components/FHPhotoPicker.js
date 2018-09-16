@@ -29,10 +29,10 @@ class  FHPhotoPicker extends Component{
         {
             showError(this.props.error, "باشه" );
         }
-        else if(this.props.success !== nextProps.success && nextProps.success)
-        {
-            showSuccess("تصویر با موفقیت آپلود شد.", "باشه");
-        }
+        // else if(this.props.success !== nextProps.success && nextProps.success)
+        // {
+        //     showSuccess("تصویر با موفقیت آپلود شد.", "باشه");
+        // }
     }
     render(){
         let ELEMENT;

@@ -37,7 +37,6 @@ class Notifications extends Component {
         tabContainerStyle = {{backgroundColor : 'white'}} 
         tabBarInactiveTextColor="white"
         locked = {true}
-        // style = {{height : heightOfHeader}}
         >
           <Tab 
           tabStyle={{backgroundColor : colors.primaryColor}}

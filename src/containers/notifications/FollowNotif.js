@@ -21,18 +21,19 @@ const FollowNotif = ({name, time, following, username, avatarUrl,isPrivate,  own
             <FHFollowButton following = {following} username = {username} isPrivate = {isPrivate} />
         </View>
         <View style={{flex:7, marginRight : widthOfImage/2}}>
-            <View style={{flexDirection : 'row', justifyContent:'flex-end'}}>
-                <View>
-                <Text style = {{ textAlign : 'right', color : 'black'}}> 
-                    {" را دنبال کرد " }
-                </Text>
-                </View>
-                <Text style = {{ textAlign : 'right', color : 'black'}}> 
-                    {secondName ? " " +  secondName : ' شما'}
-                </Text>
-                <Text style = {{ textAlign : 'right', color : 'black'}}> 
-                    {name}
-                </Text>
+            <View style={{flexDirection : 'row-reverse',
+                         justifyContent:'flex-start',
+                         flexWrap: "wrap",
+                         alignItems: "center"}}>
+            <Text style = {{ textAlign : 'right', color : 'black'}}> 
+                {name}
+            </Text>
+            <Text style = {{ textAlign : 'right', color : 'black'}}> 
+                {secondName ? " " +  secondName : ' شما'}
+            </Text>
+            <Text style = {{ textAlign : 'right', color : 'black'}}> 
+                {" را دنبال کرد " }
+            </Text>
             </View>
             <Text style = {{width : '100%', textAlign : 'right'}}>{time}</Text>
         </View>

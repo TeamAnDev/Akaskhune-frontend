@@ -16,8 +16,9 @@ export default class Images extends Component {
 
     constructor(props) {
         super(props);
-        // this.onEndReachedCalledDuringMomentum = true;
-        this.state = {onEndReachedCalledDuringMomentum : true};
+        this.state = {
+            end : false,
+        }
         if(this.props.username)
         {
             this.props.init(this.props.username);
@@ -48,15 +49,14 @@ export default class Images extends Component {
                     refreshing={this.props.loading}
                     data = {this.dataSource}
                     renderItem = {({item}) => <FHRow leftImage={item[0]} rightImage={item[1]}/>}
-                    onEndReached = {({distanceFromEnd}) => {
-                        // if(!this.state.onEndReachedCalledDuringMomentum) {
-                        console.warn("end");
-                        // this.setOnEndReach(true);
-                        !this.props.loading ? this.props.requestImages(this.props.url, this.props.username) : null
-                        // }
-                    }}
-                    // onMomentumScrollBegin={() => {this.setOnEndReach(false);}}
-                    onEndReachedThreshold={0.5}
+                    onMomentumScrollBegin = {() => {if(!this.state.end){this.setState({end : true})}}}
+                    onEndReached = {() => {
+                        if (this.state.end) {
+                            this.props.requestImages(this.props.url, this.props.username)
+                            this.setState({end : false});
+                          }
+                        }}
+                    
                 />
             }
         } 

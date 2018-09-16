@@ -16,14 +16,17 @@ const PostLikeOrCommentNotif = ({userName, time, status, photoUrl, commentText, 
         borderBottomWidth:1,
          borderBottomColor : colors.grey}}>
         <View style={{flex:11, marginRight : widthOfImage/2}}>
-                <View style={{flexDirection : 'row', width : '100%', justifyContent:'flex-end'}}>
-                    {status === 'comment' ? <Text style = {{ textAlign : 'right', color : 'black'}}> 
-                        ({commentText})
-                    </Text> : null}
+                <View style={{flexDirection : 'row-reverse',
+                         justifyContent:'flex-start',
+                         flexWrap: "wrap",
+                         alignItems: "center"}}>
+                    <Text style = {{textAlign : 'right', color : 'black'}}>{userName}</Text>
                     <Text style = {{ textAlign : 'right', color : 'black'}}> 
                     {status === 'like' ?  " این عکس رو پسندید " :  " نظر ثبت کرده: "}
                     </Text>
-                    <Text style = {{textAlign : 'right', color : 'black'}}>{userName}</Text>
+                    {status === 'comment' ? <Text style = {{ textAlign : 'right', color : 'black'}}> 
+                        ({commentText})
+                    </Text> : null}
                 </View>
                  
                 <Text style = {{width : '100%', textAlign : 'right'}}>{time}</Text>
