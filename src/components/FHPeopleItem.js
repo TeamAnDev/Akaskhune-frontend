@@ -10,12 +10,18 @@ class FHPeopleItem extends Component {
     }
 
     render() {
+        let numOfMutual;
+        if(this.props.numOfMutual) {
+            numOfMutual = <View><Text style={{fontSize:10}}>{this.props.numOfMutual + "  دوست مشترک"}</Text></View>
+        }
         return (
         <View style={styles.contactItem}>
             <View>
                 <FHFollowButton isPrivate={this.props.isPrivate} following={this.props.following} username={this.props.username}/>
             </View>
+            {numOfMutual}
             <TouchableOpacity onPress = {()=> {navigateToProfile(this.props.username, this.props.ownUsername)}}>
+            
             <View style={{flexDirection:'row'}}>
                 <View style={{flexDirection:'column', marginRight:10, alignItems:"flex-end"}}>
                     
